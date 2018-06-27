@@ -118,7 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>v3.24
+    <value>
+
+v3.24
  - Detailed View 옵션이 추가되었습니다. 고급 설정에서 Detailed Search Result를 켜고 재시작하면 적용됩니다. 이 옵션은 메인 검색창에서 자세한 검색결과를 보여줍니다. 빈공간을 더블클릭하면 기존과 동일한 정보창이 열립니다.
 
  - 더이상 썸네일을 띄울때 성가신 버그가 일어나지 않습니다. 이제 미리보기, 작가/그룹 정보창에서 마음대로 마우스를 흔들어도 됩니다!

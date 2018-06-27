@@ -555,6 +555,7 @@ namespace Hitomi_Copy_3
                     PushString("fucs : Frequently Used Command Snippet");
                     PushString("ra (option) [var1] [var2] ... : Recommend artists tools.");
                     PushString("install (option) : Download external procedure.");
+                    PushString("exh [option] [var1] [var2] ... : Ex-hentai tools");
                 }
                 else if (cmd == "fucs")
                 {
