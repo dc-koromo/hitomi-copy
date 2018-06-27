@@ -542,6 +542,17 @@ namespace Hitomi_Copy_3
                         PushString("  (option): info, comment");
                     }
                 }
+                else if (cmd == "tk")
+                {
+                    if (split.Length > 1)
+                    {
+                        PushString(KoreanTag.TagMap(split[1]));
+                    }
+                    else
+                    {
+                        PushString("using 'tk [tag]'");
+                    }
+                }
                 else if (cmd == "help")
                 {
                     PushString("Realtime Variable Update System");
@@ -556,6 +567,7 @@ namespace Hitomi_Copy_3
                     PushString("ra (option) [var1] [var2] ... : Recommend artists tools.");
                     PushString("install (option) : Download external procedure.");
                     PushString("exh [option] [var1] [var2] ... : Ex-hentai tools");
+                    PushString("tk [tag] : Show tag korean.");
                 }
                 else if (cmd == "fucs")
                 {

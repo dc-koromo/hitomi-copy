@@ -118,7 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>
+    <value>v3.25
+ - VUI-Funktionalität hinzugefügt. Sie können ein wenig mehr Suchergebnisse ohne Probleme bekommen.
+
+ - Download-Treiber wird experimentell hinzugefügt. Mit dieser Funktion können Sie zuverlässig einen eigenständigen Prozess herunterladen.
+
+ - Viele andere Änderungen wurden vorgenommen, aber ich fühle mich gut, also werde ich es einfach veröffentlichen !!
+
 
 v3.24
  - Detailed View 옵션이 추가되었습니다. 고급 설정에서 Detailed Search Result를 켜고 재시작하면 적용됩니다. 이 옵션은 메인 검색창에서 자세한 검색결과를 보여줍니다. 빈공간을 더블클릭하면 기존과 동일한 정보창이 열립니다.
@@ -132,7 +138,6 @@ v3.24
  - 마루마루가 다운로드되지 않던 오류를 수정했습니다.
 
  - 작가/그룹 정보창에서 오른쪽 마우스 클릭으로 '모두 선택/모두 선택 취소/제목이 비슷한 작품 선택 취소' 기능을 사용할 수 있습니다.
-
 
 v3.23
  - Lazy 썸네일 기능을 추가했습니다. 마우스를 가져다대기전까지 확대된 썸네일을 메모리에 로드하지 않으므로 메모리가 절약됩니다.
