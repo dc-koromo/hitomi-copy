@@ -442,6 +442,41 @@ namespace Hitomi_Copy_3
                         PushString("  (option): ulist, list, clear, update, on, off, mion, mioff, rank, add, +, +a");
                     }
                 }
+                else if (cmd == "install")
+                {
+                    string[] split = textBox2.Text.Trim().Split(' ');
+                    if (split.Length > 1)
+                    {
+                        if (split[1] == "driver")
+                        {
+                            try
+                            {
+                                const string driver_url = "https://github.com/dc-koromo/hitomi-downloader-2/releases/download/driver/driver.exe";
+                                PushString($"Please wait ...");
+                                string temp = Path.GetTempFileName();
+
+                                using (var wc = new System.Net.WebClient())
+                                    wc.DownloadFile(driver_url,
+                                        Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "driver.exe"));
+
+                                PushString("Complete!");
+                            }
+                            catch (Exception ex)
+                            {
+                                PushString(ex.Message);
+                            }
+                        }
+                        else
+                        {
+                            PushString($"'{split[1]}' is not a valid command option.");
+                        }
+                    }
+                    else
+                    {
+                        PushString("using 'install [option]'");
+                        PushString("  (install): driver");
+                    }
+                }
                 else if (cmd == "help")
                 {
                     PushString("Realtime Variable Update System");

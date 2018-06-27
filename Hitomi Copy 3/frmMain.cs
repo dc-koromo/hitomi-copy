@@ -742,18 +742,30 @@ namespace Hitomi_Copy_3
         #endregion
 
         #region 다운로드 관련
-        public HitomiQueue download_queue;
+        public ISemaphore download_queue;
         public List<string> download_check = new List<string>();
         public List<IPicElement> downloaded_check = new List<IPicElement>();
 
         private void InitDownloader()
         {
-            download_queue = new HitomiQueue(HitomiQueueCallback,
-                HitomiQueueDownloadSizeCallback, HitomiQueueDownloadStatusCallback, HitomiRetryCallback)
+            if (HitomiSetting.Instance.GetModel().UsingDriver == false)
             {
-                timeout_infinite = HitomiSetting.Instance.GetModel().WaitInfinite,
-                timeout_ms = HitomiSetting.Instance.GetModel().WaitTimeout
-            };
+                download_queue = new HitomiQueue(HitomiQueueCallback,
+                    HitomiQueueDownloadSizeCallback, HitomiQueueDownloadStatusCallback, HitomiRetryCallback)
+                {
+                    timeout_infinite = HitomiSetting.Instance.GetModel().WaitInfinite,
+                    timeout_ms = HitomiSetting.Instance.GetModel().WaitTimeout
+                };
+            }
+            else
+            {
+                download_queue = new DriverManager(HitomiQueueCallback,
+                    HitomiQueueDownloadSizeCallback, HitomiQueueDownloadStatusCallback, HitomiRetryCallback)
+                {
+                    timeout_infinite = HitomiSetting.Instance.GetModel().WaitInfinite,
+                    timeout_ms = HitomiSetting.Instance.GetModel().WaitTimeout
+                };
+            }
         }
 
         private void HitomiRetryCallback(string uri)
@@ -1195,7 +1207,7 @@ namespace Hitomi_Copy_3
         private void vThread_Scroll(object sender, ScrollEventArgs e)
         {
             lThread.Text = vThread.Value.ToString();
-            download_queue.capacity = vThread.Value;
+            download_queue.Capacity = vThread.Value;
             HitomiSetting.Instance.GetModel().Thread = vThread.Value;
             HitomiSetting.Instance.Save();
         }

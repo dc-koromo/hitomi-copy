@@ -56,7 +56,7 @@ namespace driver
             catch (Exception e)
             {
                 Console.WriteLine($"Error occured! {e.Message}");
-                Environment.Exit(6974);
+                Environment.Exit(-1);
             }
         }
     }

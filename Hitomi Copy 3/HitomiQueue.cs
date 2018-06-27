@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Hitomi_Copy_2
 {
-    public class HitomiQueue
+    public class HitomiQueue : ISemaphore
     {
         public int capacity = 32;
         public int mtx = 0;
@@ -35,6 +35,8 @@ namespace Hitomi_Copy_2
         object int_lock = new object();
         object notify_lock = new object();
 
+        public int Capacity { get { return capacity; } set { capacity = value; } }
+
         public HitomiQueue(CallBack notify, DownloadSizeCallBack notify_size, DownloadStatusCallBack notify_status, RetryCallBack retry)
         {
             capacity = HitomiSetting.Instance.GetModel().Thread;
@@ -46,7 +48,7 @@ namespace Hitomi_Copy_2
             proxy = null;
         }
 
-        public void DownloadRemoteImageFile(string uri, string fileName, object obj)
+        private void DownloadRemoteImageFile(string uri, string fileName, object obj)
         {
         RETRY:
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);

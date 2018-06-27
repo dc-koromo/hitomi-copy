@@ -49,6 +49,8 @@ namespace Hitomi_Copy_2
         public bool DetailedSearchResult;
         [JsonProperty]
         public bool UsingExHentaiBaseOpener;
+        [JsonProperty]
+        public bool UsingDriver;
     }
 
     public class HitomiSetting
@@ -84,6 +86,7 @@ namespace Hitomi_Copy_2
                 model.RecommendAutoRemove = false;
                 model.DetailedSearchResult = false;
                 model.UsingExHentaiBaseOpener = false;
+                model.UsingDriver = false;
                 Save();
             }
             else

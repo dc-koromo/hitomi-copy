@@ -124,6 +124,8 @@
     <Compile Include="Data\HitomiDataModel.cs" />
     <Compile Include="Data\HitomiDataQuery.cs" />
     <Compile Include="Data\HitomiDataSearch.cs" />
+    <Compile Include="DownloadQueueInterface.cs" />
+    <Compile Include="DriverManager.cs" />
     <Compile Include="EH\ExHentaiArticle.cs" />
     <Compile Include="EH\ExHentaiParser.cs" />
     <Compile Include="EH\ExHentaiTool.cs" />
