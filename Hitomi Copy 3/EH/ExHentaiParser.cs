@@ -143,8 +143,8 @@ namespace Hitomi_Copy_2.EH
             HtmlNode nodesc = document.DocumentNode.SelectNodes("//div[@id='cdiv']")[0];
             HtmlNodeCollection nodes_datac = nodesc.SelectNodes(".//div[@class='c1']");
             List<Tuple<DateTime, string, string>> comments = new List<Tuple<DateTime, string, string>>();
-
-            foreach (var i in nodes_datac)
+            
+            foreach (var i in nodes_datac ?? Enumerable.Empty<HtmlNode>())
             {
                 try
                 {
