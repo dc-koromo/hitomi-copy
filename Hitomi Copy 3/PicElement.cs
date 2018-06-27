@@ -161,7 +161,17 @@ namespace Hitomi_Copy
         private void Picture_MouseLeave(object sender, EventArgs e)
         { mouse_enter = false; if (!downloading) { info.Value.Location = Cursor.Position; info.Value.Hide(); Invalidall(); } }
         private void Picture_MouseMove(object sender, EventArgs e)
-        { info.Value.Location = new Point(Cursor.Position.X+15,Cursor.Position.Y); /*info.BringToFront();*/ }
+        {
+            int sw = SystemInformation.VirtualScreen.Width;
+            int sh = SystemInformation.VirtualScreen.Height;
+            int cx = Cursor.Position.X + 15;
+            int cy = Cursor.Position.Y;
+            if (sw < cx - 15 + info.Value.Width)
+                cx = Cursor.Position.X - 15 - info.Value.Width;
+            if (sh < info.Value.Height + cy)
+                cy = sh - info.Value.Height;
+            info.Value.Location = new Point(cx, cy);
+        }
         private void Picture_MouseClick(object sender, EventArgs e)
         { if (((MouseEventArgs)e).Button == MouseButtons.Left) { selected = !selected; Invalidall(); } }
         private void Picture_MouseDoubleClick(object sender, EventArgs e)

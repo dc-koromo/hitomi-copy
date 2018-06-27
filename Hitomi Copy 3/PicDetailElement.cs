@@ -49,7 +49,17 @@ namespace Hitomi_Copy_3
             vuiPB.Location = pb.Location;
             vuiPB.MouseEnterEvent = () => { info.Value.Location = Cursor.Position; info.Value.Show(); };
             vuiPB.MouseLeaveEvent = () => { info.Value.Location = Cursor.Position; info.Value.Hide(); };
-            vuiPB.MouseMoveEvent = () => { info.Value.Location = new Point(Cursor.Position.X + 15, Cursor.Position.Y); };
+            vuiPB.MouseMoveEvent = () => {
+                int sw = SystemInformation.VirtualScreen.Width;
+                int sh = SystemInformation.VirtualScreen.Height;
+                int cx = Cursor.Position.X + 15;
+                int cy = Cursor.Position.Y;
+                if (sw < cx - 15 + info.Value.Width)
+                    cx = Cursor.Position.X - 15 - info.Value.Width;
+                if (sh < info.Value.Height + cy)
+                    cy = sh - info.Value.Height;
+                info.Value.Location = new Point(cx, cy);
+            };
             pb.Dispose();
 
             //
