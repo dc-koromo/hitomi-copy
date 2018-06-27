@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robust Hitomi Copy Machine"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "driver", "driver\driver.csproj", "{B615B408-94FF-478E-9FCE-488B82BC5D45}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hdriver", "..\hdriver\hdriver.vcxproj", "{38DC9170-B923-4B91-AB32-9473CDA6F285}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,16 +41,6 @@ Global
 		{B615B408-94FF-478E-9FCE-488B82BC5D45}.Release|x64.Build.0 = Release|Any CPU
 		{B615B408-94FF-478E-9FCE-488B82BC5D45}.Release|x86.ActiveCfg = Release|Any CPU
 		{B615B408-94FF-478E-9FCE-488B82BC5D45}.Release|x86.Build.0 = Release|Any CPU
-		{38DC9170-B923-4B91-AB32-9473CDA6F285}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{38DC9170-B923-4B91-AB32-9473CDA6F285}.Debug|x64.ActiveCfg = Debug|x64
-		{38DC9170-B923-4B91-AB32-9473CDA6F285}.Debug|x64.Build.0 = Debug|x64
-		{38DC9170-B923-4B91-AB32-9473CDA6F285}.Debug|x86.ActiveCfg = Debug|Win32
-		{38DC9170-B923-4B91-AB32-9473CDA6F285}.Debug|x86.Build.0 = Debug|Win32
-		{38DC9170-B923-4B91-AB32-9473CDA6F285}.Release|Any CPU.ActiveCfg = Release|Win32
-		{38DC9170-B923-4B91-AB32-9473CDA6F285}.Release|x64.ActiveCfg = Release|x64
-		{38DC9170-B923-4B91-AB32-9473CDA6F285}.Release|x64.Build.0 = Release|x64
-		{38DC9170-B923-4B91-AB32-9473CDA6F285}.Release|x86.ActiveCfg = Release|Win32
-		{38DC9170-B923-4B91-AB32-9473CDA6F285}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
