@@ -3,6 +3,7 @@
 using Hitomi_Copy.Data;
 using Hitomi_Copy_2;
 using Hitomi_Copy_2.Analysis;
+using Hitomi_Copy_2.EH;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -148,7 +149,8 @@ namespace Hitomi_Copy_3
                 textBox2.Text = textBox2.Text.Trim();
 
                 PushString("dc-koromo@hitomi-copy$ " + textBox2.Text);
-                string cmd = textBox2.Text.Trim().Split(' ')[0];
+                string[] split = textBox2.Text.Trim().Split(' ');
+                string cmd = split[0];
 
                 if (cmd == "enum" || cmd == "enumi" || cmd == "enumx")
                 {
@@ -179,7 +181,6 @@ namespace Hitomi_Copy_3
                 }
                 else if (cmd == "get")
                 {
-                    string[] split = textBox2.Text.Trim().Split(' ');
                     if (split.Length >= 3)
                     {
                         string frm = split[1];
@@ -206,7 +207,6 @@ namespace Hitomi_Copy_3
                 }
                 else if (cmd == "set")
                 {
-                    string[] split = textBox2.Text.Trim().Split(' ');
                     if (split.Length >= 4)
                     {
                         string frm = split[1];
@@ -229,7 +229,6 @@ namespace Hitomi_Copy_3
                 }
                 else if (cmd == "ra")
                 {
-                    string[] split = textBox2.Text.Trim().Split(' ');
                     if (split.Length > 1)
                     {
                         if (split[1] == "ulist")
@@ -444,7 +443,6 @@ namespace Hitomi_Copy_3
                 }
                 else if (cmd == "install")
                 {
-                    string[] split = textBox2.Text.Trim().Split(' ');
                     if (split.Length > 1)
                     {
                         if (split[1] == "driver")
@@ -477,6 +475,73 @@ namespace Hitomi_Copy_3
                         PushString("  (install): driver");
                     }
                 }
+                else if (cmd == "hi")
+                {
+                    // Hitomi
+                    if (split.Length > 1)
+                    {
+                    }
+                }
+                else if (cmd == "exh")
+                {
+                    // ExHentai
+                    if (split.Length > 1)
+                    {
+                        if (split[1] == "info")
+                        {
+                            if (split.Length > 2)
+                            {
+                                try
+                                {
+                                    string article_source = frmMain.GetEXHWebClient().DownloadString(new Uri(split[2]));
+                                    ExHentaiArticle article = ExHentaiParser.GetArticleData(article_source);
+                                    LogEssential.Instance.PushLog(article);
+                                }
+                                catch (Exception ex)
+                                {
+                                    PushString(ex.Message);
+                                }
+                            }
+                            else
+                            {
+                                PushString("'info' command need 1 more parameter, url.");
+                            }
+                        }
+                        else if (split[1] == "comment")
+                        {
+                            if (split.Length > 2)
+                            {
+                                try
+                                {
+                                    string article_source = frmMain.GetEXHWebClient().DownloadString(new Uri(split[2]));
+                                    ExHentaiArticle article = ExHentaiParser.GetArticleData(article_source);
+                                    foreach (var tuple in article.comment)
+                                    {
+                                        PushString($"{tuple.Item2} - {tuple.Item1.ToString()}");
+                                        PushString(tuple.Item3);
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    PushString(ex.Message);
+                                }
+                            }
+                            else
+                            {
+                                PushString("'comment' command need 1 more parameter, url.");
+                            }
+                        }
+                        else
+                        {
+                            PushString($"'{split[1]}' command not found.");
+                        }
+                    }
+                    else
+                    {
+                        PushString("using 'exh [option] [var1] [var2] ...'");
+                        PushString("  (option): info, comment");
+                    }
+                }
                 else if (cmd == "help")
                 {
                     PushString("Realtime Variable Update System");
@@ -489,6 +554,7 @@ namespace Hitomi_Copy_3
                     PushString("set (Form) (Variable1) [Variable2] ... [Value] : Set value.");
                     PushString("fucs : Frequently Used Command Snippet");
                     PushString("ra (option) [var1] [var2] ... : Recommend artists tools.");
+                    PushString("install (option) : Download external procedure.");
                 }
                 else if (cmd == "fucs")
                 {

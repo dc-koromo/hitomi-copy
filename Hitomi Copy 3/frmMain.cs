@@ -293,7 +293,7 @@ namespace Hitomi_Copy_3
         public ExHentaiArticle article;
         public string[] pages;
 
-        private static WebClient GetEXHWebClient()
+        public static WebClient GetEXHWebClient()
         {
             WebClient wc = new WebClient();
             wc.Encoding = Encoding.UTF8;
