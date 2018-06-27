@@ -648,23 +648,23 @@ namespace Hitomi_Copy_3
         {
             try
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(toSerialize.GetType());
-
-                using (StringWriter textWriter = new StringWriter())
+                return JsonConvert.SerializeObject(toSerialize, Formatting.Indented, new JsonSerializerSettings
                 {
-                    xmlSerializer.Serialize(textWriter, toSerialize);
-                    return textWriter.ToString();
-                }
+                    //ReferenceLoopHandling = ReferenceLoopHandling.Serialize
+                    ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                });
             }
             catch
             {
                 try
                 {
-                    return JsonConvert.SerializeObject(toSerialize, Formatting.Indented, new JsonSerializerSettings
+                    XmlSerializer xmlSerializer = new XmlSerializer(toSerialize.GetType());
+
+                    using (StringWriter textWriter = new StringWriter())
                     {
-                        //ReferenceLoopHandling = ReferenceLoopHandling.Serialize
-                        ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-                    });
+                        xmlSerializer.Serialize(textWriter, toSerialize);
+                        return textWriter.ToString();
+                    }
                 }
                 catch (Exception e)
                 {
