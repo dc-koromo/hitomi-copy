@@ -41,6 +41,17 @@ namespace MM_Downloader.MM
         }
 
         /// <summary>
+        /// ex: https://marumaru.in/b/manga/54099
+        /// </summary>
+        /// <param name="html"></param>
+        /// <returns></returns>
+        public static string GetThumbnailAddress(string html)
+        {
+            string thumbnail = Regex.Split(Regex.Split(html, @"property=""og: image"" content=""")[1], @""" /> ")[0];
+            return thumbnail;
+        }
+
+        /// <summary>
         /// ex: http://wasabisyrup.com/archives/xnc4I45ZMRI
         /// </summary>
         /// <param name="html"></param>
@@ -70,5 +81,6 @@ namespace MM_Downloader.MM
             string title_s = Regex.Split(Regex.Split(html, @"\<title\>")[1], @"\<\/title\>")[0];
             return Regex.Replace(title_s, " \\| WasabiSyrup", "");
         }
+
     }
 }
