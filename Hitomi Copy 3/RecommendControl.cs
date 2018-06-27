@@ -213,7 +213,17 @@ namespace Hitomi_Copy_3
         public void Picture_MouseLeave(object sender, EventArgs e)
         { info.Value.Location = Cursor.Position; info.Value.Hide(); }
         public void Picture_MouseMove(object sender, EventArgs e)
-        { info.Value.Location = new Point(Cursor.Position.X + 15, Cursor.Position.Y); }
+        {
+            int sw = SystemInformation.VirtualScreen.Width;
+            int sh = SystemInformation.VirtualScreen.Height;
+            int cx = Cursor.Position.X + 15;
+            int cy = Cursor.Position.Y;
+            if (sw < cx - 15 + info.Value.Width)
+                cx = Cursor.Position.X - 15 - info.Value.Width;
+            if (sh < info.Value.Height + cy)
+                cy = sh - info.Value.Height;
+            info.Value.Location = new Point(cx, cy);
+        }
     }
 
 }
