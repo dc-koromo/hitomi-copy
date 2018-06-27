@@ -19,6 +19,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -79,6 +80,7 @@ namespace Hitomi_Copy_3
             LogEssential.Instance.Initialize();
 
             Task.Run(() => CheckUpdate());
+            Task.Run(() => CheckDriver());
             Task.Run(() => UpdateStatistics());
 
             EmitTip();
@@ -108,6 +110,25 @@ namespace Hitomi_Copy_3
             else
             {
                 LogEssential.Instance.PushLog(() => "This version is latest version!");
+            }
+        }
+
+        private void CheckDriver()
+        {
+            if(HitomiSetting.Instance.GetModel().UsingDriver == true)
+            {
+                if (!File.Exists("driver.exe"))
+                {
+                    const string driver_url = "https://github.com/dc-koromo/hitomi-downloader-2/releases/download/driver/driver.exe";
+                    LogEssential.Instance.PushLog(() => $"Please wait ...");
+                    string temp = Path.GetTempFileName();
+
+                    using (var wc = new System.Net.WebClient())
+                        wc.DownloadFile(driver_url,
+                            Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "driver.exe"));
+
+                    LogEssential.Instance.PushLog(() => "Complete!");
+                }
             }
         }
         #endregion
