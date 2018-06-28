@@ -92,7 +92,7 @@ namespace Hitomi_Copy_3
         {
             if (t == null)
                 return;
-            
+
             t.GetFields(flags).ToList().ForEach(x => PushString(x.Name.PadRight(25) + $"[{x.FieldType.ToString()}]"));
             GetAllFields(t.BaseType, flags);
         }
@@ -135,10 +135,15 @@ namespace Hitomi_Copy_3
                 obj.GetType().GetField(bb[ptr]).SetValue(obj,
                     Convert.ChangeType(bb[ptr + 1], obj.GetType().GetField(bb[ptr], default_bf).GetValue(obj).GetType()));
                 return;
-            }   
+            }
             set_recurion(obj.GetType().GetField(bb[ptr]).GetValue(obj), bb, ptr + 1);
         }
-        
+
+        Dictionary<string, object> instances = new Dictionary<string, object> {
+            {"setting",  HitomiSetting.Instance},
+            {"analysis",  HitomiAnalysis.Instance},
+            {"data",  HitomiData.Instance},
+        };
         private void textBox2_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -179,16 +184,38 @@ namespace Hitomi_Copy_3
                         }
                     }
                 }
+                else if (cmd == "ei")
+                {
+                    if (split.Length > 1)
+                    {
+                        try
+                        {
+                            enum_recursion(instances[split[1]], split, 2, default_bf);
+                        }
+                        catch (Exception ex)
+                        {
+                            PushString(ex.Message);
+                        }
+                    }
+                    else
+                    {
+                        PushString("using 'ei [Instance] [Variable1] [Variable2] ...'");
+                        PushString("  (instance): setting, analysis, data");
+                    }
+                }
                 else if (cmd == "get")
                 {
                     if (split.Length >= 3)
                     {
                         string frm = split[1];
                         string var = split[2];
-
+                        
                         try
                         {
-                            PushString(LogEssential.SerializeObject(get_recursion(Application.OpenForms[frm], split, 2)));
+                            if (instances.ContainsKey(frm))
+                                PushString(LogEssential.SerializeObject(get_recursion(instances[frm], split, 2)));
+                            else
+                                PushString(LogEssential.SerializeObject(get_recursion(Application.OpenForms[frm], split, 2)));
                         }
                         catch (Exception ex)
                         {
@@ -546,7 +573,26 @@ namespace Hitomi_Copy_3
                 {
                     if (split.Length > 1)
                     {
-                        PushString(KoreanTag.TagMap(split[1]));
+                        string tag = Regex.Replace(split[1], "_", " ");
+
+                        bool found = false;
+                        found = HitomiData.Instance.tagdata_collection.female.Any(x => x.Tag == tag);
+                        if (found == false) found = HitomiData.Instance.tagdata_collection.male.Any(x => x.Tag == tag);
+                        if (found == false) found = HitomiData.Instance.tagdata_collection.tag.Any(x => x.Tag == tag);
+
+                        if (!found)
+                        {
+                            PushString($"'{tag}' is not found.");
+                            string similar = "";
+                            int diff = int.MaxValue;
+                            HitomiData.Instance.tagdata_collection.female.ForEach(x => { int diff_t = StringAlgorithms.get_diff(tag, x.Tag); if (diff_t < diff) { diff = diff_t; similar = x.Tag; } });
+                            HitomiData.Instance.tagdata_collection.male.ForEach(x => { int diff_t = StringAlgorithms.get_diff(tag, x.Tag); if (diff_t < diff) { diff = diff_t; similar = x.Tag; } });
+                            HitomiData.Instance.tagdata_collection.tag.ForEach(x => { int diff_t = StringAlgorithms.get_diff(tag, x.Tag); if (diff_t < diff) { diff = diff_t; similar = x.Tag; } });
+                            PushString($"Are you looking for '{similar}'?");
+                            return;
+                        }
+
+                        PushString(KoreanTag.TagMap(tag));
                     }
                     else
                     {
@@ -561,6 +607,7 @@ namespace Hitomi_Copy_3
                     PushString("enum [Form] [Variable1] [Variable2] ... : Enumerate form or class members.");
                     PushString("enumi [Form] [Variable1] [Variable2] ... : Enumerate form or class members with private members.");
                     PushString("enumx [Form] [Variable1] [Variable2] ... : Enumerate all class members without static.");
+                    PushString("ei [Instance] [Variable1] [Variable2] ... : Enumberate instance or class members of instances.");
                     PushString("get (Form|hitomi_analysis) (Variable1) [Variable2] ... : Get value.");
                     PushString("set (Form) (Variable1) [Variable2] ... [Value] : Set value.");
                     PushString("fucs : Frequently Used Command Snippet");
