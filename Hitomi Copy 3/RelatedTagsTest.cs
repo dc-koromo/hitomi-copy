@@ -174,5 +174,13 @@ namespace Hitomi_Copy_3
             }
             listBox1.ResumeLayout();
         }
+
+        private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                (new frmTagInfo(this, listView1.SelectedItems[0].SubItems[1].Text, listView1.SelectedItems[0].SubItems[2].Text)).Show();
+            }
+        }
     }
 }

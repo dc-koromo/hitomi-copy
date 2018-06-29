@@ -11,18 +11,20 @@ namespace Hitomi_Copy
 {
     public partial class frmTagInfo : Form
     {
-        string tag;
+        string tag, tag2 = "";
         Form closed_form;
 
-        public frmTagInfo(Form closed, string tag)
+        public frmTagInfo(Form closed, string tag, string tag2 = "")
         {
             InitializeComponent();
 
             this.tag = tag;
+            this.tag2 = tag2;
             closed_form = closed;
             Text += tag;
+            if (tag2 != "") Text += $" {tag2}";
         }
-
+        
         private void frmTagInfo_Load(object sender, EventArgs e)
         {
             ColumnInit();
@@ -33,6 +35,7 @@ namespace Hitomi_Copy
             {
                 if (data.Tags != null && data.Tags.Contains(tag))
                 {
+                    if (tag2 != "" && !data.Tags.Contains(tag2)) continue;
                     result.Add(data);
                 }
             }
