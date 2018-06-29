@@ -26,6 +26,8 @@ namespace Hitomi_Copy_3
         }
 
         int max;
+
+        List<string> result = new List<string>();
         
         private async void button1_ClickAsync(object sender, EventArgs e)
         {
@@ -77,9 +79,14 @@ namespace Hitomi_Copy_3
             //
             //  결과 표시
             //
+
             listBox1.SuspendLayout();
+            result.Clear();
             foreach (var tag in tag_count)
+            {
                 listBox1.Items.Add($"{Regex.Replace(tag.Key, " ", "_")} ({tag.Value.Count})");
+                result.Add($"{Regex.Replace(tag.Key, " ", "_")} ({tag.Value.Count})");
+            }
             listBox1.ResumeLayout();
 
             textBox1.Enabled = true;
@@ -151,6 +158,17 @@ namespace Hitomi_Copy_3
                     if (HitomiData.Instance.metadata_collection[i].Tags.Contains(tag1) && HitomiData.Instance.metadata_collection[i].Tags.Contains(tag2))
                         count++;
             return count;
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            listBox1.SuspendLayout();
+            listBox1.Items.Clear();
+            foreach (var s in result)
+            {
+                if (s.Contains(textBox2.Text)) listBox1.Items.Add(s);
+            }
+            listBox1.ResumeLayout();
         }
     }
 }
