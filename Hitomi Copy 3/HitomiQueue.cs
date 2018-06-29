@@ -22,6 +22,8 @@ namespace Hitomi_Copy_2
         public bool timeout_infinite = true;
         public int timeout_ms = 10000;
 
+        public bool shutdown = false;
+
         public delegate void CallBack(string uri, string filename, object obj);
         public delegate void DownloadSizeCallBack(string uri, long size);
         public delegate void DownloadStatusCallBack(string uri, int size);
@@ -82,14 +84,20 @@ namespace Hitomi_Copy_2
                                 bytesRead = inputStream.Read(buffer, 0, buffer.Length);
                                 outputStream.Write(buffer, 0, bytesRead);
                                 lock (status_callback) status_callback(uri, bytesRead);
+                                if (shutdown) break;
                             } while (bytesRead != 0);
+                        }
+                        if (shutdown)
+                        {
+                            File.Delete(fileName);
+                            LogEssential.Instance.PushLog(() => $"[Shutdown] {uri}");
                         }
                     }
                 }
             }
             catch (Exception e)
             {
-                LogEssential.Instance.PushLog(e.Message);
+                LogEssential.Instance.PushLog(() => e.Message);
                 lock (aborted)
                     if (!aborted.Contains(uri))
                     {
@@ -147,6 +155,7 @@ namespace Hitomi_Copy_2
         {
             lock (requests)
             {
+                shutdown = true;
                 queue.Clear();
                 for (int i = requests.Count - 1; i >= 0; i--)
                     requests[i].Item2.Abort();
