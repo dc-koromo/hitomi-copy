@@ -6,6 +6,7 @@ using Hitomi_Copy_3.Analysis;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -133,11 +134,13 @@ namespace Hitomi_Copy_3
                 foreach (var v in HitomiAnalysisRelatedTags.Instance.result[tag])
                 {
                     int gallery_count = 0;
-                    gallery_count = await GetContainsGalleriesCount(tag, v.Item1);
+                    if (items.Count < 400) gallery_count = await GetContainsGalleriesCount(tag, v.Item1);
                     items.Add(new ListViewItem(new string[] { i++.ToString(), tag, v.Item1, v.Item2.ToString(), gallery_count.ToString() }));
                 }
                 listView1.Items.Clear();
                 listView1.Items.AddRange(items.ToArray());
+                if (items.Count >= 400)
+                    MessageBox.Show($"검색결과가 너무 많아 일부 연산을 생략했습니다!", "Hitomi Copy", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         
