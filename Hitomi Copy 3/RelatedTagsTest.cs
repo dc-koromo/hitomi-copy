@@ -140,7 +140,7 @@ namespace Hitomi_Copy_3
                 listView1.Items.AddRange(items.ToArray());
             }
         }
-
+        
         private async Task<int> GetContainsGalleriesCount(string tag1, string tag2)
         {
             int[] counts = new int[Environment.ProcessorCount];
@@ -182,5 +182,42 @@ namespace Hitomi_Copy_3
                 (new frmTagInfo(this, listView1.SelectedItems[0].SubItems[1].Text, listView1.SelectedItems[0].SubItems[2].Text)).Show();
             }
         }
+
+        private void 비교할태그찾기FToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                textBox1.Text = "";
+                string target = listView1.SelectedItems[0].SubItems[2].Text;
+                foreach (var v in listBox1.Items)
+                {
+                    string tag = Regex.Replace(listBox1.GetItemText(v).Split(' ')[0], "_", " ");
+                    if (tag == target)
+                    {
+                        listBox1.SelectedItem = v;
+                        this.Post(() => listBox1_MouseDoubleClickAsync(null, null));
+                        return;
+                    }
+                }
+                MessageBox.Show($"'{target}'를 찾지 못했습니다. Threshold를 낮추고 다시 검색해보세요. ㅠㅠ", "Hitomi Copy", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void 비교될태그복사EToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                Clipboard.SetText(listView1.SelectedItems[0].SubItems[1].Text);
+            }
+        }
+
+        private void 비교ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                Clipboard.SetText(listView1.SelectedItems[0].SubItems[2].Text);
+            }
+        }
+
     }
 }

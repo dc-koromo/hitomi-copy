@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -42,6 +43,12 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.비교할태그찾기FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.비교ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.비교될태그복사EToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -107,6 +114,7 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
+            this.listView1.ContextMenuStrip = this.contextMenuStrip1;
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(238, 181);
@@ -159,6 +167,42 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "대기중 . . .";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.비교할태그찾기FToolStripMenuItem,
+            this.비교ToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.비교될태그복사EToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 98);
+            // 
+            // 비교할태그찾기FToolStripMenuItem
+            // 
+            this.비교할태그찾기FToolStripMenuItem.Name = "비교할태그찾기FToolStripMenuItem";
+            this.비교할태그찾기FToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.비교할태그찾기FToolStripMenuItem.Text = "비교할 태그 찾기(&F)";
+            this.비교할태그찾기FToolStripMenuItem.Click += new System.EventHandler(this.비교할태그찾기FToolStripMenuItem_Click);
+            // 
+            // 비교ToolStripMenuItem
+            // 
+            this.비교ToolStripMenuItem.Name = "비교ToolStripMenuItem";
+            this.비교ToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.비교ToolStripMenuItem.Text = "비교할 태그 복사(&C)";
+            this.비교ToolStripMenuItem.Click += new System.EventHandler(this.비교ToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(179, 6);
+            // 
+            // 비교될태그복사EToolStripMenuItem
+            // 
+            this.비교될태그복사EToolStripMenuItem.Name = "비교될태그복사EToolStripMenuItem";
+            this.비교될태그복사EToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.비교될태그복사EToolStripMenuItem.Text = "비교될 태그 복사(&E)";
+            this.비교될태그복사EToolStripMenuItem.Click += new System.EventHandler(this.비교될태그복사EToolStripMenuItem_Click);
+            // 
             // RelatedTagsTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -182,6 +226,7 @@
             this.Name = "RelatedTagsTest";
             this.Text = "RelatedTagsTest";
             this.Load += new System.EventHandler(this.RelatedTagsTest_Load);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,5 +248,10 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 비교할태그찾기FToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 비교ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 비교될태그복사EToolStripMenuItem;
     }
 }
