@@ -48,6 +48,7 @@ namespace Hitomi_Copy_3
                 return;
             }
             textBox1.Enabled = false;
+            button1.Enabled = false;
             checkBox1.Enabled = false;
             listBox1.Items.Clear();
             listView1.Items.Clear();
@@ -91,12 +92,14 @@ namespace Hitomi_Copy_3
 
             textBox1.Enabled = true;
             checkBox1.Enabled = true;
+            button1.Enabled = true;
+            label2.Text = $"분석 완료됨";
         }
         
         private void process(int i)
         {
-            int min = this.max / 12 * i;
-            int max = this.max / 12 * (i+1);
+            int min = this.max / Environment.ProcessorCount * i;
+            int max = this.max / Environment.ProcessorCount * (i+1);
             if (max > this.max)
                 max = this.max;
 
@@ -107,6 +110,7 @@ namespace Hitomi_Copy_3
             {
                 result.AddRange(HitomiAnalysisRelatedTags.Instance.Intersect(j));
                 this.Post(() => progressBar1.Value++);
+                this.Post(() => label2.Text = $"{progressBar1.Value}/{this.max} 분석완료");
             }
 
             HitomiAnalysisRelatedTags.Instance.results.AddRange(result);
