@@ -22,7 +22,7 @@ namespace Hitomi_Copy
             this.tag2 = tag2;
             closed_form = closed;
             Text += tag;
-            if (tag2 != "") Text += $" {tag2}";
+            if (tag2 != "") Text += $", {tag2}";
         }
         
         private void frmTagInfo_Load(object sender, EventArgs e)
