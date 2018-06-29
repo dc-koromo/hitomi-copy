@@ -49,6 +49,7 @@ namespace Hitomi_Copy_3
             checkBox1.Enabled = false;
             listBox1.Items.Clear();
             listView1.Items.Clear();
+            progressBar1.Value = 0;
 
             //
             //  계산 시작
@@ -121,7 +122,14 @@ namespace Hitomi_Copy_3
                 int i = 1;
                 foreach (var v in HitomiAnalysisRelatedTags.Instance.result[tag])
                 {
-                    listView1.Items.Add(new ListViewItem(new string[] { i++.ToString(), tag, v.Item1, v.Item2.ToString() }));
+                    int gallery_count = 0;
+                    foreach (var vx in HitomiAnalysisRelatedTags.Instance.tags_list.ToList())
+                        if (vx.Key == v.Item1)
+                        {
+                            gallery_count = vx.Value.Count;
+                            break;
+                        }
+                    listView1.Items.Add(new ListViewItem(new string[] { i++.ToString(), tag, v.Item1, v.Item2.ToString(), gallery_count.ToString() }));
                 }
                 listView1.ResumeLayout();
             }

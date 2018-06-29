@@ -3,7 +3,6 @@
 using Hitomi_Copy.Data;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace Hitomi_Copy_3.Analysis
