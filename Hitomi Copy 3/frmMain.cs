@@ -1348,6 +1348,11 @@ namespace Hitomi_Copy_3
             Process.GetCurrentProcess().Kill();
             download_queue.Abort();
         }
+
+        private void bRelatedTags_Click(object sender, EventArgs e)
+        {
+            (new RelatedTagsTest()).Show();
+        }
         #endregion
 
     }
