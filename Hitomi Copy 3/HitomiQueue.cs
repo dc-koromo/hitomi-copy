@@ -36,6 +36,7 @@ namespace Hitomi_Copy_2
 
         object int_lock = new object();
         object notify_lock = new object();
+        object shutdown_lock = new object();
 
         public int Capacity { get { return capacity; } set { capacity = value; } }
 
@@ -84,13 +85,14 @@ namespace Hitomi_Copy_2
                                 bytesRead = inputStream.Read(buffer, 0, buffer.Length);
                                 outputStream.Write(buffer, 0, bytesRead);
                                 lock (status_callback) status_callback(uri, bytesRead);
-                                if (shutdown) break;
+                                lock (shutdown_lock) if (shutdown) break;
                             } while (bytesRead != 0);
                         }
-                        if (shutdown)
+                        lock (shutdown_lock) if (shutdown)
                         {
                             File.Delete(fileName);
                             LogEssential.Instance.PushLog(() => $"[Shutdown] {uri}");
+                            return;
                         }
                     }
                 }
@@ -108,6 +110,7 @@ namespace Hitomi_Copy_2
                     }
                     else
                     {
+                        File.Delete(fileName);
                         lock (callback) callback(uri, fileName, obj);
                         return;
                     }
@@ -155,8 +158,13 @@ namespace Hitomi_Copy_2
         {
             lock (requests)
             {
-                shutdown = true;
-                queue.Clear();
+                lock (shutdown_lock) shutdown = true;
+
+                lock (queue)
+                {
+                    foreach (var vp in queue) try { File.Delete(vp.Item2); } catch { }
+                    queue.Clear();
+                }
                 for (int i = requests.Count - 1; i >= 0; i--)
                     requests[i].Item2.Abort();
             }

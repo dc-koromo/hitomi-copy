@@ -1346,6 +1346,7 @@ namespace Hitomi_Copy_3
             HitomiSetting.Instance.GetModel().ExclusiveTag = tbExcludeTag.Text.Split(',').Select(x => x.Trim()).ToArray();
             HitomiSetting.Instance.Save();
             Process.GetCurrentProcess().Kill();
+            download_queue.Abort();
         }
         #endregion
 
