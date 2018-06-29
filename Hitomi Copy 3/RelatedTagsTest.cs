@@ -122,8 +122,6 @@ namespace Hitomi_Copy_3
                 foreach (var v in HitomiAnalysisRelatedTags.Instance.result[tag])
                 {
                     int gallery_count = 0;
-                    //foreach (var md in HitomiData.Instance.metadata_collection)
-                    //    if (md.Tags != null) if (md.Tags.Contains(tag) && md.Tags.Contains(v.Item1)) gallery_count++;
                     gallery_count = await GetContainsGalleriesCount(tag, v.Item1);
                     items.Add(new ListViewItem(new string[] { i++.ToString(), tag, v.Item1, v.Item2.ToString(), gallery_count.ToString() }));
                 }
@@ -134,21 +132,24 @@ namespace Hitomi_Copy_3
 
         private async Task<int> GetContainsGalleriesCount(string tag1, string tag2)
         {
-            int gallery_count = 0;
-            await Task.WhenAll(Enumerable.Range(0, Environment.ProcessorCount).Select(no => Task.Run(() => gallery_count += get_galleries_count(tag1, tag2, no))));
-            return gallery_count;
+            int[] counts = new int[Environment.ProcessorCount];
+            await Task.WhenAll(Enumerable.Range(0, Environment.ProcessorCount).Select(no => Task.Run(() => {
+                counts[no] = get_galleries_count(tag1, tag2, no);
+            })));
+            return counts.Sum();
         }
 
         private int get_galleries_count(string tag1, string tag2, int no)
         {
             int count = 0;
-            int min = HitomiData.Instance.metadata_collection.Count / 12 * no;
-            int max = HitomiData.Instance.metadata_collection.Count / 12 * (no + 1);
+            int min = HitomiData.Instance.metadata_collection.Count / Environment.ProcessorCount * no;
+            int max = HitomiData.Instance.metadata_collection.Count / Environment.ProcessorCount * (no + 1);
             if (max > HitomiData.Instance.metadata_collection.Count)
                 max = HitomiData.Instance.metadata_collection.Count;
-            for (int i = min; i< max; i++)
+            for (int i = min; i < max; i++)
                 if (HitomiData.Instance.metadata_collection[i].Tags != null)
-                    if (HitomiData.Instance.metadata_collection[i].Tags.Contains(tag1) && HitomiData.Instance.metadata_collection[i].Tags.Contains(tag2)) count++;
+                    if (HitomiData.Instance.metadata_collection[i].Tags.Contains(tag1) && HitomiData.Instance.metadata_collection[i].Tags.Contains(tag2))
+                        count++;
             return count;
         }
     }
