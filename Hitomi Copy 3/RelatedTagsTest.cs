@@ -32,6 +32,7 @@ namespace Hitomi_Copy_3
                 MessageBox.Show("0.00001 보단 높아야 합니다.");
                 return;
             }
+            HitomiAnalysisRelatedTags.Instance.Threshold = a;
             max = progressBar1.Maximum = HitomiAnalysisRelatedTags.Instance.tags_list.Count;
             Task.Run(() => Start());
         }
