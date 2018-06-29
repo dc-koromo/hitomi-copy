@@ -111,28 +111,45 @@ namespace Hitomi_Copy_3
             HitomiAnalysisRelatedTags.Instance.IncludeFemaleMaleOnly = checkBox1.Checked;
         }
 
-        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private async void listBox1_MouseDoubleClickAsync(object sender, MouseEventArgs e)
         {
             if (listBox1.SelectedItem != null)
             {
-                listView1.Items.Clear();
                 string tag = Regex.Replace(listBox1.GetItemText(listBox1.SelectedItem).Split(' ')[0], "_", " ");
 
-                listView1.SuspendLayout();
+                List<ListViewItem> items = new List<ListViewItem>();
                 int i = 1;
                 foreach (var v in HitomiAnalysisRelatedTags.Instance.result[tag])
                 {
                     int gallery_count = 0;
-                    foreach (var vx in HitomiAnalysisRelatedTags.Instance.tags_list.ToList())
-                        if (vx.Key == v.Item1)
-                        {
-                            gallery_count = vx.Value.Count;
-                            break;
-                        }
-                    listView1.Items.Add(new ListViewItem(new string[] { i++.ToString(), tag, v.Item1, v.Item2.ToString(), gallery_count.ToString() }));
+                    //foreach (var md in HitomiData.Instance.metadata_collection)
+                    //    if (md.Tags != null) if (md.Tags.Contains(tag) && md.Tags.Contains(v.Item1)) gallery_count++;
+                    gallery_count = await GetContainsGalleriesCount(tag, v.Item1);
+                    items.Add(new ListViewItem(new string[] { i++.ToString(), tag, v.Item1, v.Item2.ToString(), gallery_count.ToString() }));
                 }
-                listView1.ResumeLayout();
+                listView1.Items.Clear();
+                listView1.Items.AddRange(items.ToArray());
             }
+        }
+
+        private async Task<int> GetContainsGalleriesCount(string tag1, string tag2)
+        {
+            int gallery_count = 0;
+            await Task.WhenAll(Enumerable.Range(0, Environment.ProcessorCount).Select(no => Task.Run(() => gallery_count += get_galleries_count(tag1, tag2, no))));
+            return gallery_count;
+        }
+
+        private int get_galleries_count(string tag1, string tag2, int no)
+        {
+            int count = 0;
+            int min = HitomiData.Instance.metadata_collection.Count / 12 * no;
+            int max = HitomiData.Instance.metadata_collection.Count / 12 * (no + 1);
+            if (max > HitomiData.Instance.metadata_collection.Count)
+                max = HitomiData.Instance.metadata_collection.Count;
+            for (int i = min; i< max; i++)
+                if (HitomiData.Instance.metadata_collection[i].Tags != null)
+                    if (HitomiData.Instance.metadata_collection[i].Tags.Contains(tag1) && HitomiData.Instance.metadata_collection[i].Tags.Contains(tag2)) count++;
+            return count;
         }
     }
 }
