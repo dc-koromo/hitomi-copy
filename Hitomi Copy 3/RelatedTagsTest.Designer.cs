@@ -64,9 +64,9 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(180, 141);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(154, 19);
+            this.checkBox1.Size = new System.Drawing.Size(147, 19);
             this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "IncludeFemaleMaleOnly";
+            this.checkBox1.Text = "FemaleMale Tags Only";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
