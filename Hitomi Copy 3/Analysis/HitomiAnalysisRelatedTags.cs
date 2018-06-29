@@ -20,10 +20,16 @@ namespace Hitomi_Copy_3.Analysis
 
         public bool IncludeFemaleMaleOnly = false;
         public double Threshold = 0.1;
-
-        public HitomiAnalysisRelatedTags()
+        
+        public void Initialize()
         {
+            result.Clear();
+            results.Clear();
+            if (tags_list != null) tags_list.Clear();
+
             Dictionary<string, List<int>> tags_dic = new Dictionary<string, List<int>>();
+
+            bool IFM = IncludeFemaleMaleOnly;
 
             foreach (var data in HitomiData.Instance.metadata_collection)
             {
@@ -31,7 +37,7 @@ namespace Hitomi_Copy_3.Analysis
                 {
                     foreach (var tag in data.Tags)
                     {
-                        if (IncludeFemaleMaleOnly && !tag.StartsWith("female:") && !tag.StartsWith("male:")) continue;
+                        if (IFM && !tag.StartsWith("female:") && !tag.StartsWith("male:")) continue;
                         if (tags_dic.ContainsKey(tag))
                             tags_dic[tag].Add(data.ID);
                         else
@@ -101,9 +107,8 @@ namespace Hitomi_Copy_3.Analysis
                 else
                     result.Add(tuple.Item2, new List<Tuple<string, double>> { new Tuple<string, double>(tuple.Item1, tuple.Item3) });
             }
-            tags_list.Clear();
+            result.ToList().ForEach(x => x.Value.Sort((a, b) => b.Item2.CompareTo(a.Item2)));
             results.Clear();
-            File.WriteAllText("rt.txt", LogEssential.SerializeObject(result));
         }
     }
 }

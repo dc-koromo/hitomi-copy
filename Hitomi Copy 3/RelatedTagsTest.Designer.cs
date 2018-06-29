@@ -92,8 +92,9 @@
             this.listBox1.ItemHeight = 15;
             this.listBox1.Location = new System.Drawing.Point(12, 181);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(203, 544);
+            this.listBox1.Size = new System.Drawing.Size(273, 544);
             this.listBox1.TabIndex = 5;
+            this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
             // 
             // listView1
             // 
@@ -103,9 +104,9 @@
             this.columnHeader3,
             this.columnHeader4});
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(221, 181);
+            this.listView1.Location = new System.Drawing.Point(291, 181);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(657, 544);
+            this.listView1.Size = new System.Drawing.Size(587, 544);
             this.listView1.TabIndex = 6;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -113,22 +114,22 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "순위";
-            this.columnHeader1.Width = 123;
+            this.columnHeader1.Width = 60;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "비교될 태그";
-            this.columnHeader2.Width = 168;
+            this.columnHeader2.Width = 175;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "비교할 태그";
-            this.columnHeader3.Width = 181;
+            this.columnHeader3.Width = 166;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "연관도";
-            this.columnHeader4.Width = 119;
+            this.columnHeader4.Width = 136;
             // 
             // RelatedTagsTest
             // 
@@ -148,6 +149,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "RelatedTagsTest";
             this.Text = "RelatedTagsTest";
+            this.Load += new System.EventHandler(this.RelatedTagsTest_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
