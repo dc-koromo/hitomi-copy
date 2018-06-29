@@ -167,11 +167,13 @@ namespace Hitomi_Copy_3
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             listBox1.SuspendLayout();
-            listBox1.Items.Clear();
+            List<string> items = new List<string>();
             foreach (var s in result)
             {
-                if (s.Contains(textBox2.Text)) listBox1.Items.Add(s);
+                if (s.Contains(textBox2.Text)) items.Add(s);
             }
+            listBox1.Items.Clear();
+            listBox1.Items.AddRange(items.ToArray());
             listBox1.ResumeLayout();
         }
 
@@ -187,7 +189,7 @@ namespace Hitomi_Copy_3
         {
             if (listView1.SelectedItems.Count > 0)
             {
-                textBox1.Text = "";
+                textBox2.Text = "";
                 string target = listView1.SelectedItems[0].SubItems[2].Text;
                 foreach (var v in listBox1.Items)
                 {

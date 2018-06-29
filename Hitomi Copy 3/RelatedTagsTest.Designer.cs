@@ -137,7 +137,7 @@
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "비교할 태그";
+            this.columnHeader3.Text = "비교한 태그";
             this.columnHeader3.Width = 135;
             // 
             // columnHeader4
@@ -181,14 +181,14 @@
             // 
             this.비교할태그찾기FToolStripMenuItem.Name = "비교할태그찾기FToolStripMenuItem";
             this.비교할태그찾기FToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.비교할태그찾기FToolStripMenuItem.Text = "비교할 태그 찾기(&F)";
+            this.비교할태그찾기FToolStripMenuItem.Text = "비교한 태그 찾기(&F)";
             this.비교할태그찾기FToolStripMenuItem.Click += new System.EventHandler(this.비교할태그찾기FToolStripMenuItem_Click);
             // 
             // 비교ToolStripMenuItem
             // 
             this.비교ToolStripMenuItem.Name = "비교ToolStripMenuItem";
             this.비교ToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.비교ToolStripMenuItem.Text = "비교할 태그 복사(&C)";
+            this.비교ToolStripMenuItem.Text = "비교한 태그 복사(&C)";
             this.비교ToolStripMenuItem.Click += new System.EventHandler(this.비교ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
