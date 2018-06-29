@@ -118,13 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>v3.25
+    <value>v3.26
+ - 강력한 연관태그 분석 기능이 실험적으로 추가되었습니다. 이 기능을 이용해 원하는 태그를 찾아보세요!
+
+ - 미리보기로딩 중에 창을 종료해도 로딩이 계속 진행되었던 오류를 수정했습니다. 이번 오류 수정으로 메모리를 더욱 효율적으로 관리할 수 있게 되었습니다!
+
+ - 드라이버로 마루마루가 다운로드 안되는 오류를 수정했습니다.
+
+ - 한국어 태그 변경명령어 'tk [tag]'가 실험적으로 제공됩니다.
+
+ - 익헨 게시글의 코멘트를 불러올 수있는 'exh' 명령이 추가되었습니다.
+
+
+v3.25
  - VUI-Funktionalität hinzugefügt. Sie können ein wenig mehr Suchergebnisse ohne Probleme bekommen.
 
  - Download-Treiber wird experimentell hinzugefügt. Mit dieser Funktion können Sie zuverlässig einen eigenständigen Prozess herunterladen.
 
  - Viele andere Änderungen wurden vorgenommen, aber ich fühle mich gut, also werde ich es einfach veröffentlichen !!
-
 
 v3.24
  - Detailed View 옵션이 추가되었습니다. 고급 설정에서 Detailed Search Result를 켜고 재시작하면 적용됩니다. 이 옵션은 메인 검색창에서 자세한 검색결과를 보여줍니다. 빈공간을 더블클릭하면 기존과 동일한 정보창이 열립니다.

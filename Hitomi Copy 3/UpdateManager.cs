@@ -1,6 +1,5 @@
 ﻿/* Copyright (C) 2018. Hitomi Parser Developers */
 
-using Hitomi_Copy_2;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -10,7 +9,7 @@ namespace Hitomi_Copy_3
 {
     public class UpdateManager
     {
-        public const string Version = "3.25";
+        public const string Version = "3.26";
         public const string UpdateCheckUrl = @"https://raw.githubusercontent.com/dc-koromo/hitomi-downloader-2/master/version";
 
         static public string NewestVersionUrl;
