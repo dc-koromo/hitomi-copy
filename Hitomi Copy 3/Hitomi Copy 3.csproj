@@ -103,6 +103,7 @@
     <Compile Include="Analysis\HitomiAnalysisDetail.cs" />
     <Compile Include="Analysis\HitomiAnalysisGallery.cs" />
     <Compile Include="Analysis\HitomiAnalysisArtistCount.cs" />
+    <Compile Include="Analysis\HitomiAnalysisRelatedTags.cs" />
     <Compile Include="Analysis\HitomiAnalysisTagCount.cs" />
     <Compile Include="Analysis\HitomiAnalysisTrend.cs" />
     <Compile Include="Analysis\HitomiAnalysisXi.cs" />
@@ -265,6 +266,12 @@
     <Compile Include="RecommendControl.Designer.cs">
       <DependentUpon>RecommendControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="RelatedTagsTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatedTagsTest.Designer.cs">
+      <DependentUpon>RelatedTagsTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScrollFixLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -346,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RecommendControl.resx">
       <DependentUpon>RecommendControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatedTagsTest.resx">
+      <DependentUpon>RelatedTagsTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchPanel.resx">
       <DependentUpon>SearchPanel.cs</DependentUpon>

@@ -599,6 +599,10 @@ namespace Hitomi_Copy_3
                         PushString("using 'tk [tag]'");
                     }
                 }
+                else if (cmd == "rt")
+                {
+                    (new RelatedTagsTest()).Show();
+                }
                 else if (cmd == "help")
                 {
                     PushString("Realtime Variable Update System");
@@ -615,6 +619,7 @@ namespace Hitomi_Copy_3
                     PushString("install (option) : Download external procedure.");
                     PushString("exh [option] [var1] [var2] ... : Ex-hentai tools");
                     PushString("tk [tag] : Show tag korean.");
+                    PushString("rt : Show related tags procedure.");
                 }
                 else if (cmd == "fucs")
                 {
