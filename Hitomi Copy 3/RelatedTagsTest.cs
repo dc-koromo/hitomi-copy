@@ -37,9 +37,9 @@ namespace Hitomi_Copy_3
                 MessageBox.Show("ㅗ");
                 return;
             }
-            if (var <= 0.00001)
+            if (var <= 0.00000001)
             {
-                MessageBox.Show("0.00001 보단 높아야 합니다.");
+                MessageBox.Show("0.00000001 보단 높아야 합니다.");
                 return;
             }
             if (var > 1.0)
