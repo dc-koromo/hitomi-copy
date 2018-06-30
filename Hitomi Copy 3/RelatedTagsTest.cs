@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -123,6 +124,8 @@ namespace Hitomi_Copy_3
             HitomiAnalysisRelatedTags.Instance.IncludeFemaleMaleOnly = checkBox1.Checked;
         }
 
+        #region 리스트 박스
+
         private async void listBox1_MouseDoubleClickAsync(object sender, MouseEventArgs e)
         {
             if (listBox1.SelectedItem != null)
@@ -166,6 +169,8 @@ namespace Hitomi_Copy_3
                         count++;
             return count;
         }
+
+        #endregion
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
@@ -229,6 +234,30 @@ namespace Hitomi_Copy_3
             if (listView1.SelectedItems.Count > 0)
             {
                 (new GraphViewer(listView1.SelectedItems[0].SubItems[1].Text)).Show();
+            }
+        }
+
+        private void 대립태그검사IToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                string target = listView1.SelectedItems[0].SubItems[1].Text;
+                var ml = HitomiAnalysisRelatedTags.Instance.result[target].Select(x => x.Item1);
+
+                List<Tuple<string, double>> result = new List<Tuple<string, double>>();
+                foreach (var tuple in HitomiAnalysisRelatedTags.Instance.result)
+                {
+                    int intersect = tuple.Value.Select(x => x.Item1).Intersect(ml).Count();
+                    int i_size = tuple.Value.Count;
+                    int j_size = ml.Count();
+                    double rate = (double)(intersect) / (i_size + j_size - intersect);
+                    result.Add(new Tuple<string, double>(tuple.Key, 1.0 - rate));
+                }
+
+                StringBuilder builder = new StringBuilder();
+                result.Sort((a, b) => b.Item2.CompareTo(a.Item2));
+                result.ForEach(x => builder.Append($"{x.Item1} ({x.Item2.ToString()})\r\n"));
+                MessageBox.Show(builder.ToString());
             }
         }
     }

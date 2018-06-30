@@ -139,6 +139,9 @@ namespace Hitomi_Copy_3.Graph
             else
                 zoom -= 0.05F;
 
+            if (zoom < 0.05F)
+                zoom = 0.05F;
+
             int dx = (int)(p.X - p.X * zoom / prev_zoom);
             int dy = (int)(p.Y - p.Y * zoom / prev_zoom);
             vm.Move(-dx, -dy);

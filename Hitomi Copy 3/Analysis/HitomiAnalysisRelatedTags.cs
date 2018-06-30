@@ -14,6 +14,7 @@ namespace Hitomi_Copy_3.Analysis
 
         public Dictionary<string, List<Tuple<string, double>>> result = new Dictionary<string, List<Tuple<string, double>>>();
 
+        public Dictionary<string, List<int>> tags_dic = new Dictionary<string, List<int>>();
         public List<KeyValuePair<string, List<int>>> tags_list;
         public List<Tuple<string, string, double>> results = new List<Tuple<string, string, double>>();
 
@@ -25,8 +26,6 @@ namespace Hitomi_Copy_3.Analysis
             result.Clear();
             results.Clear();
             if (tags_list != null) tags_list.Clear();
-
-            Dictionary<string, List<int>> tags_dic = new Dictionary<string, List<int>>();
 
             bool IFM = IncludeFemaleMaleOnly;
 
@@ -51,7 +50,7 @@ namespace Hitomi_Copy_3.Analysis
             tags_list.Sort((a, b) => a.Value.Count.CompareTo(b.Value.Count));
         }
 
-        private int manually_intersect(List<int> a, List<int> b)
+        public static int manually_intersect(List<int> a, List<int> b)
         {
             int intersect = 0;
             int i = 0, j = 0;

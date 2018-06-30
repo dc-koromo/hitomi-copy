@@ -46,10 +46,11 @@
             this.비교ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.비교될태그복사EToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.그래프보기GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.대립태그검사IToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -160,9 +161,10 @@
             this.toolStripMenuItem1,
             this.비교될태그복사EToolStripMenuItem,
             this.toolStripMenuItem2,
-            this.그래프보기GToolStripMenuItem});
+            this.그래프보기GToolStripMenuItem,
+            this.대립태그검사IToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 126);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 148);
             // 
             // 비교할태그찾기FToolStripMenuItem
             // 
@@ -190,6 +192,18 @@
             this.비교될태그복사EToolStripMenuItem.Text = "비교될 태그 복사(&E)";
             this.비교될태그복사EToolStripMenuItem.Click += new System.EventHandler(this.비교될태그복사EToolStripMenuItem_Click);
             // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(179, 6);
+            // 
+            // 그래프보기GToolStripMenuItem
+            // 
+            this.그래프보기GToolStripMenuItem.Name = "그래프보기GToolStripMenuItem";
+            this.그래프보기GToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.그래프보기GToolStripMenuItem.Text = "그래프 보기(&G)";
+            this.그래프보기GToolStripMenuItem.Click += new System.EventHandler(this.그래프보기GToolStripMenuItem_Click);
+            // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(12, 181);
@@ -207,17 +221,12 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "대기중 . . .";
             // 
-            // toolStripMenuItem2
+            // 대립태그검사IToolStripMenuItem
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(179, 6);
-            // 
-            // 그래프보기GToolStripMenuItem
-            // 
-            this.그래프보기GToolStripMenuItem.Name = "그래프보기GToolStripMenuItem";
-            this.그래프보기GToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.그래프보기GToolStripMenuItem.Text = "그래프 보기(&G)";
-            this.그래프보기GToolStripMenuItem.Click += new System.EventHandler(this.그래프보기GToolStripMenuItem_Click);
+            this.대립태그검사IToolStripMenuItem.Name = "대립태그검사IToolStripMenuItem";
+            this.대립태그검사IToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.대립태그검사IToolStripMenuItem.Text = "연관성 없음 검사(&I)";
+            this.대립태그검사IToolStripMenuItem.Click += new System.EventHandler(this.대립태그검사IToolStripMenuItem_Click);
             // 
             // RelatedTagsTest
             // 
@@ -271,5 +280,6 @@
         private System.Windows.Forms.ToolStripMenuItem 비교될태그복사EToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem 그래프보기GToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 대립태그검사IToolStripMenuItem;
     }
 }
