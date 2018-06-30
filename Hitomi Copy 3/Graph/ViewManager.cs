@@ -77,8 +77,8 @@ namespace Hitomi_Copy_3.Graph
             /// 그리기 메인부 [!--
             //DrawGrid(vb.g, sizeOfPannel, Color.FromArgb(150, 150, 255));
             RenderEdge(vb.g, sizeOfPannel, mousePosition);
-            RenderVertex(vb.g, sizeOfPannel, mousePosition);
             HighlightEdge(vb.g, sizeOfPannel);
+            RenderVertex(vb.g, sizeOfPannel, mousePosition);
             DrawStayedString(vb.g, scale);
             /// --!]
             ///
@@ -153,11 +153,7 @@ namespace Hitomi_Copy_3.Graph
         /// <param name="mouseLocation"></param>
         public void SelectNode(Point mouseLocation, float scale)
         {
-            int selected_tmp = gnm.IncludePoint(new Point((int)(-bp.X + mouseLocation.X / scale), (int)(-bp.Y + mouseLocation.Y / scale)));
-            if (selected_tmp == selected_node)
-                selected_node = -1;
-            else
-                selected_node = selected_tmp;
+            selected_node = gnm.IncludePoint(new Point((int)(-bp.X + mouseLocation.X / scale), (int)(-bp.Y + mouseLocation.Y / scale)));
         }
 
         #region Vertex
