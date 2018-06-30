@@ -17,6 +17,7 @@ namespace Hitomi_Copy_3.Graph
         int selected_node = -1;
         public GraphNodeManager gnm;
         List<Tuple<RectangleF, string>> stayed_string = new List<Tuple<RectangleF, string>>();
+        List<Tuple<RectangleF, string>> stayed_selection_string = new List<Tuple<RectangleF, string>>();
 
         const int grid_rect = 50;
 
@@ -80,6 +81,7 @@ namespace Hitomi_Copy_3.Graph
             HighlightEdge(vb.g, sizeOfPannel);
             RenderVertex(vb.g, sizeOfPannel, mousePosition);
             DrawStayedString(vb.g, scale);
+            DrawStayedSelectionString(vb.g, scale);
             /// --!]
             ///
 
@@ -210,7 +212,14 @@ namespace Hitomi_Copy_3.Graph
             {
                 if (edge.StartsIndex == selected_node || edge.EndsIndex == selected_node)
                 {
-                    g.DrawLine(new Pen(Color.Pink, 8.0F), edge.Starts, edge.Ends);
+                    RectangleF draw_rect = new RectangleF(
+                        Math.Min(edge.Starts.X, edge.Ends.X),
+                        Math.Min(edge.Starts.Y, edge.Ends.Y),
+                        Math.Max(edge.Starts.X, edge.Ends.X) - Math.Min(edge.Starts.X, edge.Ends.X),
+                        Math.Max(edge.Starts.Y, edge.Ends.Y) - Math.Min(edge.Starts.Y, edge.Ends.Y));
+
+                    g.DrawLine(new Pen(Color.HotPink, 8.0F), edge.Starts, edge.Ends);
+                    stayed_selection_string.Add(new Tuple<RectangleF, string>(draw_rect, edge.SelectionText));
                 }
             }
         }
@@ -235,6 +244,18 @@ namespace Hitomi_Copy_3.Graph
                 g.DrawString(ss.Item2, new Font(new FontFamily("Consolas"), 12 / scale), Brushes.Black, ss.Item1, sf);
             }
             stayed_string.Clear();
+        }
+
+        private void DrawStayedSelectionString(Graphics g, float scale)
+        {
+            StringFormat sf = new StringFormat();
+            sf.LineAlignment = StringAlignment.Center;
+            sf.Alignment = StringAlignment.Center;
+            foreach (var ss in stayed_selection_string)
+            {
+                g.DrawString(ss.Item2, new Font(new FontFamily("Consolas"), 20 / scale), new SolidBrush(Color.FromArgb(0,128,255)), ss.Item1, sf);
+            }
+            stayed_selection_string.Clear();
         }
     }
 }

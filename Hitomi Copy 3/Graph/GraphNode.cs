@@ -12,6 +12,7 @@ namespace Hitomi_Copy_3.Graph
         public int StartsIndex;
         public int EndsIndex;
         public string Text;
+        public string SelectionText;
         public Color Color;
         public float Thickness;
         public Point Starts;

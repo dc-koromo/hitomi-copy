@@ -54,6 +54,7 @@ namespace Hitomi_Copy_3
                     et.EndsIndex = vt.Index;
                     et.Index = eindex++;
                     et.Text = ld.Item2.ToString().Substring(0, Math.Min(5, ld.Item2.ToString().Length));
+                    et.SelectionText = "";
                     et.Thickness = 6.0F; //(float)(ld.Item2 * 100);
                     et.Color = Color.Black;
 

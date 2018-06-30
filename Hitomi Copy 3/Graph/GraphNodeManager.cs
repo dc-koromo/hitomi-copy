@@ -51,7 +51,8 @@ namespace Hitomi_Copy_3.Graph
                     Starts = p1,
                     Ends = p2,
                     Color = Color.DarkGray,
-                    Text = "", //p.Item2.ToString().Substring(0, Math.Min(5, p.Item2.ToString().Length)),//p.Item2.ToString(),
+                    Text = "",
+                    SelectionText = p.Item2.ToString().Substring(0, Math.Min(5, p.Item2.ToString().Length)),//p.Item2.ToString(),
                     Thickness = 3.0F
                 });
             }
