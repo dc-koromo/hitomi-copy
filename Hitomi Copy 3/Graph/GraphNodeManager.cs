@@ -1,6 +1,8 @@
 ﻿/* Copyright (C) 2018. Hitomi Parser Developers */
 
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace Hitomi_Copy_3.Graph
 {
@@ -18,10 +20,19 @@ namespace Hitomi_Copy_3.Graph
 
             vertexs.Add(new GraphVertex()
             {
-                Position = new System.Drawing.Point(0, 0),
+                Position = new Point(0, 0),
                 Radius = 100.0F,
-                Color = System.Drawing.Color.White
+                Color = Color.White
             });
+
+            for (int i = 0; i < 30; i++)
+            {
+                GraphVertex v = new GraphVertex();
+                v.Position = new Point((int)(Math.Cos(2 * Math.PI / 30 * i) * 200), (int)(Math.Sin(2 * Math.PI / 30 * i) * 200));
+                v.Radius = 20;
+                v.Color = Color.Cyan;
+                vertexs.Add(v);
+            }
         }
 
         public void IterateVertexs(IterateVertex ic)

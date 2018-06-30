@@ -120,17 +120,15 @@ namespace Hitomi_Copy_3.Graph
         {
             Point p = PointToClient(e.Location);
             float prev_zoom = zoom;
-
-
+            
             if (e.Delta > 0)
                 zoom += 0.05F;
             else
                 zoom -= 0.05F;
 
-            int dx = (int)(p.X - p.X * prev_zoom / zoom);
-            int dy = (int)(p.Y - p.Y * prev_zoom / zoom);
-            vm.Move(dx, dy);
-            //vm.Move((int)(p.X * prev_zoom / zoom), (int)(p.Y * prev_zoom / zoom));
+            int dx = (int)(p.X - p.X * zoom / prev_zoom);
+            int dy = (int)(p.Y - p.Y * zoom / prev_zoom);
+            vm.Move(-dx, -dy);
 
             Invalidate();
         }
