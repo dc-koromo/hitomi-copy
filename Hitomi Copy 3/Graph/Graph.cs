@@ -118,10 +118,20 @@ namespace Hitomi_Copy_3.Graph
         }
         private void OnMouseWheel(object sender, MouseEventArgs e)
         {
+            Point p = PointToClient(e.Location);
+            float prev_zoom = zoom;
+
+
             if (e.Delta > 0)
                 zoom += 0.05F;
             else
                 zoom -= 0.05F;
+
+            int dx = (int)(p.X - p.X * prev_zoom / zoom);
+            int dy = (int)(p.Y - p.Y * prev_zoom / zoom);
+            vm.Move(dx, dy);
+            //vm.Move((int)(p.X * prev_zoom / zoom), (int)(p.Y * prev_zoom / zoom));
+
             Invalidate();
         }
 

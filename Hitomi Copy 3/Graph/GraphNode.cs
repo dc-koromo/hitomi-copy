@@ -11,6 +11,8 @@ namespace Hitomi_Copy_3.Graph
         public string Text;
         public Color Color;
         public float Thickness;
+        public Point starts;
+        public Point ends;
     }
 
     public class GraphVertex
