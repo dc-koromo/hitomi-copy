@@ -465,7 +465,7 @@ namespace Hitomi_Copy_3
                     else
                     {
                         PushString("using 'ra (option) [tag] [count] ...'");
-                        PushString("  (option): ulist, list, clear, update, on, off, mion, mioff, rank, add, +, +a");
+                        PushString("  (option): ulist, list, clear, update, on, off, mion, mioff, rank, add, +, +a, -");
                     }
                 }
                 else if (cmd == "install")
