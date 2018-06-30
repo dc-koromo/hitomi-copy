@@ -78,6 +78,13 @@ namespace Hitomi_Copy.Data
         }
         #endregion
 
+        #region Metadata Testing
+        public void LoadMetadataJson(string path)
+        {
+            metadata_collection.AddRange( JsonConvert.DeserializeObject<List<HitomiMetadata>>(File.ReadAllText(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), path))));
+        }
+        #endregion
+
         #region TagData
         public async Task DownloadTagdata()
         {

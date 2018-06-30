@@ -10,6 +10,7 @@ namespace Hitomi_Copy_3.VUI
 
         public override void Paint(Graphics g)
         {
+            if (Image == null) return;
             decimal r1 = (decimal)Image.Width / Image.Height;
             decimal r2 = (decimal)Size.Width / Size.Height;
             int w = Size.Width;

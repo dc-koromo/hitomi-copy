@@ -607,6 +607,31 @@ namespace Hitomi_Copy_3
                 {
                     (new GraphViewer()).Show();
                 }
+                else if (cmd == "load")
+                {
+                    if (split.Length > 1)
+                    {
+                        try
+                        {
+                            foreach (var path in from x in Directory.GetFiles(textBox2.Text.Trim().Substring(split[0].Length).Trim())
+                                                 where x.EndsWith(".json")
+                                                 select x)
+                            {
+                                HitomiData.Instance.LoadMetadataJson(path);
+                                PushString($"Load successful! {path}");
+                            }
+                            HitomiData.Instance.SortMetadata();
+                        }
+                        catch (Exception ex)
+                        {
+                            PushString(ex.Message);
+                        }
+                    }
+                    else
+                    {
+                        PushString("'load' command need 1 more parameter, path.");
+                    }
+                }
                 else if (cmd == "help")
                 {
                     PushString("Realtime Variable Update System");
@@ -625,6 +650,7 @@ namespace Hitomi_Copy_3
                     PushString("tk [tag] : Show tag korean.");
                     PushString("rt : Show related tags procedure.");
                     PushString("gv : Show graph viewer for test.");
+                    PushString("load (Path) : Load folder contains json files.");
                 }
                 else if (cmd == "fucs")
                 {
