@@ -110,12 +110,6 @@
     <Compile Include="AutoCompleteListBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ColumnGraph.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ColumnGraph.Designer.cs">
-      <DependentUpon>ColumnGraph.cs</DependentUpon>
-    </Compile>
     <Compile Include="ColumnSorter.cs" />
     <Compile Include="Common\HitomiArticle.cs" />
     <Compile Include="Common\HitomiDef.cs" />
@@ -125,6 +119,13 @@
     <Compile Include="Data\HitomiDataModel.cs" />
     <Compile Include="Data\HitomiDataQuery.cs" />
     <Compile Include="Data\HitomiDataSearch.cs" />
+    <Compile Include="Graph\Graph.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Graph\Graph.Designer.cs">
+      <DependentUpon>Graph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Graph\ViewManager.cs" />
     <Compile Include="ISemaphore.cs" />
     <Compile Include="DriverManager.cs" />
     <Compile Include="EH\ExHentaiArticle.cs" />
@@ -287,9 +288,6 @@
     <Compile Include="VUI\VUIControl.cs" />
     <Compile Include="VUI\VUILabel.cs" />
     <Compile Include="VUI\VUIPictureBox.cs" />
-    <EmbeddedResource Include="ColumnGraph.resx">
-      <DependentUpon>ColumnGraph.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmArtistInfo.resx">
       <DependentUpon>frmArtistInfo.cs</DependentUpon>
     </EmbeddedResource>
