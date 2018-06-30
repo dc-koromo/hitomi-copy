@@ -29,7 +29,7 @@ namespace Hitomi_Copy_3.Graph
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            vm.Render(e.Graphics, this.Size, PointToClient(Cursor.Position), zoom, GetStaticState());
+            vm.Render(e.Graphics, this.Size, PointToClient(Cursor.Position), zoom); //GetStaticState());
             base.OnPaint(e);
         }
 

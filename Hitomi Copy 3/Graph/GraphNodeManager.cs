@@ -22,7 +22,9 @@ namespace Hitomi_Copy_3.Graph
             {
                 Position = new Point(0, 0),
                 Radius = 100.0F,
-                Color = Color.White
+                Color = Color.White,
+                InnerText = "Center",
+                OuterText = "Sex"
             });
 
             for (int i = 0; i < 30; i++)
@@ -31,6 +33,8 @@ namespace Hitomi_Copy_3.Graph
                 v.Position = new Point((int)(Math.Cos(2 * Math.PI / 30 * i) * 200), (int)(Math.Sin(2 * Math.PI / 30 * i) * 200));
                 v.Radius = 20;
                 v.Color = Color.Cyan;
+                v.InnerText = i.ToString();
+                v.OuterText = $"Sex Child : {i.ToString()}";
                 vertexs.Add(v);
             }
         }

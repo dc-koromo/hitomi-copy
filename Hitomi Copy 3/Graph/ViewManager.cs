@@ -15,6 +15,7 @@ namespace Hitomi_Copy_3.Graph
         Point dragbox_start = Point.Empty;
         Point dragbox_end = Point.Empty;
         bool drawdragbox = false;
+        List<Tuple<RectangleF, string>> stayed_string = new List<Tuple<RectangleF, string>>();
 
         const int grid_rect = 50;
 
@@ -61,7 +62,8 @@ namespace Hitomi_Copy_3.Graph
         {
             vb.CreateGraphics(sizeOfPannel.Width, sizeOfPannel.Height);
             vb.g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-
+            vb.g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            
             /* 확대 축소 변환 */
             vb.g.ScaleTransform(scale, scale);
 
@@ -75,6 +77,7 @@ namespace Hitomi_Copy_3.Graph
             DrawGrid(vb.g, sizeOfPannel, Color.FromArgb(150, 150, 255));
             //RenderEdge(vb.g, sizeOfPannel);
             RenderVertex(vb.g, sizeOfPannel, mousePosition);
+            DrawStayedString(vb.g, scale);
             /// --!]
             ///
 
@@ -84,7 +87,7 @@ namespace Hitomi_Copy_3.Graph
             ///
             /// 고정 오브젝트 그리기 메인부 [!--
             DrawEdge(vb.g, sizeOfPannel, Color.FromArgb(150, 255, 150));
-            DrawFixedText(vb.g, fixedString);
+            //DrawFixedText(vb.g, fixedString);
             if (drawdragbox) DrawDragBox(vb.g);
             /// --!]
             /// 
@@ -149,11 +152,14 @@ namespace Hitomi_Copy_3.Graph
             int end_x = v.Position.X;
             int end_y = v.Position.Y;
 
-            if (RectangleF.Intersect(new Rectangle(-bp.X, -bp.Y, sizeOfPannel.Width, sizeOfPannel.Height),
-                new RectangleF(end_x - v.Radius, end_y - v.Radius, v.Radius * 2, v.Radius * 2)) != Rectangle.Empty)
+            RectangleF draw_rect = new RectangleF(end_x - v.Radius, end_y - v.Radius, v.Radius * 2, v.Radius * 2);
+
+            if (RectangleF.Intersect(new Rectangle(-bp.X, -bp.Y, sizeOfPannel.Width, sizeOfPannel.Height), draw_rect) != Rectangle.Empty)
             {
-                g.DrawEllipse(new Pen(Color.Pink, 5.0F), end_x - v.Radius, end_y - v.Radius, v.Radius * 2, v.Radius * 2);
-                g.FillEllipse(new SolidBrush(v.Color), end_x - v.Radius, end_y - v.Radius, v.Radius * 2, v.Radius * 2);
+                g.DrawEllipse(new Pen(Color.Black, 1.0F), draw_rect);
+                g.FillEllipse(new SolidBrush(v.Color), draw_rect);
+                stayed_string.Add(new Tuple<RectangleF, string>(draw_rect, v.InnerText));
+                stayed_string.Add(new Tuple<RectangleF, string>(new RectangleF(end_x - v.Radius - 150, end_y - v.Radius - 15, v.Radius * 2 + 300, 15), v.OuterText));
             }
         }
 
@@ -170,6 +176,18 @@ namespace Hitomi_Copy_3.Graph
             {
                 g.DrawString(fs.Message, fs.Font, fs.Brush, fs.Position);
             }
+        }
+
+        private void DrawStayedString(Graphics g, float scale)
+        {
+            StringFormat sf = new StringFormat();
+            sf.LineAlignment = StringAlignment.Center;
+            sf.Alignment = StringAlignment.Center;
+            foreach (var ss in stayed_string)
+            {
+                g.DrawString(ss.Item2, new Font(new FontFamily("Consolas"), 12 / scale), Brushes.Black, ss.Item1, sf);
+            }
+            stayed_string.Clear();
         }
     }
 }
