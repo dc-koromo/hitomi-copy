@@ -603,6 +603,10 @@ namespace Hitomi_Copy_3
                 {
                     (new RelatedTagsTest()).Show();
                 }
+                else if (cmd == "gv")
+                {
+                    (new GraphViewer()).Show();
+                }
                 else if (cmd == "help")
                 {
                     PushString("Realtime Variable Update System");
@@ -620,6 +624,7 @@ namespace Hitomi_Copy_3
                     PushString("exh [option] [var1] [var2] ... : Ex-hentai tools");
                     PushString("tk [tag] : Show tag korean.");
                     PushString("rt : Show related tags procedure.");
+                    PushString("gv : Show graph viewer for test.");
                 }
                 else if (cmd == "fucs")
                 {
