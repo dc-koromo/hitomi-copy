@@ -87,7 +87,6 @@ namespace Hitomi_Copy_3.Graph
 
                 if (key_control)
                 {
-                    //vm.CellSelectDraged();
                     vm.IsDrawDragBox = false;
                 }
 
@@ -188,12 +187,6 @@ namespace Hitomi_Copy_3.Graph
                 case Keys.Escape:
                     Cursor.Clip = Rectangle.Empty;
                     break;
-                case Keys.A:
-                    //if (e.Control) vm.CellSelectAll();
-                    break;
-                case Keys.Delete:
-                    //vm.CellDeleteSelected();
-                    break;
                 default:
                     if (e.Control && !key_control)
                     {
@@ -218,7 +211,7 @@ namespace Hitomi_Copy_3.Graph
         {
             if (tag != "")
             {
-                var result = HitomiAnalysisRelatedTags.Instance.result[tag]; //.OrderBy(item => rnd.Next());
+                var result = HitomiAnalysisRelatedTags.Instance.result[tag];
 
                 int index = 0;
                 int eindex = 0;
@@ -246,7 +239,7 @@ namespace Hitomi_Copy_3.Graph
                     et.Index = eindex++;
                     et.Text = ld.Item2.ToString().Substring(0, Math.Min(5, ld.Item2.ToString().Length));
                     et.SelectionText = "";
-                    et.Thickness = 6.0F; //(float)(ld.Item2 * 100);
+                    et.Thickness = 6.0F;
                     et.Color = Color.Black;
 
                     v.Nodes.Add(new Tuple<GraphVertex, GraphEdge>(vt, et));
