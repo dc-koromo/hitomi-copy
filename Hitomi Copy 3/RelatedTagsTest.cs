@@ -60,7 +60,8 @@ namespace Hitomi_Copy_3
             //  계산 시작
             //
 
-            HitomiAnalysisRelatedTags.Instance.Initialize();
+            label2.Text = "초기화 중...";
+            await Task.Run(() => HitomiAnalysisRelatedTags.Instance.Initialize());
             HitomiAnalysisRelatedTags.Instance.Threshold = var;
             max = progressBar1.Maximum = HitomiAnalysisRelatedTags.Instance.tags_list.Count;
 
