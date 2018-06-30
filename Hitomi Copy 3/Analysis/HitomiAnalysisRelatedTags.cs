@@ -25,6 +25,7 @@ namespace Hitomi_Copy_3.Analysis
         {
             result.Clear();
             results.Clear();
+            tags_dic.Clear();
             if (tags_list != null) tags_list.Clear();
 
             bool IFM = IncludeFemaleMaleOnly;
