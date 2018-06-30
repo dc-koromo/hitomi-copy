@@ -229,9 +229,9 @@ namespace Hitomi_Copy_3.Graph
                 if (edge.StartsIndex == selected_node || edge.EndsIndex == selected_node)
                 {
                     RectangleF draw_rect = new RectangleF(
-                        Math.Min(edge.Starts.X, edge.Ends.X),
+                        Math.Min(edge.Starts.X, edge.Ends.X) - 200,
                         Math.Min(edge.Starts.Y, edge.Ends.Y),
-                        Math.Max(edge.Starts.X, edge.Ends.X) - Math.Min(edge.Starts.X, edge.Ends.X),
+                        Math.Max(edge.Starts.X, edge.Ends.X) - Math.Min(edge.Starts.X, edge.Ends.X) + 400,
                         Math.Max(edge.Starts.Y, edge.Ends.Y) - Math.Min(edge.Starts.Y, edge.Ends.Y));
 
                     g.DrawLine(new Pen(Color.HotPink, 8.0F), edge.Starts, edge.Ends);

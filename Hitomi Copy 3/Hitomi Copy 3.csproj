@@ -119,6 +119,12 @@
     <Compile Include="Data\HitomiDataModel.cs" />
     <Compile Include="Data\HitomiDataQuery.cs" />
     <Compile Include="Data\HitomiDataSearch.cs" />
+    <Compile Include="frmMarumaru.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMarumaru.Designer.cs">
+      <DependentUpon>frmMarumaru.cs</DependentUpon>
+    </Compile>
     <Compile Include="GraphViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -314,6 +320,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMarumaru.resx">
+      <DependentUpon>frmMarumaru.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPreview.resx">
       <DependentUpon>frmPreview.cs</DependentUpon>
