@@ -158,6 +158,22 @@ namespace Hitomi_Copy_3.Graph
             selected_node = gnm.IncludePoint(new Point((int)(-bp.X + mouseLocation.X / scale), (int)(-bp.Y + mouseLocation.Y / scale)));
         }
 
+        /// <summary>
+        /// 특정 좌표의 노드 텍스트를 가져옵니다.
+        /// </summary>
+        /// <param name="mouseLocation"></param>
+        /// <param name="scale"></param>
+        /// <returns></returns>
+        public string GetSelectedNodeText(Point mouseLocation, float scale)
+        {
+            int ptr = gnm.IncludePoint(new Point((int)(-bp.X + mouseLocation.X / scale), (int)(-bp.Y + mouseLocation.Y / scale)));
+            if (ptr != -1)
+            {
+                return gnm.vertexs[ptr].InnerText;
+            }
+            return "";
+        }
+
         #region Vertex
 
         public void DrawVertex(Graphics g, GraphVertex v, Size sizeOfPannel)

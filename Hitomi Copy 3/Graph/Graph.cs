@@ -1,7 +1,10 @@
 ﻿/* Copyright (C) 2018. Hitomi Parser Developers */
 
+using Hitomi_Copy_3.Analysis;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Hitomi_Copy_3.Graph
@@ -23,6 +26,7 @@ namespace Hitomi_Copy_3.Graph
             MouseMove += new MouseEventHandler(OnMouseMove);
             MouseClick += new MouseEventHandler(OnMouseClick);
             MouseWheel += new MouseEventHandler(OnMouseWheel);
+            MouseDoubleClick += new MouseEventHandler(OnMouseDoubleClick);
 
             KeyDown += new KeyEventHandler(OnKeyDown);
             KeyUp += new KeyEventHandler(OnKeyUp);
@@ -141,9 +145,21 @@ namespace Hitomi_Copy_3.Graph
 
             Invalidate();
         }
+        private void OnMouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            string tag = vm.GetSelectedNodeText(e.Location, zoom);
+            if (tag != "")
+            {
+                Point bp = vm.BasePoint;
+                vm = new ViewManager(Font);
+                init_graph(tag);
+                vm.BasePoint = bp;
+                Invalidate();
+            }
+        }
 
         #region Mouse Clipping
-        
+
         public void ClipStart()
         {
             Cursor.Clip = new Rectangle(PointToScreen(Location), Size);
@@ -189,6 +205,64 @@ namespace Hitomi_Copy_3.Graph
             key_control = false;
             vm.IsDrawDragBox = false;
             Invalidate();
+        }
+
+        #endregion
+
+        #region Initialize
+
+        public void init_graph(string tag)
+        {
+            if (tag != "")
+            {
+                var result = HitomiAnalysisRelatedTags.Instance.result[tag]; //.OrderBy(item => rnd.Next());
+
+                int index = 0;
+                int eindex = 0;
+
+                GraphVertex v = new GraphVertex();
+                v.Index = index++;
+                v.Color = Color.White;
+                v.InnerText = tag;
+                v.OuterText = "";
+                v.Radius = 100.0F;
+                v.Nodes = new List<Tuple<GraphVertex, GraphEdge>>();
+
+                foreach (var ld in result)
+                {
+                    GraphVertex vt = new GraphVertex();
+                    GraphEdge et = new GraphEdge();
+                    vt.Index = index++;
+                    vt.Color = Color.WhiteSmoke;
+                    vt.InnerText = ld.Item1;
+                    vt.Radius = 100.0F;
+                    vt.OuterText = "";
+
+                    et.StartsIndex = 0;
+                    et.EndsIndex = vt.Index;
+                    et.Index = eindex++;
+                    et.Text = ld.Item2.ToString().Substring(0, Math.Min(5, ld.Item2.ToString().Length));
+                    et.SelectionText = "";
+                    et.Thickness = 6.0F; //(float)(ld.Item2 * 100);
+                    et.Color = Color.Black;
+
+                    v.Nodes.Add(new Tuple<GraphVertex, GraphEdge>(vt, et));
+                }
+                List<Tuple<Point, double>> edges = new List<Tuple<Point, double>>();
+                for (int i = 0; i < v.Nodes.Count; i++)
+                {
+                    for (int j = i + 1; j < v.Nodes.Count; j++)
+                    {
+                        var list = HitomiAnalysisRelatedTags.Instance.result[v.Nodes[i].Item1.InnerText].Where(x => x.Item1 == v.Nodes[j].Item1.InnerText);
+
+                        if (list.Count() > 0)
+                        {
+                            edges.Add(new Tuple<Point, double>(new Point(i + 1, j + 1), list.ToList()[0].Item2));
+                        }
+                    }
+                }
+                GetGNM().Nomalize(v, edges);
+            }
         }
 
         #endregion
