@@ -41,13 +41,15 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.비교할태그찾기FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.비교ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.비교될태그복사EToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.그래프보기GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -150,32 +152,17 @@
             this.columnHeader5.Text = "작품수";
             this.columnHeader5.Width = 108;
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(12, 181);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(220, 23);
-            this.textBox2.TabIndex = 7;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(401, 69);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 15);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "대기중 . . .";
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.비교할태그찾기FToolStripMenuItem,
             this.비교ToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.비교될태그복사EToolStripMenuItem});
+            this.비교될태그복사EToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.그래프보기GToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 98);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 126);
             // 
             // 비교할태그찾기FToolStripMenuItem
             // 
@@ -202,6 +189,35 @@
             this.비교될태그복사EToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.비교될태그복사EToolStripMenuItem.Text = "비교될 태그 복사(&E)";
             this.비교될태그복사EToolStripMenuItem.Click += new System.EventHandler(this.비교될태그복사EToolStripMenuItem_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(12, 181);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(220, 23);
+            this.textBox2.TabIndex = 7;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(401, 69);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 15);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "대기중 . . .";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(179, 6);
+            // 
+            // 그래프보기GToolStripMenuItem
+            // 
+            this.그래프보기GToolStripMenuItem.Name = "그래프보기GToolStripMenuItem";
+            this.그래프보기GToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.그래프보기GToolStripMenuItem.Text = "그래프 보기(&G)";
+            this.그래프보기GToolStripMenuItem.Click += new System.EventHandler(this.그래프보기GToolStripMenuItem_Click);
             // 
             // RelatedTagsTest
             // 
@@ -253,5 +269,7 @@
         private System.Windows.Forms.ToolStripMenuItem 비교ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 비교될태그복사EToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem 그래프보기GToolStripMenuItem;
     }
 }

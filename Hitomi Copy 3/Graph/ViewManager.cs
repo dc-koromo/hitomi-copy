@@ -11,10 +11,11 @@ namespace Hitomi_Copy_3.Graph
         Point bp;
         ViewBuffer vb;
         Font font;
-        GraphNodeManager gnm;
         Point dragbox_start = Point.Empty;
         Point dragbox_end = Point.Empty;
         bool drawdragbox = false;
+        int selected_node = -1;
+        public GraphNodeManager gnm;
         List<Tuple<RectangleF, string>> stayed_string = new List<Tuple<RectangleF, string>>();
 
         const int grid_rect = 50;
@@ -74,9 +75,10 @@ namespace Hitomi_Copy_3.Graph
 
             ///
             /// 그리기 메인부 [!--
-            DrawGrid(vb.g, sizeOfPannel, Color.FromArgb(150, 150, 255));
-            //RenderEdge(vb.g, sizeOfPannel);
+            //DrawGrid(vb.g, sizeOfPannel, Color.FromArgb(150, 150, 255));
+            RenderEdge(vb.g, sizeOfPannel, mousePosition);
             RenderVertex(vb.g, sizeOfPannel, mousePosition);
+            HighlightEdge(vb.g, sizeOfPannel);
             DrawStayedString(vb.g, scale);
             /// --!]
             ///
@@ -145,6 +147,19 @@ namespace Hitomi_Copy_3.Graph
             g.FillRectangle(new SolidBrush(Color.FromArgb(100, 170, 220, 170)), new Rectangle(rect.X + 1, rect.Y + 1, rect.Width - 2, rect.Height - 2));
         }
 
+        /// <summary>
+        /// 마우스 좌표를 이용해 특정 노드를 선택합니다.
+        /// </summary>
+        /// <param name="mouseLocation"></param>
+        public void SelectNode(Point mouseLocation, float scale)
+        {
+            int selected_tmp = gnm.IncludePoint(new Point((int)(-bp.X + mouseLocation.X / scale), (int)(-bp.Y + mouseLocation.Y / scale)));
+            if (selected_tmp == selected_node)
+                selected_node = -1;
+            else
+                selected_node = selected_tmp;
+        }
+
         #region Vertex
 
         public void DrawVertex(Graphics g, GraphVertex v, Size sizeOfPannel)
@@ -158,7 +173,7 @@ namespace Hitomi_Copy_3.Graph
             {
                 g.DrawEllipse(new Pen(Color.Black, 1.0F), draw_rect);
                 g.FillEllipse(new SolidBrush(v.Color), draw_rect);
-                stayed_string.Add(new Tuple<RectangleF, string>(draw_rect, v.InnerText));
+                stayed_string.Add(new Tuple<RectangleF, string>(new RectangleF(end_x - v.Radius - 300, end_y - v.Radius - 300, v.Radius * 2 + 600, v.Radius * 2 + 600), v.InnerText));
                 stayed_string.Add(new Tuple<RectangleF, string>(new RectangleF(end_x - v.Radius - 150, end_y - v.Radius - 15, v.Radius * 2 + 300, 15), v.OuterText));
             }
         }
@@ -167,7 +182,43 @@ namespace Hitomi_Copy_3.Graph
         {
             gnm.IterateVertexs(v => DrawVertex(g, v, sizeOfPannel));
         }
-        
+
+        #endregion
+
+        #region Edge
+
+        public void DrawEdge(Graphics g, GraphEdge e, Size sizeOfPannel)
+        {
+            RectangleF draw_rect = new RectangleF(
+                Math.Min(e.Starts.X, e.Ends.X),
+                Math.Min(e.Starts.Y, e.Ends.Y),
+                Math.Max(e.Starts.X, e.Ends.X) - Math.Min(e.Starts.X, e.Ends.X),
+                Math.Max(e.Starts.Y, e.Ends.Y) - Math.Min(e.Starts.Y, e.Ends.Y));
+
+            if (RectangleF.Intersect(new Rectangle(-bp.X, -bp.Y, sizeOfPannel.Width, sizeOfPannel.Height), draw_rect) != Rectangle.Empty)
+            {
+                g.DrawLine(new Pen(e.Color, e.Thickness), e.Starts, e.Ends);
+                stayed_string.Add(new Tuple<RectangleF, string>(draw_rect, e.Text));
+            }
+        }
+
+        private void RenderEdge(Graphics g, Size sizeOfPannel, Point mousePosition)
+        {
+            gnm.IterateEdges(e => DrawEdge(g, e, sizeOfPannel));
+        }
+
+        public void HighlightEdge(Graphics g, Size sizeOfPannel)
+        {
+            if (selected_node == -1) return;
+            foreach (var edge in gnm.edges)
+            {
+                if (edge.StartsIndex == selected_node || edge.EndsIndex == selected_node)
+                {
+                    g.DrawLine(new Pen(Color.Pink, 8.0F), edge.Starts, edge.Ends);
+                }
+            }
+        }
+
         #endregion
 
         private void DrawFixedText(Graphics g, List<FixedString> fix)

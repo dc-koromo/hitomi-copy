@@ -24,6 +24,9 @@ namespace Hitomi_Copy_3.Graph
             MouseClick += new MouseEventHandler(OnMouseClick);
             MouseWheel += new MouseEventHandler(OnMouseWheel);
 
+            KeyDown += new KeyEventHandler(OnKeyDown);
+            KeyUp += new KeyEventHandler(OnKeyUp);
+
             vm = new ViewManager(Font);
         }
 
@@ -31,6 +34,11 @@ namespace Hitomi_Copy_3.Graph
         {
             vm.Render(e.Graphics, this.Size, PointToClient(Cursor.Position), zoom); //GetStaticState());
             base.OnPaint(e);
+        }
+
+        public GraphNodeManager GetGNM()
+        {
+            return vm.gnm;
         }
 
         private List<FixedString> GetStaticState()
@@ -79,6 +87,7 @@ namespace Hitomi_Copy_3.Graph
                     vm.IsDrawDragBox = false;
                 }
 
+                vm.SelectNode(e.Location, zoom);
                 Invalidate();
             }
             else if (mr_down == true)

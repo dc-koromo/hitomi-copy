@@ -224,5 +224,12 @@ namespace Hitomi_Copy_3
             }
         }
 
+        private void 그래프보기GToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                (new GraphViewer(listView1.SelectedItems[0].SubItems[1].Text)).Show();
+            }
+        }
     }
 }
