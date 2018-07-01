@@ -649,7 +649,6 @@ namespace Hitomi_Copy_3
                     {
                         if (split[1] == "isotest")
                         {
-                            HashSet<string> check = new HashSet<string>();
                             var list = HitomiAnalysisRelatedTags.Instance.result.ToList();
                             Dictionary<string, int> index = new Dictionary<string, int>();
                             for (int i = 0; i < list.Count; i++) index.Add(list[i].Key, i);
