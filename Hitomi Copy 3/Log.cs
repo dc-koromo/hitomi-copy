@@ -4,6 +4,7 @@ using Hitomi_Copy.Data;
 using Hitomi_Copy_2;
 using Hitomi_Copy_2.Analysis;
 using Hitomi_Copy_2.EH;
+using Hitomi_Copy_3.Analysis;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -642,6 +643,54 @@ namespace Hitomi_Copy_3
                     HitomiData.Instance.RebuildTagData();
                     PushString("Tagdata rebuilding finished!");
                 }
+                else if (cmd == "rtt")
+                {
+                    if (split.Length > 1)
+                    {
+                        if (split[1] == "isotest")
+                        {
+                            HashSet<string> check = new HashSet<string>();
+                            var list = HitomiAnalysisRelatedTags.Instance.result.ToList();
+                            Dictionary<string, int> index = new Dictionary<string, int>();
+                            for (int i = 0; i < list.Count; i++) index.Add(list[i].Key, i);
+                            bool[] check_b = new bool[list.Count];
+                            List<List<string>> result = new List<List<string>>();
+                            for (int i = 0; i < list.Count; i++)
+                            {
+                                if (check_b[i] == false)
+                                {
+                                    List<string> tags = new List<string>();
+                                    Queue<int> queue = new Queue<int>();
+                                    queue.Enqueue(i);
+                                    while (queue.Count > 0)
+                                    {
+                                        int j = queue.Dequeue();
+                                        if (check_b[j] == true) continue;
+                                        check_b[j] = true;
+                                        tags.Add(list[j].Key);
+                                        foreach (var tag in list[j].Value.Select(x => x.Item1))
+                                        {
+                                            if (check_b[index[tag]] == false)
+                                                queue.Enqueue(index[tag]);
+                                        }
+                                    }
+                                    result.Add(tags);
+                                }
+                            }
+                            PushString($"{result.Count.ToString("#,#")}개의 태그 그룹을 발견함.");
+                            File.WriteAllText("iostest.log", LogEssential.SerializeObject(result));
+                        }
+                        else
+                        {
+                            PushString($"'{split[1]}' is not found.");
+                        }
+                    }
+                    else
+                    {
+                        PushString("using 'rtt (option)'");
+                        PushString("  (option): isotest");
+                    }
+                }
                 else if (cmd == "help")
                 {
                     PushString("Realtime Variable Update System");
@@ -663,6 +712,7 @@ namespace Hitomi_Copy_3
                     PushString("load (Path) : Load folder contains json files.");
                     PushString("merge : JSon file merge tool for hitomi copy.");
                     PushString("tagr : Rebuild tagdata.");
+                    PushString("rtt (option) : Test tool for related tags.");
                 }
                 else if (cmd == "fucs")
                 {

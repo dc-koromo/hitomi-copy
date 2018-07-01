@@ -20,7 +20,7 @@ namespace Hitomi_Copy_3.Analysis
 
         public bool IncludeFemaleMaleOnly = false;
         public double Threshold = 0.1;
-        
+
         public void Initialize()
         {
             result.Clear();
@@ -74,11 +74,11 @@ namespace Hitomi_Copy_3.Analysis
             }
             return intersect;
         }
-        
+
         public List<Tuple<string, string, double>> Intersect(int i)
         {
             List<Tuple<string, string, double>> result = new List<Tuple<string, string, double>>();
-            
+
             for (int j = i + 1; j < tags_list.Count; j++)
             {
                 int intersect = manually_intersect(tags_list[i].Value, tags_list[j].Value);
@@ -86,13 +86,13 @@ namespace Hitomi_Copy_3.Analysis
                 int j_size = tags_list[j].Value.Count;
                 double rate = (double)(intersect) / (i_size + j_size - intersect);
                 if (rate >= Threshold)
-                result.Add(new Tuple<string, string, double>(tags_list[i].Key, tags_list[j].Key,
-                    rate));
+                    result.Add(new Tuple<string, string, double>(tags_list[i].Key, tags_list[j].Key,
+                        rate));
             }
 
             return result;
         }
-        
+
         public void Merge()
         {
             foreach (var tuple in results)
