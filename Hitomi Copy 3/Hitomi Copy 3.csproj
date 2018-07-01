@@ -47,7 +47,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>TETO.ico</ApplicationIcon>
@@ -257,6 +257,7 @@
     <Compile Include="MM\MMArticle.cs" />
     <Compile Include="MM\MMCaptcha.cs" />
     <Compile Include="MM\MMParser.cs" />
+    <Compile Include="MM\MMSetting.cs" />
     <Compile Include="PatchNote.cs">
       <SubType>Form</SubType>
     </Compile>

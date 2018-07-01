@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RelatedTagsTest));
             this.button1 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -48,9 +49,9 @@
             this.비교될태그복사EToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.그래프보기GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.대립태그검사IToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.대립태그검사IToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -164,7 +165,7 @@
             this.그래프보기GToolStripMenuItem,
             this.대립태그검사IToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 148);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 126);
             // 
             // 비교할태그찾기FToolStripMenuItem
             // 
@@ -204,6 +205,13 @@
             this.그래프보기GToolStripMenuItem.Text = "그래프 보기(&G)";
             this.그래프보기GToolStripMenuItem.Click += new System.EventHandler(this.그래프보기GToolStripMenuItem_Click);
             // 
+            // 대립태그검사IToolStripMenuItem
+            // 
+            this.대립태그검사IToolStripMenuItem.Name = "대립태그검사IToolStripMenuItem";
+            this.대립태그검사IToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.대립태그검사IToolStripMenuItem.Text = "연관성 없음 검사(&I)";
+            this.대립태그검사IToolStripMenuItem.Click += new System.EventHandler(this.대립태그검사IToolStripMenuItem_Click);
+            // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(12, 181);
@@ -220,13 +228,6 @@
             this.label2.Size = new System.Drawing.Size(64, 15);
             this.label2.TabIndex = 8;
             this.label2.Text = "대기중 . . .";
-            // 
-            // 대립태그검사IToolStripMenuItem
-            // 
-            this.대립태그검사IToolStripMenuItem.Name = "대립태그검사IToolStripMenuItem";
-            this.대립태그검사IToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.대립태그검사IToolStripMenuItem.Text = "연관성 없음 검사(&I)";
-            this.대립태그검사IToolStripMenuItem.Click += new System.EventHandler(this.대립태그검사IToolStripMenuItem_Click);
             // 
             // RelatedTagsTest
             // 
@@ -245,6 +246,7 @@
             this.Controls.Add(this.button1);
             this.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
