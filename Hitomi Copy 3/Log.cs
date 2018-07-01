@@ -636,6 +636,12 @@ namespace Hitomi_Copy_3
                 {
                     (new MergeJSon()).Show();
                 }
+                else if (cmd == "tagr")
+                {
+                    PushString("Start tagdata rebuilding...");
+                    HitomiData.Instance.RebuildTagData();
+                    PushString("Tagdata rebuilding finished!");
+                }
                 else if (cmd == "help")
                 {
                     PushString("Realtime Variable Update System");
@@ -656,6 +662,7 @@ namespace Hitomi_Copy_3
                     PushString("gv : Show graph viewer for test.");
                     PushString("load (Path) : Load folder contains json files.");
                     PushString("merge : JSon file merge tool for hitomi copy.");
+                    PushString("tagr : Rebuild tagdata.");
                 }
                 else if (cmd == "fucs")
                 {

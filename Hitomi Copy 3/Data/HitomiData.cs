@@ -136,6 +136,65 @@ namespace Hitomi_Copy.Data
         }
         #endregion
 
+        #region TagData Rebuilding
+        
+        private void Add(Dictionary<string, int> dic, string key)
+        {
+            if (dic.ContainsKey(key))
+                dic[key] += 1;
+            else
+                dic.Add(key, 1);
+        }
+
+        public void RebuildTagData()
+        {
+            tagdata_collection.artist.Clear();
+            tagdata_collection.tag.Clear();
+            tagdata_collection.female.Clear();
+            tagdata_collection.male.Clear();
+            tagdata_collection.group.Clear();
+            tagdata_collection.character.Clear();
+            tagdata_collection.series.Clear();
+
+            Dictionary<string, int> artist = new Dictionary<string, int>();
+            Dictionary<string, int> tag = new Dictionary<string, int>();
+            Dictionary<string, int> female = new Dictionary<string, int>();
+            Dictionary<string, int> male = new Dictionary<string, int>();
+            Dictionary<string, int> group = new Dictionary<string, int>();
+            Dictionary<string, int> character = new Dictionary<string, int>();
+            Dictionary<string, int> series = new Dictionary<string, int>();
+            
+            foreach (var metadata in metadata_collection)
+            {
+                if (metadata.Artists != null) metadata.Artists.ToList().ForEach(x => Add(artist,x));
+                if (metadata.Tags != null) metadata.Tags.ToList().ForEach(x => { if (x.StartsWith("female:")) Add(female, x); else if (x.StartsWith("male:")) Add(male, x); else Add(tag, x); });
+                if (metadata.Groups != null) metadata.Groups.ToList().ForEach(x => Add(group, x));
+                if (metadata.Characters != null) metadata.Characters.ToList().ForEach(x => Add(character, x));
+                if (metadata.Parodies != null) metadata.Parodies.ToList().ForEach(x => Add(series, x));
+            }
+
+            tagdata_collection.artist = artist.Select(x => new HitomiTagdata() { Tag = x.Key, Count = x.Value }).ToList();
+            tagdata_collection.tag = tag.Select(x => new HitomiTagdata() { Tag = x.Key, Count = x.Value }).ToList();
+            tagdata_collection.female = female.Select(x => new HitomiTagdata() { Tag = x.Key, Count = x.Value }).ToList();
+            tagdata_collection.male = male.Select(x => new HitomiTagdata() { Tag = x.Key, Count = x.Value }).ToList();
+            tagdata_collection.group = group.Select(x => new HitomiTagdata() { Tag = x.Key, Count = x.Value }).ToList();
+            tagdata_collection.character = character.Select(x => new HitomiTagdata() { Tag = x.Key, Count = x.Value }).ToList();
+            tagdata_collection.series = series.Select(x => new HitomiTagdata() { Tag = x.Key, Count = x.Value }).ToList();
+
+            SortTagdata();
+
+            JsonSerializer serializer = new JsonSerializer();
+            serializer.Converters.Add(new JavaScriptDateTimeConverter());
+            serializer.NullValueHandling = NullValueHandling.Ignore;
+
+            using (StreamWriter sw = new StreamWriter(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "tagdata.json")))
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                serializer.Serialize(writer, tagdata_collection);
+            }
+        }
+        #endregion
+
         public async Task Synchronization()
         {
             LogEssential.Instance.PushLog(() => "Start Synchronization...");
