@@ -254,10 +254,17 @@
     <Compile Include="MarqueeColorBar.Designer.cs">
       <DependentUpon>MarqueeColorBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="MergeJSon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MergeJSon.Designer.cs">
+      <DependentUpon>MergeJSon.cs</DependentUpon>
+    </Compile>
     <Compile Include="MM\MMArticle.cs" />
     <Compile Include="MM\MMCaptcha.cs" />
     <Compile Include="MM\MMParser.cs" />
     <Compile Include="MM\MMSetting.cs" />
+    <Compile Include="MM\MMUpdateChecker.cs" />
     <Compile Include="PatchNote.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -355,6 +362,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Log.resx">
       <DependentUpon>Log.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MergeJSon.resx">
+      <DependentUpon>MergeJSon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PatchNote.resx">
       <DependentUpon>PatchNote.cs</DependentUpon>

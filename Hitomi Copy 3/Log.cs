@@ -632,6 +632,10 @@ namespace Hitomi_Copy_3
                         PushString("'load' command need 1 more parameter, path.");
                     }
                 }
+                else if (cmd == "merge")
+                {
+                    (new MergeJSon()).Show();
+                }
                 else if (cmd == "help")
                 {
                     PushString("Realtime Variable Update System");
@@ -651,6 +655,7 @@ namespace Hitomi_Copy_3
                     PushString("rt : Show related tags procedure.");
                     PushString("gv : Show graph viewer for test.");
                     PushString("load (Path) : Load folder contains json files.");
+                    PushString("merge : JSon file merge tool for hitomi copy.");
                 }
                 else if (cmd == "fucs")
                 {
