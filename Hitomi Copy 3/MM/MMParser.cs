@@ -47,8 +47,8 @@ namespace MM_Downloader.MM
         /// <returns></returns>
         public static string GetThumbnailAddress(string html)
         {
-            string thumbnail = Regex.Split(Regex.Split(html, @"property=""og: image"" content=""")[1], @""" /> ")[0];
-            return thumbnail;
+            string thumbnail = Regex.Split(Regex.Split(html, "https://marumaru.in/quickimage/")[1], @".jpg")[0];
+            return "https://marumaru.in/quickimage/" + thumbnail + ".jpg";
         }
 
         /// <summary>

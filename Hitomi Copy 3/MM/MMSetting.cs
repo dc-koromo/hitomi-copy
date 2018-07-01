@@ -2,6 +2,7 @@
 
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Hitomi_Copy_3.MM
@@ -15,7 +16,7 @@ namespace Hitomi_Copy_3.MM
         [JsonProperty]
         public string ThumbnailUrl;
         [JsonProperty]
-        public string[] DownloadUrlList;
+        public Tuple<string, string>[] DownloadUrlList;
         [JsonProperty]
         public DateTime LatestDownload;
     }
@@ -37,12 +38,8 @@ namespace Hitomi_Copy_3.MM
         public MMSetting()
         {
             if (File.Exists(setting_path)) model = JsonConvert.DeserializeObject<MMSettingModel>(File.ReadAllText(setting_path));
-            if (model == null)
-            {
-                model = new MMSettingModel();
-                model.Articles = null;
-                Save();
-            }
+            if (model == null) model = new MMSettingModel();
+            if (model.Articles == null) model.Articles = (new List<MMArticleDataModel>()).ToArray();
         }
 
         public void Save()

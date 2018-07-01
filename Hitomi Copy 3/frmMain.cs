@@ -6,6 +6,7 @@ using Hitomi_Copy.Data;
 using Hitomi_Copy_2;
 using Hitomi_Copy_2.Analysis;
 using Hitomi_Copy_2.EH;
+using Hitomi_Copy_3.MM;
 using MetroFramework;
 using MM_Downloader.MM;
 using System;
@@ -377,6 +378,7 @@ namespace Hitomi_Copy_3
 
         #region 다운로드 - 마루마루
         public List<Tuple<string, MMArticle>> images_uri = new List<Tuple<string, MMArticle>>();
+        public List<Tuple<string, string>> download_url_list = new List<Tuple<string, string>>();
 
         private async void DownloadMMAsync(string url)
         {
@@ -388,11 +390,22 @@ namespace Hitomi_Copy_3
             string html = wc.DownloadString(url);
             var archives = MMParser.ParseManga(html);
             images_uri.Clear();
+            download_url_list.Clear();
 
             LogEssential.Instance.PushLog(() => $"Download MM {url}");
             LogEssential.Instance.PushLog(archives);
             await Task.Run(() => DownloadArchivesAsync(archives, MMParser.GetTitle(html)));
             LogEssential.Instance.PushLog(() => $"Merge Successful!");
+            var list = MMSetting.Instance.GetModel().Articles.ToList();
+            list.Add(new MMArticleDataModel() {
+                LatestDownload = DateTime.Now,
+                Title = MMParser.GetTitle(html),
+                ArticleUrl = url,
+                ThumbnailUrl = MMParser.GetThumbnailAddress(html),
+                DownloadUrlList = download_url_list.ToArray()
+            });
+            MMSetting.Instance.GetModel().Articles = list.ToArray();
+            MMSetting.Instance.Save();
             await Task.Run(() => DownloadImages());
         }
 
@@ -436,6 +449,7 @@ namespace Hitomi_Copy_3
                 UpdateLabel($"{pbTarget.Value}/{pbTarget.Maximum}");
                 lock (images) images_uri.Add(new Tuple<string, MMArticle>(uri, ta));
             }
+            lock (download_url_list) download_url_list.Add(new Tuple<string, string>(url, ta.Archive));
             if(HitomiSetting.Instance.GetModel().DetailedLog)
                 LogEssential.Instance.PushLog(images);
         }
