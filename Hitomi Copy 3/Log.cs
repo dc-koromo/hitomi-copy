@@ -209,7 +209,6 @@ namespace Hitomi_Copy_3
                     if (split.Length >= 3)
                     {
                         string frm = split[1];
-                        string var = split[2];
                         
                         try
                         {
@@ -238,12 +237,13 @@ namespace Hitomi_Copy_3
                     if (split.Length >= 4)
                     {
                         string frm = split[1];
-                        string var = split[2];
-                        string val = split[3];
 
                         try
                         {
-                            set_recurion(Application.OpenForms[frm], split, 2);
+                            if (instances.ContainsKey(frm))
+                                set_recurion(instances[frm], split, 2);
+                            else
+                                set_recurion(Application.OpenForms[frm], split, 2);
                         }
                         catch (Exception ex)
                         {
