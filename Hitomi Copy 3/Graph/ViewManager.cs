@@ -91,7 +91,7 @@ namespace Hitomi_Copy_3.Graph
             ///
             /// 고정 오브젝트 그리기 메인부 [!--
             DrawEdge(vb.g, sizeOfPannel, Color.FromArgb(150, 255, 150));
-            //DrawFixedText(vb.g, fixedString);
+            DrawFixedText(vb.g, fixedString);
             if (drawdragbox) DrawDragBox(vb.g);
             /// --!]
             /// 

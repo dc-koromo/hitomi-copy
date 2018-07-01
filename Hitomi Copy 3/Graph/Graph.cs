@@ -36,7 +36,7 @@ namespace Hitomi_Copy_3.Graph
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            vm.Render(e.Graphics, this.Size, PointToClient(Cursor.Position), zoom); //GetStaticState());
+            vm.Render(e.Graphics, this.Size, PointToClient(Cursor.Position), zoom, GetStaticState());
             base.OnPaint(e);
         }
 
@@ -49,7 +49,8 @@ namespace Hitomi_Copy_3.Graph
         {
             List<FixedString> fx = new List<FixedString>();
             string message = $"Base Point : {vm.BasePoint.ToString()}\n" +
-                $"Mouse Point : {PointToClient(Cursor.Position).ToString()}\n";
+                $"Mouse Point : {PointToClient(Cursor.Position).ToString()}\n"+
+                $"Zoom : {zoom.ToString()}\n";
             if (key_control)
                 message += "\nControl Key Pressed";
             fx.Add(new FixedString(message, new Point(10, 10), Font, Brushes.Aqua));
