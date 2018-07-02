@@ -695,6 +695,10 @@ namespace Hitomi_Copy_3
                 {
                     (new _403Tester()).Show();
                 }
+                else if (cmd == "gbt")
+                {
+                    (new GalleryBlockTester()).Show();
+                }
                 else if (cmd == "help")
                 {
                     PushString("Realtime Variable Update System");
@@ -717,6 +721,7 @@ namespace Hitomi_Copy_3
                     PushString("merge : JSon file merge tool for hitomi copy.");
                     PushString("tagr : Rebuild tagdata.");
                     PushString("rtt (option) : Test tool for related tags.");
+                    PushString("ct, gbt : Hidden galleris transaction tools.");
                 }
                 else if (cmd == "fucs")
                 {
