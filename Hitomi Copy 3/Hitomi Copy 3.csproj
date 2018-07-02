@@ -98,6 +98,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="403\403Tester.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="403\403Tester.Designer.cs">
+      <DependentUpon>403Tester.cs</DependentUpon>
+    </Compile>
     <Compile Include="Analysis\HitomiAnalysis.cs" />
     <Compile Include="Analysis\HitomiAnalysisArtist.cs" />
     <Compile Include="Analysis\HitomiAnalysisDateTime.cs" />
@@ -312,6 +318,9 @@
     <Compile Include="VUI\VUIControl.cs" />
     <Compile Include="VUI\VUILabel.cs" />
     <Compile Include="VUI\VUIPictureBox.cs" />
+    <EmbeddedResource Include="403\403Tester.resx">
+      <DependentUpon>403Tester.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmArtistInfo.resx">
       <DependentUpon>frmArtistInfo.cs</DependentUpon>
     </EmbeddedResource>

@@ -4,6 +4,7 @@ using Hitomi_Copy.Data;
 using Hitomi_Copy_2;
 using Hitomi_Copy_2.Analysis;
 using Hitomi_Copy_2.EH;
+using Hitomi_Copy_3._403;
 using Hitomi_Copy_3.Analysis;
 using Newtonsoft.Json;
 using System;
@@ -689,6 +690,10 @@ namespace Hitomi_Copy_3
                         PushString("using 'rtt (option)'");
                         PushString("  (option): isotest");
                     }
+                }
+                else if (cmd == "ct")
+                {
+                    (new _403Tester()).Show();
                 }
                 else if (cmd == "help")
                 {
