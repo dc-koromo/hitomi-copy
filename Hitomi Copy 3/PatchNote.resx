@@ -118,11 +118,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>v3.27
+    <value>v3.28
+ - 이제 히든 데이터(403, Forbidden)를 검색할 수 있습니다!! 프로그램 시작시 자동으로 데이터를 다운받으며, 데이터 동기화시 자동으로 동기화됩니다!!
+
+ - 마루마루 다운로드 데이터로그를 저장합니다. (마루마루 동기화 기능은 다음버전에 추가됩니다 ㅠㅠ)
+
+ - load, merge, tagr, rtt, ct, gbt 명령이 추가됩니다.
+
+ - load는 metadata.json형식을 로드합니다. 인자는 하나만 받으며, 파일/폴더 모두 가능합니다
+
+ - merge는 메모리상 metadata model를 합쳐 저장합니다.
+
+ - tagr로 tagdata를 재빌드할 수 있습니다.
+
+ - rtt로 각종 연관태그 분석이 가능합니다. 현재 isotest인자만 지원하며, 고립(그룹)태그를 저장합니다.
+
+ - ct로 metadata상 모든 히토미 페이지를 열어 related galleries를 조사할 수 있습니다.
+
+ - gbt로 지정된 범위의 갤러리블록을 테스트할 수 있습니다. 테스트 목록은 자동저장되며, 1분마다 스냅샷이 저장됩니다. 이 기능으로 히든 데이터를 직접 동기화할 수 있습니다. (merge는 수동으로 ... ㅎㅎ;;)
+
+
+v3.27
  - 강력한 연관태그 분석 기능이 정식 추가되었습니다. 마우스 오른쪽 클릭 메뉴를 이용해 연관그래프를 만들어 보세요!
 
  - 이번 업데이트는 너무나 강력하기에 하나밖에 추가하지 못했습니다 ㅠㅠ 다음 버전을 기대해주세요!
-
 
 v3.26
  - 강력한 연관태그 분석 기능이 실험적으로 추가되었습니다. 이 기능을 이용해 원하는 태그를 찾아보세요!
