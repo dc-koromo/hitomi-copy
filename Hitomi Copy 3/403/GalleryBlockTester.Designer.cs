@@ -43,8 +43,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+<<<<<<< HEAD
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+=======
+>>>>>>> b6cf370... [Hitomi 3] Add GalleryBlockTester for 403 Forbidden datas
             this.SuspendLayout();
             // 
             // label5
@@ -159,6 +162,7 @@
             this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+<<<<<<< HEAD
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(424, 12);
@@ -179,14 +183,20 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+=======
+>>>>>>> b6cf370... [Hitomi 3] Add GalleryBlockTester for 403 Forbidden datas
             // GalleryBlockTester
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(561, 448);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
+=======
+            this.ClientSize = new System.Drawing.Size(561, 417);
+>>>>>>> b6cf370... [Hitomi 3] Add GalleryBlockTester for 403 Forbidden datas
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label7);
@@ -200,7 +210,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("맑은 고딕", 9F);
+<<<<<<< HEAD
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+=======
+>>>>>>> b6cf370... [Hitomi 3] Add GalleryBlockTester for 403 Forbidden datas
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
@@ -228,7 +241,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Timer timer1;
+<<<<<<< HEAD
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+=======
+>>>>>>> b6cf370... [Hitomi 3] Add GalleryBlockTester for 403 Forbidden datas
     }
 }

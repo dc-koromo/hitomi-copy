@@ -368,6 +368,7 @@
     <EmbeddedResource Include="403\GalleryBlockTester.resx">
       <DependentUpon>GalleryBlockTester.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="CARArtist.resx">
       <DependentUpon>CARArtist.cs</DependentUpon>
     </EmbeddedResource>
@@ -377,6 +378,8 @@
     <EmbeddedResource Include="CustomArtistRecommendation.resx">
       <DependentUpon>CustomArtistRecommendation.cs</DependentUpon>
     </EmbeddedResource>
+=======
+>>>>>>> b6cf370... [Hitomi 3] Add GalleryBlockTester for 403 Forbidden datas
     <EmbeddedResource Include="frmArtistInfo.resx">
       <DependentUpon>frmArtistInfo.cs</DependentUpon>
     </EmbeddedResource>
