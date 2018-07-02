@@ -2,6 +2,8 @@
 
 using hitomi.Parser;
 using Hitomi_Copy.Data;
+using System;
+using System.Linq;
 
 namespace Hitomi_Copy_2
 {
@@ -23,11 +25,37 @@ namespace Hitomi_Copy_2
             return article;
         }
 
+        public static HitomiMetadata ArticleToMetadata(HitomiArticle article)
+        {
+            HitomiMetadata metadata = new HitomiMetadata();
+            metadata.Artists = article.Artists;
+            metadata.Characters = article.Characters;
+            metadata.Groups = article.Groups;
+            metadata.ID = Convert.ToInt32(article.Magic);
+            metadata.Language = LegalizeLanguage(article.Language);
+            metadata.Name = article.Title;
+            metadata.Parodies = article.Series;
+            metadata.Tags = article.Tags.Select(x => LegalizeTag(x)).ToArray();
+            metadata.Type = article.Types;
+            return metadata;
+        }
+
         public static string LegalizeTag(string tag)
         {
             if (tag.Trim().EndsWith("♀")) return "female:" + tag.Trim('♀').Trim();
             if (tag.Trim().EndsWith("♂")) return "male:" + tag.Trim('♂').Trim();
             return tag.Trim();
+        }
+
+        public static string LegalizeLanguage(string lang)
+        {
+            switch (lang)
+            {
+            case "한국어": return "korean";
+            case "日本語": return "japanese";
+            }
+
+            return lang;
         }
     }
 }

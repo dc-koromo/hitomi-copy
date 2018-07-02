@@ -139,6 +139,8 @@ namespace Hitomi_Copy_3
         {
             try
             {
+                if (HitomiData.Instance.thumbnail_collection.ContainsKey(id))
+                    return HitomiData.Instance.thumbnail_collection[id];
                 WebClient wc = new WebClient
                 {
                     Encoding = Encoding.UTF8

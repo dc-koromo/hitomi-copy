@@ -1,5 +1,7 @@
 ﻿/* Copyright (C) 2018. Hitomi Parser Developers */
 
+using hitomi.Parser;
+using Hitomi_Copy_2;
 using Hitomi_Copy_3;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -28,6 +30,7 @@ namespace Hitomi_Copy.Data
 
         public HitomiTagdataCollection tagdata_collection;
         public List<HitomiMetadata> metadata_collection;
+        public Dictionary<string, string> thumbnail_collection;
 
         #region Metadata
         public async Task DownloadMetadata()
@@ -70,11 +73,28 @@ namespace Hitomi_Copy.Data
         {
             if (CheckMetadataExist())
                 metadata_collection = JsonConvert.DeserializeObject<List<HitomiMetadata>>(File.ReadAllText(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "metadata.json")));
+            thumbnail_collection = new Dictionary<string, string>();
+            if (CheckHiddendataExist())
+            {
+                List<HitomiArticle> articles = JsonConvert.DeserializeObject<List<HitomiArticle>>(File.ReadAllText(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "hiddendata.json")));
+                foreach (var article in articles)
+                {
+                    metadata_collection.Add(HitomiCommon.ArticleToMetadata(article));
+                    if (!thumbnail_collection.ContainsKey(article.Magic))
+                        thumbnail_collection.Add(article.Magic, article.Thumbnail);
+                }
+                SortMetadata();
+            }
         }
 
         public bool CheckMetadataExist()
         {
             return File.Exists(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "metadata.json"));
+        }
+
+        public bool CheckHiddendataExist()
+        {
+            return File.Exists(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "hiddendata.json"));
         }
         #endregion
 
