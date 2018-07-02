@@ -3,7 +3,7 @@
 
 https://github.com/dc-koromo/hitomi-downloader-2/blob/master/README.md
 
-# Hitomi Copy (현존하는 최강의 히토미 다운로더)
+# Hitomi Copy
 
 소스코드는 Hitomi Copy 2 폴더에 있습니다.
 
