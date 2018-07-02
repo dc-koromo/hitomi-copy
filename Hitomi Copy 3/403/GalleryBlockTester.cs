@@ -56,7 +56,7 @@ namespace Hitomi_Copy_3._403
             textBox2.Enabled = false;
             for (int i = 0; i < 100; i++)
             {
-                Notify();
+                lock (notify_lock) Notify();
             }
         }
         
@@ -80,7 +80,7 @@ namespace Hitomi_Copy_3._403
             
             this.Post(() => progressBar1.Value++);
             this.Post(() => label3.Text = $"{progressBar1.Value}/{maximum - minimum + 1} 분석완료");
-            this.Post(() => label5.Text = $"{(new DateTime((DateTime.Now - start).Ticks * (maximum - minimum + 1) / progressBar1.Value)).ToString("HH시간 mm분 ss초")}");
+            this.Post(() => label5.Text = $"{(new DateTime((DateTime.Now - start).Ticks * (maximum - minimum + 1 - progressBar1.Value) / progressBar1.Value)).ToString("HH시간 mm분 ss초")}");
 
             lock (int_lock) mtx--;
             lock (notify_lock) Notify();
@@ -104,6 +104,12 @@ namespace Hitomi_Copy_3._403
         private void timer1_Tick(object sender, EventArgs e)
         {
             lock (result) File.WriteAllText($"snapshot_{DateTime.Now.Ticks.ToString()}.json", LogEssential.SerializeObject(result));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            lock (result) File.WriteAllText("gallery_block.json", LogEssential.SerializeObject(result));
+            PushString("완료됨!");
         }
     }
 }
