@@ -70,41 +70,47 @@ namespace Hitomi_Copy
             lvMyTagRank.Items.AddRange(lvil.ToArray());
 
             pbLoad.Maximum = gallery_count;
-            Task.Run(() => loadArtist(1));
-            gallery_count -= 25;
-            int gallery_c = 2;
-            while (gallery_count > 0)
+
+            foreach (var metadata in data)
             {
-                Task.Run(() => loadArtist(gallery_c++));
-                gallery_count -= 25;
+                if (metadata.Artists != null && (metadata.Language == HitomiSetting.Instance.GetModel().Language || HitomiSetting.Instance.GetModel().Language == "ALL") && metadata.Artists.Contains(artist))
+                {
+                    HitomiArticle article = HitomiCommon.MetadataToArticle(metadata);
+                    Task.Run(() => ProcessLoading(article));
+                }
             }
         }
 
-        private void loadArtist(int Pages)
+        private void ProcessLoading(HitomiArticle article)
         {
+            article.Thumbnail = GetThumbnailAddress(article.Magic);
+
+            string temp = Path.GetTempFileName();
             WebClient wc = new WebClient();
+            wc.Headers["Accept-Encoding"] = "application/x-gzip";
             wc.Encoding = Encoding.UTF8;
-            wc.DownloadStringCompleted += CallbackSearch;
-            wc.DownloadStringAsync(new Uri(HitomiSearch.GetWithArtist(artist, HitomiSetting.Instance.GetModel().Language.ToLower(), Pages.ToString())));
-            LogEssential.Instance.PushLog(() => $"Load artist pages {HitomiSearch.GetWithArtist(artist, HitomiSetting.Instance.GetModel().Language.ToLower(), Pages.ToString())}");
+            wc.DownloadFileCompleted += CallbackThumbnail;
+            wc.DownloadFileAsync(new Uri(HitomiDef.HitomiThumbnail + article.Thumbnail), temp,
+                new Tuple<string, HitomiArticle>(temp, article));
         }
 
-        private void CallbackSearch(object sender, DownloadStringCompletedEventArgs e)
+        private string GetThumbnailAddress(string id)
         {
-            if (e.Error != null) return;
-            
-            foreach (HitomiArticle ha in HitomiParser.ParseArticles(e.Result))
+            try
             {
-                string temp = Path.GetTempFileName();
-                WebClient wc = new WebClient();
-                wc.Headers["Accept-Encoding"] = "application/x-gzip";
-                wc.Encoding = Encoding.UTF8;
-                wc.DownloadFileCompleted += CallbackThumbnail;
-                wc.DownloadFileAsync(new Uri(HitomiDef.HitomiThumbnail + ha.Thumbnail), temp,
-                    new Tuple<string, HitomiArticle>(temp, ha));
+                if (HitomiData.Instance.thumbnail_collection.ContainsKey(id))
+                    return HitomiData.Instance.thumbnail_collection[id];
+                WebClient wc = new WebClient
+                {
+                    Encoding = Encoding.UTF8
+                };
+                return HitomiParser.ParseGallery(wc.DownloadString(
+                    new Uri($"https://hitomi.la/galleries/{id}.html"))).Thumbnail;
             }
+            catch { }
+            return "";
         }
-
+        
         List<PicElement> stayed = new List<PicElement>();
         private void CallbackThumbnail(object sender, AsyncCompletedEventArgs e)
         {
