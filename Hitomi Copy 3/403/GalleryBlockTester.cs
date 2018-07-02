@@ -2,6 +2,8 @@
 
 using hitomi.Parser;
 using Hitomi_Copy.Data;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -110,6 +112,22 @@ namespace Hitomi_Copy_3._403
         {
             lock (result) File.WriteAllText("gallery_block.json", LogEssential.SerializeObject(result));
             PushString("완료됨!");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            List<HitomiArticle> articles = JsonConvert.DeserializeObject<List<HitomiArticle>>(File.ReadAllText(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "hiddendata.json")));
+            articles.AddRange(result);
+            JsonSerializer serializer = new JsonSerializer();
+            serializer.Converters.Add(new JavaScriptDateTimeConverter());
+            serializer.NullValueHandling = NullValueHandling.Ignore;
+
+            using (StreamWriter sw = new StreamWriter(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "hiddendata.json")))
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                serializer.Serialize(writer, articles);
+            }
+            PushString("머지완료됨!");
         }
     }
 }
