@@ -38,6 +38,16 @@ namespace Hitomi_Copy_2
                     await Task.Run(() => HitomiData.Instance.DownloadMetadata());
                 }
 
+                if (HitomiData.Instance.CheckHiddendataExist())
+                {
+                    await Task.Run(() => HitomiData.Instance.LoadHiddendataJson());
+                }
+                else
+                {
+                    lStatus.Text = "히든데이터를 다운로드 중 입니다... 이 작업은 수 분 정도 걸립니다.";
+                    await Task.Run(() => HitomiData.Instance.DownloadHiddendata());
+                }
+
                 (Application.OpenForms["frmMain"] as Hitomi_Copy_3.frmMain).OnTab();
                 Application.OpenForms["frmMain"].BringToFront();
                 this.Close();

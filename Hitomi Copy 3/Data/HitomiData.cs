@@ -28,6 +28,8 @@ namespace Hitomi_Copy.Data
         public static string tag_json_uri = @"https://ltn.hitomi.la/tags.json";
         public static string gallerie_json_uri(int no)=> $"https://ltn.hitomi.la/galleries{no}.json";
 
+        public static string hidden_data_url = @"https://github.com/dc-koromo/hitomi-downloader-2/releases/download/hiddendata/hiddendata.json";
+
         public HitomiTagdataCollection tagdata_collection;
         public List<HitomiMetadata> metadata_collection;
         public Dictionary<string, string> thumbnail_collection;
@@ -49,6 +51,33 @@ namespace Hitomi_Copy.Data
             {
                 serializer.Serialize(writer, metadata_collection);
             }
+        }
+
+        public async Task DownloadHiddendata()
+        {
+            thumbnail_collection = new Dictionary<string, string>();
+            HttpClient client = new HttpClient();
+            client.Timeout = new TimeSpan(0, 0, 0, 0, Timeout.Infinite);
+            var data = await client.GetStringAsync(hidden_data_url);
+
+            List<HitomiArticle> articles = JsonConvert.DeserializeObject<List<HitomiArticle>>(data);
+            JsonSerializer serializer = new JsonSerializer();
+            serializer.Converters.Add(new JavaScriptDateTimeConverter());
+            serializer.NullValueHandling = NullValueHandling.Ignore;
+
+            using (StreamWriter sw = new StreamWriter(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "hiddendata.json")))
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                serializer.Serialize(writer, articles);
+            }
+
+            foreach (var article in articles)
+            {
+                metadata_collection.Add(HitomiCommon.ArticleToMetadata(article));
+                if (!thumbnail_collection.ContainsKey(article.Magic))
+                    thumbnail_collection.Add(article.Magic, article.Thumbnail);
+            }
+            SortMetadata();
         }
 
         public void SortMetadata()
@@ -73,6 +102,10 @@ namespace Hitomi_Copy.Data
         {
             if (CheckMetadataExist())
                 metadata_collection = JsonConvert.DeserializeObject<List<HitomiMetadata>>(File.ReadAllText(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "metadata.json")));
+        }
+
+        public void LoadHiddendataJson()
+        {
             thumbnail_collection = new Dictionary<string, string>();
             if (CheckHiddendataExist())
             {
@@ -219,8 +252,10 @@ namespace Hitomi_Copy.Data
         {
             LogEssential.Instance.PushLog(() => "Start Synchronization...");
             metadata_collection.Clear();
+            thumbnail_collection.Clear();
             await Task.Run(() => DownloadTagdata());
             await Task.Run(() => DownloadMetadata());
+            await Task.Run(() => DownloadHiddendata());
             await Task.Run(() => SortTagdata());
             LogEssential.Instance.PushLog(() => "End Synchronization");
             LogEssential.Instance.PushLog(() => $"Sync Report : {metadata_collection.Count} {tagdata_collection.female.Count}");
