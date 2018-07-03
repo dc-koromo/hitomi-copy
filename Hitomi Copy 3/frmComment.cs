@@ -2,6 +2,7 @@
 
 using Hitomi_Copy_2.EH;
 using System;
+using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -32,7 +33,15 @@ namespace Hitomi_Copy_3
             ExHentaiArticle article = ExHentaiParser.GetArticleData(wc.DownloadString(url));
             label1.Text = $"댓글 : {article.comment.Length} 개";
 
-            article.comment.ToList().ForEach(x => richTextBox1.AppendText($"{x.Item2} - {x.Item1.ToString()}\r\n{x.Item3.Trim()}\r\n\r\n"));
+            int ccc = 0;
+            article.comment.ToList().ForEach(x => {
+                richTextBox1.AppendText($"{x.Item2} - {x.Item1.ToString()}\r\n{x.Item3.Trim()}\r\n\r\n");
+                richTextBox1.Select(ccc, x.Item2.Length);
+                richTextBox1.SelectionFont = new Font(richTextBox1.Font.FontFamily, 11.0F, FontStyle.Bold);
+                richTextBox1.Select(ccc + x.Item2.Length + 3, x.Item1.ToString().Length);
+                richTextBox1.SelectionFont = new Font(richTextBox1.Font.FontFamily, 11.0F);
+                ccc = richTextBox1.Text.Length;
+            });
         }
     }
 }
