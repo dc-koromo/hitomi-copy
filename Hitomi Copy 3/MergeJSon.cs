@@ -74,7 +74,7 @@ namespace Hitomi_Copy_3
                 {
                     serializer.Serialize(writer, hidden_list);
                 }
-                LogEssential.Instance.PushLog(() => $"{log_list.Count.ToString("#,#")}개의 데이터가 성공적으로 '{textBox5.Text}'로 커밋되었습니다.");
+                LogEssential.Instance.PushLog(() => $"{hidden_list.Count.ToString("#,#")}개의 데이터가 성공적으로 '{textBox5.Text}'로 커밋되었습니다.");
             }
             catch (Exception ex)
             {
