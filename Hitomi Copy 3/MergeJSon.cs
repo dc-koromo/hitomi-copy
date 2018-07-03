@@ -1,5 +1,6 @@
 ﻿/* Copyright (C) 2018. Hitomi Parser Developers */
 
+using hitomi.Parser;
 using Hitomi_Copy.Data;
 using Hitomi_Copy_2;
 using Newtonsoft.Json;
@@ -18,6 +19,70 @@ namespace Hitomi_Copy_3
         {
             InitializeComponent();
         }
+
+        #region 히든 데이터
+
+        List<HitomiArticle> hidden_list = new List<HitomiArticle>();
+
+        private void TransactionHidden(string path)
+        {
+            try
+            {
+                List<HitomiArticle> hlm = JsonConvert.DeserializeObject<List<HitomiArticle>>(File.ReadAllText(path));
+                hidden_list.AddRange(hlm);
+                LogEssential.Instance.PushLog(() => $"'{path}'로 부터 {hlm.Count.ToString("#,#")}개가 트랜잭션됨");
+            }
+            catch (Exception ex)
+            {
+                LogEssential.Instance.PushLog(() => $"'{path}'는 옳바른 HitomiArticle가 아닌 것 같습니다. {ex.Message}");
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            foreach (var path in textBox6.Lines)
+            {
+                if (File.Exists(path))
+                {
+                    TransactionHidden(path);
+                }
+                else if (Directory.Exists(path))
+                {
+                    foreach (var file in from x in Directory.GetFiles(path) where x.EndsWith(".json") select x)
+                    {
+                        TransactionHidden(file);
+                    }
+                }
+                else
+                {
+                    LogEssential.Instance.PushLog(() => $"'{path}'은 옳바른 파일또는 경로가 아닙니다.");
+                }
+            }
+            LogEssential.Instance.PushLog(() => $"{hidden_list.Count.ToString("#,#")}개의 데이터가 트랜잭션됨");
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Converters.Add(new JavaScriptDateTimeConverter());
+                serializer.NullValueHandling = NullValueHandling.Ignore;
+
+                using (StreamWriter sw = new StreamWriter(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), textBox5.Text)))
+                using (JsonWriter writer = new JsonTextWriter(sw))
+                {
+                    serializer.Serialize(writer, hidden_list);
+                }
+                LogEssential.Instance.PushLog(() => $"{log_list.Count.ToString("#,#")}개의 데이터가 성공적으로 '{textBox5.Text}'로 커밋되었습니다.");
+            }
+            catch (Exception ex)
+            {
+                LogEssential.Instance.PushLog(() => $"커밋 중 오류가 발생했습니다. {ex.Message}");
+            }
+        }
+
+        #endregion
 
         #region 히토미 로그
 
@@ -142,6 +207,5 @@ namespace Hitomi_Copy_3
         }
 
         #endregion
-
     }
 }
