@@ -14,7 +14,6 @@ namespace Hitomi_Copy_3
     {
         string url;
         Form closed_form;
-        RightClickCloser CloseOnRBtn;
 
         public frmComment(Form closed_form, string url)
         {
@@ -22,7 +21,6 @@ namespace Hitomi_Copy_3
 
             this.url = url;
             this.closed_form = closed_form;
-            CloseOnRBtn = new RightClickCloser(this);
         }
 
 
