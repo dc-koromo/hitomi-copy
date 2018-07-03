@@ -71,8 +71,11 @@ namespace Hitomi_Copy.Data
                 serializer.Serialize(writer, articles);
             }
 
+            HashSet<string> overlap = new HashSet<string>();
+            metadata_collection.ForEach(x => overlap.Add(x.ID.ToString()));
             foreach (var article in articles)
             {
+                if (overlap.Contains(article.Magic)) continue;
                 metadata_collection.Add(HitomiCommon.ArticleToMetadata(article));
                 if (!thumbnail_collection.ContainsKey(article.Magic))
                     thumbnail_collection.Add(article.Magic, article.Thumbnail);
@@ -110,8 +113,11 @@ namespace Hitomi_Copy.Data
             if (CheckHiddendataExist())
             {
                 List<HitomiArticle> articles = JsonConvert.DeserializeObject<List<HitomiArticle>>(File.ReadAllText(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "hiddendata.json")));
+                HashSet<string> overlap = new HashSet<string>();
+                metadata_collection.ForEach(x => overlap.Add(x.ID.ToString()));
                 foreach (var article in articles)
                 {
+                    if (overlap.Contains(article.Magic)) continue;
                     metadata_collection.Add(HitomiCommon.ArticleToMetadata(article));
                     if (!thumbnail_collection.ContainsKey(article.Magic))
                         thumbnail_collection.Add(article.Magic, article.Thumbnail);
