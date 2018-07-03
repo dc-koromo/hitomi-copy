@@ -69,7 +69,11 @@ namespace Hitomi_Copy_2
             {
                 using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
                 {
-                    if ((response.StatusCode == HttpStatusCode.OK ||
+                    if (response.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        LogEssential.Instance.PushLog(() => $"404 Not Found {uri}");
+                    }
+                    else if ((response.StatusCode == HttpStatusCode.OK ||
                         response.StatusCode == HttpStatusCode.Moved ||
                         response.StatusCode == HttpStatusCode.Redirect) &&
                         response.ContentType.StartsWith("image", StringComparison.OrdinalIgnoreCase))

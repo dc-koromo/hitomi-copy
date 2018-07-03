@@ -92,8 +92,9 @@ namespace Hitomi_Copy_3._403
         {
             lock (int_lock)
             {
-                if (status < maximum) { Task.Run(() => process(status)); status++; mtx++; }
-                if (status >= maximum && mtx == 0)
+                int i = status;
+                if (i < maximum) { Task.Run(() => process(i)); status++; mtx++; }
+                if (i >= maximum && mtx == 0)
                     lock (result) File.WriteAllText("gallery_block.json", LogEssential.SerializeObject(result));
             }
         }
@@ -118,6 +119,17 @@ namespace Hitomi_Copy_3._403
         {
             List<HitomiArticle> articles = JsonConvert.DeserializeObject<List<HitomiArticle>>(File.ReadAllText(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "hiddendata.json")));
             articles.AddRange(result);
+            HashSet<string> overlap = new HashSet<string>();
+            List<HitomiArticle> pure = new List<HitomiArticle>();
+            foreach (var article in articles)
+            {
+                if (!overlap.Contains(article.Magic))
+                {
+                    pure.Add(article);
+                    overlap.Add(article.Magic);
+                }
+            }
+
             JsonSerializer serializer = new JsonSerializer();
             serializer.Converters.Add(new JavaScriptDateTimeConverter());
             serializer.NullValueHandling = NullValueHandling.Ignore;
@@ -125,7 +137,7 @@ namespace Hitomi_Copy_3._403
             using (StreamWriter sw = new StreamWriter(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "hiddendata.json")))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
-                serializer.Serialize(writer, articles);
+                serializer.Serialize(writer, pure);
             }
             PushString("머지완료됨!");
         }
