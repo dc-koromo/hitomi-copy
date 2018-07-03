@@ -254,7 +254,20 @@ namespace Hitomi_Copy
             if (result != "")
                 System.Diagnostics.Process.Start(result);
             else
-                MessageBox.Show("Not found!", "Hitomi Copy", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("익헨 주소를 찾지 못했습니다.", "Hitomi Copy", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            string result = "";
+            if (pic != null)
+                result = ExHentaiTool.GetAddressFromMagicTitle(pic.Article.Magic, pic.Article.OriginalTitle);
+            else
+                result = ExHentaiTool.GetAddressFromMagicTitle(metadata.ID.ToString(), metadata.Name);
+            if (result != "")
+                (new frmComment(result)).Show();
+            else
+                MessageBox.Show("익헨 주소를 찾지 못했습니다.", "Hitomi Copy", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

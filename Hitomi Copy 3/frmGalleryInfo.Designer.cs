@@ -53,6 +53,7 @@
             this.lDate = new System.Windows.Forms.Label();
             this.bPreview = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,9 +146,9 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Font = new System.Drawing.Font("맑은 고딕", 13F);
-            this.button1.Location = new System.Drawing.Point(628, 345);
+            this.button1.Location = new System.Drawing.Point(575, 345);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(163, 41);
+            this.button1.Size = new System.Drawing.Size(137, 41);
             this.button1.TabIndex = 15;
             this.button1.Text = "작가 찾기";
             this.button1.UseVisualStyleBackColor = true;
@@ -157,9 +158,9 @@
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Font = new System.Drawing.Font("맑은 고딕", 13F);
-            this.button2.Location = new System.Drawing.Point(628, 392);
+            this.button2.Location = new System.Drawing.Point(575, 392);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(163, 41);
+            this.button2.Size = new System.Drawing.Size(137, 41);
             this.button2.TabIndex = 16;
             this.button2.Text = "시리즈 찾기";
             this.button2.UseVisualStyleBackColor = true;
@@ -235,9 +236,9 @@
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button5.Font = new System.Drawing.Font("맑은 고딕", 13F);
-            this.button5.Location = new System.Drawing.Point(797, 392);
+            this.button5.Location = new System.Drawing.Point(718, 392);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(163, 41);
+            this.button5.Size = new System.Drawing.Size(137, 41);
             this.button5.TabIndex = 23;
             this.button5.Text = "캐릭터 찾기";
             this.button5.UseVisualStyleBackColor = true;
@@ -247,9 +248,9 @@
             // 
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button6.Font = new System.Drawing.Font("맑은 고딕", 13F);
-            this.button6.Location = new System.Drawing.Point(797, 345);
+            this.button6.Location = new System.Drawing.Point(718, 345);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(163, 41);
+            this.button6.Size = new System.Drawing.Size(137, 41);
             this.button6.TabIndex = 24;
             this.button6.Text = "그룹 찾기";
             this.button6.UseVisualStyleBackColor = true;
@@ -303,9 +304,9 @@
             // 
             this.bPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bPreview.Font = new System.Drawing.Font("맑은 고딕", 13F);
-            this.bPreview.Location = new System.Drawing.Point(459, 345);
+            this.bPreview.Location = new System.Drawing.Point(432, 345);
             this.bPreview.Name = "bPreview";
-            this.bPreview.Size = new System.Drawing.Size(163, 41);
+            this.bPreview.Size = new System.Drawing.Size(137, 41);
             this.bPreview.TabIndex = 28;
             this.bPreview.Text = "미리보기";
             this.bPreview.UseVisualStyleBackColor = true;
@@ -315,13 +316,25 @@
             // 
             this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button7.Font = new System.Drawing.Font("맑은 고딕", 13F);
-            this.button7.Location = new System.Drawing.Point(459, 392);
+            this.button7.Location = new System.Drawing.Point(432, 392);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(163, 41);
+            this.button7.Size = new System.Drawing.Size(137, 41);
             this.button7.TabIndex = 29;
             this.button7.Text = "익헨에서 열기";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button8
+            // 
+            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button8.Font = new System.Drawing.Font("맑은 고딕", 13F);
+            this.button8.Location = new System.Drawing.Point(861, 392);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(137, 41);
+            this.button8.TabIndex = 30;
+            this.button8.Text = "댓글 보기";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // frmGalleryInfo
             // 
@@ -329,6 +342,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1286, 470);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.bPreview);
             this.Controls.Add(this.lDate);
@@ -396,5 +410,6 @@
         private System.Windows.Forms.Label lDate;
         private System.Windows.Forms.Button bPreview;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
     }
 }
