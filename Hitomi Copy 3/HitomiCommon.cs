@@ -51,8 +51,24 @@ namespace Hitomi_Copy_2
         {
             switch (lang)
             {
-            case "한국어": return "korean";
-            case "日本語": return "japanese";
+                case "한국어": return "korean";
+                case "日本語": return "japanese";
+                case "English": return "english";
+                case "Español": return "spanish";
+                case "ไทย": return "thai";
+                case "Deutsch": return "german";
+                case "中文": return "chinese";
+                case "Português": return "portuguese";
+                case "Français": return "french";
+                case "Tagalog": return "tagalog";
+                case "Русский": return "russian";
+                case "Italiano": return "italian";
+                case "polski": return "polish";
+                case "tiếng việt": return "vietnamese";
+                case "magyar": return "hungarian";
+                case "Čeština": return "czech";
+                case "Bahasa Indonesia": return "indonesian";
+                case "العربية": return "arabic";
             }
 
             return lang;
