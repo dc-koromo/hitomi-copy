@@ -70,6 +70,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.이미지로저장SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
+            this.bRelatedTags = new MetroFramework.Controls.MetroButton();
             this.bStat = new MetroFramework.Controls.MetroButton();
             this.bDetailSetting = new MetroFramework.Controls.MetroButton();
             this.label2 = new System.Windows.Forms.Label();
@@ -91,7 +92,6 @@
             this.lMemoryUsage = new MetroFramework.Controls.MetroLabel();
             this.MemoryUsageUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.speed_timer = new System.Windows.Forms.Timer(this.components);
-            this.bRelatedTags = new MetroFramework.Controls.MetroButton();
             this.MainTab.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
@@ -665,6 +665,19 @@
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
             // 
+            // bRelatedTags
+            // 
+            this.bRelatedTags.Enabled = false;
+            this.bRelatedTags.Location = new System.Drawing.Point(214, 26);
+            this.bRelatedTags.Name = "bRelatedTags";
+            this.bRelatedTags.Size = new System.Drawing.Size(84, 32);
+            this.bRelatedTags.Style = MetroFramework.MetroColorStyle.Pink;
+            this.bRelatedTags.TabIndex = 22;
+            this.bRelatedTags.Text = "연관태그";
+            this.bRelatedTags.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.bRelatedTags.UseSelectable = true;
+            this.bRelatedTags.Click += new System.EventHandler(this.bRelatedTags_Click);
+            // 
             // bStat
             // 
             this.bStat.Enabled = false;
@@ -975,19 +988,6 @@
             this.speed_timer.Interval = 1000;
             this.speed_timer.Tick += new System.EventHandler(this.speed_timer_Tick);
             // 
-            // bRelatedTags
-            // 
-            this.bRelatedTags.Enabled = false;
-            this.bRelatedTags.Location = new System.Drawing.Point(214, 26);
-            this.bRelatedTags.Name = "bRelatedTags";
-            this.bRelatedTags.Size = new System.Drawing.Size(84, 32);
-            this.bRelatedTags.Style = MetroFramework.MetroColorStyle.Pink;
-            this.bRelatedTags.TabIndex = 22;
-            this.bRelatedTags.Text = "연관태그";
-            this.bRelatedTags.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.bRelatedTags.UseSelectable = true;
-            this.bRelatedTags.Click += new System.EventHandler(this.bRelatedTags_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1001,7 +1001,6 @@
             this.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1156, 616);
             this.Name = "frmMain";
             this.Padding = new System.Windows.Forms.Padding(20, 75, 20, 25);

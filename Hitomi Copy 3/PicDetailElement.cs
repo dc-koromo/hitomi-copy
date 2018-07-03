@@ -294,6 +294,15 @@ namespace Hitomi_Copy_3
             }
         }
 
+        private void metroButton5_Click(object sender, EventArgs e)
+        {
+            string result = ExHentaiTool.GetAddressFromMagicTitle(ha.Magic, ha.OriginalTitle);
+            if (result != "")
+                (new frmComment(result)).Show();
+            else
+                MessageBox.Show("익헨 주소를 찾지 못했습니다.", "Hitomi Copy", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         private void PicDetailElement_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             (new frmGalleryInfo(parent, this)).Show(); selected = false; BackColor = Color.GhostWhite;

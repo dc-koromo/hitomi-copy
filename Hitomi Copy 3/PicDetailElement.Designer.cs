@@ -47,6 +47,7 @@
             this.metroButton4 = new MetroFramework.Controls.MetroButton();
             this.metroButton3 = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.metroButton5 = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
             this.SuspendLayout();
             // 
@@ -213,9 +214,9 @@
             // 
             // metroButton4
             // 
-            this.metroButton4.Location = new System.Drawing.Point(963, 140);
+            this.metroButton4.Location = new System.Drawing.Point(963, 145);
             this.metroButton4.Name = "metroButton4";
-            this.metroButton4.Size = new System.Drawing.Size(119, 43);
+            this.metroButton4.Size = new System.Drawing.Size(119, 38);
             this.metroButton4.TabIndex = 41;
             this.metroButton4.Text = "히토미에서 열기";
             this.metroButton4.UseSelectable = true;
@@ -241,11 +242,22 @@
             this.metroButton2.UseSelectable = true;
             this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
             // 
+            // metroButton5
+            // 
+            this.metroButton5.Location = new System.Drawing.Point(963, 112);
+            this.metroButton5.Name = "metroButton5";
+            this.metroButton5.Size = new System.Drawing.Size(119, 27);
+            this.metroButton5.TabIndex = 42;
+            this.metroButton5.Text = "댓글 보기";
+            this.metroButton5.UseSelectable = true;
+            this.metroButton5.Click += new System.EventHandler(this.metroButton5_Click);
+            // 
             // PicDetailElement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.metroButton5);
             this.Controls.Add(this.metroButton4);
             this.Controls.Add(this.metroButton3);
             this.Controls.Add(this.metroButton2);
@@ -301,5 +313,6 @@
         private MetroFramework.Controls.MetroButton metroButton4;
         private MetroFramework.Controls.MetroButton metroButton3;
         private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroButton metroButton5;
     }
 }
