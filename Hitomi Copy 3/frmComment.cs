@@ -13,11 +13,14 @@ namespace Hitomi_Copy_3
     public partial class frmComment : Form
     {
         string url;
+        RightClickCloser CloseOnRBtn;
+
         public frmComment(string url)
         {
             InitializeComponent();
 
             this.url = url;
+            CloseOnRBtn = new RightClickCloser(this);
         }
 
         private void button1_Click(object sender, EventArgs e)
