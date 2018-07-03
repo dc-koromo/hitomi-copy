@@ -85,6 +85,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Comment";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmComment_FormClosed);
             this.Load += new System.EventHandler(this.frmComment_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

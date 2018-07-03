@@ -13,14 +13,22 @@ namespace Hitomi_Copy_3
     public partial class frmComment : Form
     {
         string url;
+        Form closed_form;
         RightClickCloser CloseOnRBtn;
 
-        public frmComment(string url)
+        public frmComment(Form closed_form, string url)
         {
             InitializeComponent();
 
             this.url = url;
+            this.closed_form = closed_form;
             CloseOnRBtn = new RightClickCloser(this);
+        }
+
+
+        private void frmComment_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try { closed_form.BringToFront(); } catch { }
         }
 
         private void button1_Click(object sender, EventArgs e)
