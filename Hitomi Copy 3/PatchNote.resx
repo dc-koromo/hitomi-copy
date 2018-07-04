@@ -118,7 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>v3.29
+    <value>v3.30
+ - 긴급 업데이트 입니다. 히토미가 다운로드안되는 오류를 수정하였습니다.
+
+
+v3.29
  - 히토미 카피 타이틀이 Hitom Copy에서 Hitomi Copy로 수정되었습니다. 이 심각한 버그는 3.0 초기버전부터 존재했던 버그입니다 :)
 
  - 마루마루 동기화 기능이 실험적으로 추가됩니다. Log에서 'mm' 명령어를 사용해 최신 목록을 업데이트하고 갱신해보세요!
@@ -132,7 +136,6 @@
  - 히든데이터 Merger가 추가됩니다. 'merge' 툴에서 사용할 수 있습니다.
 
  - 댓글 보기 기능이 추가되었습니다. 3.28버전에 넣은 줄 알았는데 아니였더군요 ;; ㅋㅋ;;
-
 
 v3.28
  - 이제 히든 데이터(403, Forbidden)를 검색할 수 있습니다!! 프로그램 시작시 자동으로 데이터를 다운받으며, 데이터 동기화시 자동으로 동기화됩니다!!
