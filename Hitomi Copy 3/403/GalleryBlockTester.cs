@@ -70,7 +70,7 @@ namespace Hitomi_Copy_3._403
                 WebClient wc = new WebClient();
                 wc.Encoding = Encoding.UTF8;
                 string x;
-                x = wc.DownloadString("https://hitomi.la/galleryblock/" + i + ".html");
+                x = wc.DownloadString("https://ltn.hitomi.la/galleryblock/" + i + ".html");
                 result.Add(HitomiParser.ParseArticles(x)[0]);
                 PushString($"New! {i}");
             }
