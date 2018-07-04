@@ -699,6 +699,10 @@ namespace Hitomi_Copy_3
                 {
                     (new GalleryBlockTester()).Show();
                 }
+                else if (cmd == "latest")
+                {
+                    PushString($"{HitomiData.Instance.metadata_collection[0].ID}");
+                }
                 else if (cmd == "help")
                 {
                     PushString("Realtime Variable Update System");
@@ -722,6 +726,7 @@ namespace Hitomi_Copy_3
                     PushString("tagr : Rebuild tagdata.");
                     PushString("rtt (option) : Test tool for related tags.");
                     PushString("ct, gbt : Hidden galleris transaction tools.");
+                    PushString("latest : Get latest metadata id.");
                 }
                 else if (cmd == "fucs")
                 {
