@@ -380,7 +380,7 @@ namespace Hitomi_Copy_3
         public List<Tuple<string, MMArticle>> images_uri = new List<Tuple<string, MMArticle>>();
         public List<Tuple<string, string>> download_url_list = new List<Tuple<string, string>>();
 
-        private async void DownloadMMAsync(string url)
+        public async void DownloadMMAsync(string url, List<string> expect = null)
         {
             WebClient wc = new WebClient();
             wc.Encoding = Encoding.UTF8;
@@ -394,7 +394,7 @@ namespace Hitomi_Copy_3
 
             LogEssential.Instance.PushLog(() => $"Download MM {url}");
             LogEssential.Instance.PushLog(archives);
-            await Task.Run(() => DownloadArchivesAsync(archives, MMParser.GetTitle(html)));
+            await Task.Run(() => DownloadArchivesAsync(archives, MMParser.GetTitle(html), expect));
             LogEssential.Instance.PushLog(() => $"Merge Successful!");
             var list = MMSetting.Instance.GetModel().Articles.ToList();
             list.Add(new MMArticleDataModel() {
@@ -409,11 +409,12 @@ namespace Hitomi_Copy_3
             await Task.Run(() => DownloadImages());
         }
 
-        private void DownloadArchivesAsync(List<string> urls, string title)
+        private void DownloadArchivesAsync(List<string> urls, string title, List<string> expect = null)
         {
             List<Task> tasks = new List<Task>();
             foreach (var url in urls)
             {
+                if (expect != null && expect.Contains(url)) continue;
                 tasks.Add(Task.Run(() => DownloadArchives(url, title)));
                 Thread.Sleep(500);
             }

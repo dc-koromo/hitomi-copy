@@ -703,6 +703,10 @@ namespace Hitomi_Copy_3
                 {
                     PushString($"{HitomiData.Instance.metadata_collection[0].ID}");
                 }
+                else if (cmd == "mm")
+                {
+                    (new frmMarumaru()).Show();
+                }
                 else if (cmd == "help")
                 {
                     PushString("Realtime Variable Update System");
@@ -727,6 +731,7 @@ namespace Hitomi_Copy_3
                     PushString("rtt (option) : Test tool for related tags.");
                     PushString("ct, gbt : Hidden galleris transaction tools.");
                     PushString("latest : Get latest metadata id.");
+                    PushString("mm : Show marumaru manager.");
                 }
                 else if (cmd == "fucs")
                 {

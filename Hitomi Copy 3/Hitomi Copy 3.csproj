@@ -282,7 +282,6 @@
     <Compile Include="MM\MMCaptcha.cs" />
     <Compile Include="MM\MMParser.cs" />
     <Compile Include="MM\MMSetting.cs" />
-    <Compile Include="MM\MMUpdateChecker.cs" />
     <Compile Include="PatchNote.cs">
       <SubType>Form</SubType>
     </Compile>
