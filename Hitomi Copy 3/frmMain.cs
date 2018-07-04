@@ -436,22 +436,30 @@ namespace Hitomi_Copy_3
             wc.Headers.Add(HttpRequestHeader.Referer, "http://203.233.24.233/tm/?a=CR&b=WIN&c=799001634617&d=10003&e=2013&f=d2FzYWJpc3lydXAuY29tL2FyY2hpdmVzLzQyODA2MQ==&g=1525401005814&h=1525401004232&y=0&z=0&x=1&w=2018-02-12&in=2013_00009301&id=20180504");
             wc.Headers.Add(HttpRequestHeader.Upgrade, "1");
 
-            string html = wc.DownloadString(url);
-            var images = MMParser.ParseArchives(html);
-            MMArticle ta = new MMArticle();
-            ta.Title = title;
-            ta.Archive = MMParser.GetArchive(html);
-            LogEssential.Instance.PushLog(() => $"Download MM Archives {url}");
-            LogEssential.Instance.PushLog(ta);
-            foreach (var uri in images)
+            try
             {
-                IncrementProgressBarMax();
-                UpdateLabel($"{pbTarget.Value}/{pbTarget.Maximum}");
-                lock (images) images_uri.Add(new Tuple<string, MMArticle>(uri, ta));
+                string html = wc.DownloadString(url);
+
+                var images = MMParser.ParseArchives(html);
+                MMArticle ta = new MMArticle();
+                ta.Title = title;
+                ta.Archive = MMParser.GetArchive(html);
+                LogEssential.Instance.PushLog(() => $"Download MM Archives {url}");
+                LogEssential.Instance.PushLog(ta);
+                foreach (var uri in images)
+                {
+                    IncrementProgressBarMax();
+                    UpdateLabel($"{pbTarget.Value}/{pbTarget.Maximum}");
+                    lock (images) images_uri.Add(new Tuple<string, MMArticle>(uri, ta));
+                }
+                lock (download_url_list) download_url_list.Add(new Tuple<string, string>(url, ta.Archive));
+                if (HitomiSetting.Instance.GetModel().DetailedLog)
+                    LogEssential.Instance.PushLog(images);
             }
-            lock (download_url_list) download_url_list.Add(new Tuple<string, string>(url, ta.Archive));
-            if(HitomiSetting.Instance.GetModel().DetailedLog)
-                LogEssential.Instance.PushLog(images);
+            catch (Exception ex)
+            {
+                LogEssential.Instance.PushLog(() => $"[MM Error] {url} {ex.Message}");
+            }
         }
 
         private void DownloadImages()
