@@ -48,6 +48,8 @@
             this.metroButton3 = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroButton5 = new MetroFramework.Controls.MetroButton();
+            this.lLang = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
             this.SuspendLayout();
             // 
@@ -252,11 +254,33 @@
             this.metroButton5.UseSelectable = true;
             this.metroButton5.Click += new System.EventHandler(this.metroButton5_Click);
             // 
+            // lLang
+            // 
+            this.lLang.AutoSize = true;
+            this.lLang.Font = new System.Drawing.Font("맑은 고딕", 12F);
+            this.lLang.Location = new System.Drawing.Point(587, 91);
+            this.lLang.Name = "lLang";
+            this.lLang.Size = new System.Drawing.Size(58, 21);
+            this.lLang.TabIndex = 44;
+            this.lLang.Text = "코리안";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("맑은 고딕", 12F);
+            this.label9.Location = new System.Drawing.Point(529, 91);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(52, 21);
+            this.label9.TabIndex = 43;
+            this.label9.Text = "언어 :";
+            // 
             // PicDetailElement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lLang);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.metroButton5);
             this.Controls.Add(this.metroButton4);
             this.Controls.Add(this.metroButton3);
@@ -314,5 +338,7 @@
         private MetroFramework.Controls.MetroButton metroButton3;
         private MetroFramework.Controls.MetroButton metroButton2;
         private MetroFramework.Controls.MetroButton metroButton5;
+        private System.Windows.Forms.Label lLang;
+        private System.Windows.Forms.Label label9;
     }
 }

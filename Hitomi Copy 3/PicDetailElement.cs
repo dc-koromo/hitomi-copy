@@ -211,6 +211,12 @@ namespace Hitomi_Copy_3
                 });
             if (HitomiSetting.Instance.GetModel().UsingExHentaiBaseOpener)
                 metroButton4.Text = "익헨에서 열기";
+            lLang.Text = ha.Language;
+            if (HitomiSetting.Instance.GetModel().Language != "ALL") {
+                label9.Dispose();
+                lLang.Dispose();
+            }
+
             
             for (int i = 0; i < Controls.Count; i++)
             {
