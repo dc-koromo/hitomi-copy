@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea31 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend31 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series31 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea32 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend32 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series32 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea33 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend33 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series33 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea34 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend34 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series34 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea35 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend35 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series35 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.StatsTab = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
             this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -130,7 +130,7 @@
             this.metroTabPage3.Controls.Add(this.comboBox1);
             this.metroTabPage3.HorizontalScrollbarBarColor = true;
             this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage3.HorizontalScrollbarSize = 6;
+            this.metroTabPage3.HorizontalScrollbarSize = 5;
             this.metroTabPage3.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage3.Name = "metroTabPage3";
             this.metroTabPage3.Size = new System.Drawing.Size(1128, 509);
@@ -145,17 +145,17 @@
             this.chart4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea31.Name = "ChartArea1";
-            this.chart4.ChartAreas.Add(chartArea31);
-            legend31.Name = "Legend1";
-            this.chart4.Legends.Add(legend31);
+            chartArea1.Name = "ChartArea1";
+            this.chart4.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart4.Legends.Add(legend1);
             this.chart4.Location = new System.Drawing.Point(3, 31);
             this.chart4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chart4.Name = "chart4";
-            series31.ChartArea = "ChartArea1";
-            series31.Legend = "Legend1";
-            series31.Name = "Series1";
-            this.chart4.Series.Add(series31);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart4.Series.Add(series1);
             this.chart4.Size = new System.Drawing.Size(1122, 474);
             this.chart4.TabIndex = 7;
             this.chart4.Text = "chart4";
@@ -216,7 +216,7 @@
             this.metroTabPage1.Controls.Add(this.metroLabel1);
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage1.HorizontalScrollbarSize = 6;
+            this.metroTabPage1.HorizontalScrollbarSize = 5;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.metroTabPage1.Name = "metroTabPage1";
@@ -248,17 +248,17 @@
             this.chart2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea32.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea32);
-            legend32.Name = "Legend1";
-            this.chart2.Legends.Add(legend32);
+            chartArea2.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart2.Legends.Add(legend2);
             this.chart2.Location = new System.Drawing.Point(6, 14);
             this.chart2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chart2.Name = "chart2";
-            series32.ChartArea = "ChartArea1";
-            series32.Legend = "Legend1";
-            series32.Name = "Series1";
-            this.chart2.Series.Add(series32);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart2.Series.Add(series2);
             this.chart2.Size = new System.Drawing.Size(1098, 208);
             this.chart2.TabIndex = 1;
             this.chart2.Text = "chart2";
@@ -283,17 +283,17 @@
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea33.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea33);
-            legend33.Name = "Legend1";
-            this.chart1.Legends.Add(legend33);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(6, 14);
             this.chart1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chart1.Name = "chart1";
-            series33.ChartArea = "ChartArea1";
-            series33.Legend = "Legend1";
-            series33.Name = "Series1";
-            this.chart1.Series.Add(series33);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(1098, 198);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -321,7 +321,7 @@
             this.metroTabPage2.Controls.Add(this.chart3);
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.HorizontalScrollbarSize = 6;
+            this.metroTabPage2.HorizontalScrollbarSize = 5;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage2.Name = "metroTabPage2";
             this.metroTabPage2.Size = new System.Drawing.Size(1128, 509);
@@ -336,17 +336,17 @@
             this.chart3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea34.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea34);
-            legend34.Name = "Legend1";
-            this.chart3.Legends.Add(legend34);
+            chartArea4.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chart3.Legends.Add(legend4);
             this.chart3.Location = new System.Drawing.Point(3, 4);
             this.chart3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chart3.Name = "chart3";
-            series34.ChartArea = "ChartArea1";
-            series34.Legend = "Legend1";
-            series34.Name = "Series1";
-            this.chart3.Series.Add(series34);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chart3.Series.Add(series4);
             this.chart3.Size = new System.Drawing.Size(1122, 501);
             this.chart3.TabIndex = 2;
             this.chart3.Text = "chart3";
@@ -356,7 +356,7 @@
             this.metroTabPage4.Controls.Add(this.chart5);
             this.metroTabPage4.HorizontalScrollbarBarColor = true;
             this.metroTabPage4.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage4.HorizontalScrollbarSize = 6;
+            this.metroTabPage4.HorizontalScrollbarSize = 5;
             this.metroTabPage4.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage4.Name = "metroTabPage4";
             this.metroTabPage4.Size = new System.Drawing.Size(1128, 509);
@@ -371,17 +371,17 @@
             this.chart5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea35.Name = "ChartArea1";
-            this.chart5.ChartAreas.Add(chartArea35);
-            legend35.Name = "Legend1";
-            this.chart5.Legends.Add(legend35);
+            chartArea5.Name = "ChartArea1";
+            this.chart5.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chart5.Legends.Add(legend5);
             this.chart5.Location = new System.Drawing.Point(3, 4);
             this.chart5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chart5.Name = "chart5";
-            series35.ChartArea = "ChartArea1";
-            series35.Legend = "Legend1";
-            series35.Name = "Series1";
-            this.chart5.Series.Add(series35);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chart5.Series.Add(series5);
             this.chart5.Size = new System.Drawing.Size(1122, 501);
             this.chart5.TabIndex = 3;
             this.chart5.Text = "chart5";
@@ -394,7 +394,7 @@
             this.metroTabPage5.Controls.Add(this.groupBox3);
             this.metroTabPage5.HorizontalScrollbarBarColor = true;
             this.metroTabPage5.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage5.HorizontalScrollbarSize = 6;
+            this.metroTabPage5.HorizontalScrollbarSize = 5;
             this.metroTabPage5.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage5.Name = "metroTabPage5";
             this.metroTabPage5.Size = new System.Drawing.Size(1128, 509);
@@ -664,7 +664,6 @@
             this.Controls.Add(this.StatsTab);
             this.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1156, 616);
             this.Name = "frmStatistics";
