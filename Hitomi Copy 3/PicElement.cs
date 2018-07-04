@@ -225,7 +225,10 @@ namespace Hitomi_Copy
                 this.Height = pannelh;
                 this.Controls.Add(pb);
             }
-            catch { }
+            catch (Exception ex)
+            {
+                LogEssential.Instance.PushLog(() => $"[Pic Element] {ex.Message}");
+            }
         }
 
         public bool Selected
