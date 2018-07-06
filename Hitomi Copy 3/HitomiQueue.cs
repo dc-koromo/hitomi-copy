@@ -43,7 +43,7 @@ namespace Hitomi_Copy_2
         public HitomiQueue(CallBack notify, DownloadSizeCallBack notify_size, DownloadStatusCallBack notify_status, RetryCallBack retry)
         {
             capacity = HitomiSetting.Instance.GetModel().Thread;
-            ServicePointManager.DefaultConnectionLimit = 128;
+            ServicePointManager.DefaultConnectionLimit = 1048576;
             callback = notify;
             download_callback = notify_size;
             status_callback = notify_status;

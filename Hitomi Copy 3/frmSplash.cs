@@ -2,6 +2,7 @@
 
 using Hitomi_Copy.Data;
 using System;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,6 +17,7 @@ namespace Hitomi_Copy_2
 
         private async void frmSplash_Load(object sender, EventArgs e)
         {
+            ServicePointManager.DefaultConnectionLimit = 1048576;
             try
             {
                 if (HitomiData.Instance.CheckTagdataExist())

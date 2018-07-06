@@ -37,7 +37,7 @@ namespace Hitomi_Copy.Data
         #region Metadata
         public async Task DownloadMetadata()
         {
-            ServicePointManager.DefaultConnectionLimit = 128;
+            ServicePointManager.DefaultConnectionLimit = 1048576;
             metadata_collection = new List<HitomiMetadata>();
             await Task.WhenAll(Enumerable.Range(0, number_of_gallery_jsons).Select(no => downloadMetadata(no)));
             SortMetadata();

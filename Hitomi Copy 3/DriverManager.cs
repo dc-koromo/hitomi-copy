@@ -44,7 +44,7 @@ namespace Hitomi_Copy_3
         {
             // Set capacity to processor threads count
             capacity = HitomiSetting.Instance.GetModel().Thread;
-            ServicePointManager.DefaultConnectionLimit = 128;
+            ServicePointManager.DefaultConnectionLimit = 1048576;
             callback = notify;
             download_callback = notify_size;
             status_callback = notify_status;
