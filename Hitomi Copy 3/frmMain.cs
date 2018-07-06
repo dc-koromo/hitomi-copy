@@ -84,6 +84,7 @@ namespace Hitomi_Copy_3
             Task.Run(() => CheckUpdate());
             Task.Run(() => CheckDriver());
             Task.Run(() => UpdateStatistics());
+            Task.Run(() => MMUpdate.Instance.UpdateCheck());
 
             EmitTip();
 
@@ -381,6 +382,7 @@ namespace Hitomi_Copy_3
         public List<Tuple<string, string>> download_url_list = new List<Tuple<string, string>>();
         public bool mmbusy = false;
         public Queue<Tuple<string, List<string>>> mmqueue = new Queue<Tuple<string, List<string>>>();
+        public List<Tuple<string, string>> mmnot_found = new List<Tuple<string, string>>();
         
         public async void DownloadMMAsync(string url, List<string> expect = null)
         {
@@ -399,6 +401,7 @@ namespace Hitomi_Copy_3
             var archives = MMParser.ParseManga(html);
             images_uri.Clear();
             download_url_list.Clear();
+            mmnot_found.Clear();
 
             LogEssential.Instance.PushLog(() => $"Download MM {url}");
             LogEssential.Instance.PushLog(archives);
@@ -413,7 +416,8 @@ namespace Hitomi_Copy_3
                     Title = MMParser.GetTitle(html),
                     ArticleUrl = url,
                     ThumbnailUrl = MMParser.GetThumbnailAddress(html),
-                    DownloadUrlList = download_url_list.ToArray()
+                    DownloadUrlList = download_url_list.ToArray(),
+                    NotFound = mmnot_found.ToArray()
                 });
                 MMSetting.Instance.GetModel().Articles = list.ToArray();
             }
@@ -426,6 +430,7 @@ namespace Hitomi_Copy_3
                         var tlist = list[i].DownloadUrlList.ToList();
                         tlist.AddRange(download_url_list);
                         list[i].DownloadUrlList = tlist.ToArray();
+                        list[i].NotFound = mmnot_found.ToArray();
                         break;
                     }
                 }
@@ -491,6 +496,7 @@ namespace Hitomi_Copy_3
             catch (Exception ex)
             {
                 LogEssential.Instance.PushLog(() => $"[MM Error] {url} {ex.Message}");
+                lock (mmnot_found) mmnot_found.Add(new Tuple<string, string>(url, title));
             }
         }
 

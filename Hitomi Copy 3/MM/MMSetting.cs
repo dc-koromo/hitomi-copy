@@ -19,6 +19,8 @@ namespace Hitomi_Copy_3.MM
         public Tuple<string, string>[] DownloadUrlList;
         [JsonProperty]
         public DateTime LatestDownload;
+        [JsonProperty]
+        public Tuple<string, string>[] NotFound;
     }
 
     public class MMSettingModel
