@@ -379,7 +379,7 @@ namespace Hitomi_Copy_3
         #region 다운로드 - 마루마루
         public List<Tuple<string, MMArticle>> images_uri = new List<Tuple<string, MMArticle>>();
         public List<Tuple<string, string>> download_url_list = new List<Tuple<string, string>>();
-
+        
         public async void DownloadMMAsync(string url, List<string> expect = null)
         {
             WebClient wc = new WebClient();
@@ -397,14 +397,31 @@ namespace Hitomi_Copy_3
             await Task.Run(() => DownloadArchivesAsync(archives, MMParser.GetTitle(html), expect));
             LogEssential.Instance.PushLog(() => $"Merge Successful!");
             var list = MMSetting.Instance.GetModel().Articles.ToList();
-            list.Add(new MMArticleDataModel() {
-                LatestDownload = DateTime.Now,
-                Title = MMParser.GetTitle(html),
-                ArticleUrl = url,
-                ThumbnailUrl = MMParser.GetThumbnailAddress(html),
-                DownloadUrlList = download_url_list.ToArray()
-            });
-            MMSetting.Instance.GetModel().Articles = list.ToArray();
+            if (expect == null)
+            {
+                list.Add(new MMArticleDataModel()
+                {
+                    LatestDownload = DateTime.Now,
+                    Title = MMParser.GetTitle(html),
+                    ArticleUrl = url,
+                    ThumbnailUrl = MMParser.GetThumbnailAddress(html),
+                    DownloadUrlList = download_url_list.ToArray()
+                });
+                MMSetting.Instance.GetModel().Articles = list.ToArray();
+            }
+            else
+            {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (list[i].ArticleUrl == url)
+                    {
+                        var tlist = list[i].DownloadUrlList.ToList();
+                        tlist.AddRange(download_url_list);
+                        list[i].DownloadUrlList = tlist.ToArray();
+                        break;
+                    }
+                }
+            }
             MMSetting.Instance.Save();
             await Task.Run(() => DownloadImages());
         }
