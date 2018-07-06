@@ -379,9 +379,17 @@ namespace Hitomi_Copy_3
         #region 다운로드 - 마루마루
         public List<Tuple<string, MMArticle>> images_uri = new List<Tuple<string, MMArticle>>();
         public List<Tuple<string, string>> download_url_list = new List<Tuple<string, string>>();
+        public bool mmbusy = false;
+        public Queue<Tuple<string, List<string>>> mmqueue = new Queue<Tuple<string, List<string>>>();
         
         public async void DownloadMMAsync(string url, List<string> expect = null)
         {
+            if (mmbusy)
+            {
+                mmqueue.Enqueue(new Tuple<string, List<string>>(url, expect));
+                return;
+            }
+            mmbusy = true;
             WebClient wc = new WebClient();
             wc.Encoding = Encoding.UTF8;
             wc.Headers.Add(HttpRequestHeader.Accept, "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8");
@@ -424,6 +432,12 @@ namespace Hitomi_Copy_3
             }
             MMSetting.Instance.Save();
             await Task.Run(() => DownloadImages());
+            mmbusy = false;
+            if (mmqueue.Count > 0)
+            {
+                var tuple = mmqueue.Dequeue();
+                DownloadMMAsync(tuple.Item1, tuple.Item2);
+            }
         }
 
         private void DownloadArchivesAsync(List<string> urls, string title, List<string> expect = null)
