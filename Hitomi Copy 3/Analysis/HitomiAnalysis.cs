@@ -94,7 +94,7 @@ namespace Hitomi_Copy_2.Analysis
 
                 for (int i = 0; i < list.Count; i++)
                 {
-                    list[i] = new KeyValuePair<string, Tuple<double, HitomiAnalysisArtist>>(list[i].Key, new Tuple<double, HitomiAnalysisArtist>(list[i].Value.Item1 - min_score, list[i].Value.Item2));
+                    list[i] = new KeyValuePair<string, Tuple<double, HitomiAnalysisArtist>>(list[i].Key, new Tuple<double, HitomiAnalysisArtist>((list[i].Value.Item1 - min_score) * 100, list[i].Value.Item2));
                 }
             }
 

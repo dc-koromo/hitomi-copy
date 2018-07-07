@@ -33,10 +33,14 @@ namespace Hitomi_Copy_2.Analysis
                 tags_count += metadata.Tags.Length;
                 MetadataCount += 1;
                 foreach (var tag in metadata.Tags)
+                {
+                    if (HitomiSetting.Instance.GetModel().UsingOnlyFMTagsOnAnalysis && 
+                        !tag.StartsWith("female:") && !tag.StartsWith("male:")) continue;
                     if (tags_map.ContainsKey(tag))
                         tags_map[tag] += 1;
                     else
                         tags_map.Add(tag, 1);
+                }
             }
             
             foreach(var pair in tags_map)
@@ -54,12 +58,16 @@ namespace Hitomi_Copy_2.Analysis
 
             foreach (var log in logs.Where(log => log.Tags != null))
             {
-                tags_count += log.Tags.Length;
                 foreach (var tag in log.Tags)
+                {
+                    if (HitomiSetting.Instance.GetModel().UsingOnlyFMTagsOnAnalysis && 
+                        !tag.StartsWith("female:") && !tag.StartsWith("male:")) continue;
+                    tags_count += 1;
                     if (tags_map.ContainsKey(HitomiCommon.LegalizeTag(tag)))
                         tags_map[HitomiCommon.LegalizeTag(tag)] += 1;
                     else
                         tags_map.Add(HitomiCommon.LegalizeTag(tag), 1);
+                }
             }
             
             foreach (var pair in tags_map)

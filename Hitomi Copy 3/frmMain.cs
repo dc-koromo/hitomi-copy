@@ -6,7 +6,6 @@ using Hitomi_Copy.Data;
 using Hitomi_Copy_2;
 using Hitomi_Copy_2.Analysis;
 using Hitomi_Copy_2.EH;
-using Hitomi_Copy_3.Analysis;
 using Hitomi_Copy_3.MM;
 using MetroFramework;
 using MM_Downloader.MM;
