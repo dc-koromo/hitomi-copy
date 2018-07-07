@@ -64,7 +64,10 @@ namespace Hitomi_Copy_2.Analysis
             
             foreach (var pair in tags_map)
             {
-                rate.Add(pair.Key, pair.Value * pair.Value / (float)tags_count);
+                if (!HitomiSetting.Instance.GetModel().RecommendNMultipleWithLength)
+                    rate.Add(pair.Key, pair.Value * pair.Value / (float)tags_count);
+                else
+                    rate.Add(pair.Key, pair.Value / (float)tags_count);
             }
         }
 
@@ -75,7 +78,10 @@ namespace Hitomi_Copy_2.Analysis
 
             foreach (var pair in custom)
             {
-                rate.Add(pair.Item1, pair.Item2 * pair.Item2 / (float)tags_count);
+                if (!HitomiSetting.Instance.GetModel().RecommendNMultipleWithLength)
+                    rate.Add(pair.Item1, pair.Item2 * pair.Item2 / (float)tags_count);
+                else
+                    rate.Add(pair.Item1, pair.Item2 / (float)tags_count);
             }
         }
 

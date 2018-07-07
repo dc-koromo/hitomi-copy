@@ -119,7 +119,6 @@
     <Compile Include="Analysis\HitomiAnalysisRelatedTags.cs" />
     <Compile Include="Analysis\HitomiAnalysisTagCount.cs" />
     <Compile Include="Analysis\HitomiAnalysisTrend.cs" />
-    <Compile Include="Analysis\HitomiAnalysisXi.cs" />
     <Compile Include="AutoCompleteListBox.cs">
       <SubType>Component</SubType>
     </Compile>
