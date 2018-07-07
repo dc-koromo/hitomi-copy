@@ -118,11 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>v3.31
+    <value>v3.32
+ - 단순회귀 분석방법 기반의 작가추천 기능이 추가되었습니다! 고급설정에서 Using Xi Analysis와 Recommend NMultiple With Length옵션을 켜고 새로운 작가들을 추천받아 보세요!
+
+ - UsingOnlyFMTagsOnAnalysis 옵션이 실험적으로 추가됩니다. 이 옵션을 사용하면 작가추천시 female, male 태그를 제외한 나머지 태그는 모두 무시합니다. 커스텀 작가추천에서 유용하게 사용해보세요!
+
+
+v3.31
  - 마루마루 동기화 기능이 추가됩니다! 오래된 마루마루 만화를 최신상태로 유지하세요!
 
  - 쓰레드 허용개수를 최대치로 늘렸습니다.
-
 
 v3.30
  - 긴급 업데이트 입니다. 히토미가 다운로드안되는 오류를 수정하였습니다.
@@ -234,8 +239,7 @@ v3.20
 메모리에 민감한 사용자가 많아 프로그램에서 관리할 수 있는 메모리를 최대 수준으로 설정했습니다. 메모리를 더 효율적으로 관리하려면 주기적으로 '정리'버튼을 눌러 메모리를 비워주세요.
 
  - 64bit 프로그램으로 변경되었습니다.
-개발모드에서만 사용가능했던 64bit버전을 일반버전에도 업데이트합니다. 이는 더 많은 메모리 자원을 가질 수 있지만, 기본적인 메모리 사용량이 많아 고려하고 있었던 부분입니다. 메모리 관리가 어려우면 메모리 상태란을 눌러 수동으로 메모리를 관리하세요.
-</value>
+개발모드에서만 사용가능했던 64bit버전을 일반버전에도 업데이트합니다. 이는 더 많은 메모리 자원을 가질 수 있지만, 기본적인 메모리 사용량이 많아 고려하고 있었던 부분입니다. 메모리 관리가 어려우면 메모리 상태란을 눌러 수동으로 메모리를 관리하세요.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
