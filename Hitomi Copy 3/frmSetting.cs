@@ -27,6 +27,7 @@ namespace Hitomi_Copy_3
             tgUL.Checked = HitomiSetting.Instance.GetModel().UsingLog;
             tgDSR.Checked = HitomiSetting.Instance.GetModel().DetailedSearchResult;
             tgEXH.Checked = HitomiSetting.Instance.GetModel().UsingExHentaiBaseOpener;
+            tgXA.Checked = HitomiSetting.Instance.GetModel().UsingXiAanlysis;
         }
 
         private void bSave_Click(object sender, EventArgs e)
@@ -60,6 +61,7 @@ namespace Hitomi_Copy_3
             HitomiSetting.Instance.GetModel().UsingLog = tgUL.Checked;
             HitomiSetting.Instance.GetModel().DetailedSearchResult = tgDSR.Checked;
             HitomiSetting.Instance.GetModel().UsingExHentaiBaseOpener = tgEXH.Checked;
+            HitomiSetting.Instance.GetModel().UsingXiAanlysis = tgXA.Checked;
             HitomiSetting.Instance.Save();
             Close();
         }
@@ -122,6 +124,11 @@ namespace Hitomi_Copy_3
         private void tgEXH_MouseEnter(object sender, EventArgs e)
         {
             tbInfo.Text = "검색결과에서 '히토미으로 열기'가 아닌 '익헨으로 열기'가 기본으로 설정됩니다.";
+        }
+
+        private void tgXA_MouseEnter(object sender, EventArgs e)
+        {
+            tbInfo.Text = "단방향 단순 선형회귀 방법을 이용해 작가 추천 목록을 작성합니다. 이 기능을 사용하려면 Recommend NMultiple With Length 옵션을 켜세요.";
         }
 
         private void MouseLeave_Event(object sender, EventArgs e)

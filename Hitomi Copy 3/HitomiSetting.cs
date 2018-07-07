@@ -53,6 +53,8 @@ namespace Hitomi_Copy_2
         public bool UsingDriver;
         [JsonProperty]
         public int LatestNotice;
+        [JsonProperty]
+        public bool UsingXiAanlysis;
     }
 
     public class HitomiSetting
@@ -90,6 +92,7 @@ namespace Hitomi_Copy_2
                 model.UsingExHentaiBaseOpener = false;
                 model.UsingDriver = false;
                 model.LatestNotice = 0;
+                model.UsingXiAanlysis = false;
                 Save();
             }
             else
