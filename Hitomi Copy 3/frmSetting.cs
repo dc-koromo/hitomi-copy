@@ -128,7 +128,7 @@ namespace Hitomi_Copy_3
 
         private void tgXA_MouseEnter(object sender, EventArgs e)
         {
-            tbInfo.Text = "단방향 단순 선형회귀 방법을 이용해 작가 추천 목록을 작성합니다. 이 기능을 사용하려면 Recommend NMultiple With Length 옵션을 켜세요.";
+            tbInfo.Text = "단순 회귀 방법을 이용해 작가 추천 목록을 작성합니다. 이 기능을 사용하려면 Recommend NMultiple With Length 옵션을 켜세요.";
         }
 
         private void MouseLeave_Event(object sender, EventArgs e)
