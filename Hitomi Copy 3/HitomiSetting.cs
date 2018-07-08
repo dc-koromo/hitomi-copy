@@ -103,6 +103,7 @@ namespace Hitomi_Copy_2
                 if (String.IsNullOrEmpty(model.Path)) model.Path = @"C:\Hitomi\{Artists}\[{Id}] {Title}\";
                 if (model.MaximumThumbnailShow < 10) model.MaximumThumbnailShow = 1000;
                 if (model.Thread < 5) model.Thread = 32;
+                if (model.Thread > 64) model.Thread = 64;
                 if (!HitomiData.Instance.GetLanguageList().Contains(model.Language) && model.Language != "N/A" && model.Language != "ALL")
                     model.Language = "korean";
                 if (model.WaitTimeout == 0 && model.WaitInfinite == false)
