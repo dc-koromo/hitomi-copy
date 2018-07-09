@@ -707,6 +707,10 @@ namespace Hitomi_Copy_3
                 {
                     (new frmMarumaru()).Show();
                 }
+                else if (cmd == "record")
+                {
+                    (new Record()).Show();
+                }
                 else if (cmd == "help")
                 {
                     PushString("Realtime Variable Update System");
@@ -732,6 +736,7 @@ namespace Hitomi_Copy_3
                     PushString("ct, gbt : Hidden galleris transaction tools.");
                     PushString("latest : Get latest metadata id.");
                     PushString("mm : Show marumaru manager.");
+                    PushString("record : Open record window.");
                 }
                 else if (cmd == "fucs")
                 {

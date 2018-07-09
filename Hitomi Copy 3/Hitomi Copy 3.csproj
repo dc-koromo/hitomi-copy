@@ -309,6 +309,12 @@
     <Compile Include="RecommendControl.Designer.cs">
       <DependentUpon>RecommendControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Record.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Record.Designer.cs">
+      <DependentUpon>Record.cs</DependentUpon>
+    </Compile>
     <Compile Include="RelatedTagsTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -411,6 +417,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RecommendControl.resx">
       <DependentUpon>RecommendControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Record.resx">
+      <DependentUpon>Record.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RelatedTagsTest.resx">
       <DependentUpon>RelatedTagsTest.cs</DependentUpon>

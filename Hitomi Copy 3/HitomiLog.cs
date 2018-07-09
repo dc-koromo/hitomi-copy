@@ -60,5 +60,10 @@ namespace Hitomi_Copy_2
         {
             return model;
         }
+
+        public List<HitomiLogModel> GetList()
+        {
+            return model;
+        }
     }
 }

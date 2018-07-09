@@ -40,6 +40,7 @@ namespace Hitomi_Copy
             this.metadata = metadata;
             closed_form = closed;
             id = metadata.ID.ToString();
+            CloseOnRBtn = new RightClickCloser(this);
         }
 
         private void frmGalleryInfo_LoadAsync(object sender, EventArgs e)
@@ -123,7 +124,7 @@ namespace Hitomi_Copy
             string localFilename = Path.GetTempFileName();
             using (WebClient client = new WebClient())
             {
-                string set = client.DownloadString(new Uri(HitomiDef.HitomiGalleryAddress + metadata.ID + ".html"));
+                string set = client.DownloadString(new Uri(HitomiDef.HitomiAddress + "galleries/" + metadata.ID + ".html"));
                 client.DownloadFile(HitomiDef.HitomiThumbnail + HitomiParser.ParseGallery(set).Thumbnail, localFilename);
                 load_image(localFilename);
                 LogEssential.Instance.PushLog(() => $"Download image successful! {HitomiDef.HitomiThumbnail + HitomiParser.ParseGallery(set).Thumbnail} {localFilename}");
