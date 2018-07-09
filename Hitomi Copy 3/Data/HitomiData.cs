@@ -225,6 +225,10 @@ namespace Hitomi_Copy.Data
             
             foreach (var metadata in metadata_collection)
             {
+                string lang = metadata.Language;
+                if (metadata.Language == null) lang = "N/A";
+                if (HitomiSetting.Instance.GetModel().Language != "ALL" &&
+                    HitomiSetting.Instance.GetModel().Language != lang) continue;
                 if (metadata.Artists != null) metadata.Artists.ToList().ForEach(x => Add(artist,x));
                 if (metadata.Tags != null) metadata.Tags.ToList().ForEach(x => { if (x.StartsWith("female:")) Add(female, x); else if (x.StartsWith("male:")) Add(male, x); else Add(tag, x); });
                 if (metadata.Groups != null) metadata.Groups.ToList().ForEach(x => Add(group, x));
