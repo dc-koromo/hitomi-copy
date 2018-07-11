@@ -367,7 +367,9 @@ namespace Hitomi_Copy_3
                         string.Join(",", query_result[i].Parodies ?? Enumerable.Empty<string>()),
                         string.Join(",", query_result[i].Characters ?? Enumerable.Empty<string>()),
                         HitomiDate.estimate_datetime(query_result[i].ID).ToString(),
-                        string.Join(",", query_result[i].Tags ?? Enumerable.Empty<string>())
+                        string.Join(",", query_result[i].Tags ?? Enumerable.Empty<string>()),
+                        HitomiLog.Instance.Contains(query_result[i].ID.ToString()) ? "★" : "",
+                        HitomiData.Instance.thumbnail_collection.ContainsKey(query_result[i].ID.ToString()) ? "★" : ""
                     }));
                 }
                 lvil.Sort((a, b) => Convert.ToUInt32(b.SubItems[0].Text).CompareTo(Convert.ToUInt32(a.SubItems[0].Text)));

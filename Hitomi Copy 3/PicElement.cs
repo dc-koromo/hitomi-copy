@@ -1,6 +1,7 @@
 ﻿/* Copyright (C) 2018. Hitomi Parser Developers */
 
 using hitomi.Parser;
+using Hitomi_Copy.Data;
 using Hitomi_Copy_2;
 using Hitomi_Copy_3;
 using System;
@@ -38,6 +39,7 @@ namespace Hitomi_Copy
         bool downloaded = false;
         bool overlap = false;
         bool downloaded_overlapping = false;
+        bool hidden_data = false;
         HitomiArticle ha;
         PictureBox pb = new PictureBox();
         Lazy<InfoForm> info;
@@ -147,11 +149,20 @@ namespace Hitomi_Copy
                 }
             }
 
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+
             if (downloaded_overlapping)
             {
-                g.SmoothingMode = SmoothingMode.HighQuality;
-                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
                 g.DrawString("★", new Font(font.FontFamily, 12), Brushes.Orange, new PointF(2, 2));
+            }
+
+            if (hidden_data)
+            {
+                if (downloaded_overlapping)
+                    g.DrawString("★", new Font(font.FontFamily, 12), Brushes.SkyBlue, new PointF(8, 2));
+                else
+                    g.DrawString("★", new Font(font.FontFamily, 12), Brushes.SkyBlue, new PointF(2, 2));
             }
 
             if (callfrom_panel == false)
@@ -250,7 +261,10 @@ namespace Hitomi_Copy
         public string Label
         { get { return label; } set { label = value; } }
         public HitomiArticle Article
-        { get { return ha; } set { ha = value; if (HitomiLog.Instance.Contains(ha.Magic)) downloaded_overlapping = true; } }
+        { get { return ha; } set { ha = value;
+                if (HitomiLog.Instance.Contains(ha.Magic)) downloaded_overlapping = true;
+                if (HitomiData.Instance.thumbnail_collection.ContainsKey(ha.Magic)) hidden_data = true;
+            } }
         public override Font Font
         { set { font = value; } }
         public PictureBox Picture

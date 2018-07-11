@@ -46,13 +46,15 @@
             this.bDownload = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.listBox1 = new Hitomi_Copy_2.AutoCompleteListBox();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // metroLabel1
             // 
             this.metroLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(1042, 9);
+            this.metroLabel1.Location = new System.Drawing.Point(1116, 9);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(468, 19);
             this.metroLabel1.TabIndex = 3;
@@ -62,7 +64,7 @@
             // bSearch
             // 
             this.bSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bSearch.Location = new System.Drawing.Point(1396, 31);
+            this.bSearch.Location = new System.Drawing.Point(1470, 31);
             this.bSearch.Name = "bSearch";
             this.bSearch.Size = new System.Drawing.Size(114, 23);
             this.bSearch.Style = MetroFramework.MetroColorStyle.Pink;
@@ -80,7 +82,7 @@
             // 
             // 
             this.tbSearch.CustomButton.Image = null;
-            this.tbSearch.CustomButton.Location = new System.Drawing.Point(1356, 1);
+            this.tbSearch.CustomButton.Location = new System.Drawing.Point(1430, 1);
             this.tbSearch.CustomButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSearch.CustomButton.Name = "";
             this.tbSearch.CustomButton.Size = new System.Drawing.Size(21, 21);
@@ -100,7 +102,7 @@
             this.tbSearch.SelectionLength = 0;
             this.tbSearch.SelectionStart = 0;
             this.tbSearch.ShortcutsEnabled = true;
-            this.tbSearch.Size = new System.Drawing.Size(1378, 23);
+            this.tbSearch.Size = new System.Drawing.Size(1452, 23);
             this.tbSearch.Style = MetroFramework.MetroColorStyle.Pink;
             this.tbSearch.TabIndex = 6;
             this.tbSearch.Text = "recent:0-25";
@@ -125,12 +127,14 @@
             this.columnHeader25,
             this.columnHeader28,
             this.columnHeader1,
-            this.columnHeader26});
+            this.columnHeader26,
+            this.columnHeader2,
+            this.columnHeader3});
             this.lvHistory.FullRowSelect = true;
             this.lvHistory.GridLines = true;
             this.lvHistory.Location = new System.Drawing.Point(12, 60);
             this.lvHistory.Name = "lvHistory";
-            this.lvHistory.Size = new System.Drawing.Size(1498, 574);
+            this.lvHistory.Size = new System.Drawing.Size(1572, 574);
             this.lvHistory.TabIndex = 10;
             this.lvHistory.UseCompatibleStateImageBehavior = false;
             this.lvHistory.View = System.Windows.Forms.View.Details;
@@ -184,7 +188,7 @@
             // bDownloadAll
             // 
             this.bDownloadAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bDownloadAll.Location = new System.Drawing.Point(1369, 640);
+            this.bDownloadAll.Location = new System.Drawing.Point(1443, 640);
             this.bDownloadAll.Name = "bDownloadAll";
             this.bDownloadAll.Size = new System.Drawing.Size(141, 23);
             this.bDownloadAll.TabIndex = 31;
@@ -195,7 +199,7 @@
             // bDownload
             // 
             this.bDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bDownload.Location = new System.Drawing.Point(1275, 640);
+            this.bDownload.Location = new System.Drawing.Point(1349, 640);
             this.bDownload.Name = "bDownload";
             this.bDownload.Size = new System.Drawing.Size(88, 23);
             this.bDownload.TabIndex = 30;
@@ -206,7 +210,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(732, 644);
+            this.label1.Location = new System.Drawing.Point(757, 644);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 15);
             this.label1.TabIndex = 32;
@@ -228,12 +232,24 @@
             this.listBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listBox1_KeyUp);
             this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
             // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "다운";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader2.Width = 40;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "히든";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader3.Width = 40;
+            // 
             // frmFinder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1521, 671);
+            this.ClientSize = new System.Drawing.Size(1595, 671);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bDownloadAll);
             this.Controls.Add(this.bDownload);
@@ -275,5 +291,7 @@
         private System.Windows.Forms.Button bDownloadAll;
         private System.Windows.Forms.Button bDownload;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }
