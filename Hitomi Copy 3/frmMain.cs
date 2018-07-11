@@ -1427,10 +1427,14 @@ namespace Hitomi_Copy_3
         
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            HitomiSetting.Instance.GetModel().ExclusiveTag = tbExcludeTag.Text.Split(',').Select(x => x.Trim()).ToArray();
-            HitomiSetting.Instance.Save();
+            try
+            {
+                HitomiSetting.Instance.GetModel().ExclusiveTag = tbExcludeTag.Text.Split(',').Select(x => x.Trim()).ToArray();
+                HitomiSetting.Instance.Save();
+                download_queue.Abort();
+            }
+            catch { }
             Process.GetCurrentProcess().Kill();
-            download_queue.Abort();
         }
 
         private void bRelatedTags_Click(object sender, EventArgs e)
