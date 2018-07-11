@@ -40,8 +40,8 @@
             this.columnHeader27 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader28 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listBox1 = new Hitomi_Copy_2.AutoCompleteListBox();
             this.SuspendLayout();
             // 
@@ -49,7 +49,7 @@
             // 
             this.metroLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(1004, 9);
+            this.metroLabel1.Location = new System.Drawing.Point(1042, 9);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(468, 19);
             this.metroLabel1.TabIndex = 3;
@@ -59,7 +59,7 @@
             // bSearch
             // 
             this.bSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bSearch.Location = new System.Drawing.Point(1358, 31);
+            this.bSearch.Location = new System.Drawing.Point(1396, 31);
             this.bSearch.Name = "bSearch";
             this.bSearch.Size = new System.Drawing.Size(114, 23);
             this.bSearch.Style = MetroFramework.MetroColorStyle.Pink;
@@ -77,7 +77,7 @@
             // 
             // 
             this.tbSearch.CustomButton.Image = null;
-            this.tbSearch.CustomButton.Location = new System.Drawing.Point(1318, 1);
+            this.tbSearch.CustomButton.Location = new System.Drawing.Point(1356, 1);
             this.tbSearch.CustomButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSearch.CustomButton.Name = "";
             this.tbSearch.CustomButton.Size = new System.Drawing.Size(21, 21);
@@ -97,7 +97,7 @@
             this.tbSearch.SelectionLength = 0;
             this.tbSearch.SelectionStart = 0;
             this.tbSearch.ShortcutsEnabled = true;
-            this.tbSearch.Size = new System.Drawing.Size(1340, 23);
+            this.tbSearch.Size = new System.Drawing.Size(1378, 23);
             this.tbSearch.Style = MetroFramework.MetroColorStyle.Pink;
             this.tbSearch.TabIndex = 6;
             this.tbSearch.Text = "recent:0-25";
@@ -127,7 +127,7 @@
             this.lvHistory.GridLines = true;
             this.lvHistory.Location = new System.Drawing.Point(12, 60);
             this.lvHistory.Name = "lvHistory";
-            this.lvHistory.Size = new System.Drawing.Size(1460, 602);
+            this.lvHistory.Size = new System.Drawing.Size(1498, 602);
             this.lvHistory.TabIndex = 10;
             this.lvHistory.UseCompatibleStateImageBehavior = false;
             this.lvHistory.View = System.Windows.Forms.View.Details;
@@ -168,15 +168,15 @@
             this.columnHeader28.Text = "캐릭터";
             this.columnHeader28.Width = 145;
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "업로드 시간";
+            this.columnHeader1.Width = 163;
+            // 
             // columnHeader26
             // 
             this.columnHeader26.Text = "태그";
             this.columnHeader26.Width = 230;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "업로드 시간";
-            this.columnHeader1.Width = 122;
             // 
             // listBox1
             // 
@@ -199,7 +199,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1483, 674);
+            this.ClientSize = new System.Drawing.Size(1521, 674);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.lvHistory);
             this.Controls.Add(this.bSearch);
