@@ -379,14 +379,14 @@ namespace Hitomi_Copy_3
         private void bDownload_Click(object sender, EventArgs e)
         {
             foreach (var id in lvHistory.SelectedItems)
-                (Application.OpenForms[0] as frmMain).RemoteDownloadArticleFromId((id as ListViewItem).SubItems[0].Text, true, series);
+                (Application.OpenForms[0] as frmMain).RemoteDownloadArticleFromId((id as ListViewItem).SubItems[0].Text);
             (Application.OpenForms[0] as frmMain).BringToFront();
         }
 
         private void bDownloadAll_Click(object sender, EventArgs e)
         {
-            foreach (var pe in id)
-                (Application.OpenForms[0] as frmMain).RemoteDownloadArticleFromId(pe, true, series);
+            foreach (var id in lvHistory.Items)
+                (Application.OpenForms[0] as frmMain).RemoteDownloadArticleFromId((id as ListViewItem).SubItems[0].Text);
             (Application.OpenForms[0] as frmMain).BringToFront();
         }
     }
