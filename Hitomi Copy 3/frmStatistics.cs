@@ -23,8 +23,13 @@ namespace Hitomi_Copy_3
         {
             UpdateWeekChart();
             UpdateTimeChart();
-            UpdateTagsChart();
-            UpdateArtistsChart();
+
+            if (HitomiLog.Instance.GetList().Count > 0)
+            {
+                UpdateTagsChart();
+                UpdateArtistsChart();
+            }
+
             UpdateEtc();
 
             comboBox1.SelectedIndex = 0;
@@ -1065,9 +1070,12 @@ namespace Hitomi_Copy_3
 
             ////////////////////////////////////////////////////////
 
-            metroLabel29.Text = HitomiLog.Instance.GetEnumerator().Count().ToString("#,#") + " 개";
-            metroLabel27.Text = HitomiAnalysisArtistCount.Instance.artist_count[0].Key + $" ({HitomiAnalysisArtistCount.Instance.artist_count[0].Value.ToString("#,#")} 개)";
-            metroLabel26.Text = HitomiAnalysisTagCount.Instance.tag_count[0].Key + $" ({HitomiAnalysisTagCount.Instance.tag_count[0].Value.ToString("#,#")} 개)";
+            if (HitomiLog.Instance.GetList().Count > 0)
+            {
+                metroLabel29.Text = HitomiLog.Instance.GetEnumerator().Count().ToString("#,#") + " 개";
+                metroLabel27.Text = HitomiAnalysisArtistCount.Instance.artist_count[0].Key + $" ({HitomiAnalysisArtistCount.Instance.artist_count[0].Value.ToString("#,#")} 개)";
+                metroLabel26.Text = HitomiAnalysisTagCount.Instance.tag_count[0].Key + $" ({HitomiAnalysisTagCount.Instance.tag_count[0].Value.ToString("#,#")} 개)";
+            }
         }
 
         #endregion
