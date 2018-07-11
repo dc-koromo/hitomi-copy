@@ -262,8 +262,11 @@ namespace Hitomi_Copy
         { get { return label; } set { label = value; } }
         public HitomiArticle Article
         { get { return ha; } set { ha = value;
-                if (HitomiLog.Instance.Contains(ha.Magic)) downloaded_overlapping = true;
-                if (HitomiData.Instance.thumbnail_collection.ContainsKey(ha.Magic)) hidden_data = true;
+                if (ha.Magic != null)
+                {
+                    if (HitomiLog.Instance.Contains(ha.Magic)) downloaded_overlapping = true;
+                    if (HitomiData.Instance.thumbnail_collection.ContainsKey(ha.Magic)) hidden_data = true;
+                }
             } }
         public override Font Font
         { set { font = value; } }
