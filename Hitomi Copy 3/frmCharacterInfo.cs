@@ -67,9 +67,10 @@ namespace Hitomi_Copy
             if (lvHistory.SelectedItems.Count > 0)
             {
                 var hitomi_data = HitomiData.Instance.metadata_collection;
+                string target = lvHistory.SelectedItems[0].SubItems[0].Text;
                 foreach (var metadata in hitomi_data)
                 {
-                    if (metadata.ID.ToString() == lvHistory.SelectedItems[0].SubItems[0].Text)
+                    if (metadata.ID.ToString() == target)
                     {
                         (new frmGalleryInfo(this, metadata)).Show();
                         return;
