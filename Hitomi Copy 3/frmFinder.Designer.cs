@@ -43,6 +43,8 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listBox1 = new Hitomi_Copy_2.AutoCompleteListBox();
+            this.bDownloadAll = new System.Windows.Forms.Button();
+            this.bDownload = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -127,7 +129,7 @@
             this.lvHistory.GridLines = true;
             this.lvHistory.Location = new System.Drawing.Point(12, 60);
             this.lvHistory.Name = "lvHistory";
-            this.lvHistory.Size = new System.Drawing.Size(1498, 602);
+            this.lvHistory.Size = new System.Drawing.Size(1498, 574);
             this.lvHistory.TabIndex = 10;
             this.lvHistory.UseCompatibleStateImageBehavior = false;
             this.lvHistory.View = System.Windows.Forms.View.Details;
@@ -194,12 +196,36 @@
             this.listBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listBox1_KeyUp);
             this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
             // 
+            // bDownloadAll
+            // 
+            this.bDownloadAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bDownloadAll.Location = new System.Drawing.Point(1369, 640);
+            this.bDownloadAll.Name = "bDownloadAll";
+            this.bDownloadAll.Size = new System.Drawing.Size(141, 23);
+            this.bDownloadAll.TabIndex = 31;
+            this.bDownloadAll.Text = "모두 다운로드";
+            this.bDownloadAll.UseVisualStyleBackColor = true;
+            this.bDownloadAll.Click += new System.EventHandler(this.bDownloadAll_Click);
+            // 
+            // bDownload
+            // 
+            this.bDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bDownload.Location = new System.Drawing.Point(1275, 640);
+            this.bDownload.Name = "bDownload";
+            this.bDownload.Size = new System.Drawing.Size(88, 23);
+            this.bDownload.TabIndex = 30;
+            this.bDownload.Text = "다운로드";
+            this.bDownload.UseVisualStyleBackColor = true;
+            this.bDownload.Click += new System.EventHandler(this.bDownload_Click);
+            // 
             // frmFinder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1521, 674);
+            this.ClientSize = new System.Drawing.Size(1521, 671);
+            this.Controls.Add(this.bDownloadAll);
+            this.Controls.Add(this.bDownload);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.lvHistory);
             this.Controls.Add(this.bSearch);
@@ -235,5 +261,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader26;
         private Hitomi_Copy_2.AutoCompleteListBox listBox1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.Button bDownloadAll;
+        private System.Windows.Forms.Button bDownload;
     }
 }
