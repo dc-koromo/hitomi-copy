@@ -831,6 +831,8 @@ namespace Hitomi_Copy_3
         public ISemaphore download_queue;
         public List<string> download_check = new List<string>();
         public List<IPicElement> downloaded_check = new List<IPicElement>();
+        public int zipping = 0;
+        object zipping_lock = new object();
 
         private void InitDownloader()
         {
@@ -946,6 +948,7 @@ namespace Hitomi_Copy_3
         }
         private void ZipArticle(HitomiArticle article)
         {
+            lock (zipping_lock) zipping++;
             LogEssential.Instance.PushLog(() => $"{article.Magic} Zipping article... ");
             string zip_path = MakeDownloadDirectory(article);
             zip_path = zip_path.Remove(zip_path.Length - 1);
@@ -953,6 +956,7 @@ namespace Hitomi_Copy_3
                 File.Delete($"{zip_path}.zip");
             ZipFile.CreateFromDirectory(zip_path, $"{zip_path}.zip");
             Directory.Delete(zip_path, true);
+            lock (zipping_lock) zipping--;
             LogEssential.Instance.PushLog(() => $"{article.Magic} Zipping Completed! ");
         }
 
@@ -1270,6 +1274,8 @@ namespace Hitomi_Copy_3
         {
             Process proc = Process.GetCurrentProcess();
             lMemoryUsage.Text = (proc.PrivateMemorySize64 / 1000).ToString("#,#") + " KB";
+            lock (zipping_lock) if (zipping > 0)
+                lMemoryUsage.Text += $" ({zipping})";
         }
 
         private void tbDownloadPath_Leave(object sender, EventArgs e)
