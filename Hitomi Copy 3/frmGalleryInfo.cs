@@ -124,10 +124,14 @@ namespace Hitomi_Copy
             string localFilename = Path.GetTempFileName();
             using (WebClient client = new WebClient())
             {
-                string set = client.DownloadString(new Uri(HitomiDef.HitomiAddress + "galleries/" + metadata.ID + ".html"));
-                client.DownloadFile(HitomiDef.HitomiThumbnail + HitomiParser.ParseGallery(set).Thumbnail, localFilename);
+                string url;
+                if (HitomiData.Instance.thumbnail_collection.ContainsKey(id))
+                    url = HitomiDef.HitomiThumbnail + HitomiData.Instance.thumbnail_collection[id];
+                else
+                    url = HitomiParser.ParseGallery(client.DownloadString(new Uri(HitomiDef.HitomiAddress + "galleries/" + metadata.ID + ".html"))).Thumbnail;
+                client.DownloadFile(url, localFilename);
                 load_image(localFilename);
-                LogEssential.Instance.PushLog(() => $"Download image successful! {HitomiDef.HitomiThumbnail + HitomiParser.ParseGallery(set).Thumbnail} {localFilename}");
+                LogEssential.Instance.PushLog(() => $"Download image successful! {url} {localFilename}");
             }
         }
         private void load_image(string path)
