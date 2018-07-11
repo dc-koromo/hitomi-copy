@@ -26,5 +26,16 @@ namespace Hitomi_Copy_3
         {
             graph_control.init_graph(tag);
         }
+
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
+        }
+
     }
 }
