@@ -741,6 +741,7 @@ namespace Hitomi_Copy_3
                     PushString("latest : Get latest metadata id.");
                     PushString("mm : Show marumaru manager.");
                     PushString("record : Open record window.");
+                    PushString("finder : Open finder window.");
                 }
                 else if (cmd == "fucs")
                 {
