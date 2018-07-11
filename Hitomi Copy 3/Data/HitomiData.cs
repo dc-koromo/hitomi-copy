@@ -154,6 +154,7 @@ namespace Hitomi_Copy.Data
             tagdata_collection.group.Sort((a, b) => b.Count.CompareTo(a.Count));
             tagdata_collection.character.Sort((a, b) => b.Count.CompareTo(a.Count));
             tagdata_collection.series.Sort((a, b) => b.Count.CompareTo(a.Count));
+            tagdata_collection.type.Sort((a, b) => b.Count.CompareTo(a.Count));
         }
         #endregion
 
@@ -176,6 +177,7 @@ namespace Hitomi_Copy.Data
             tagdata_collection.group?.Clear();
             tagdata_collection.character?.Clear();
             tagdata_collection.series?.Clear();
+            tagdata_collection.type?.Clear();
 
             HashSet<string> language = new HashSet<string>();
 
@@ -199,6 +201,7 @@ namespace Hitomi_Copy.Data
             Dictionary<string, int> group = new Dictionary<string, int>();
             Dictionary<string, int> character = new Dictionary<string, int>();
             Dictionary<string, int> series = new Dictionary<string, int>();
+            Dictionary<string, int> type = new Dictionary<string, int>();
 
             foreach (var metadata in metadata_collection)
             {
@@ -211,6 +214,7 @@ namespace Hitomi_Copy.Data
                 if (metadata.Groups != null) metadata.Groups.ToList().ForEach(x => Add(group, x));
                 if (metadata.Characters != null) metadata.Characters.ToList().ForEach(x => Add(character, x));
                 if (metadata.Parodies != null) metadata.Parodies.ToList().ForEach(x => Add(series, x));
+                if (metadata.Type != null) Add(type, metadata.Type);
             }
 
             tagdata_collection.artist = artist.Select(x => new HitomiTagdata() { Tag = x.Key, Count = x.Value }).ToList();
@@ -220,6 +224,7 @@ namespace Hitomi_Copy.Data
             tagdata_collection.group = group.Select(x => new HitomiTagdata() { Tag = x.Key, Count = x.Value }).ToList();
             tagdata_collection.character = character.Select(x => new HitomiTagdata() { Tag = x.Key, Count = x.Value }).ToList();
             tagdata_collection.series = series.Select(x => new HitomiTagdata() { Tag = x.Key, Count = x.Value }).ToList();
+            tagdata_collection.type = type.Select(x => new HitomiTagdata() { Tag = x.Key, Count = x.Value }).ToList();
 
             SortTagdata();
 
@@ -293,6 +298,15 @@ namespace Hitomi_Copy.Data
         {
             List<HitomiTagdata> result = new List<HitomiTagdata>();
             foreach (var tagdata in tagdata_collection.character)
+                if (tagdata.Tag.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
+                { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            return result;
+        }
+
+        public List<HitomiTagdata> GetTypeList(string startswith)
+        {
+            List<HitomiTagdata> result = new List<HitomiTagdata>();
+            foreach (var tagdata in tagdata_collection.type)
                 if (tagdata.Tag.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
                 { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
             return result;

@@ -195,6 +195,11 @@ namespace Hitomi_Copy_3
                         query.TagExclude = new List<string>() { elem.Substring("tagx:".Length) };
                     else
                         query.TagExclude.Add(elem.Substring("tagx:".Length));
+                else if (elem.StartsWith("type:"))
+                    if (query.Type == null)
+                        query.Type = new List<string>() { elem.Substring("type:".Length) };
+                    else
+                        query.Type.Add(elem.Substring("type:".Length));
                 else if (elem.StartsWith("request:"))
                     request_number.Add(elem.Substring("request:".Length));
                 else if (elem.StartsWith("recent:"))
@@ -639,6 +644,12 @@ namespace Hitomi_Copy_3
                     position += "series:".Length;
                     match = HitomiData.Instance.GetSeriesList(word);
                 }
+                else if (word.StartsWith("type:"))
+                {
+                    word = word.Substring("type:".Length);
+                    position += "type:".Length;
+                    match = HitomiData.Instance.GetTypeList(word);
+                }
             }
             else
             {
@@ -649,7 +660,8 @@ namespace Hitomi_Copy_3
                     "recent:",
                     "series:",
                     "tag:",
-                    "tagx:"
+                    "tagx:",
+                    "type:"
                 };
                 List<HitomiTagdata> data_col = (from ix in match_target where ix.StartsWith(word) select new HitomiTagdata {Tag = ix}).ToList();
                 if (data_col.Count > 0)

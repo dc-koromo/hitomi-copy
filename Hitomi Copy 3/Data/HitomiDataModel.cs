@@ -7,30 +7,21 @@ namespace Hitomi_Copy.Data
 {
     public struct HitomiTagdata
     {
-        [JsonProperty(PropertyName = "s")]
         public string Tag { get; set; }
-        [JsonProperty(PropertyName = "t")]
         public int Count { get; set; }
     }
 
     public struct HitomiTagdataCollection
     {
-        [JsonProperty(PropertyName = "language")]
         public List<HitomiTagdata> language { get; set; }
-        [JsonProperty(PropertyName = "female")]
         public List<HitomiTagdata> female { get; set; }
-        [JsonProperty(PropertyName = "series")]
         public List<HitomiTagdata> series { get; set; }
-        [JsonProperty(PropertyName = "character")]
         public List<HitomiTagdata> character { get; set; }
-        [JsonProperty(PropertyName = "artist")]
         public List<HitomiTagdata> artist { get; set; }
-        [JsonProperty(PropertyName = "group")]
         public List<HitomiTagdata> group { get; set; }
-        [JsonProperty(PropertyName = "tag")]
         public List<HitomiTagdata> tag { get; set; }
-        [JsonProperty(PropertyName = "male")]
         public List<HitomiTagdata> male { get; set; }
+        public List<HitomiTagdata> type { get; set; }
     }
 
     public struct HitomiMetadata

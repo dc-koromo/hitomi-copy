@@ -14,6 +14,7 @@ namespace Hitomi_Copy.Data
         public List<string> Groups;
         public List<string> Series;
         public List<string> Characters;
+        public List<string> Type;
 
         public List<string> Common;
     }

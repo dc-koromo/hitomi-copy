@@ -138,6 +138,7 @@ namespace Hitomi_Copy.Data
                 if (check[0] && v.Groups != null && query.Groups != null) { check[0] = IsIntersect(v.Groups, query.Groups); connect = true; } else if (query.Groups != null) check[0] = false;
                 if (check[0] && v.Parodies != null && query.Series != null) { check[0] = IsIntersect(v.Parodies, query.Series); connect = true; } else if (query.Series != null) check[0] = false;
                 if (check[0] && v.Characters != null && query.Characters != null) { check[0] = IsIntersect(v.Characters, query.Characters); connect = true; } else if (query.Characters != null) check[0] = false;
+                if (check[0] && v.Type != null && query.Type != null) { check[0] = query.Type.Any(x => x == v.Type); connect = true; } else if (query.Type != null) check[0] = false;
                 if (check.All((x => x)) && ((query.Common.Count == 0 && connect) || query.Common.Count > 0))
                     result.Add(v);
             }
