@@ -7,6 +7,7 @@ using MetroFramework;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -330,6 +331,7 @@ namespace Hitomi_Copy_3
                 }
             }
 
+            Stopwatch sw = Stopwatch.StartNew();
             List<HitomiMetadata> query_result;
             if (recent == true)
             {
@@ -339,6 +341,9 @@ namespace Hitomi_Copy_3
             {
                 query_result = (await HitomiDataSearch.Search3(query));
             }
+            long end = sw.ElapsedMilliseconds;
+            sw.Stop();
+            label1.Text = $"{query_result.Count.ToString()}개 ({end / 1000.0} 초)";
 
             if (start_element != 0 && start_element <= query_result.Count) query_result.RemoveRange(0, start_element);
             if (count_element != 0 && count_element < query_result.Count) query_result.RemoveRange(count_element, query_result.Count - count_element);
@@ -369,7 +374,7 @@ namespace Hitomi_Copy_3
                 lvHistory.Items.Clear();
                 lvHistory.Items.AddRange(lvil.ToArray());
             }
-            
+
             LogEssential.Instance.PushLog(query);
             LogEssential.Instance.PushLog(() => $"Result : {query_result.Count}");
             if (HitomiSetting.Instance.GetModel().DetailedLog)
