@@ -30,7 +30,7 @@ namespace Hitomi_Copy.Data
 
         public static string hidden_data_url = @"https://github.com/dc-koromo/hitomi-downloader-2/releases/download/hiddendata/hiddendata.json";
 
-        public HitomiTagdataCollection tagdata_collection;
+        public HitomiTagdataCollection tagdata_collection = new HitomiTagdataCollection();
         public List<HitomiMetadata> metadata_collection;
         public Dictionary<string, string> thumbnail_collection;
 
@@ -145,30 +145,6 @@ namespace Hitomi_Copy.Data
         #endregion
 
         #region TagData
-        public async Task DownloadTagdata()
-        {
-            HttpClient client = new HttpClient();
-            var data = await client.GetStringAsync(tag_json_uri);
-            tagdata_collection = JsonConvert.DeserializeObject<HitomiTagdataCollection>(data);
-            List<HitomiTagdata> female_data = new List<HitomiTagdata>();
-            tagdata_collection.female.ForEach((a) => {HitomiTagdata tag_data = new HitomiTagdata(); tag_data.Tag = "female:" + a.Tag; tag_data.Count = a.Count; female_data.Add(tag_data);});
-            List<HitomiTagdata> male_data = new List<HitomiTagdata>();
-            tagdata_collection.male.ForEach((a) => { HitomiTagdata tag_data = new HitomiTagdata(); tag_data.Tag = "male:" + a.Tag; tag_data.Count = a.Count; male_data.Add(tag_data); });
-            tagdata_collection.female = female_data;
-            tagdata_collection.male = male_data;
-            SortTagdata();
-
-            JsonSerializer serializer = new JsonSerializer();
-            serializer.Converters.Add(new JavaScriptDateTimeConverter());
-            serializer.NullValueHandling = NullValueHandling.Ignore;
-            
-            using (StreamWriter sw = new StreamWriter(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "tagdata.json")))
-            using (JsonWriter writer = new JsonTextWriter(sw))
-            {
-                serializer.Serialize(writer, tagdata_collection);
-            }
-        }
-
         public void SortTagdata()
         {
             tagdata_collection.artist.Sort((a, b) => b.Count.CompareTo(a.Count));
@@ -178,20 +154,6 @@ namespace Hitomi_Copy.Data
             tagdata_collection.group.Sort((a, b) => b.Count.CompareTo(a.Count));
             tagdata_collection.character.Sort((a, b) => b.Count.CompareTo(a.Count));
             tagdata_collection.series.Sort((a, b) => b.Count.CompareTo(a.Count));
-        }
-
-        public void LoadTagdataJson()
-        {
-            if (CheckTagdataExist())
-            {
-                tagdata_collection = JsonConvert.DeserializeObject<HitomiTagdataCollection>(File.ReadAllText(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "tagdata.json")));
-                SortTagdata();
-            }
-        }
-
-        public bool CheckTagdataExist()
-        {
-            return File.Exists(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "tagdata.json"));
         }
         #endregion
 
@@ -207,13 +169,28 @@ namespace Hitomi_Copy.Data
 
         public void RebuildTagData()
         {
-            tagdata_collection.artist.Clear();
-            tagdata_collection.tag.Clear();
-            tagdata_collection.female.Clear();
-            tagdata_collection.male.Clear();
-            tagdata_collection.group.Clear();
-            tagdata_collection.character.Clear();
-            tagdata_collection.series.Clear();
+            tagdata_collection.artist?.Clear();
+            tagdata_collection.tag?.Clear();
+            tagdata_collection.female?.Clear();
+            tagdata_collection.male?.Clear();
+            tagdata_collection.group?.Clear();
+            tagdata_collection.character?.Clear();
+            tagdata_collection.series?.Clear();
+
+            HashSet<string> language = new HashSet<string>();
+
+            foreach (var metadata in metadata_collection)
+            {
+                if (metadata.Language != null)
+                {
+                    string lang = metadata.Language.Trim();
+                    if (lang != "" && !language.Contains(metadata.Language))
+                        language.Add(metadata.Language);
+                }
+            }
+
+            tagdata_collection.language = language.Select(x => new HitomiTagdata() { Tag = x }).ToList();
+            tagdata_collection.language.Sort((a,b) => a.Tag.CompareTo(b.Tag));
 
             Dictionary<string, int> artist = new Dictionary<string, int>();
             Dictionary<string, int> tag = new Dictionary<string, int>();
@@ -222,7 +199,7 @@ namespace Hitomi_Copy.Data
             Dictionary<string, int> group = new Dictionary<string, int>();
             Dictionary<string, int> character = new Dictionary<string, int>();
             Dictionary<string, int> series = new Dictionary<string, int>();
-            
+
             foreach (var metadata in metadata_collection)
             {
                 string lang = metadata.Language;
@@ -263,7 +240,6 @@ namespace Hitomi_Copy.Data
             LogEssential.Instance.PushLog(() => "Start Synchronization...");
             metadata_collection.Clear();
             thumbnail_collection.Clear();
-            await Task.Run(() => DownloadTagdata());
             await Task.Run(() => DownloadMetadata());
             await Task.Run(() => DownloadHiddendata());
             await Task.Run(() => SortTagdata());

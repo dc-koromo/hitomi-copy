@@ -1228,6 +1228,7 @@ namespace Hitomi_Copy_3
         {
             HitomiSetting.Instance.GetModel().Language = cbLanguage.Text;
             HitomiSetting.Instance.Save();
+            HitomiData.Instance.RebuildTagData();
             tbLang.Text = cbLanguage.Text;
         }
 

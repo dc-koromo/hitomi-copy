@@ -20,16 +20,6 @@ namespace Hitomi_Copy_2
             ServicePointManager.DefaultConnectionLimit = 1048576;
             try
             {
-                if (HitomiData.Instance.CheckTagdataExist())
-                {
-                    await Task.Run(() => HitomiData.Instance.LoadTagdataJson());
-                }
-                else
-                {
-                    lStatus.Text = "데이터를 다운로드 중 입니다... 이 작업은 수 분 정도 걸립니다.";
-                    await Task.Run(() => HitomiData.Instance.DownloadTagdata());
-                }
-
                 if (HitomiData.Instance.CheckMetadataExist())
                 {
                     await Task.Run(() => HitomiData.Instance.LoadMetadataJson());
@@ -49,6 +39,9 @@ namespace Hitomi_Copy_2
                     lStatus.Text = "히든데이터를 다운로드 중 입니다... 이 작업은 수 분 정도 걸립니다.";
                     await Task.Run(() => HitomiData.Instance.DownloadHiddendata());
                 }
+
+                lStatus.Text = "태그 데이터를 작성하는 중입니다...";
+                await Task.Run(() => HitomiData.Instance.RebuildTagData());
 
                 (Application.OpenForms["frmMain"] as Hitomi_Copy_3.frmMain).OnTab();
                 Application.OpenForms["frmMain"].BringToFront();
