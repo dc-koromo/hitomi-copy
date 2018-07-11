@@ -118,11 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>v3.32
+    <value>v3.33
+ - 다운로드 기록을 열람할 수 있는 Record 기능이 실험적으로 추가됩니다. 'record' 명령으로 살펴보세요!
+
+ - 이제 시리즈/태그/캐릭터에서 정보창을 빠르게 실행할 수 있습니다!
+
+ - Finder 기능이 추가됩니다. 설정된 검색가능 개수를 초과하면 텍스트형식으로 검색할 수 있는 검색창이 표시됩니다! 검색창에 아무것도 입력하지 않은 상태로 검색 버튼을 눌러보세요!
+
+ - 더이상 태그데이터를 다운로드하지 않습니다. 프로그램 시작시와 언어변경시 자동으로 태그데이터를 분석합니다!
+
+ - 이미 다운로드된 갤러리에 대해 작은 오렌지색 별이 오른쪽 상단에 표시됩니다!
+
+
+v3.32
  - 단순회귀 분석방법 기반의 작가추천 기능이 추가되었습니다! 고급설정에서 Using Xi Analysis와 Recommend NMultiple With Length옵션을 켜고 새로운 작가들을 추천받아 보세요!
 
  - UsingOnlyFMTagsOnAnalysis 옵션이 실험적으로 추가됩니다. 이 옵션을 사용하면 작가추천시 female, male 태그를 제외한 나머지 태그는 모두 무시합니다. 커스텀 작가추천에서 유용하게 사용해보세요!
-
 
 v3.31
  - 마루마루 동기화 기능이 추가됩니다! 오래된 마루마루 만화를 최신상태로 유지하세요!

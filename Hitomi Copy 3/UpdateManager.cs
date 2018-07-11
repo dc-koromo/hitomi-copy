@@ -9,7 +9,7 @@ namespace Hitomi_Copy_3
 {
     public class UpdateManager
     {
-        public const string Version = "3.32";
+        public const string Version = "3.33";
         public const string UpdateCheckUrl = @"https://raw.githubusercontent.com/dc-koromo/hitomi-downloader-2/master/version";
 
         static public string NewestVersionUrl;
