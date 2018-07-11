@@ -1,6 +1,7 @@
 ﻿/* Copyright (C) 2018. Hitomi Parser Developers */
 
 using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace Hitomi_Copy_3.VUI
 {

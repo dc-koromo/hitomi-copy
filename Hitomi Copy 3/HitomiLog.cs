@@ -29,11 +29,13 @@ namespace Hitomi_Copy_2
         string log_path = $"{Environment.CurrentDirectory}\\log.json";
 
         List<HitomiLogModel> model;
+        HashSet<int> downloaded = new HashSet<int>();
 
         public HitomiLog()
         {
             if (File.Exists(log_path)) model = JsonConvert.DeserializeObject<List<HitomiLogModel>>(File.ReadAllText(log_path));
             if (model == null) model = new List<HitomiLogModel>();
+            foreach (var mm in model) downloaded.Add(Convert.ToInt32(mm.Id));
         }
 
         public void Save()
@@ -54,6 +56,17 @@ namespace Hitomi_Copy_2
             mm.Tags = article.Tags;
             mm.Time = DateTime.Now;
             model.Add(mm);
+            downloaded.Add(Convert.ToInt32(article.Magic));
+        }
+
+        public bool Contains(int id)
+        {
+            return downloaded.Contains(id);
+        }
+
+        public bool Contains(string id)
+        {
+            return Contains(Convert.ToInt32(id));
         }
 
         public IEnumerable<HitomiLogModel> GetEnumerator()

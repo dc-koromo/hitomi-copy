@@ -24,6 +24,7 @@ namespace Hitomi_Copy_3
         bool downloading = false;
         bool downloaded = false;
         bool overlap = false;
+        bool downloaded_overlapping = false;
         HitomiArticle ha;
         Lazy<InfoForm> info;
         Form parent;
@@ -125,6 +126,11 @@ namespace Hitomi_Copy_3
             g.SmoothingMode = SmoothingMode.HighQuality;
             g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
 
+            if (downloaded_overlapping)
+            {
+                g.DrawString("★", new Font(font.FontFamily, 12), Brushes.Orange, new PointF(vuiPB.Location.X + 4, vuiPB.Location.Y));
+            }
+
             vuiLabels.ForEach(x => x.Paint(g));
             vuiButtons.ForEach(x => x.Paint(g));
 
@@ -181,7 +187,7 @@ namespace Hitomi_Copy_3
         public string Label
         { get { return label; } set { label = value; } }
         public HitomiArticle Article
-        { get { return ha; } set { ha = value; } }
+        { get { return ha; } set { ha = value; if (HitomiLog.Instance.Contains(ha.Magic)) downloaded_overlapping = true; } }
         public override Font Font
         { set { font = value; } }
         public PictureBox Picture

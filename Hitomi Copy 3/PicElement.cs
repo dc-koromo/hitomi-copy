@@ -1,9 +1,11 @@
 ﻿/* Copyright (C) 2018. Hitomi Parser Developers */
 
 using hitomi.Parser;
+using Hitomi_Copy_2;
 using Hitomi_Copy_3;
 using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Windows.Forms;
 
@@ -35,6 +37,7 @@ namespace Hitomi_Copy
         bool downloading = false;
         bool downloaded = false;
         bool overlap = false;
+        bool downloaded_overlapping = false;
         HitomiArticle ha;
         PictureBox pb = new PictureBox();
         Lazy<InfoForm> info;
@@ -144,6 +147,13 @@ namespace Hitomi_Copy
                 }
             }
 
+            if (downloaded_overlapping)
+            {
+                g.SmoothingMode = SmoothingMode.HighQuality;
+                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+                g.DrawString("★", new Font(font.FontFamily, 12), Brushes.Orange, new PointF(2, 2));
+            }
+
             if (callfrom_panel == false)
             {
                 callfrom_paint = true;
@@ -240,7 +250,7 @@ namespace Hitomi_Copy
         public string Label
         { get { return label; } set { label = value; } }
         public HitomiArticle Article
-        { get { return ha; } set { ha = value; } }
+        { get { return ha; } set { ha = value; if (HitomiLog.Instance.Contains(ha.Magic)) downloaded_overlapping = true; } }
         public override Font Font
         { set { font = value; } }
         public PictureBox Picture
