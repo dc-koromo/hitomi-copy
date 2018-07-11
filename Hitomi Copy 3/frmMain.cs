@@ -241,7 +241,9 @@ namespace Hitomi_Copy_3
             if (query_result.Count > HitomiSetting.Instance.GetModel().MaximumThumbnailShow)
             {
                 MetroMessageBox.Show(this, "검색된 항목이 너무 많습니다. '/'또는 '?' 명령어를 이용해 보세요. '/'는 시작위치, '?'는 가져올 개수입니다.(ex: /100 ?20)", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                query_result.RemoveRange(HitomiSetting.Instance.GetModel().MaximumThumbnailShow, query_result.Count - HitomiSetting.Instance.GetModel().MaximumThumbnailShow);
+                //query_result.RemoveRange(HitomiSetting.Instance.GetModel().MaximumThumbnailShow, query_result.Count - HitomiSetting.Instance.GetModel().MaximumThumbnailShow);
+                (new frmFinder(tbSearch.Text)).Show();
+                return;
             }
             else if (query_result.Count == 0)
             {

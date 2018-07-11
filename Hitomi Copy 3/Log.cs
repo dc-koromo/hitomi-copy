@@ -711,6 +711,10 @@ namespace Hitomi_Copy_3
                 {
                     (new Record()).Show();
                 }
+                else if (cmd == "finder")
+                {
+                    (new frmFinder()).Show();
+                }
                 else if (cmd == "help")
                 {
                     PushString("Realtime Variable Update System");
