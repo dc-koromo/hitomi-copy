@@ -365,6 +365,7 @@ namespace Hitomi_Copy_3
                     }));
                 }
                 lvil.Sort((a, b) => Convert.ToUInt32(b.SubItems[0].Text).CompareTo(Convert.ToUInt32(a.SubItems[0].Text)));
+                lvHistory.Items.Clear();
                 lvHistory.Items.AddRange(lvil.ToArray());
             }
             
