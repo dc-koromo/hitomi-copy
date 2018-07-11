@@ -44,8 +44,8 @@
             this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.bDownloadAll = new System.Windows.Forms.Button();
             this.bDownload = new System.Windows.Forms.Button();
-            this.listBox1 = new Hitomi_Copy_2.AutoCompleteListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.listBox1 = new Hitomi_Copy_2.AutoCompleteListBox();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -203,6 +203,15 @@
             this.bDownload.UseVisualStyleBackColor = true;
             this.bDownload.Click += new System.EventHandler(this.bDownload_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(732, 644);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 15);
+            this.label1.TabIndex = 32;
+            this.label1.Text = "대기중";
+            // 
             // listBox1
             // 
             this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -218,15 +227,6 @@
             this.listBox1.Visible = false;
             this.listBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listBox1_KeyUp);
             this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(399, 644);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 15);
-            this.label1.TabIndex = 32;
-            this.label1.Text = "대기중";
             // 
             // frmFinder
             // 
