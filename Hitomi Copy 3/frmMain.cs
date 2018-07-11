@@ -1419,6 +1419,11 @@ namespace Hitomi_Copy_3
         {
             (new RelatedTagsTest()).Show();
         }
+
+        private void finder열기FToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            (new frmFinder()).Show();
+        }
         #endregion
 
     }
