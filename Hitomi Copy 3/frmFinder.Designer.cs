@@ -55,6 +55,7 @@
             this.bDownload = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.listBox1 = new Hitomi_Copy_2.AutoCompleteListBox();
+            this.태그로검색GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -214,9 +215,10 @@
             this.작가로검색AToolStripMenuItem,
             this.그룹으로검색GToolStripMenuItem,
             this.시리즈로검색SToolStripMenuItem,
-            this.캐릭터로검색CToolStripMenuItem});
+            this.캐릭터로검색CToolStripMenuItem,
+            this.태그로검색GToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(167, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(167, 158);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // 제목으로검색TToolStripMenuItem
@@ -297,6 +299,12 @@
             this.listBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listBox1_KeyUp);
             this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
             // 
+            // 태그로검색GToolStripMenuItem
+            // 
+            this.태그로검색GToolStripMenuItem.Name = "태그로검색GToolStripMenuItem";
+            this.태그로검색GToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.태그로검색GToolStripMenuItem.Text = "태그로 검색(&G)";
+            // 
             // frmFinder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -354,5 +362,6 @@
         private System.Windows.Forms.ToolStripMenuItem 그룹으로검색GToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 시리즈로검색SToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 캐릭터로검색CToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 태그로검색GToolStripMenuItem;
     }
 }

@@ -437,6 +437,11 @@ namespace Hitomi_Copy_3
             (new frmFinder("character:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_'))).Show();
         }
 
+        private void Tag_Click(object sender, EventArgs e)
+        {
+            (new frmFinder("tag:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_'))).Show();
+        }
+
         private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (lvHistory.SelectedItems.Count > 0)
@@ -445,7 +450,8 @@ namespace Hitomi_Copy_3
                 string[] group = lvHistory.SelectedItems[0].SubItems[4].Text.Split(',').Select(x => x.Trim()).ToArray();
                 string[] series = lvHistory.SelectedItems[0].SubItems[5].Text.Split(',').Select(x => x.Trim()).ToArray();
                 string[] character = lvHistory.SelectedItems[0].SubItems[6].Text.Split(',').Select(x => x.Trim()).ToArray();
-                
+                string[] tag = lvHistory.SelectedItems[0].SubItems[8].Text.Split(',').Select(x => x.Trim()).ToArray();
+
                 (contextMenuStrip1.Items[1] as ToolStripMenuItem).DropDownItems.Clear();
                 if (artist[0] != "") (contextMenuStrip1.Items[1] as ToolStripMenuItem).DropDownItems.AddRange(artist.Select(x => new ToolStripMenuItem(x, null, Artist_Click)).ToArray());
 
@@ -457,6 +463,9 @@ namespace Hitomi_Copy_3
 
                 (contextMenuStrip1.Items[4] as ToolStripMenuItem).DropDownItems.Clear();
                 if (character[0] != "") (contextMenuStrip1.Items[4] as ToolStripMenuItem).DropDownItems.AddRange(character.Select(x => new ToolStripMenuItem(x, null, Character_Click)).ToArray());
+
+                (contextMenuStrip1.Items[5] as ToolStripMenuItem).DropDownItems.Clear();
+                if (tag[0] != "") (contextMenuStrip1.Items[5] as ToolStripMenuItem).DropDownItems.AddRange(tag.Select(x => new ToolStripMenuItem(x, null, Tag_Click)).ToArray());
             }
         }
 
