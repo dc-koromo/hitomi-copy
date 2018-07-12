@@ -46,5 +46,17 @@ namespace Hitomi_Copy_3
             }
             return base.ProcessDialogKey(keyData);
         }
+
+        private void button2_Click(object sender, System.EventArgs e)
+        {
+            foreach (var mm in MMSetting.Instance.GetModel().Articles)
+            {
+                if (mm.NotFound != null && mm.NotFound.Length > 0)
+                {
+                    mm.NotFound = null;
+                    LogEssential.Instance.PushLog(() => $"[MM Setting] Delete 404 '{mm.Title}'");
+                }
+            }
+        }
     }
 }
