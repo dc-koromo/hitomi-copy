@@ -45,16 +45,16 @@
             this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.bDownloadAll = new System.Windows.Forms.Button();
-            this.bDownload = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.listBox1 = new Hitomi_Copy_2.AutoCompleteListBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.제목으로검색TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.작가로검색AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.그룹으로검색GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.시리즈로검색SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.캐릭터로검색CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bDownloadAll = new System.Windows.Forms.Button();
+            this.bDownload = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.listBox1 = new Hitomi_Copy_2.AutoCompleteListBox();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -207,6 +207,49 @@
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader3.Width = 40;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.제목으로검색TToolStripMenuItem,
+            this.작가로검색AToolStripMenuItem,
+            this.그룹으로검색GToolStripMenuItem,
+            this.시리즈로검색SToolStripMenuItem,
+            this.캐릭터로검색CToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(167, 114);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // 제목으로검색TToolStripMenuItem
+            // 
+            this.제목으로검색TToolStripMenuItem.Name = "제목으로검색TToolStripMenuItem";
+            this.제목으로검색TToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.제목으로검색TToolStripMenuItem.Text = "제목으로 검색(&T)";
+            this.제목으로검색TToolStripMenuItem.Click += new System.EventHandler(this.제목으로검색TToolStripMenuItem_Click);
+            // 
+            // 작가로검색AToolStripMenuItem
+            // 
+            this.작가로검색AToolStripMenuItem.Name = "작가로검색AToolStripMenuItem";
+            this.작가로검색AToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.작가로검색AToolStripMenuItem.Text = "작가로 검색(&A)";
+            // 
+            // 그룹으로검색GToolStripMenuItem
+            // 
+            this.그룹으로검색GToolStripMenuItem.Name = "그룹으로검색GToolStripMenuItem";
+            this.그룹으로검색GToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.그룹으로검색GToolStripMenuItem.Text = "그룹으로 검색(&G)";
+            // 
+            // 시리즈로검색SToolStripMenuItem
+            // 
+            this.시리즈로검색SToolStripMenuItem.Name = "시리즈로검색SToolStripMenuItem";
+            this.시리즈로검색SToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.시리즈로검색SToolStripMenuItem.Text = "시리즈로 검색(&S)";
+            // 
+            // 캐릭터로검색CToolStripMenuItem
+            // 
+            this.캐릭터로검색CToolStripMenuItem.Name = "캐릭터로검색CToolStripMenuItem";
+            this.캐릭터로검색CToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.캐릭터로검색CToolStripMenuItem.Text = "캐릭터로 검색(&C)";
+            // 
             // bDownloadAll
             // 
             this.bDownloadAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -253,49 +296,6 @@
             this.listBox1.Visible = false;
             this.listBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listBox1_KeyUp);
             this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.제목으로검색TToolStripMenuItem,
-            this.작가로검색AToolStripMenuItem,
-            this.그룹으로검색GToolStripMenuItem,
-            this.시리즈로검색SToolStripMenuItem,
-            this.캐릭터로검색CToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(167, 136);
-            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
-            // 
-            // 제목으로검색TToolStripMenuItem
-            // 
-            this.제목으로검색TToolStripMenuItem.Name = "제목으로검색TToolStripMenuItem";
-            this.제목으로검색TToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.제목으로검색TToolStripMenuItem.Text = "제목으로 검색(&T)";
-            this.제목으로검색TToolStripMenuItem.Click += new System.EventHandler(this.제목으로검색TToolStripMenuItem_Click);
-            // 
-            // 작가로검색AToolStripMenuItem
-            // 
-            this.작가로검색AToolStripMenuItem.Name = "작가로검색AToolStripMenuItem";
-            this.작가로검색AToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.작가로검색AToolStripMenuItem.Text = "작가로 검색(&A)";
-            // 
-            // 그룹으로검색GToolStripMenuItem
-            // 
-            this.그룹으로검색GToolStripMenuItem.Name = "그룹으로검색GToolStripMenuItem";
-            this.그룹으로검색GToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.그룹으로검색GToolStripMenuItem.Text = "그룹으로 검색(&G)";
-            // 
-            // 시리즈로검색SToolStripMenuItem
-            // 
-            this.시리즈로검색SToolStripMenuItem.Name = "시리즈로검색SToolStripMenuItem";
-            this.시리즈로검색SToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.시리즈로검색SToolStripMenuItem.Text = "시리즈로 검색(&S)";
-            // 
-            // 캐릭터로검색CToolStripMenuItem
-            // 
-            this.캐릭터로검색CToolStripMenuItem.Name = "캐릭터로검색CToolStripMenuItem";
-            this.캐릭터로검색CToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.캐릭터로검색CToolStripMenuItem.Text = "캐릭터로 검색(&C)";
             // 
             // frmFinder
             // 

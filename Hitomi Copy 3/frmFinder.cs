@@ -413,33 +413,28 @@ namespace Hitomi_Copy_3
         {
             if (lvHistory.SelectedItems.Count > 0)
             {
-                tbSearch.Text = lvHistory.SelectedItems[0].SubItems[1].Text;
-                bSearch.PerformClick();
+                (new frmFinder(lvHistory.SelectedItems[0].SubItems[1].Text)).Show();
             }
         }
         
         private void Artist_Click(object sender, EventArgs e)
         {
-            tbSearch.Text = "artist:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_');
-            bSearch.PerformClick();
+            (new frmFinder("artist:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_'))).Show();
         }
 
         private void Group_Click(object sender, EventArgs e)
         {
-            tbSearch.Text = "group:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_');
-            bSearch.PerformClick();
+            (new frmFinder("group:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_'))).Show();
         }
 
         private void Series_Click(object sender, EventArgs e)
         {
-            tbSearch.Text = "series:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_');
-            bSearch.PerformClick();
+            (new frmFinder("series:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_'))).Show();
         }
 
         private void Character_Click(object sender, EventArgs e)
         {
-            tbSearch.Text = "character:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_');
-            bSearch.PerformClick();
+            (new frmFinder("character:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_'))).Show();
         }
 
         private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
@@ -463,6 +458,16 @@ namespace Hitomi_Copy_3
                 (contextMenuStrip1.Items[4] as ToolStripMenuItem).DropDownItems.Clear();
                 if (character[0] != "") (contextMenuStrip1.Items[4] as ToolStripMenuItem).DropDownItems.AddRange(character.Select(x => new ToolStripMenuItem(x, null, Character_Click)).ToArray());
             }
+        }
+
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
         }
     }
 }
