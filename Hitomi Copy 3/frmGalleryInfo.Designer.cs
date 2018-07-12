@@ -375,6 +375,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1302, 509);
             this.Name = "frmGalleryInfo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "정보";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmGalleryInfo_FormClosed);
             this.Load += new System.EventHandler(this.frmGalleryInfo_LoadAsync);

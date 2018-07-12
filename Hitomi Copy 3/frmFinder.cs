@@ -408,5 +408,61 @@ namespace Hitomi_Copy_3
                 (Application.OpenForms[0] as frmMain).RemoteDownloadArticleFromId((id as ListViewItem).SubItems[0].Text);
             (Application.OpenForms[0] as frmMain).BringToFront();
         }
+        
+        private void 제목으로검색TToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lvHistory.SelectedItems.Count > 0)
+            {
+                tbSearch.Text = lvHistory.SelectedItems[0].SubItems[1].Text;
+                bSearch.PerformClick();
+            }
+        }
+        
+        private void Artist_Click(object sender, EventArgs e)
+        {
+            tbSearch.Text = "artist:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_');
+            bSearch.PerformClick();
+        }
+
+        private void Group_Click(object sender, EventArgs e)
+        {
+            tbSearch.Text = "group:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_');
+            bSearch.PerformClick();
+        }
+
+        private void Series_Click(object sender, EventArgs e)
+        {
+            tbSearch.Text = "series:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_');
+            bSearch.PerformClick();
+        }
+
+        private void Character_Click(object sender, EventArgs e)
+        {
+            tbSearch.Text = "character:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_');
+            bSearch.PerformClick();
+        }
+
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (lvHistory.SelectedItems.Count > 0)
+            {
+                string[] artist = lvHistory.SelectedItems[0].SubItems[3].Text.Split(',').Select(x => x.Trim()).ToArray();
+                string[] group = lvHistory.SelectedItems[0].SubItems[4].Text.Split(',').Select(x => x.Trim()).ToArray();
+                string[] series = lvHistory.SelectedItems[0].SubItems[5].Text.Split(',').Select(x => x.Trim()).ToArray();
+                string[] character = lvHistory.SelectedItems[0].SubItems[6].Text.Split(',').Select(x => x.Trim()).ToArray();
+                
+                (contextMenuStrip1.Items[1] as ToolStripMenuItem).DropDownItems.Clear();
+                if (artist[0] != "") (contextMenuStrip1.Items[1] as ToolStripMenuItem).DropDownItems.AddRange(artist.Select(x => new ToolStripMenuItem(x, null, Artist_Click)).ToArray());
+
+                (contextMenuStrip1.Items[2] as ToolStripMenuItem).DropDownItems.Clear();
+                if (group[0] != "") (contextMenuStrip1.Items[2] as ToolStripMenuItem).DropDownItems.AddRange(group.Select(x => new ToolStripMenuItem(x, null, Group_Click)).ToArray());
+
+                (contextMenuStrip1.Items[3] as ToolStripMenuItem).DropDownItems.Clear();
+                if (series[0] != "") (contextMenuStrip1.Items[3] as ToolStripMenuItem).DropDownItems.AddRange(series.Select(x => new ToolStripMenuItem(x, null, Series_Click)).ToArray());
+
+                (contextMenuStrip1.Items[4] as ToolStripMenuItem).DropDownItems.Clear();
+                if (character[0] != "") (contextMenuStrip1.Items[4] as ToolStripMenuItem).DropDownItems.AddRange(character.Select(x => new ToolStripMenuItem(x, null, Character_Click)).ToArray());
+            }
+        }
     }
 }

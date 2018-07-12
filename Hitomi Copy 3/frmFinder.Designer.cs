@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFinder));
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.bSearch = new MetroFramework.Controls.MetroButton();
@@ -42,12 +43,19 @@
             this.columnHeader28 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.bDownloadAll = new System.Windows.Forms.Button();
             this.bDownload = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.listBox1 = new Hitomi_Copy_2.AutoCompleteListBox();
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.제목으로검색TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.작가로검색AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.그룹으로검색GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.시리즈로검색SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.캐릭터로검색CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -130,9 +138,11 @@
             this.columnHeader26,
             this.columnHeader2,
             this.columnHeader3});
+            this.lvHistory.ContextMenuStrip = this.contextMenuStrip1;
             this.lvHistory.FullRowSelect = true;
             this.lvHistory.GridLines = true;
             this.lvHistory.Location = new System.Drawing.Point(12, 60);
+            this.lvHistory.MultiSelect = false;
             this.lvHistory.Name = "lvHistory";
             this.lvHistory.Size = new System.Drawing.Size(1572, 574);
             this.lvHistory.TabIndex = 10;
@@ -185,6 +195,18 @@
             this.columnHeader26.Text = "태그";
             this.columnHeader26.Width = 230;
             // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "다운";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader2.Width = 40;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "히든";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader3.Width = 40;
+            // 
             // bDownloadAll
             // 
             this.bDownloadAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -232,17 +254,48 @@
             this.listBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listBox1_KeyUp);
             this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
             // 
-            // columnHeader2
+            // contextMenuStrip1
             // 
-            this.columnHeader2.Text = "다운";
-            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader2.Width = 40;
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.제목으로검색TToolStripMenuItem,
+            this.작가로검색AToolStripMenuItem,
+            this.그룹으로검색GToolStripMenuItem,
+            this.시리즈로검색SToolStripMenuItem,
+            this.캐릭터로검색CToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(167, 136);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
-            // columnHeader3
+            // 제목으로검색TToolStripMenuItem
             // 
-            this.columnHeader3.Text = "히든";
-            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader3.Width = 40;
+            this.제목으로검색TToolStripMenuItem.Name = "제목으로검색TToolStripMenuItem";
+            this.제목으로검색TToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.제목으로검색TToolStripMenuItem.Text = "제목으로 검색(&T)";
+            this.제목으로검색TToolStripMenuItem.Click += new System.EventHandler(this.제목으로검색TToolStripMenuItem_Click);
+            // 
+            // 작가로검색AToolStripMenuItem
+            // 
+            this.작가로검색AToolStripMenuItem.Name = "작가로검색AToolStripMenuItem";
+            this.작가로검색AToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.작가로검색AToolStripMenuItem.Text = "작가로 검색(&A)";
+            // 
+            // 그룹으로검색GToolStripMenuItem
+            // 
+            this.그룹으로검색GToolStripMenuItem.Name = "그룹으로검색GToolStripMenuItem";
+            this.그룹으로검색GToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.그룹으로검색GToolStripMenuItem.Text = "그룹으로 검색(&G)";
+            // 
+            // 시리즈로검색SToolStripMenuItem
+            // 
+            this.시리즈로검색SToolStripMenuItem.Name = "시리즈로검색SToolStripMenuItem";
+            this.시리즈로검색SToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.시리즈로검색SToolStripMenuItem.Text = "시리즈로 검색(&S)";
+            // 
+            // 캐릭터로검색CToolStripMenuItem
+            // 
+            this.캐릭터로검색CToolStripMenuItem.Name = "캐릭터로검색CToolStripMenuItem";
+            this.캐릭터로검색CToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.캐릭터로검색CToolStripMenuItem.Text = "캐릭터로 검색(&C)";
             // 
             // frmFinder
             // 
@@ -265,8 +318,10 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmFinder";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Finder";
             this.Load += new System.EventHandler(this.frmFinder_Load);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -293,5 +348,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 제목으로검색TToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 작가로검색AToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 그룹으로검색GToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 시리즈로검색SToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 캐릭터로검색CToolStripMenuItem;
     }
 }
