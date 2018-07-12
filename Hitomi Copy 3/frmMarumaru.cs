@@ -57,6 +57,7 @@ namespace Hitomi_Copy_3
                     LogEssential.Instance.PushLog(() => $"[MM Setting] Delete 404 '{mm.Title}'");
                 }
             }
+            MMSetting.Instance.Save();
         }
     }
 }
