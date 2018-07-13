@@ -664,6 +664,8 @@ namespace Hitomi_Copy_3
                     "type:"
                 };
                 List<HitomiTagdata> data_col = (from ix in match_target where ix.StartsWith(word) select new HitomiTagdata {Tag = ix}).ToList();
+                if (HitomiSetting.Instance.GetModel().CustomAutoComplete != null)
+                    data_col.AddRange(from ix in HitomiSetting.Instance.GetModel().CustomAutoComplete where ix.StartsWith(word) select new HitomiTagdata { Tag = ix });
                 if (data_col.Count > 0)
                     match = data_col;
             }

@@ -57,6 +57,8 @@ namespace Hitomi_Copy_2
         public bool UsingXiAanlysis;
         [JsonProperty]
         public bool UsingOnlyFMTagsOnAnalysis;
+        [JsonProperty]
+        public string[] CustomAutoComplete;
     }
 
     public class HitomiSetting
@@ -96,6 +98,7 @@ namespace Hitomi_Copy_2
                 model.LatestNotice = 0;
                 model.UsingXiAanlysis = false;
                 model.UsingOnlyFMTagsOnAnalysis = false;
+                model.CustomAutoComplete = new string[] { "recent:0-25" };
                 Save();
             }
             else
