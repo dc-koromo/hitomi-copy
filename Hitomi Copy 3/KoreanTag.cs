@@ -65,7 +65,7 @@ namespace Hitomi_Copy_3
                 case "female:big breasts": return "female:거유";
                 case "female:loli": return "female:로리";
                 case "female:stockings": return "female:스타킹";
-                case "female:schoolgirl uniform": return "female:교복";
+                case "female:schoolgirl uniform": return "female:여학생 교복";
                 case "female:sole female": return "female:단독여성";
                 case "female:anal": return "female:애널";
                 case "female:nakadashi": return "female:질내 사정";
@@ -573,7 +573,7 @@ namespace Hitomi_Copy_3
                 case "male:glasses": return "male:안경";
                 case "male:males only": return "male:남자만";
                 case "male:dilf": return "male:아저씨";
-                case "male:schoolboy uniform": return "male:교복";
+                case "male:schoolboy uniform": return "male:남학생 교복";
                 case "male:crossdressing": return "male:여장";
                 case "male:bbm": return "male:뚱뚱한 남자";
                 case "male:dark skin": return "male:검은피부";
