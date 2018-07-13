@@ -31,7 +31,7 @@ namespace Hitomi_Copy_3
                 case "animated": return "애니";
                 case "artbook": return "아트북";
                 case "body swap": return "신체교환";
-                case "out of order": return "재고 없음";
+                case "out of order": return "정리되지 않음";
                 case "time stop": return "시간 정지";
                 case "missing cover": return "커버 없음";
                 case "monster": return "몬스터";
@@ -158,7 +158,7 @@ namespace Hitomi_Copy_3
                 case "female:breast expansion": return "female:가슴이 커짐";
                 case "female:furry": return "female:수인";
                 case "female:gyaru": return "female:갸루";
-                case "female:dick growth": return "female:자지 성장";
+                case "female:dick growth": return "female:자지가 커짐";
                 case "female:slave": return "female:노예";
                 case "female:latex": return "female:라텍스";
                 case "female:leotard": return "female:레오타드";
@@ -727,7 +727,7 @@ namespace Hitomi_Copy_3
                 case "male:apron": return "male:앞치마";
                 case "male:bloomers": return "male:블루머";
                 case "male:diaper": return "male:기저귀";
-                case "male:dick growth": return "male:자지 성장";
+                case "male:dick growth": return "male:자지가 커짐";
                 case "male:fundoshi": return "male:훈도시";
                 case "male:bike shorts": return "male:스패츠";
                 case "male:amputee": return "male:사지의 일부가 손실됨";
