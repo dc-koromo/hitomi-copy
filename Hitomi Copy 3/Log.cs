@@ -702,6 +702,13 @@ namespace Hitomi_Copy_3
                 else if (cmd == "latest")
                 {
                     PushString($"{HitomiData.Instance.metadata_collection[0].ID}");
+
+                    using (var wc = new System.Net.WebClient())
+                    {
+                        string target = wc.DownloadString("https://hitomi.la/galleries/" + HitomiData.Instance.metadata_collection[0].ID + ".html");
+                        string date_text = Regex.Split(Regex.Split(target, @"<span class=""date"">")[1], @"</span>")[0];
+                        PushString(DateTime.Parse(date_text).Ticks.ToString());
+                    }
                 }
                 else if (cmd == "mm")
                 {
