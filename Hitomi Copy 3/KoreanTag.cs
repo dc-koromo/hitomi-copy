@@ -219,7 +219,7 @@ namespace Hitomi_Copy_3
                 case "female:armpit sex": return "female:겨드랑이로 성기를 자극함";
                 case "female:triple penetration": return "female:3개의 구멍이 동시에 삽입당함";
                 case "female:dog girl": return "female:멍멍이녀";
-                case "female:breast feeding": return "female:가슴을 빨음";
+                case "female:breast feeding": return "female:가슴 빨기";
                 case "female:blowjob face": return "female:펠라치오로 인해 양볼이 홀쭘해지는 얼굴모양";
                 case "female:vore": return "female:보어물";
                 case "female:cheerleader": return "female:치어리더";

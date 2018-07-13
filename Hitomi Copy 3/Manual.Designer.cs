@@ -57,6 +57,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.네잘하셨어요ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -98,6 +99,7 @@
             // tabPage1
             // 
             this.tabPage1.ContextMenuStrip = this.contextMenuStrip1;
+            this.tabPage1.Controls.Add(this.metroLabel3);
             this.tabPage1.Controls.Add(this.metroLabel14);
             this.tabPage1.Controls.Add(this.metroLabel4);
             this.tabPage1.Controls.Add(this.metroLabel2);
@@ -112,7 +114,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(46, 51);
+            this.metroLabel4.Location = new System.Drawing.Point(50, 40);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(554, 95);
             this.metroLabel4.TabIndex = 7;
@@ -122,7 +124,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(46, 184);
+            this.metroLabel2.Location = new System.Drawing.Point(50, 165);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(588, 19);
             this.metroLabel2.TabIndex = 5;
@@ -336,7 +338,7 @@
             // metroLabel14
             // 
             this.metroLabel14.AutoSize = true;
-            this.metroLabel14.Location = new System.Drawing.Point(46, 203);
+            this.metroLabel14.Location = new System.Drawing.Point(50, 184);
             this.metroLabel14.Name = "metroLabel14";
             this.metroLabel14.Size = new System.Drawing.Size(693, 38);
             this.metroLabel14.TabIndex = 8;
@@ -363,6 +365,17 @@
             this.이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem.Name = "이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem";
             this.이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem.Size = new System.Drawing.Size(457, 22);
             this.이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem.Text = "이제 검색창, 연관태그 등 여러 도구창에서 오른쪽 클릭을 활용해보세요";
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.Location = new System.Drawing.Point(50, 246);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(554, 38);
+            this.metroLabel3.TabIndex = 9;
+            this.metroLabel3.Text = "문제를 해결하는 가장 좋은 방법은 koromo.software@gmail.com로 메일을 보내는 겁니다.\r\n프로그램상에 문제가 있다면 소스코드없이" +
+    " 절대 해결할 수 없습니다. 메일 보내세요.";
+            this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // Manual
             // 
@@ -427,5 +440,6 @@
         private System.Windows.Forms.ToolStripMenuItem 네잘하셨어요ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem;
         private MetroFramework.Controls.MetroLabel metroLabel14;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
     }
 }
