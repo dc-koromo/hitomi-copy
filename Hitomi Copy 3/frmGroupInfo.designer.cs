@@ -44,6 +44,7 @@ namespace Hitomi_Copy
             this.모두선택취소CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.제목비슷한작품선택취소SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.이미다운로드된작품선택취소GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -136,35 +137,43 @@ namespace Hitomi_Copy
             this.모두선택AToolStripMenuItem,
             this.모두선택취소CToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.제목비슷한작품선택취소SToolStripMenuItem});
+            this.제목비슷한작품선택취소SToolStripMenuItem,
+            this.이미다운로드된작품선택취소GToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(238, 98);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(263, 120);
             // 
             // 모두선택AToolStripMenuItem
             // 
             this.모두선택AToolStripMenuItem.Name = "모두선택AToolStripMenuItem";
-            this.모두선택AToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.모두선택AToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
             this.모두선택AToolStripMenuItem.Text = "모두 선택(&A)";
             this.모두선택AToolStripMenuItem.Click += new System.EventHandler(this.모두선택AToolStripMenuItem_Click);
             // 
             // 모두선택취소CToolStripMenuItem
             // 
             this.모두선택취소CToolStripMenuItem.Name = "모두선택취소CToolStripMenuItem";
-            this.모두선택취소CToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.모두선택취소CToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
             this.모두선택취소CToolStripMenuItem.Text = "모두 선택 취소(&C)";
             this.모두선택취소CToolStripMenuItem.Click += new System.EventHandler(this.모두선택취소CToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(234, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(259, 6);
             // 
             // 제목비슷한작품선택취소SToolStripMenuItem
             // 
             this.제목비슷한작품선택취소SToolStripMenuItem.Name = "제목비슷한작품선택취소SToolStripMenuItem";
-            this.제목비슷한작품선택취소SToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.제목비슷한작품선택취소SToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
             this.제목비슷한작품선택취소SToolStripMenuItem.Text = "제목 비슷한 작품 선택 취소(&S)";
             this.제목비슷한작품선택취소SToolStripMenuItem.Click += new System.EventHandler(this.제목비슷한작품선택취소SToolStripMenuItem_Click);
+            // 
+            // 이미다운로드된작품선택취소GToolStripMenuItem
+            // 
+            this.이미다운로드된작품선택취소GToolStripMenuItem.Name = "이미다운로드된작품선택취소GToolStripMenuItem";
+            this.이미다운로드된작품선택취소GToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.이미다운로드된작품선택취소GToolStripMenuItem.Text = "이미 다운로드된 작품 선택 취소(&G)";
+            this.이미다운로드된작품선택취소GToolStripMenuItem.Click += new System.EventHandler(this.이미다운로드된작품선택취소GToolStripMenuItem_Click);
             // 
             // frmGroupInfo
             // 
@@ -206,5 +215,6 @@ namespace Hitomi_Copy
         private System.Windows.Forms.ToolStripMenuItem 모두선택취소CToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 제목비슷한작품선택취소SToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 이미다운로드된작품선택취소GToolStripMenuItem;
     }
 }
