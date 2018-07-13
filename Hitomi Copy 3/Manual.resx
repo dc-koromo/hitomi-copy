@@ -127,6 +127,19 @@ E-Mail: koromo.software@gmail.com
 Source-code : https://github.com/dc-koromo/hitomi-downloader-2
 PatchNote : https://github.com/dc-koromo/hitomi-downloader-2/blob/master/PatchNote.md</value>
   </data>
+  <data name="metroLabel15.Text" xml:space="preserve">
+    <value>작가 추천은 크게 두 가지 방법을 사용할 수 있습니다.
+
+1. 산술적인 비교방법
+작가의 작품수, 작가의 태그 비율을 이용해 계산합니다. 고급 설정 -&gt; "Recommend NMultiple With Length"를 켜면 작품수는 더이상
+작가추천에 영향을 주지 않습니다. 아주 단순한 비교이기 때문에 결과도 단순하게 출력됩니다.
+
+2. 단순회귀분석을 이용한 비교방법
+간단한 통계방법을 이용해 순위를 매깁니다. 사용하려면 고급설정 -&gt; "Using Xi Aanlysis"를 켜세요.
+단순회귀분석은 태그 비율의 일치여부만을 가지고 비교합니다. 기본적으로 작가의 작품수에 영향을 받지않습니다.
+
+무분별한 다운로드로 Log가 더럽혀졌다면, log.json을 지우고 새로 시작해보세요!</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

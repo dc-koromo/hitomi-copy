@@ -58,6 +58,8 @@
             this.네잘하셨어요ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -69,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -149,6 +152,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl2.Controls.Add(this.tabPage5);
             this.tabControl2.Controls.Add(this.tabPage6);
+            this.tabControl2.Controls.Add(this.tabPage4);
             this.tabControl2.Location = new System.Drawing.Point(6, 6);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
@@ -377,6 +381,27 @@
     " 절대 해결할 수 없습니다. 메일 보내세요.";
             this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.metroLabel15);
+            this.tabPage4.Location = new System.Drawing.Point(4, 24);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(928, 366);
+            this.tabPage4.TabIndex = 2;
+            this.tabPage4.Text = "작가추천";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // metroLabel15
+            // 
+            this.metroLabel15.AutoSize = true;
+            this.metroLabel15.Location = new System.Drawing.Point(49, 43);
+            this.metroLabel15.Name = "metroLabel15";
+            this.metroLabel15.Size = new System.Drawing.Size(806, 209);
+            this.metroLabel15.TabIndex = 10;
+            this.metroLabel15.Text = resources.GetString("metroLabel15.Text");
+            this.metroLabel15.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
             // Manual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -406,6 +431,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -441,5 +468,7 @@
         private System.Windows.Forms.ToolStripMenuItem 이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem;
         private MetroFramework.Controls.MetroLabel metroLabel14;
         private MetroFramework.Controls.MetroLabel metroLabel3;
+        private System.Windows.Forms.TabPage tabPage4;
+        private MetroFramework.Controls.MetroLabel metroLabel15;
     }
 }
