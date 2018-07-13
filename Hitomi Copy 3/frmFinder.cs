@@ -439,7 +439,7 @@ namespace Hitomi_Copy_3
 
         private void Tag_Click(object sender, EventArgs e)
         {
-            (new frmFinder("tag:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_'))).Show();
+            (new frmFinder("tag:" + (sender as ToolStripMenuItem).Text.Split('(')[0].Trim().Replace(' ', '_'))).Show();
         }
 
         private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
@@ -465,7 +465,18 @@ namespace Hitomi_Copy_3
                 if (character[0] != "") (contextMenuStrip1.Items[4] as ToolStripMenuItem).DropDownItems.AddRange(character.Select(x => new ToolStripMenuItem(x, null, Character_Click)).ToArray());
 
                 (contextMenuStrip1.Items[5] as ToolStripMenuItem).DropDownItems.Clear();
-                if (tag[0] != "") (contextMenuStrip1.Items[5] as ToolStripMenuItem).DropDownItems.AddRange(tag.Select(x => new ToolStripMenuItem(x, null, Tag_Click)).ToArray());
+                if (tag[0] != "") (contextMenuStrip1.Items[5] as ToolStripMenuItem).DropDownItems.AddRange(tag.Select(x => {
+                    string ko = KoreanTag.TagMap(x);
+                    if (ko != x)
+                    {
+                        if (ko.Contains(':'))
+                            return new ToolStripMenuItem($"{x} ({ko.Split(':')[1]})", null, Tag_Click);
+                        else
+                            return new ToolStripMenuItem($"{x} ({ko})", null, Tag_Click);
+                    }
+                    else
+                        return new ToolStripMenuItem($"{x}", null, Tag_Click);
+                }).ToArray());
             }
         }
 
