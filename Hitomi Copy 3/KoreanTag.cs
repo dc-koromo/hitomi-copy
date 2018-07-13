@@ -72,7 +72,7 @@ namespace Hitomi_Copy_3
                 case "female:bondage": return "female:속박";
                 case "female:blowjob": return "female:펠라치오";
                 case "female:rape": return "female:강간";
-                case "female:glasses": return "female:좆경";
+                case "female:glasses": return "female:안경";
                 case "female:ahegao": return "female:아헤가오";
                 case "female:paizuri": return "female:파이즈리";
                 case "female:defloration": return "female:첫 경험";
