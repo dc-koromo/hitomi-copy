@@ -115,6 +115,8 @@ namespace Hitomi_Copy_2
                     model.RecommendPerScroll = 10;
                 if (model.TextMatchingAccuracy > 20 || model.TextMatchingAccuracy < 2)
                     model.TextMatchingAccuracy = 5;
+                if (model.CustomAutoComplete == null)
+                    model.CustomAutoComplete = new string[] { "recent:0-25" };
                 Save();
             }
         }
