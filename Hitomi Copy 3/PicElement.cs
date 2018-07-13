@@ -278,5 +278,9 @@ namespace Hitomi_Copy
         { get { return downloading; } set { downloading = value; } }
         public bool Overlap
         { get { return overlap; } set { overlap = value; } }
+        public bool IsHidden
+        { get { return hidden_data; } }
+        public bool IsDownloaded
+        { get { return downloaded_overlapping; } }
     }
 }

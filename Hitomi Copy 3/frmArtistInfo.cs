@@ -287,5 +287,16 @@ namespace Hitomi_Copy
             }
             ImagePanel.ResumeLayout();
         }
+
+        private void 이미다운로드된작품선택취소GToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ImagePanel.SuspendLayout();
+            for (int i = 0; i < ImagePanel.Controls.Count; i++)
+            {
+                if ((ImagePanel.Controls[i] as PicElement).IsDownloaded == true)
+                    (ImagePanel.Controls[i] as PicElement).Selected = false;
+            }
+            ImagePanel.ResumeLayout();
+        }
     }
 }

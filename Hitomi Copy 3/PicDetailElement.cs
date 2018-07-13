@@ -211,6 +211,10 @@ namespace Hitomi_Copy_3
         { get { return downloading; } set { downloading = value; if (Downloading) BackColor = Color.FromArgb(200, 200, 200, 0); else BackColor = Color.FromArgb(200, 200, 130, 130); } }
         public bool Overlap
         { get { return overlap; } set { overlap = value; } }
+        public bool IsHidden
+        { get { return hidden_data; } }
+        public bool IsDownloaded
+        { get { return downloaded_overlapping; } }
 
         private void PicDetailElement_Load(object sender, EventArgs e)
         {
