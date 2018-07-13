@@ -722,6 +722,23 @@ namespace Hitomi_Copy_3
                 {
                     (new frmFinder()).Show();
                 }
+                else if (cmd == "series")
+                {
+                    Dictionary<string, int> s = new Dictionary<string, int>();
+                    foreach (var md in HitomiData.Instance.metadata_collection)
+                    {
+                        if (md.Parodies != null)
+                            foreach (var series in md.Parodies)
+                                if (!s.ContainsKey(series))
+                                    s.Add(series, 1);
+                                else
+                                    s[series] += 1;
+                    }
+                    var list = s.ToList();
+                    list.Sort((a, b) => b.Value.CompareTo(a.Value));
+                    foreach (var ee in list)
+                        PushString($"                case \"{ee.Key}\": return \"{ee.Key}\";");
+                }
                 else if (cmd == "help")
                 {
                     PushString("Realtime Variable Update System");

@@ -257,6 +257,7 @@
     <Compile Include="InfoForm.Designer.cs">
       <DependentUpon>InfoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="KoreanSeries.cs" />
     <Compile Include="KoreanTag.cs" />
     <Compile Include="Language.cs" />
     <Compile Include="Log.cs">

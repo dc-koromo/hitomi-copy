@@ -995,7 +995,6 @@ namespace Hitomi_Copy_3
                 case "male:harness": return "male:harness";
                 case "male:anorexic": return "male:anorexic";
                 case "male:dicknipples": return "male:dicknipples";
-
             }
 
             return eng_tag;
