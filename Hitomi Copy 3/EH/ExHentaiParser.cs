@@ -159,6 +159,7 @@ namespace Hitomi_Copy_2.EH
                 catch { }
             }
 
+            comments.Sort((a, b) => a.Item1.CompareTo(b.Item1));
             article.comment = comments.ToArray();
 
             return article;
