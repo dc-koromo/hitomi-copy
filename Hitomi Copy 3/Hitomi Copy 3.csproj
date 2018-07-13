@@ -11,6 +11,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,7 +24,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -84,6 +84,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -266,6 +267,12 @@
     <Compile Include="Log.Designer.cs">
       <DependentUpon>Log.cs</DependentUpon>
     </Compile>
+    <Compile Include="Manual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manual.Designer.cs">
+      <DependentUpon>Manual.cs</DependentUpon>
+    </Compile>
     <Compile Include="MarqueeColorBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -397,6 +404,9 @@
     <EmbeddedResource Include="Log.resx">
       <DependentUpon>Log.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Manual.resx">
+      <DependentUpon>Manual.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MergeJSon.resx">
       <DependentUpon>MergeJSon.cs</DependentUpon>
     </EmbeddedResource>
@@ -451,6 +461,9 @@
     <EmbeddedResource Include="Resources\MetroFramework.Fonts.dll" />
     <EmbeddedResource Include="Resources\Newtonsoft.Json.dll" />
     <EmbeddedResource Include="Resources\HtmlAgilityPack.dll" />
+    <None Include="Resources\1.PNG" />
+    <None Include="Resources\2.PNG" />
+    <None Include="Resources\3.PNG" />
     <Content Include="TETO.ico" />
   </ItemGroup>
   <ItemGroup>

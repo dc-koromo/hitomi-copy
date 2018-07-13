@@ -739,6 +739,10 @@ namespace Hitomi_Copy_3
                     foreach (var ee in list)
                         PushString($"                case \"{ee.Key}\": return \"{ee.Key}\";");
                 }
+                else if (cmd == "manual")
+                {
+                    (new Manual()).Show();
+                }
                 else if (cmd == "help")
                 {
                     PushString("Realtime Variable Update System");
@@ -766,6 +770,7 @@ namespace Hitomi_Copy_3
                     PushString("mm : Show marumaru manager.");
                     PushString("record : Open record window.");
                     PushString("finder : Open finder window.");
+                    PushString("manual : Open manual window.");
                 }
                 else if (cmd == "fucs")
                 {
