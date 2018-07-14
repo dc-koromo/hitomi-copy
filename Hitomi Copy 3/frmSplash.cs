@@ -20,7 +20,7 @@ namespace Hitomi_Copy_2
             ServicePointManager.DefaultConnectionLimit = 1048576;
             try
             {
-                if (HitomiData.Instance.CheckMetadataExist())
+                if (HitomiData.Instance.CheckMetadataExist() && !HitomiSetting.Instance.GetModel().AutoSync)
                 {
                     await Task.Run(() => HitomiData.Instance.LoadMetadataJson());
                 }
@@ -30,7 +30,7 @@ namespace Hitomi_Copy_2
                     await Task.Run(() => HitomiData.Instance.DownloadMetadata());
                 }
 
-                if (HitomiData.Instance.CheckHiddendataExist())
+                if (HitomiData.Instance.CheckHiddendataExist() && !HitomiSetting.Instance.GetModel().AutoSync)
                 {
                     await Task.Run(() => HitomiData.Instance.LoadHiddendataJson());
                 }

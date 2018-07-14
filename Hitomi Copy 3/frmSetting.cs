@@ -28,6 +28,7 @@ namespace Hitomi_Copy_3
             tgDSR.Checked = HitomiSetting.Instance.GetModel().DetailedSearchResult;
             tgEXH.Checked = HitomiSetting.Instance.GetModel().UsingExHentaiBaseOpener;
             tgXA.Checked = HitomiSetting.Instance.GetModel().UsingXiAanlysis;
+            tgAS.Checked = HitomiSetting.Instance.GetModel().AutoSync;
         }
 
         private void bSave_Click(object sender, EventArgs e)
@@ -62,6 +63,7 @@ namespace Hitomi_Copy_3
             HitomiSetting.Instance.GetModel().DetailedSearchResult = tgDSR.Checked;
             HitomiSetting.Instance.GetModel().UsingExHentaiBaseOpener = tgEXH.Checked;
             HitomiSetting.Instance.GetModel().UsingXiAanlysis = tgXA.Checked;
+            HitomiSetting.Instance.GetModel().AutoSync = tgAS.Checked;
             HitomiSetting.Instance.Save();
             Close();
         }
@@ -130,11 +132,15 @@ namespace Hitomi_Copy_3
         {
             tbInfo.Text = "단순 회귀 방법을 이용해 작가 추천 목록을 작성합니다. 이 기능을 사용하려면 Recommend NMultiple With Length 옵션을 켜세요.";
         }
+        
+        private void tgAS_MouseEnter(object sender, EventArgs e)
+        {
+            tbInfo.Text = "프로그램 시작시 데이터 동기화를 실행합니다. 이 옵션을 켜면 데이터를 저장하지 않습니다.";
+        }
 
         private void MouseLeave_Event(object sender, EventArgs e)
         {
             tbInfo.Text = "";
         }
-
     }
 }

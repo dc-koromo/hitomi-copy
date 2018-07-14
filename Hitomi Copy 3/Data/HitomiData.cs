@@ -42,14 +42,17 @@ namespace Hitomi_Copy.Data
             await Task.WhenAll(Enumerable.Range(0, number_of_gallery_jsons).Select(no => downloadMetadata(no)));
             SortMetadata();
 
-            JsonSerializer serializer = new JsonSerializer();
-            serializer.Converters.Add(new JavaScriptDateTimeConverter());
-            serializer.NullValueHandling = NullValueHandling.Ignore;
-
-            using (StreamWriter sw = new StreamWriter(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "metadata.json")))
-            using (JsonWriter writer = new JsonTextWriter(sw))
+            if (!HitomiSetting.Instance.GetModel().AutoSync)
             {
-                serializer.Serialize(writer, metadata_collection);
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Converters.Add(new JavaScriptDateTimeConverter());
+                serializer.NullValueHandling = NullValueHandling.Ignore;
+
+                using (StreamWriter sw = new StreamWriter(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "metadata.json")))
+                using (JsonWriter writer = new JsonTextWriter(sw))
+                {
+                    serializer.Serialize(writer, metadata_collection);
+                }
             }
         }
 
@@ -65,10 +68,13 @@ namespace Hitomi_Copy.Data
             serializer.Converters.Add(new JavaScriptDateTimeConverter());
             serializer.NullValueHandling = NullValueHandling.Ignore;
 
-            using (StreamWriter sw = new StreamWriter(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "hiddendata.json")))
-            using (JsonWriter writer = new JsonTextWriter(sw))
+            if (!HitomiSetting.Instance.GetModel().AutoSync)
             {
-                serializer.Serialize(writer, articles);
+                using (StreamWriter sw = new StreamWriter(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "hiddendata.json")))
+                using (JsonWriter writer = new JsonTextWriter(sw))
+                {
+                    serializer.Serialize(writer, articles);
+                }
             }
 
             HashSet<string> overlap = new HashSet<string>();

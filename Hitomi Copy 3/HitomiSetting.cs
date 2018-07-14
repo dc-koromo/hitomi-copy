@@ -59,6 +59,8 @@ namespace Hitomi_Copy_2
         public bool UsingOnlyFMTagsOnAnalysis;
         [JsonProperty]
         public string[] CustomAutoComplete;
+        [JsonProperty]
+        public bool AutoSync;
     }
 
     public class HitomiSetting
@@ -99,6 +101,7 @@ namespace Hitomi_Copy_2
                 model.UsingXiAanlysis = false;
                 model.UsingOnlyFMTagsOnAnalysis = false;
                 model.CustomAutoComplete = new string[] { "recent:0-25" };
+                model.AutoSync = false;
                 Save();
             }
             else
@@ -107,7 +110,7 @@ namespace Hitomi_Copy_2
                 if (model.MaximumThumbnailShow < 10) model.MaximumThumbnailShow = 1000;
                 if (model.Thread < 5) model.Thread = 32;
                 if (model.Thread > 64) model.Thread = 64;
-                if (!HitomiData.Instance.GetLanguageList().Contains(model.Language) && model.Language != "N/A" && model.Language != "ALL")
+                if (HitomiData.Instance.metadata_collection != null && !HitomiData.Instance.GetLanguageList().Contains(model.Language) && model.Language != "N/A" && model.Language != "ALL")
                     model.Language = "korean";
                 if (model.WaitTimeout == 0 && model.WaitInfinite == false)
                     { model.WaitInfinite = true; model.WaitTimeout = 10000; }
