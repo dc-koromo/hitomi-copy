@@ -12,6 +12,8 @@ namespace Hitomi_Copy_2
         [JsonProperty]
         public string Path;
         [JsonProperty]
+        public string MarumaruPath;
+        [JsonProperty]
         public string[] ExclusiveTag;
         [JsonProperty]
         public bool Zip;
@@ -78,6 +80,7 @@ namespace Hitomi_Copy_2
             {
                 model = new HitomiSettingModel();
                 model.Path = @"C:\Hitomi\{Artists}\[{Id}] {Title}\";
+                model.MarumaruPath = AppDomain.CurrentDomain.BaseDirectory;
                 model.ExclusiveTag = new string[] { "female:mother", "male:anal", "male:guro", "female:guro", "male:snuff", "female:snuff" };
                 model.Zip = false;
                 model.MaximumThumbnailShow = 1000;
@@ -107,6 +110,7 @@ namespace Hitomi_Copy_2
             else
             {
                 if (String.IsNullOrEmpty(model.Path)) model.Path = @"C:\Hitomi\{Artists}\[{Id}] {Title}\";
+                if (String.IsNullOrEmpty(model.MarumaruPath)) model.MarumaruPath = AppDomain.CurrentDomain.BaseDirectory;
                 if (model.MaximumThumbnailShow < 10) model.MaximumThumbnailShow = 1000;
                 if (model.Thread < 5) model.Thread = 32;
                 if (model.Thread > 64) model.Thread = 64;

@@ -520,7 +520,7 @@ namespace Hitomi_Copy_3
             string archive = article.Archive ?? "";
             if (title != null) foreach (char c in invalid) title = title.Replace(c.ToString(), "");
             if (archive != null) foreach (char c in invalid) archive = archive.Replace(c.ToString(), "");
-            return $"{AppDomain.CurrentDomain.BaseDirectory}{title}\\{archive}\\";
+            return $"{HitomiSetting.Instance.GetModel().MarumaruPath}{title}\\{archive}\\";
         }
 
         private void DownloadImage(string uri, MMArticle article)
