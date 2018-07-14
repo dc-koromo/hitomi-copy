@@ -173,6 +173,8 @@ namespace Hitomi_Copy
                 pe.Downloading = true;
                 if (pe.Article.Artists != null)
                     pe.Article.Artists[0] = group;
+                else
+                    pe.Article.Artists = new string[] { group };
                 (Application.OpenForms[0] as frmMain).RemoteDownloadArticle(pe);
             }
             Close();
@@ -187,6 +189,8 @@ namespace Hitomi_Copy
                     pe.Downloading = true;
                     if (pe.Article.Artists != null)
                         pe.Article.Artists[0] = group;
+                    else
+                        pe.Article.Artists = new string[] { group };
                     (Application.OpenForms[0] as frmMain).RemoteDownloadArticle(pe);
                 }
             (Application.OpenForms[0] as frmMain).BringToFront();
