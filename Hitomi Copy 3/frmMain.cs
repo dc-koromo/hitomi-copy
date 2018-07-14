@@ -1448,6 +1448,15 @@ namespace Hitomi_Copy_3
         {
             (new frmFinder()).Show();
         }
+        
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.F1)
+            {
+                (new Manual()).Show();
+            }
+            return base.ProcessDialogKey(keyData);
+        }
         #endregion
 
     }
