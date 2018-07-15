@@ -67,6 +67,8 @@ namespace Hitomi_Copy_2
         public bool OpenWithFinder; // series tag character listing
         [JsonProperty]
         public int LoadPreviewMaximum;
+        [JsonProperty]
+        public bool ShowPageCount;
     }
 
     public class HitomiSetting
@@ -111,6 +113,7 @@ namespace Hitomi_Copy_2
                 model.AutoSync = false;
                 model.OpenWithFinder = true;
                 model.LoadPreviewMaximum = 500;
+                model.ShowPageCount = false;
                 Save();
             }
             else

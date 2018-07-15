@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Hitomi_Copy_3
@@ -240,12 +241,20 @@ namespace Hitomi_Copy_3
                 lLang.Dispose();
             }
 
-            
             for (int i = 0; i < Controls.Count; i++)
             {
-                if (Controls[i] is Label)
+                if (Controls[i] is Label && Controls[i] != lPage)
                     ConvertToVUILabel(Controls[i--] as Label);
             }
+            
+            if (HitomiSetting.Instance.GetModel().ShowPageCount)
+                Task.Run(() => {
+                    string ppp = HitomiCore.GetPageCount(this).ToString() + "p";
+                    this.Send(() => lPage.Text = ppp);
+                    });
+            else
+                lPage.Dispose();
+
         }
 
         private void AddTagToPanel(string tag_data, int image)

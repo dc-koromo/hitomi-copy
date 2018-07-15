@@ -50,6 +50,7 @@
             this.metroButton5 = new MetroFramework.Controls.MetroButton();
             this.lLang = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.lPage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
             this.SuspendLayout();
             // 
@@ -274,11 +275,22 @@
             this.label9.TabIndex = 43;
             this.label9.Text = "언어 :";
             // 
+            // lPage
+            // 
+            this.lPage.AutoSize = true;
+            this.lPage.Font = new System.Drawing.Font("맑은 고딕", 10F);
+            this.lPage.Location = new System.Drawing.Point(170, 164);
+            this.lPage.Name = "lPage";
+            this.lPage.Size = new System.Drawing.Size(25, 19);
+            this.lPage.TabIndex = 45;
+            this.lPage.Text = "0p";
+            // 
             // PicDetailElement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lPage);
             this.Controls.Add(this.lLang);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.metroButton5);
@@ -340,5 +352,6 @@
         private MetroFramework.Controls.MetroButton metroButton5;
         private System.Windows.Forms.Label lLang;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lPage;
     }
 }
