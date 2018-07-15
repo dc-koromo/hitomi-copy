@@ -16,5 +16,11 @@ namespace Hitomi_Copy_3
         {
             InitializeComponent();
         }
+
+        private void PatchNote_Load(object sender, EventArgs e)
+        {
+            textBox1.SelectionStart = 0;
+            textBox1.SelectionLength = 0;
+        }
     }
 }

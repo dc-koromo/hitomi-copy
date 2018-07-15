@@ -62,6 +62,7 @@
             this.Name = "PatchNote";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Patch Note v3.35";
+            this.Load += new System.EventHandler(this.PatchNote_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
