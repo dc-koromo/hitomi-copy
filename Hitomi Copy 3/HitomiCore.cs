@@ -40,5 +40,13 @@ namespace Hitomi_Copy_2
                 DownloadAndSetImageLink(tuple.Item1, tuple.Item2);
             }
         }
+
+        static public int GetPageCount(IPicElement pe)
+        {
+            WebClient wc = new WebClient();
+            wc.Encoding = Encoding.UTF8;
+            wc.DownloadStringCompleted += wc_dasil;
+            return HitomiGalleryInfo.GetImageLink(wc.DownloadString(new Uri(HitomiDef.HitomiGalleryAddress + pe.Article.Magic + ".js"))).Count;
+        }
     }
 }
