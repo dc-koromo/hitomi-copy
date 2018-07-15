@@ -51,11 +51,11 @@
             this.그룹으로검색GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.시리즈로검색SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.캐릭터로검색CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.태그로검색GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bDownloadAll = new System.Windows.Forms.Button();
             this.bDownload = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.listBox1 = new Hitomi_Copy_2.AutoCompleteListBox();
-            this.태그로검색GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -143,7 +143,6 @@
             this.lvHistory.FullRowSelect = true;
             this.lvHistory.GridLines = true;
             this.lvHistory.Location = new System.Drawing.Point(12, 60);
-            this.lvHistory.MultiSelect = false;
             this.lvHistory.Name = "lvHistory";
             this.lvHistory.Size = new System.Drawing.Size(1572, 574);
             this.lvHistory.TabIndex = 10;
@@ -218,7 +217,7 @@
             this.캐릭터로검색CToolStripMenuItem,
             this.태그로검색GToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(167, 158);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(167, 136);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // 제목으로검색TToolStripMenuItem
@@ -251,6 +250,12 @@
             this.캐릭터로검색CToolStripMenuItem.Name = "캐릭터로검색CToolStripMenuItem";
             this.캐릭터로검색CToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.캐릭터로검색CToolStripMenuItem.Text = "캐릭터로 검색(&C)";
+            // 
+            // 태그로검색GToolStripMenuItem
+            // 
+            this.태그로검색GToolStripMenuItem.Name = "태그로검색GToolStripMenuItem";
+            this.태그로검색GToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.태그로검색GToolStripMenuItem.Text = "태그로 검색(&G)";
             // 
             // bDownloadAll
             // 
@@ -298,12 +303,6 @@
             this.listBox1.Visible = false;
             this.listBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listBox1_KeyUp);
             this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
-            // 
-            // 태그로검색GToolStripMenuItem
-            // 
-            this.태그로검색GToolStripMenuItem.Name = "태그로검색GToolStripMenuItem";
-            this.태그로검색GToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.태그로검색GToolStripMenuItem.Text = "태그로 검색(&G)";
             // 
             // frmFinder
             // 
