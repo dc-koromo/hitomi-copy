@@ -63,6 +63,8 @@ namespace Hitomi_Copy_2
         public string[] CustomAutoComplete;
         [JsonProperty]
         public bool AutoSync;
+        [JsonProperty]
+        public bool OpenWithFinder; // series tag character listing
     }
 
     public class HitomiSetting
@@ -105,6 +107,7 @@ namespace Hitomi_Copy_2
                 model.UsingOnlyFMTagsOnAnalysis = false;
                 model.CustomAutoComplete = new string[] { "recent:0-25" };
                 model.AutoSync = false;
+                model.OpenWithFinder = true;
                 Save();
             }
             else

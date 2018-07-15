@@ -104,19 +104,31 @@ namespace Hitomi_Copy
             if (image == 1)
                 b.ForeColor = Color.DeepPink;
             else if (image == 2)
-                b.ForeColor = Color.DarkBlue;
+                b.ForeColor = Color.Blue;
             
             flowLayoutPanel1.Controls.Add(b);
         }
 
         public void ButtonMessage(object sender, EventArgs e)
         {
-            if (((Button)sender).ForeColor == Color.DeepPink)
-                (new frmTagInfo(this, "female:" + ((Button)sender).Text)).Show();
-            else if (((Button)sender).ForeColor == Color.DarkBlue)
-                (new frmTagInfo(this, "male:" + ((Button)sender).Text)).Show();
+            if (HitomiSetting.Instance.GetModel().OpenWithFinder)
+            {
+                if (((Button)sender).ForeColor == Color.DeepPink)
+                    (new frmFinder("tag:female:" + ((Button)sender).Text.Replace(' ', '_'))).Show();
+                else if (((Button)sender).ForeColor == Color.Blue)
+                    (new frmFinder("tag:male:" + ((Button)sender).Text.Replace(' ', '_'))).Show();
+                else
+                    (new frmFinder("tag:" + ((Button)sender).Text.Replace(' ', '_'))).Show();
+            }
             else
-                (new frmTagInfo(this, ((Button)sender).Text)).Show();
+            {
+                if (((Button)sender).ForeColor == Color.DeepPink)
+                    (new frmTagInfo(this, "female:" + ((Button)sender).Text)).Show();
+                else if (((Button)sender).ForeColor == Color.Blue)
+                    (new frmTagInfo(this, "male:" + ((Button)sender).Text)).Show();
+                else
+                    (new frmTagInfo(this, ((Button)sender).Text)).Show();
+            }
         }
 
         private void download_image()
@@ -175,10 +187,20 @@ namespace Hitomi_Copy
         {
             try
             {
-                if (pic != null)
-                    (new frmSeriesInfo(this, pic.Article.Series[0])).Show();
+                if (HitomiSetting.Instance.GetModel().OpenWithFinder)
+                {
+                    if (pic != null)
+                        (new frmFinder("series:" + pic.Article.Series[0].Replace(' ', '_'))).Show();
+                    else
+                        (new frmFinder("series:" + metadata.Parodies[0].Replace(' ', '_'))).Show();
+                }
                 else
-                    (new frmSeriesInfo(this, metadata.Parodies[0])).Show();
+                {
+                    if (pic != null)
+                        (new frmSeriesInfo(this, pic.Article.Series[0])).Show();
+                    else
+                        (new frmSeriesInfo(this, metadata.Parodies[0])).Show();
+                }
             }
             catch { }
         }
@@ -217,10 +239,20 @@ namespace Hitomi_Copy
         {
             try
             {
-                if (pic != null)
-                    (new frmCharacterInfo(this, pic.Article.Characters[0])).Show();
+                if (HitomiSetting.Instance.GetModel().OpenWithFinder)
+                {
+                    if (pic != null)
+                        (new frmFinder("character:" + pic.Article.Characters[0].Replace(' ', '_'))).Show();
+                    else
+                        (new frmFinder("character:" + metadata.Characters[0].Replace(' ', '_'))).Show();
+                }
                 else
-                    (new frmCharacterInfo(this, metadata.Characters[0])).Show();
+                {
+                    if (pic != null)
+                        (new frmCharacterInfo(this, pic.Article.Characters[0])).Show();
+                    else
+                        (new frmCharacterInfo(this, metadata.Characters[0])).Show();
+                }
             }
             catch { }
         }

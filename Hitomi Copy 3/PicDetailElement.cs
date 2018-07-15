@@ -274,12 +274,24 @@ namespace Hitomi_Copy_3
 
         public void ButtonMessage(object sender, EventArgs e)
         {
-            if (((Button)sender).ForeColor == Color.DeepPink)
-                (new frmTagInfo(parent, "female:" + ((Button)sender).Text)).Show();
-            else if (((Button)sender).ForeColor == Color.Blue)
-                (new frmTagInfo(parent, "male:" + ((Button)sender).Text)).Show();
+            if (HitomiSetting.Instance.GetModel().OpenWithFinder)
+            {
+                if (((Button)sender).ForeColor == Color.DeepPink)
+                    (new frmFinder("tag:female:" + ((Button)sender).Text.Replace(' ', '_'))).Show();
+                else if (((Button)sender).ForeColor == Color.Blue)
+                    (new frmFinder("tag:male:" + ((Button)sender).Text.Replace(' ', '_'))).Show();
+                else
+                    (new frmFinder("tag:" + ((Button)sender).Text.Replace(' ', '_'))).Show();
+            }
             else
-                (new frmTagInfo(parent, ((Button)sender).Text)).Show();
+            {
+                if (((Button)sender).ForeColor == Color.DeepPink)
+                    (new frmTagInfo(parent, "female:" + ((Button)sender).Text)).Show();
+                else if (((Button)sender).ForeColor == Color.Blue)
+                    (new frmTagInfo(parent, "male:" + ((Button)sender).Text)).Show();
+                else
+                    (new frmTagInfo(parent, ((Button)sender).Text)).Show();
+            }
         }
         
         private void metroButton2_Click(object sender, EventArgs e)
