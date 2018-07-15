@@ -431,7 +431,7 @@ namespace Hitomi_Copy_3
 
         private void Series_Click(object sender, EventArgs e)
         {
-            (new frmFinder("series:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_'))).Show();
+            (new frmFinder("series:" + (sender as ToolStripMenuItem).Text.Split('(')[0].Trim().Replace(' ', '_'))).Show();
         }
 
         private void Character_Click(object sender, EventArgs e)
@@ -461,7 +461,13 @@ namespace Hitomi_Copy_3
                 if (group[0] != "") (contextMenuStrip1.Items[2] as ToolStripMenuItem).DropDownItems.AddRange(group.Select(x => new ToolStripMenuItem(x, null, Group_Click)).ToArray());
 
                 (contextMenuStrip1.Items[3] as ToolStripMenuItem).DropDownItems.Clear();
-                if (series[0] != "") (contextMenuStrip1.Items[3] as ToolStripMenuItem).DropDownItems.AddRange(series.Select(x => new ToolStripMenuItem(x, null, Series_Click)).ToArray());
+                if (series[0] != "") (contextMenuStrip1.Items[3] as ToolStripMenuItem).DropDownItems.AddRange(series.Select(x => {
+                    string ko = KoreanSeries.SeriesMap(x);
+                    if (ko != x)
+                        return new ToolStripMenuItem($"{x} ({ko})", null, Series_Click);
+                    else
+                        return new ToolStripMenuItem($"{x}", null, Series_Click);
+                }).ToArray());
 
                 (contextMenuStrip1.Items[4] as ToolStripMenuItem).DropDownItems.Clear();
                 if (character[0] != "") (contextMenuStrip1.Items[4] as ToolStripMenuItem).DropDownItems.AddRange(character.Select(x => new ToolStripMenuItem(x, null, Character_Click)).ToArray());
