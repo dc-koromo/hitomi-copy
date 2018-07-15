@@ -77,6 +77,7 @@ namespace Hitomi_Copy
             this.lvMyTagRank.TabIndex = 6;
             this.lvMyTagRank.UseCompatibleStateImageBehavior = false;
             this.lvMyTagRank.View = System.Windows.Forms.View.Details;
+            this.lvMyTagRank.SelectedIndexChanged += new System.EventHandler(this.lvMyTagRank_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -140,7 +141,7 @@ namespace Hitomi_Copy
             this.제목비슷한작품선택취소SToolStripMenuItem,
             this.이미다운로드된작품선택취소GToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(263, 120);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(263, 98);
             // 
             // 모두선택AToolStripMenuItem
             // 

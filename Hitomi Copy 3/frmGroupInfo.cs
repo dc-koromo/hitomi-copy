@@ -61,6 +61,8 @@ namespace Hitomi_Copy
             }
             lvMyTagRank.Items.AddRange(lvil.ToArray());
 
+            pbLoad.Maximum = gallery_count;
+
             foreach (var metadata in hitomi_data)
             {
                 if (metadata.Groups != null && (metadata.Language == HitomiSetting.Instance.GetModel().Language || HitomiSetting.Instance.GetModel().Language == "ALL") && metadata.Groups.Contains(group))
@@ -281,6 +283,31 @@ namespace Hitomi_Copy
                     (ImagePanel.Controls[i] as PicElement).Selected = false;
             }
             ImagePanel.ResumeLayout();
+        }
+
+        private void lvMyTagRank_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvMyTagRank.SelectedItems.Count > 0)
+            {
+                string[] tags = lvMyTagRank.SelectedItems.OfType<ListViewItem>().Select(x => x.SubItems[0].Text).ToArray();
+                ImagePanel.SuspendLayout();
+                for (int i = 0; i < ImagePanel.Controls.Count; i++)
+                {
+                    PicElement pe = ImagePanel.Controls[i] as PicElement;
+                    if (tags.All(x => pe.Article.Tags.Contains(x)))
+                        pe.Selected = true;
+                    else
+                        pe.Selected = false;
+                }
+                ImagePanel.ResumeLayout();
+            }
+            else
+            {
+                for (int i = 0; i < ImagePanel.Controls.Count; i++)
+                {
+                    (ImagePanel.Controls[i] as PicElement).Selected = false;
+                }
+            }
         }
     }
 }

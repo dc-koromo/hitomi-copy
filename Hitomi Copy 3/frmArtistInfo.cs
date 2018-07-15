@@ -45,7 +45,7 @@ namespace Hitomi_Copy
             Dictionary<string, int> tag_count = new Dictionary<string, int>();
             int gallery_count = 0;
             foreach (var metadata in data)
-                if (metadata.Artists != null && metadata.Tags != null && (metadata.Language == HitomiSetting.Instance.GetModel().Language || HitomiSetting.Instance.GetModel().Language == "ALL") && metadata.Artists[0] == artist)
+                if (metadata.Artists != null && metadata.Tags != null && (metadata.Language == HitomiSetting.Instance.GetModel().Language || HitomiSetting.Instance.GetModel().Language == "ALL") && metadata.Artists.Contains(artist))
                 {
                     gallery_count += 1;
                     foreach (var tag in metadata.Tags)
@@ -297,6 +297,31 @@ namespace Hitomi_Copy
                     (ImagePanel.Controls[i] as PicElement).Selected = false;
             }
             ImagePanel.ResumeLayout();
+        }
+        
+        private void lvMyTagRank_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvMyTagRank.SelectedItems.Count > 0)
+            {
+                string[] tags = lvMyTagRank.SelectedItems.OfType<ListViewItem>().Select(x => x.SubItems[0].Text).ToArray();
+                ImagePanel.SuspendLayout();
+                for (int i = 0; i < ImagePanel.Controls.Count; i++)
+                {
+                    PicElement pe = ImagePanel.Controls[i] as PicElement;
+                    if (tags.All(x => pe.Article.Tags.Contains(x)))
+                        pe.Selected = true;
+                    else
+                        pe.Selected = false;
+                }
+                ImagePanel.ResumeLayout();
+            }
+            else
+            {
+                for (int i = 0; i < ImagePanel.Controls.Count; i++)
+                {
+                    (ImagePanel.Controls[i] as PicElement).Selected = false;
+                }
+            }
         }
     }
 }

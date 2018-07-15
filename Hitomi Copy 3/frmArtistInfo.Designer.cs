@@ -37,6 +37,7 @@ namespace Hitomi_Copy
             this.모두선택취소CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.제목비슷한작품선택취소SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.이미다운로드된작품선택취소GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lvMyTagRank = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -44,7 +45,6 @@ namespace Hitomi_Copy
             this.bDownloadAll = new System.Windows.Forms.Button();
             this.pbLoad = new System.Windows.Forms.ProgressBar();
             this.bTidy = new System.Windows.Forms.Button();
-            this.이미다운로드된작품선택취소GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +71,7 @@ namespace Hitomi_Copy
             this.제목비슷한작품선택취소SToolStripMenuItem,
             this.이미다운로드된작품선택취소GToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(263, 120);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(263, 98);
             // 
             // 모두선택AToolStripMenuItem
             // 
@@ -99,6 +99,13 @@ namespace Hitomi_Copy
             this.제목비슷한작품선택취소SToolStripMenuItem.Text = "제목 비슷한 작품 선택 취소(&S)";
             this.제목비슷한작품선택취소SToolStripMenuItem.Click += new System.EventHandler(this.제목비슷한작품선택취소SToolStripMenuItem_Click);
             // 
+            // 이미다운로드된작품선택취소GToolStripMenuItem
+            // 
+            this.이미다운로드된작품선택취소GToolStripMenuItem.Name = "이미다운로드된작품선택취소GToolStripMenuItem";
+            this.이미다운로드된작품선택취소GToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.이미다운로드된작품선택취소GToolStripMenuItem.Text = "이미 다운로드된 작품 선택 취소(&G)";
+            this.이미다운로드된작품선택취소GToolStripMenuItem.Click += new System.EventHandler(this.이미다운로드된작품선택취소GToolStripMenuItem_Click);
+            // 
             // lvMyTagRank
             // 
             this.lvMyTagRank.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -115,6 +122,7 @@ namespace Hitomi_Copy
             this.lvMyTagRank.TabIndex = 6;
             this.lvMyTagRank.UseCompatibleStateImageBehavior = false;
             this.lvMyTagRank.View = System.Windows.Forms.View.Details;
+            this.lvMyTagRank.SelectedIndexChanged += new System.EventHandler(this.lvMyTagRank_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -168,13 +176,6 @@ namespace Hitomi_Copy
             this.bTidy.Text = "이름 비슷한 작품 정리";
             this.bTidy.UseVisualStyleBackColor = true;
             this.bTidy.Click += new System.EventHandler(this.bTidy_Click);
-            // 
-            // 이미다운로드된작품선택취소GToolStripMenuItem
-            // 
-            this.이미다운로드된작품선택취소GToolStripMenuItem.Name = "이미다운로드된작품선택취소GToolStripMenuItem";
-            this.이미다운로드된작품선택취소GToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
-            this.이미다운로드된작품선택취소GToolStripMenuItem.Text = "이미 다운로드된 작품 선택 취소(&G)";
-            this.이미다운로드된작품선택취소GToolStripMenuItem.Click += new System.EventHandler(this.이미다운로드된작품선택취소GToolStripMenuItem_Click);
             // 
             // frmArtistInfo
             // 
