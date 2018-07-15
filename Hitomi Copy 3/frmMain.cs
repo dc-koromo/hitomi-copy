@@ -546,7 +546,7 @@ namespace Hitomi_Copy_3
         #region 검색창
         public int global_position = 0;
         public string global_text = "";
-        public bool selected_part = true;
+        public bool selected_part = false;
 
         private int GetCaretWidthFromTextBox(int pos)
         {
