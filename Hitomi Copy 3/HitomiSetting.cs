@@ -65,6 +65,8 @@ namespace Hitomi_Copy_2
         public bool AutoSync;
         [JsonProperty]
         public bool OpenWithFinder; // series tag character listing
+        [JsonProperty]
+        public int LoadPreviewMaximum;
     }
 
     public class HitomiSetting
@@ -108,6 +110,7 @@ namespace Hitomi_Copy_2
                 model.CustomAutoComplete = new string[] { "recent:0-25" };
                 model.AutoSync = false;
                 model.OpenWithFinder = true;
+                model.LoadPreviewMaximum = 500;
                 Save();
             }
             else
@@ -127,6 +130,8 @@ namespace Hitomi_Copy_2
                     model.TextMatchingAccuracy = 5;
                 if (model.CustomAutoComplete == null)
                     model.CustomAutoComplete = new string[] { "recent:0-25" };
+                if (model.LoadPreviewMaximum <= 0)
+                    model.LoadPreviewMaximum = 500;
                 Save();
             }
         }

@@ -38,8 +38,11 @@ namespace Hitomi_Copy_3
         private void ImageLinkCallback(IPicElement pe)
         {
             download_queue = new HitomiQueue(Notify, Notify_Size, Notify_Status, Notify_Retry);
-            PBMaxSize(pe.Article.ImagesLink.Count);
-            for (int i = 0; i < pe.Article.ImagesLink.Count; i++)
+            int max = pe.Article.ImagesLink.Count;
+            if (HitomiSetting.Instance.GetModel().LoadPreviewMaximum < max)
+                max = HitomiSetting.Instance.GetModel().LoadPreviewMaximum;
+            PBMaxSize(max);
+            for (int i = 0; i < max; i++)
             {
                 string temp = Path.GetTempFileName();
                 download_queue.Add(HitomiDef.GetDownloadImageAddress(pe.Article.Magic, pe.Article.ImagesLink[i]), temp, i);
