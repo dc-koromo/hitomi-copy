@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hitomi Copy 4", "Hitomi Copy 4.csproj", "{BC29080D-1BA5-4A3E-A60E-ACD01C41B43B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC29080D-1BA5-4A3E-A60E-ACD01C41B43B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC29080D-1BA5-4A3E-A60E-ACD01C41B43B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC29080D-1BA5-4A3E-A60E-ACD01C41B43B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC29080D-1BA5-4A3E-A60E-ACD01C41B43B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F119DD5F-DBCE-4AC2-A782-F6F347C62077}
+	EndGlobalSection
+EndGlobal
