@@ -148,6 +148,11 @@ namespace Hitomi_Copy.Data
         {
             metadata_collection.AddRange( JsonConvert.DeserializeObject<List<HitomiMetadata>>(File.ReadAllText(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), path))));
         }
+
+        public DateTime GetLatestMetadataUpdateTime()
+        {
+            return File.GetLastWriteTime("metadata.json");
+        }
         #endregion
 
         #region TagData
