@@ -184,6 +184,16 @@ namespace Hitomi_Copy_3
                         query.TagInclude = new List<string>() { elem.Substring("tag:".Length) };
                     else
                         query.TagInclude.Add(elem.Substring("tag:".Length));
+                else if(elem.StartsWith("female:"))
+                    if (query.TagInclude == null)
+                        query.TagInclude = new List<string>() { elem };
+                    else
+                        query.TagInclude.Add(elem);
+                else if (elem.StartsWith("male:"))
+                    if (query.TagInclude == null)
+                        query.TagInclude = new List<string>() { elem };
+                    else
+                        query.TagInclude.Add(elem);
                 else if (elem.StartsWith("artist:"))
                     if (query.Artists == null)
                         query.Artists = new List<string>() { elem.Substring("artist:".Length) };
@@ -562,9 +572,22 @@ namespace Hitomi_Copy_3
         public string global_text = "";
         public bool selected_part = false;
 
+
+        public static Size MeasureText(string Text, Font Font)
+        {
+            TextFormatFlags flags = TextFormatFlags.NoPadding | TextFormatFlags.NoPrefix;
+            Size szProposed = new Size(int.MaxValue, int.MaxValue);
+            Size sz1 = TextRenderer.MeasureText(".", Font, szProposed, flags);
+            Size sz2 = TextRenderer.MeasureText(Text + Convert.ToString("."), Font, szProposed, flags);
+            return new Size(sz2.Width - sz1.Width, sz2.Height);
+        }
+
         private int GetCaretWidthFromTextBox(int pos)
         {
-            return TextRenderer.MeasureText(tbSearch.Text.Substring(0, pos), tbSearch.Font).Width;
+           // textBox1.Text = tbSearch.Text;
+            //return textBox1.GetPositionFromCharIndex(pos).X;
+            return TextRenderer.MeasureText(tbSearch.Text.Substring(0, pos), tbSearch.WaterMarkFont).Width;
+            //return MeasureText(tbSearch.Text.Substring(0, pos), tbSearch.Font).Width;
         }
         private void tbSearch_KeyDown(object sender, KeyEventArgs e)
         {
@@ -620,69 +643,91 @@ namespace Hitomi_Copy_3
             if (word == "") { listBox1.Visible = false; return; }
 
             List<HitomiTagdata> match = null;
-            if (word.Contains(":"))
-            {
-                if (word.StartsWith("artist:"))
-                {
-                    word = word.Substring("artist:".Length);
-                    position += "artist:".Length;
-                    match = HitomiData.Instance.GetArtistList(word);
-                }
-                else if (word.StartsWith("tag:"))
-                {
-                    word = word.Substring("tag:".Length);
-                    position += "tag:".Length;
-                    match = HitomiData.Instance.GetTagList(word);
-                }
-                else if (word.StartsWith("tagx:"))
-                {
-                    word = word.Substring("tagx:".Length);
-                    position += "tagx:".Length;
-                    match = HitomiData.Instance.GetTagList(word);
-                }
-                else if (word.StartsWith("character:"))
-                {
-                    word = word.Substring("character:".Length);
-                    position += "character:".Length;
-                    match = HitomiData.Instance.GetCharacterList(word);
-                }
-                else if (word.StartsWith("group:"))
-                {
-                    word = word.Substring("group:".Length);
-                    position += "group:".Length;
-                    match = HitomiData.Instance.GetGroupList(word);
-                }
-                else if (word.StartsWith("series:"))
-                {
-                    word = word.Substring("series:".Length);
-                    position += "series:".Length;
-                    match = HitomiData.Instance.GetSeriesList(word);
-                }
-                else if (word.StartsWith("type:"))
-                {
-                    word = word.Substring("type:".Length);
-                    position += "type:".Length;
-                    match = HitomiData.Instance.GetTypeList(word);
-                }
-            }
+            //if (word.Contains(":"))
+            //{
+            //    if (word.StartsWith("artist:"))
+            //    {
+            //        word = word.Substring("artist:".Length);
+            //        position += "artist:".Length;
+            //        match = HitomiData.Instance.GetArtistList(word);
+            //    }
+            //    else if (word.StartsWith("tag:"))
+            //    {
+            //        word = word.Substring("tag:".Length);
+            //        position += "tag:".Length;
+            //        match = HitomiData.Instance.GetTagList(word);
+            //    }
+            //    else if (word.StartsWith("tagx:"))
+            //    {
+            //        word = word.Substring("tagx:".Length);
+            //        position += "tagx:".Length;
+            //        match = HitomiData.Instance.GetTagList(word);
+            //    }
+            //    else if (word.StartsWith("character:"))
+            //    {
+            //        word = word.Substring("character:".Length);
+            //        position += "character:".Length;
+            //        match = HitomiData.Instance.GetCharacterList(word);
+            //    }
+            //    else if (word.StartsWith("group:"))
+            //    {
+            //        word = word.Substring("group:".Length);
+            //        position += "group:".Length;
+            //        match = HitomiData.Instance.GetGroupList(word);
+            //    }
+            //    else if (word.StartsWith("series:"))
+            //    {
+            //        word = word.Substring("series:".Length);
+            //        position += "series:".Length;
+            //        match = HitomiData.Instance.GetSeriesList(word);
+            //    }
+            //    else if (word.StartsWith("type:"))
+            //    {
+            //        word = word.Substring("type:".Length);
+            //        position += "type:".Length;
+            //        match = HitomiData.Instance.GetTypeList(word);
+            //    }
+            //}
+            //else
+            //{
+            //    string[] match_target = {
+            //        "artist:",
+            //        "character:",
+            //        "group:",
+            //        "recent:",
+            //        "series:",
+            //        "tag:",
+            //        "tagx:",
+            //        "type:"
+            //    };
+            //    List<HitomiTagdata> data_col = (from ix in match_target where ix.StartsWith(word) select new HitomiTagdata {Tag = ix}).ToList();
+            //    if (HitomiSetting.Instance.GetModel().CustomAutoComplete != null)
+            //        data_col.AddRange(from ix in HitomiSetting.Instance.GetModel().CustomAutoComplete where ix.StartsWith(word) select new HitomiTagdata { Tag = ix });
+            //    if (data_col.Count > 0)
+            //        match = data_col;
+            //}
+
+            string[] match_target = {
+                "artist:",
+                "character:",
+                "group:",
+                "recent:",
+                "series:",
+                "tag:",
+                "tagx:",
+                "type:"
+            };
+
+            List<HitomiTagdata> data_col = (from ix in match_target where ix.StartsWith(word) select new HitomiTagdata { Tag = ix }).ToList();
+            if (HitomiSetting.Instance.GetModel().CustomAutoComplete != null)
+                data_col.AddRange(from ix in HitomiSetting.Instance.GetModel().CustomAutoComplete where ix.StartsWith(word) select new HitomiTagdata { Tag = ix });
+            if (data_col.Count > 0)
+                match = data_col;
+            if (match != null)
+                match.AddRange(HitomiData.Instance.GetTotalList(word));
             else
-            {
-                string[] match_target = {
-                    "artist:",
-                    "character:",
-                    "group:",
-                    "recent:",
-                    "series:",
-                    "tag:",
-                    "tagx:",
-                    "type:"
-                };
-                List<HitomiTagdata> data_col = (from ix in match_target where ix.StartsWith(word) select new HitomiTagdata {Tag = ix}).ToList();
-                if (HitomiSetting.Instance.GetModel().CustomAutoComplete != null)
-                    data_col.AddRange(from ix in HitomiSetting.Instance.GetModel().CustomAutoComplete where ix.StartsWith(word) select new HitomiTagdata { Tag = ix });
-                if (data_col.Count > 0)
-                    match = data_col;
-            }
+                match = HitomiData.Instance.GetTotalList(word);
+
 
             if (match != null && match.Count > 0)
             {
@@ -698,6 +743,7 @@ namespace Hitomi_Copy_3
                 listBox1.Location = new Point(tbSearch.Left + GetCaretWidthFromTextBox(position),
                     tbSearch.Top + tbSearch.Font.Height + 5);
                 listBox1.MaxColoredTextLength = word.Length;
+                listBox1.ColoredTargetText = word;
             }
             else { listBox1.Visible = false; return; }
 
