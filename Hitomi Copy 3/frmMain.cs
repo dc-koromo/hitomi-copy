@@ -571,23 +571,10 @@ namespace Hitomi_Copy_3
         public int global_position = 0;
         public string global_text = "";
         public bool selected_part = false;
-
-
-        public static Size MeasureText(string Text, Font Font)
-        {
-            TextFormatFlags flags = TextFormatFlags.NoPadding | TextFormatFlags.NoPrefix;
-            Size szProposed = new Size(int.MaxValue, int.MaxValue);
-            Size sz1 = TextRenderer.MeasureText(".", Font, szProposed, flags);
-            Size sz2 = TextRenderer.MeasureText(Text + Convert.ToString("."), Font, szProposed, flags);
-            return new Size(sz2.Width - sz1.Width, sz2.Height);
-        }
-
+        
         private int GetCaretWidthFromTextBox(int pos)
         {
-           // textBox1.Text = tbSearch.Text;
-            //return textBox1.GetPositionFromCharIndex(pos).X;
             return TextRenderer.MeasureText(tbSearch.Text.Substring(0, pos), tbSearch.WaterMarkFont).Width;
-            //return MeasureText(tbSearch.Text.Substring(0, pos), tbSearch.Font).Width;
         }
         private void tbSearch_KeyDown(object sender, KeyEventArgs e)
         {
