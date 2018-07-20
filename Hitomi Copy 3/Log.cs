@@ -699,7 +699,6 @@ namespace Hitomi_Copy_3
                 {
                     (new GalleryBlockTester()).Show();
                 }
-<<<<<<< HEAD
                 else if (cmd == "latest")
                 {
                     PushString($"{HitomiData.Instance.metadata_collection[0].ID}");
@@ -748,8 +747,6 @@ namespace Hitomi_Copy_3
                 {
                     (new CustomArtistRecommendation()).Show();
                 }
-=======
->>>>>>> b6cf370... [Hitomi 3] Add GalleryBlockTester for 403 Forbidden datas
                 else if (cmd == "help")
                 {
                     PushString("Realtime Variable Update System");
@@ -773,14 +770,11 @@ namespace Hitomi_Copy_3
                     PushString("tagr : Rebuild tagdata.");
                     PushString("rtt (option) : Test tool for related tags.");
                     PushString("ct, gbt : Hidden galleris transaction tools.");
-<<<<<<< HEAD
                     PushString("latest : Get latest metadata id.");
                     PushString("mm : Show marumaru manager.");
                     PushString("record : Open record window.");
                     PushString("finder : Open finder window.");
                     PushString("manual : Open manual window.");
-=======
->>>>>>> b6cf370... [Hitomi 3] Add GalleryBlockTester for 403 Forbidden datas
                 }
                 else if (cmd == "fucs")
                 {

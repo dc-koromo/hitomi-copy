@@ -2,11 +2,8 @@
 
 using hitomi.Parser;
 using Hitomi_Copy.Data;
-<<<<<<< HEAD
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-=======
->>>>>>> b6cf370... [Hitomi 3] Add GalleryBlockTester for 403 Forbidden datas
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -61,11 +58,7 @@ namespace Hitomi_Copy_3._403
             textBox2.Enabled = false;
             for (int i = 0; i < 100; i++)
             {
-<<<<<<< HEAD
                 lock (notify_lock) Notify();
-=======
-                Notify();
->>>>>>> b6cf370... [Hitomi 3] Add GalleryBlockTester for 403 Forbidden datas
             }
         }
         
@@ -77,11 +70,7 @@ namespace Hitomi_Copy_3._403
                 WebClient wc = new WebClient();
                 wc.Encoding = Encoding.UTF8;
                 string x;
-<<<<<<< HEAD
                 x = wc.DownloadString("https://ltn.hitomi.la/galleryblock/" + i + ".html");
-=======
-                x = wc.DownloadString("https://hitomi.la/galleryblock/" + i + ".html");
->>>>>>> b6cf370... [Hitomi 3] Add GalleryBlockTester for 403 Forbidden datas
                 result.Add(HitomiParser.ParseArticles(x)[0]);
                 PushString($"New! {i}");
             }
@@ -93,11 +82,7 @@ namespace Hitomi_Copy_3._403
             
             this.Post(() => progressBar1.Value++);
             this.Post(() => label3.Text = $"{progressBar1.Value}/{maximum - minimum + 1} 분석완료");
-<<<<<<< HEAD
             this.Post(() => label5.Text = $"{(new DateTime((DateTime.Now - start).Ticks * (maximum - minimum + 1 - progressBar1.Value) / progressBar1.Value)).ToString("HH시간 mm분 ss초")}");
-=======
-            this.Post(() => label5.Text = $"{(new DateTime((DateTime.Now - start).Ticks * (maximum - minimum + 1) / progressBar1.Value)).ToString("HH시간 mm분 ss초")}");
->>>>>>> b6cf370... [Hitomi 3] Add GalleryBlockTester for 403 Forbidden datas
 
             lock (int_lock) mtx--;
             lock (notify_lock) Notify();
@@ -107,14 +92,9 @@ namespace Hitomi_Copy_3._403
         {
             lock (int_lock)
             {
-<<<<<<< HEAD
                 int i = status;
                 if (i < maximum) { Task.Run(() => process(i)); status++; mtx++; }
                 if (i >= maximum && mtx == 0)
-=======
-                if (status < maximum) { Task.Run(() => process(status)); status++; mtx++; }
-                if (status >= maximum && mtx == 0)
->>>>>>> b6cf370... [Hitomi 3] Add GalleryBlockTester for 403 Forbidden datas
                     lock (result) File.WriteAllText("gallery_block.json", LogEssential.SerializeObject(result));
             }
         }
@@ -128,7 +108,6 @@ namespace Hitomi_Copy_3._403
         {
             lock (result) File.WriteAllText($"snapshot_{DateTime.Now.Ticks.ToString()}.json", LogEssential.SerializeObject(result));
         }
-<<<<<<< HEAD
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -162,7 +141,5 @@ namespace Hitomi_Copy_3._403
             }
             PushString("머지완료됨!");
         }
-=======
->>>>>>> b6cf370... [Hitomi 3] Add GalleryBlockTester for 403 Forbidden datas
     }
 }
