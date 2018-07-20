@@ -29,6 +29,9 @@ namespace Hitomi_Copy_3
             tgEXH.Checked = HitomiSetting.Instance.GetModel().UsingExHentaiBaseOpener;
             tgXA.Checked = HitomiSetting.Instance.GetModel().UsingXiAanlysis;
             tgAS.Checked = HitomiSetting.Instance.GetModel().AutoSync;
+            tbLPM.Text = HitomiSetting.Instance.GetModel().LoadPreviewMaximum.ToString();
+            tgSPC.Checked = HitomiSetting.Instance.GetModel().ShowPageCount;
+            tbACSC.Text = HitomiSetting.Instance.GetModel().AutoCompleteShowCount.ToString();
         }
 
         private void bSave_Click(object sender, EventArgs e)
@@ -49,7 +52,17 @@ namespace Hitomi_Copy_3
                 MessageBox.Show("Text Matching Accuracy는 숫자여야 합니다.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
+            if (!int.TryParse(tbLPM.Text, out tmp))
+            {
+                MessageBox.Show("Load Preview Maximum는 숫자여야 합니다.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!int.TryParse(tbACSC.Text, out tmp))
+            {
+                MessageBox.Show("AutoComplete Show Count는 숫자여야 합니다.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             HitomiSetting.Instance.GetModel().WaitInfinite = tgWI.Checked;
             HitomiSetting.Instance.GetModel().WaitTimeout = Convert.ToInt32(tbWT.Text);
             HitomiSetting.Instance.GetModel().SaveJson = tgSJ.Checked;
@@ -64,6 +77,9 @@ namespace Hitomi_Copy_3
             HitomiSetting.Instance.GetModel().UsingExHentaiBaseOpener = tgEXH.Checked;
             HitomiSetting.Instance.GetModel().UsingXiAanlysis = tgXA.Checked;
             HitomiSetting.Instance.GetModel().AutoSync = tgAS.Checked;
+            HitomiSetting.Instance.GetModel().LoadPreviewMaximum = Convert.ToInt32(tbLPM.Text);
+            HitomiSetting.Instance.GetModel().ShowPageCount = tgSPC.Checked;
+            HitomiSetting.Instance.GetModel().AutoCompleteShowCount = Convert.ToInt32(tbACSC.Text);
             HitomiSetting.Instance.Save();
             Close();
         }
@@ -136,6 +152,21 @@ namespace Hitomi_Copy_3
         private void tgAS_MouseEnter(object sender, EventArgs e)
         {
             tbInfo.Text = "프로그램 시작시 데이터 동기화를 실행합니다. 이 옵션을 켜면 데이터를 저장하지 않습니다.";
+        }
+
+        private void tbLPM_MouseEnter(object sender, EventArgs e)
+        {
+            tbInfo.Text = "미리보기에서 보여줄 최대 이미지 수를 설정합니다.";
+        }
+
+        private void tgSPC_MouseEnter(object sender, EventArgs e)
+        {
+            tbInfo.Text = "Detailed Result에서 작품의 페이지 수를 보여줍니다.";
+        }
+
+        private void tbACSC_MouseEnter(object sender, EventArgs e)
+        {
+            tbInfo.Text = "검색시 표시되는 자동완성 검색어의 최대 개수를 설정합니다.";
         }
 
         private void MouseLeave_Event(object sender, EventArgs e)
