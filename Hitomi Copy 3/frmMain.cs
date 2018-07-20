@@ -698,13 +698,15 @@ namespace Hitomi_Copy_3
             {
                 listBox1.Visible = true;
                 listBox1.Items.Clear();
+                List<string> listing = new List<string>();
                 for (int i = 0; i < HitomiSetting.Instance.GetModel().AutoCompleteShowCount && i < match.Count; i++)
                 {
                     if (match[i].Count > 0)
-                        listBox1.Items.Add(match[i].Tag + $" ({match[i].Count})");
+                        listing.Add(match[i].Tag + $" ({match[i].Count})");
                     else
-                        listBox1.Items.Add(match[i].Tag);
+                        listing.Add(match[i].Tag);
                 }
+                listBox1.Items.AddRange(listing.ToArray());
                 listBox1.Location = new Point(tbSearch.Left + GetCaretWidthFromTextBox(position),
                     tbSearch.Top + tbSearch.Font.Height + 5);
                 listBox1.MaxColoredTextLength = word.Length;
