@@ -144,7 +144,7 @@ namespace Hitomi_Copy_3
                 TimeSpan gap = DateTime.Now - HitomiData.Instance.GetLatestMetadataUpdateTime();
                 if (gap.TotalHours > 24)
                 {
-                    MetroMessageBox.Show(this, $@"마지막으로 데이터 동기화를 한 시점으로부터 {gap:%h}시간이 지났습니다. 설정->데이터 동기화를 통해 데이터를 동기화해주세요.", Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MetroMessageBox.Show(this, $@"마지막으로 데이터 동기화를 한 시점으로부터 {(int)gap.TotalHours}시간이 지났습니다. 설정->데이터 동기화를 통해 데이터를 동기화해주세요.", Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
         }
