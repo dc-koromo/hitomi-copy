@@ -50,7 +50,7 @@ namespace Hitomi_Copy_2.Analysis
             bool xi = HitomiSetting.Instance.GetModel().UsingXiAanlysis;
             foreach (var pair in user.GetDictionary())
             {
-                foreach(var data in datas)
+                foreach (var data in datas)
                 {
                     if (!xi)
                     {
@@ -65,17 +65,22 @@ namespace Hitomi_Copy_2.Analysis
                         if (data.IsExsit(pair.Key))
                         {
                             if (score.ContainsKey(data.Aritst))
-                                score[data.Aritst] = new Tuple<double, HitomiAnalysisArtist>(score[data.Aritst].Item1 + -Math.Pow(Math.Abs(pair.Value - data.GetRate(pair.Key)),2) * pair.Value, score[data.Aritst].Item2);
+                                score[data.Aritst] = new Tuple<double, HitomiAnalysisArtist>(score[data.Aritst].Item1 + -Math.Pow(Math.Abs(pair.Value - data.GetRate(pair.Key)), 2) * pair.Value, score[data.Aritst].Item2);
                             else
                                 score.Add(data.Aritst, new Tuple<double, HitomiAnalysisArtist>(-Math.Pow(Math.Abs(pair.Value - data.GetRate(pair.Key)), 2) * pair.Value, data));
                         }
-                        else
-                        {
-                            if (score.ContainsKey(data.Aritst))
-                                score[data.Aritst] = new Tuple<double, HitomiAnalysisArtist>(score[data.Aritst].Item1 + -pair.Value * pair.Value * pair.Value, score[data.Aritst].Item2);
-                            else
-                                score.Add(data.Aritst, new Tuple<double, HitomiAnalysisArtist>(-pair.Value * pair.Value * pair.Value, data));
-                        }
+                    }
+                }
+            }
+
+            if (xi)
+            {
+                foreach (var pair in user.GetDictionary())
+                {
+                    foreach (var data in datas)
+                    {
+                        if (!data.IsExsit(pair.Key) && score.ContainsKey(data.Aritst))
+                            score[data.Aritst] = new Tuple<double, HitomiAnalysisArtist>(score[data.Aritst].Item1 + -pair.Value * pair.Value * pair.Value, score[data.Aritst].Item2);
                     }
                 }
             }
