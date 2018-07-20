@@ -1,3 +1,20 @@
+v3.37
+## 설문조사 한 번씩만 해주세요! 
+https://docs.google.com/forms/d/e/1FAIpQLScGn2TL9RaM1MfvJ-XGIqNhuSS60k1O-dsGGwH_bfOlgoxWkg/viewform
+
+## 검색어 자동완성 기능이 개편됩니다! 
+완전히 자유로워진 검색 기능을 사용해보세요!
+
+## 커스텀 작가 추천 기능이 정식으로 추가됩니다! 
+커스텀 작가 추천 기능을 이용해 원하는 작가를 탐색해보세요!
+
+## 고급설정 창을 세분화 했습니다.
+
+## 설문조사 결과는 70명이 채워지면 2차적으로 남겨주신 메일로 보내드릴 예정입니다.
+## 실험적으로 추가되는 옵션은 setting.json에서 설정을 바꿀 수 있습니다.
+
+----------------------------------------------------------------------
+
 # v3.36
 ## 설문조사 한 번씩만 해주세요! 
 https://docs.google.com/forms/d/e/1FAIpQLScGn2TL9RaM1MfvJ-XGIqNhuSS60k1O-dsGGwH_bfOlgoxWkg/viewform
