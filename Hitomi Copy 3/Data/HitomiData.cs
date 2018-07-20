@@ -355,26 +355,29 @@ namespace Hitomi_Copy.Data
             List<HitomiTagdata> target = new List<HitomiTagdata>();
             target.AddRange(tagdata_collection.female);
             target.AddRange(tagdata_collection.male);
-            target.AddRange(tagdata_collection.tag);
+            //target.AddRange(tagdata_collection.tag);
             contains = contains.ToLower();
             foreach (var tagdata in tagdata_collection.artist)
                 if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(contains))
-                { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+                { HitomiTagdata data = new HitomiTagdata(); data.Tag = "artist:" + tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
             foreach (var tagdata in tagdata_collection.group)
                 if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(contains))
-                { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+                { HitomiTagdata data = new HitomiTagdata(); data.Tag = "group:" + tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
             foreach (var tagdata in tagdata_collection.series)
                 if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(contains))
-                { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+                { HitomiTagdata data = new HitomiTagdata(); data.Tag = "series:" + tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
             foreach (var tagdata in tagdata_collection.character)
                 if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(contains))
-                { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+                { HitomiTagdata data = new HitomiTagdata(); data.Tag = "character:" + tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
             foreach (var tagdata in tagdata_collection.type)
                 if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(contains))
-                { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+                { HitomiTagdata data = new HitomiTagdata(); data.Tag = "type:" + tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
             foreach (var tagdata in target)
                 if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(contains))
                 { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            foreach (var tagdata in tagdata_collection.tag)
+                if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(contains))
+                { HitomiTagdata data = new HitomiTagdata(); data.Tag = "tag:" + tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
             result.Sort((a, b) => b.Count.CompareTo(a.Count));
             return result;
         }
