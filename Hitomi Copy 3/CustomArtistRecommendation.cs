@@ -116,8 +116,9 @@ namespace Hitomi_Copy_3
 
         public void RequestAddTags(string tags, string score)
         {
-            foreach (var tag in tags.Trim().Split(' '))
+            foreach (var ttag in tags.Trim().Split(' '))
             {
+                string tag = ttag.Replace('_', ' ');
                 if (!lvCustomTag.Items.OfType<ListViewItem>().ToList().Any(x => {
                     if (x.SubItems[0].Text == tag)
                         x.SubItems[1].Text = score;
@@ -128,7 +129,7 @@ namespace Hitomi_Copy_3
             }
         }
 
-        public void RequestAddArists(string artists, string score)
+        public void RequestAddArtists(string artists, string score)
         {
             Dictionary<string, int> tags = new Dictionary<string, int>();
 
@@ -143,7 +144,7 @@ namespace Hitomi_Copy_3
                         if (HitomiSetting.Instance.GetModel().Language != "ALL" &&
                             HitomiSetting.Instance.GetModel().Language != lang) continue;
                     }
-                    if (data.Artists != null && data.Tags != null && data.Artists.Contains(artist))
+                    if (data.Artists != null && data.Tags != null && data.Artists.Contains(artist.Replace('_', ' ')))
                     {
                         foreach (var tag in data.Tags)
                         {

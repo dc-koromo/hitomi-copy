@@ -61,15 +61,15 @@
             this.tgAS = new MetroFramework.Controls.MetroToggle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel17 = new MetroFramework.Controls.MetroLabel();
+            this.tbACSC = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
+            this.tgSPC = new MetroFramework.Controls.MetroToggle();
+            this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
+            this.tbLPM = new MetroFramework.Controls.MetroTextBox();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
-            this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
-            this.tbLPM = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
-            this.tgSPC = new MetroFramework.Controls.MetroToggle();
-            this.metroLabel17 = new MetroFramework.Controls.MetroLabel();
-            this.tbACSC = new MetroFramework.Controls.MetroTextBox();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
@@ -118,7 +118,7 @@
             this.tbWT.CustomButton.Location = new System.Drawing.Point(135, 1);
             this.tbWT.CustomButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbWT.CustomButton.Name = "";
-            this.tbWT.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbWT.CustomButton.Size = new System.Drawing.Size(21, 17);
             this.tbWT.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.tbWT.CustomButton.TabIndex = 1;
             this.tbWT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -177,7 +177,7 @@
             this.tbRPS.CustomButton.Location = new System.Drawing.Point(135, 1);
             this.tbRPS.CustomButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbRPS.CustomButton.Name = "";
-            this.tbRPS.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbRPS.CustomButton.Size = new System.Drawing.Size(21, 17);
             this.tbRPS.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.tbRPS.CustomButton.TabIndex = 1;
             this.tbRPS.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -224,7 +224,7 @@
             this.tbTMA.CustomButton.Location = new System.Drawing.Point(135, 1);
             this.tbTMA.CustomButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbTMA.CustomButton.Name = "";
-            this.tbTMA.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbTMA.CustomButton.Size = new System.Drawing.Size(21, 17);
             this.tbTMA.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.tbTMA.CustomButton.TabIndex = 1;
             this.tbTMA.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -387,7 +387,7 @@
             this.tbMTS.CustomButton.Location = new System.Drawing.Point(135, 1);
             this.tbMTS.CustomButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbMTS.CustomButton.Name = "";
-            this.tbMTS.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbMTS.CustomButton.Size = new System.Drawing.Size(21, 17);
             this.tbMTS.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.tbMTS.CustomButton.TabIndex = 1;
             this.tbMTS.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -572,7 +572,7 @@
             this.metroTabPage1.Controls.Add(this.tbMTS);
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage1.HorizontalScrollbarSize = 10;
+            this.metroTabPage1.HorizontalScrollbarSize = 8;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage1.Name = "metroTabPage1";
             this.metroTabPage1.Size = new System.Drawing.Size(422, 240);
@@ -582,66 +582,73 @@
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
-            // metroTabPage2
+            // metroLabel17
             // 
-            this.metroTabPage2.BackColor = System.Drawing.Color.White;
-            this.metroTabPage2.Controls.Add(this.tbWT);
-            this.metroTabPage2.Controls.Add(this.metroLabel4);
-            this.metroTabPage2.Controls.Add(this.metroLabel1);
-            this.metroTabPage2.Controls.Add(this.metroLabel3);
-            this.metroTabPage2.Controls.Add(this.tgWI);
-            this.metroTabPage2.Controls.Add(this.tgSJ);
-            this.metroTabPage2.Controls.Add(this.metroLabel8);
-            this.metroTabPage2.Controls.Add(this.tgRA);
-            this.metroTabPage2.HorizontalScrollbarBarColor = true;
-            this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.HorizontalScrollbarSize = 10;
-            this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(422, 240);
-            this.metroTabPage2.TabIndex = 1;
-            this.metroTabPage2.Text = "다운로드";
-            this.metroTabPage2.VerticalScrollbarBarColor = true;
-            this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.VerticalScrollbarSize = 10;
+            this.metroLabel17.AutoSize = true;
+            this.metroLabel17.Location = new System.Drawing.Point(22, 210);
+            this.metroLabel17.Name = "metroLabel17";
+            this.metroLabel17.Size = new System.Drawing.Size(180, 19);
+            this.metroLabel17.Style = MetroFramework.MetroColorStyle.Pink;
+            this.metroLabel17.TabIndex = 49;
+            this.metroLabel17.Text = "AutoComplete Show Count : ";
             // 
-            // metroTabPage3
+            // tbACSC
             // 
-            this.metroTabPage3.Controls.Add(this.metroLabel13);
-            this.metroTabPage3.Controls.Add(this.metroLabel6);
-            this.metroTabPage3.Controls.Add(this.metroLabel7);
-            this.metroTabPage3.Controls.Add(this.tgXA);
-            this.metroTabPage3.Controls.Add(this.tgRNM);
-            this.metroTabPage3.Controls.Add(this.tgRL);
-            this.metroTabPage3.HorizontalScrollbarBarColor = true;
-            this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage3.HorizontalScrollbarSize = 10;
-            this.metroTabPage3.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(422, 240);
-            this.metroTabPage3.TabIndex = 2;
-            this.metroTabPage3.Text = "작가추천";
-            this.metroTabPage3.VerticalScrollbarBarColor = true;
-            this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage3.VerticalScrollbarSize = 10;
             // 
-            // metroTabPage4
             // 
-            this.metroTabPage4.Controls.Add(this.metroLabel14);
-            this.metroTabPage4.Controls.Add(this.tgAS);
-            this.metroTabPage4.Controls.Add(this.metroLabel10);
-            this.metroTabPage4.Controls.Add(this.tgUL);
-            this.metroTabPage4.HorizontalScrollbarBarColor = true;
-            this.metroTabPage4.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage4.HorizontalScrollbarSize = 10;
-            this.metroTabPage4.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage4.Name = "metroTabPage4";
-            this.metroTabPage4.Size = new System.Drawing.Size(422, 240);
-            this.metroTabPage4.TabIndex = 3;
-            this.metroTabPage4.Text = "기타";
-            this.metroTabPage4.VerticalScrollbarBarColor = true;
-            this.metroTabPage4.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage4.VerticalScrollbarSize = 10;
+            // 
+            this.tbACSC.CustomButton.Image = null;
+            this.tbACSC.CustomButton.Location = new System.Drawing.Point(135, 1);
+            this.tbACSC.CustomButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbACSC.CustomButton.Name = "";
+            this.tbACSC.CustomButton.Size = new System.Drawing.Size(21, 17);
+            this.tbACSC.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbACSC.CustomButton.TabIndex = 1;
+            this.tbACSC.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbACSC.CustomButton.UseSelectable = true;
+            this.tbACSC.CustomButton.Visible = false;
+            this.tbACSC.Lines = new string[] {
+        "recent:0-25"};
+            this.tbACSC.Location = new System.Drawing.Point(208, 208);
+            this.tbACSC.MaxLength = 32767;
+            this.tbACSC.Name = "tbACSC";
+            this.tbACSC.PasswordChar = '\0';
+            this.tbACSC.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbACSC.SelectedText = "";
+            this.tbACSC.SelectionLength = 0;
+            this.tbACSC.SelectionStart = 0;
+            this.tbACSC.ShortcutsEnabled = true;
+            this.tbACSC.Size = new System.Drawing.Size(157, 23);
+            this.tbACSC.Style = MetroFramework.MetroColorStyle.Pink;
+            this.tbACSC.TabIndex = 50;
+            this.tbACSC.Text = "recent:0-25";
+            this.tbACSC.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbACSC.UseSelectable = true;
+            this.tbACSC.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbACSC.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbACSC.MouseEnter += new System.EventHandler(this.tbACSC_MouseEnter);
+            // 
+            // metroLabel16
+            // 
+            this.metroLabel16.AutoSize = true;
+            this.metroLabel16.Location = new System.Drawing.Point(79, 182);
+            this.metroLabel16.Name = "metroLabel16";
+            this.metroLabel16.Size = new System.Drawing.Size(123, 19);
+            this.metroLabel16.Style = MetroFramework.MetroColorStyle.Pink;
+            this.metroLabel16.TabIndex = 48;
+            this.metroLabel16.Text = "Show Page Count : ";
+            // 
+            // tgSPC
+            // 
+            this.tgSPC.AutoSize = true;
+            this.tgSPC.Location = new System.Drawing.Point(178, 183);
+            this.tgSPC.Name = "tgSPC";
+            this.tgSPC.Size = new System.Drawing.Size(80, 19);
+            this.tgSPC.Style = MetroFramework.MetroColorStyle.Pink;
+            this.tgSPC.TabIndex = 47;
+            this.tgSPC.Text = "Off";
+            this.tgSPC.UseSelectable = true;
+            this.tgSPC.MouseEnter += new System.EventHandler(this.tgSPC_MouseEnter);
             // 
             // metroLabel15
             // 
@@ -662,7 +669,7 @@
             this.tbLPM.CustomButton.Location = new System.Drawing.Point(135, 1);
             this.tbLPM.CustomButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbLPM.CustomButton.Name = "";
-            this.tbLPM.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbLPM.CustomButton.Size = new System.Drawing.Size(21, 17);
             this.tbLPM.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.tbLPM.CustomButton.TabIndex = 1;
             this.tbLPM.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -689,73 +696,66 @@
             this.tbLPM.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.tbLPM.MouseEnter += new System.EventHandler(this.tbLPM_MouseEnter);
             // 
-            // metroLabel16
+            // metroTabPage2
             // 
-            this.metroLabel16.AutoSize = true;
-            this.metroLabel16.Location = new System.Drawing.Point(79, 182);
-            this.metroLabel16.Name = "metroLabel16";
-            this.metroLabel16.Size = new System.Drawing.Size(123, 19);
-            this.metroLabel16.Style = MetroFramework.MetroColorStyle.Pink;
-            this.metroLabel16.TabIndex = 48;
-            this.metroLabel16.Text = "Show Page Count : ";
+            this.metroTabPage2.BackColor = System.Drawing.Color.White;
+            this.metroTabPage2.Controls.Add(this.tbWT);
+            this.metroTabPage2.Controls.Add(this.metroLabel4);
+            this.metroTabPage2.Controls.Add(this.metroLabel1);
+            this.metroTabPage2.Controls.Add(this.metroLabel3);
+            this.metroTabPage2.Controls.Add(this.tgWI);
+            this.metroTabPage2.Controls.Add(this.tgSJ);
+            this.metroTabPage2.Controls.Add(this.metroLabel8);
+            this.metroTabPage2.Controls.Add(this.tgRA);
+            this.metroTabPage2.HorizontalScrollbarBarColor = true;
+            this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage2.HorizontalScrollbarSize = 8;
+            this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage2.Name = "metroTabPage2";
+            this.metroTabPage2.Size = new System.Drawing.Size(422, 240);
+            this.metroTabPage2.TabIndex = 1;
+            this.metroTabPage2.Text = "다운로드";
+            this.metroTabPage2.VerticalScrollbarBarColor = true;
+            this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage2.VerticalScrollbarSize = 10;
             // 
-            // tgSPC
+            // metroTabPage3
             // 
-            this.tgSPC.AutoSize = true;
-            this.tgSPC.Location = new System.Drawing.Point(178, 183);
-            this.tgSPC.Name = "tgSPC";
-            this.tgSPC.Size = new System.Drawing.Size(80, 19);
-            this.tgSPC.Style = MetroFramework.MetroColorStyle.Pink;
-            this.tgSPC.TabIndex = 47;
-            this.tgSPC.Text = "Off";
-            this.tgSPC.UseSelectable = true;
-            this.tgSPC.MouseEnter += new System.EventHandler(this.tgSPC_MouseEnter);
+            this.metroTabPage3.Controls.Add(this.metroLabel13);
+            this.metroTabPage3.Controls.Add(this.metroLabel6);
+            this.metroTabPage3.Controls.Add(this.metroLabel7);
+            this.metroTabPage3.Controls.Add(this.tgXA);
+            this.metroTabPage3.Controls.Add(this.tgRNM);
+            this.metroTabPage3.Controls.Add(this.tgRL);
+            this.metroTabPage3.HorizontalScrollbarBarColor = true;
+            this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage3.HorizontalScrollbarSize = 8;
+            this.metroTabPage3.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage3.Name = "metroTabPage3";
+            this.metroTabPage3.Size = new System.Drawing.Size(422, 240);
+            this.metroTabPage3.TabIndex = 2;
+            this.metroTabPage3.Text = "작가추천";
+            this.metroTabPage3.VerticalScrollbarBarColor = true;
+            this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage3.VerticalScrollbarSize = 10;
             // 
-            // metroLabel17
+            // metroTabPage4
             // 
-            this.metroLabel17.AutoSize = true;
-            this.metroLabel17.Location = new System.Drawing.Point(22, 210);
-            this.metroLabel17.Name = "metroLabel17";
-            this.metroLabel17.Size = new System.Drawing.Size(180, 19);
-            this.metroLabel17.Style = MetroFramework.MetroColorStyle.Pink;
-            this.metroLabel17.TabIndex = 49;
-            this.metroLabel17.Text = "AutoComplete Show Count : ";
-            // 
-            // tbACSC
-            // 
-            // 
-            // 
-            // 
-            this.tbACSC.CustomButton.Image = null;
-            this.tbACSC.CustomButton.Location = new System.Drawing.Point(135, 1);
-            this.tbACSC.CustomButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbACSC.CustomButton.Name = "";
-            this.tbACSC.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.tbACSC.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.tbACSC.CustomButton.TabIndex = 1;
-            this.tbACSC.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.tbACSC.CustomButton.UseSelectable = true;
-            this.tbACSC.CustomButton.Visible = false;
-            this.tbACSC.Lines = new string[] {
-        "recent:0-25"};
-            this.tbACSC.Location = new System.Drawing.Point(208, 208);
-            this.tbACSC.MaxLength = 32767;
-            this.tbACSC.Name = "tbACSC";
-            this.tbACSC.PasswordChar = '\0';
-            this.tbACSC.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.tbACSC.SelectedText = "";
-            this.tbACSC.SelectionLength = 0;
-            this.tbACSC.SelectionStart = 0;
-            this.tbACSC.ShortcutsEnabled = true;
-            this.tbACSC.Size = new System.Drawing.Size(157, 23);
-            this.tbACSC.Style = MetroFramework.MetroColorStyle.Pink;
-            this.tbACSC.TabIndex = 50;
-            this.tbACSC.Text = "recent:0-25";
-            this.tbACSC.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.tbACSC.UseSelectable = true;
-            this.tbACSC.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.tbACSC.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.tbACSC.MouseEnter += new System.EventHandler(this.tbACSC_MouseEnter);
+            this.metroTabPage4.Controls.Add(this.metroLabel14);
+            this.metroTabPage4.Controls.Add(this.tgAS);
+            this.metroTabPage4.Controls.Add(this.metroLabel10);
+            this.metroTabPage4.Controls.Add(this.tgUL);
+            this.metroTabPage4.HorizontalScrollbarBarColor = true;
+            this.metroTabPage4.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage4.HorizontalScrollbarSize = 8;
+            this.metroTabPage4.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage4.Name = "metroTabPage4";
+            this.metroTabPage4.Size = new System.Drawing.Size(422, 240);
+            this.metroTabPage4.TabIndex = 3;
+            this.metroTabPage4.Text = "기타";
+            this.metroTabPage4.VerticalScrollbarBarColor = true;
+            this.metroTabPage4.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage4.VerticalScrollbarSize = 10;
             // 
             // frmSetting
             // 

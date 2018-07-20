@@ -47,7 +47,7 @@ namespace Hitomi_Copy_3
                 return;
             }
 
-            parent.Post(() => parent.RequestAddArists(tbSearch.Text, metroTextBox1.Text));
+            parent.Post(() => parent.RequestAddArtists(tbSearch.Text, metroTextBox1.Text));
             DialogResult = DialogResult.OK;
             Close();
         }
