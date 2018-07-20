@@ -726,7 +726,7 @@ namespace Hitomi_Copy_3
                 listBox1.SelectedIndex = listBox1.Items.Count - 1;
                 listBox1.Focus();
             }
-            else if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Space)
+            else if (e.KeyCode == Keys.Enter /*|| e.KeyCode == Keys.Space*/)
             {
                 PutStringIntoTextBox(listBox1.Items[0].ToString());
             }
@@ -750,7 +750,7 @@ namespace Hitomi_Copy_3
 
         private void listBox1_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Space)
+            if (e.KeyCode == Keys.Enter /*|| e.KeyCode == Keys.Space*/)
             {
                 if (listBox1.SelectedItems.Count > 0)
                     PutStringIntoTextBox(listBox1.SelectedItem.ToString());
