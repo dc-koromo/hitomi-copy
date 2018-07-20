@@ -123,6 +123,18 @@
     <Compile Include="AutoCompleteListBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CARArtist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CARArtist.Designer.cs">
+      <DependentUpon>CARArtist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CARTag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CARTag.Designer.cs">
+      <DependentUpon>CARTag.cs</DependentUpon>
+    </Compile>
     <Compile Include="ColumnSorter.cs" />
     <Compile Include="Common\HitomiArticle.cs" />
     <Compile Include="Common\HitomiDef.cs" />
@@ -355,6 +367,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="403\GalleryBlockTester.resx">
       <DependentUpon>GalleryBlockTester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CARArtist.resx">
+      <DependentUpon>CARArtist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CARTag.resx">
+      <DependentUpon>CARTag.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomArtistRecommendation.resx">
       <DependentUpon>CustomArtistRecommendation.cs</DependentUpon>

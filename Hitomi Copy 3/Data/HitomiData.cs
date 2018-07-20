@@ -264,16 +264,25 @@ namespace Hitomi_Copy.Data
         }
 
         #region Autocomplete Helper
-        public List<HitomiTagdata> GetArtistList(string startswith)
+        public List<HitomiTagdata> GetArtistList(string startswith, bool constains = false)
         {
             List<HitomiTagdata> result = new List<HitomiTagdata>();
-            foreach (var tagdata in tagdata_collection.artist)
-                if (tagdata.Tag.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
-                { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            if (!constains)
+            {
+                foreach (var tagdata in tagdata_collection.artist)
+                    if (tagdata.Tag.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
+                    { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            }
+            else
+            {
+                foreach (var tagdata in tagdata_collection.artist)
+                    if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(startswith))
+                    { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            }
             return result;
         }
 
-        public List<HitomiTagdata> GetTagList(string startswith)
+        public List<HitomiTagdata> GetTagList(string startswith, bool constains = false)
         {
             List<HitomiTagdata> target = new List<HitomiTagdata>();
             target.AddRange(tagdata_collection.female);
@@ -281,9 +290,18 @@ namespace Hitomi_Copy.Data
             target.AddRange(tagdata_collection.tag);
             target.Sort((a, b) => b.Count.CompareTo(a.Count));
             List<HitomiTagdata> result = new List<HitomiTagdata>();
-            foreach (var tagdata in target)
-                if (tagdata.Tag.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
-                { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            if (!constains)
+            {
+                foreach (var tagdata in target)
+                    if (tagdata.Tag.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
+                    { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            }
+            else
+            {
+                foreach (var tagdata in target)
+                    if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(startswith))
+                    { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            }
             return result;
         }
 

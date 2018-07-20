@@ -743,6 +743,10 @@ namespace Hitomi_Copy_3
                 {
                     (new Manual()).Show();
                 }
+                else if (cmd == "car")
+                {
+                    (new CustomArtistRecommendation()).Show();
+                }
                 else if (cmd == "help")
                 {
                     PushString("Realtime Variable Update System");

@@ -182,6 +182,7 @@ namespace Hitomi_Copy_3
                 listBox1.Location = new Point(tbSearch.Left + GetCaretWidthFromTextBox(position),
                     tbSearch.Top + tbSearch.Font.Height + 5);
                 listBox1.MaxColoredTextLength = word.Length;
+                listBox1.ColoredTargetText = word;
             }
             else { listBox1.Visible = false; return; }
 

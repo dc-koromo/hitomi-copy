@@ -63,6 +63,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
+            this.bCustomRecommend = new MetroFramework.Controls.MetroButton();
             this.bRTidy = new MetroFramework.Controls.MetroButton();
             this.label1 = new System.Windows.Forms.Label();
             this.tgFilterArtists = new MetroFramework.Controls.MetroToggle();
@@ -313,7 +314,7 @@
             this.tbSearch.CustomButton.Location = new System.Drawing.Point(980, 1);
             this.tbSearch.CustomButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSearch.CustomButton.Name = "";
-            this.tbSearch.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbSearch.CustomButton.Size = new System.Drawing.Size(21, 17);
             this.tbSearch.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.tbSearch.CustomButton.TabIndex = 1;
             this.tbSearch.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -541,6 +542,7 @@
             // metroTabPage4
             // 
             this.metroTabPage4.BackColor = System.Drawing.SystemColors.Control;
+            this.metroTabPage4.Controls.Add(this.bCustomRecommend);
             this.metroTabPage4.Controls.Add(this.bRTidy);
             this.metroTabPage4.Controls.Add(this.label1);
             this.metroTabPage4.Controls.Add(this.tgFilterArtists);
@@ -556,6 +558,19 @@
             this.metroTabPage4.VerticalScrollbarBarColor = true;
             this.metroTabPage4.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage4.VerticalScrollbarSize = 10;
+            // 
+            // bCustomRecommend
+            // 
+            this.bCustomRecommend.Enabled = false;
+            this.bCustomRecommend.Location = new System.Drawing.Point(161, 3);
+            this.bCustomRecommend.Name = "bCustomRecommend";
+            this.bCustomRecommend.Size = new System.Drawing.Size(152, 25);
+            this.bCustomRecommend.Style = MetroFramework.MetroColorStyle.Pink;
+            this.bCustomRecommend.TabIndex = 23;
+            this.bCustomRecommend.Text = "커스텀 작가추천";
+            this.bCustomRecommend.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.bCustomRecommend.UseSelectable = true;
+            this.bCustomRecommend.Click += new System.EventHandler(this.bCustomRecommend_Click);
             // 
             // bRTidy
             // 
@@ -1110,6 +1125,7 @@
         private MetroFramework.Controls.MetroButton bRelatedTags;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
         private System.Windows.Forms.ToolStripMenuItem finder열기FToolStripMenuItem;
+        private MetroFramework.Controls.MetroButton bCustomRecommend;
     }
 }
 

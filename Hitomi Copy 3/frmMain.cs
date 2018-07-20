@@ -1218,6 +1218,7 @@ namespace Hitomi_Copy_3
         private void UpdateStatistics()
         {
             HitomiAnalysis.Instance.Update();
+            this.Post(() => bCustomRecommend.Enabled = true);
             Task.Run(() => MoreLoadRecommend());
         }
         public void AddRecommendArtist(string artist)
@@ -1483,6 +1484,11 @@ namespace Hitomi_Copy_3
                 (new Manual()).Show();
             }
             return base.ProcessDialogKey(keyData);
+        }
+
+        private void bCustomRecommend_Click(object sender, EventArgs e)
+        {
+            (new CustomArtistRecommendation()).Show();
         }
         #endregion
 
