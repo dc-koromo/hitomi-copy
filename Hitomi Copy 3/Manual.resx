@@ -127,19 +127,6 @@ E-Mail: koromo.software@gmail.com
 Source-code : https://github.com/dc-koromo/hitomi-downloader-2
 PatchNote : https://github.com/dc-koromo/hitomi-downloader-2/blob/master/PatchNote.md</value>
   </data>
-  <data name="metroLabel15.Text" xml:space="preserve">
-    <value>작가 추천은 크게 두 가지 방법을 사용할 수 있습니다.
-
-1. 산술적인 비교방법
-작가의 작품수, 작가의 태그 비율을 이용해 계산합니다. 고급 설정 -&gt; "Recommend NMultiple With Length"를 켜면 작품수는 더이상
-작가추천에 영향을 주지 않습니다. 아주 단순한 비교이기 때문에 결과도 단순하게 출력됩니다.
-
-2. 단순회귀분석을 이용한 비교방법
-간단한 통계방법을 이용해 순위를 매깁니다. 사용하려면 고급설정 -&gt; "Using Xi Aanlysis"를 켜세요.
-단순회귀분석은 태그 비율의 일치여부만을 가지고 비교합니다. 기본적으로 작가의 작품수에 영향을 받지않습니다.
-
-무분별한 다운로드로 Log가 더럽혀졌다면, log.json을 지우고 새로 시작해보세요!</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -197,6 +184,19 @@ PatchNote : https://github.com/dc-koromo/hitomi-downloader-2/blob/master/PatchNo
         1f8B4GaxwGPIbx4AAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="metroLabel15.Text" xml:space="preserve">
+    <value>작가 추천은 크게 두 가지 방법을 사용할 수 있습니다.
+
+1. 산술적인 비교방법
+작가의 작품수, 작가의 태그 비율을 이용해 계산합니다. 고급 설정 -&gt; "Recommend NMultiple With Length"를 켜면 작품수는 더이상
+작가추천에 영향을 주지 않습니다. 아주 단순한 비교이기 때문에 결과도 단순하게 출력됩니다.
+
+2. 단순회귀분석을 이용한 비교방법
+간단한 통계방법을 이용해 순위를 매깁니다. 사용하려면 고급설정 -&gt; "Using Xi Aanlysis"를 켜세요.
+단순회귀분석은 태그 비율의 일치여부만을 가지고 비교합니다. 기본적으로 작가의 작품수에 영향을 받지않습니다.
+
+무분별한 다운로드로 Log가 더럽혀졌다면, log.json을 지우고 새로 시작해보세요!</value>
+  </data>
   <data name="textBox1.Text" xml:space="preserve">
     <value>Hitomi Copy의 Log 기능은 각종 실험적인 기능들을 제공하는 도구입니다.
 메인창 -&gt; 설정 -&gt; 고급설정 -&gt; UsingLog를 켜고 -&gt; 설정 저장 후 프로그램을 재시작하면 Log가 활성화됩니다.
@@ -220,8 +220,21 @@ ei는 Instance를 위한 명령어입니다. 주 핸들에는 Instance가 포함
 "set frmMain latest_load_count 100"로 latest_load_count 변수에 값을 쓸 수 있습니다.
 
 3. ra
-커스텀 작가추천을 위한 명령어입니다.
-"https://github.com/dc-koromo/hitomi-downloader-2#커스텀-작가-추천"을 참고하세요
+먼저 다음 명령을 순서대로 입력합니다.
+ra on ; 커스텀 분석 시작 (ra off 도 구현됨)
+ra mion ; 커스텀 태그에 추가된 것들이 모두 작품에 있을 때만 작가 추천항목에 넣음 (ra mioff 도 구현됨)
+ra update ; 작가 추천 목록 업데이트
+
+이제 원하는 태그나 작가를 추가합니다.
+ra + female:big_breasts 1 ; 태그 추가 (마지막 숫자는 점수)
+ra +a hisasi ; 작가 추가 (작가가 가진 모든 태그를 추가함)
+
+다음은 목록을 생성하는데 유용한 명령어 입니다.
+ra add sekiya_asami ; 수동으로 작가 추가
+ra list ; 모든 커스텀 태그 열거
+ra rank ; 점수 내림차순으로 작가 추천 목록 열거 (ra update가 먼저 수행되어야 합니다.)
+get hitomi_analysis ; 점수 오름차순으로 작가 추천 목록 열거 (ra update가 먼저 수행되어야 합니다.)=
+ra clear ; 커스텀 태그 모두 삭제
 
 4. install
 Hitomi Copy의 실험용 도구를 다운로드하기 위한 명령입니다. 현재는 "install driver" 명령만 지원합니다.

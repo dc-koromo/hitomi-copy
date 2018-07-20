@@ -33,6 +33,11 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.네잘하셨어요ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -45,33 +50,28 @@
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.네잘하셨어요ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -113,6 +113,48 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "서문";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.네잘하셨어요ToolStripMenuItem,
+            this.이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(458, 48);
+            // 
+            // 네잘하셨어요ToolStripMenuItem
+            // 
+            this.네잘하셨어요ToolStripMenuItem.Name = "네잘하셨어요ToolStripMenuItem";
+            this.네잘하셨어요ToolStripMenuItem.Size = new System.Drawing.Size(457, 22);
+            this.네잘하셨어요ToolStripMenuItem.Text = "네 잘하셨어요";
+            // 
+            // 이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem
+            // 
+            this.이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem.Name = "이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem";
+            this.이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem.Size = new System.Drawing.Size(457, 22);
+            this.이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem.Text = "이제 검색창, 연관태그 등 여러 도구창에서 오른쪽 클릭을 활용해보세요";
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.Location = new System.Drawing.Point(50, 246);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(554, 38);
+            this.metroLabel3.TabIndex = 9;
+            this.metroLabel3.Text = "문제를 해결하는 가장 좋은 방법은 koromo.software@gmail.com로 메일을 보내는 겁니다.\r\n프로그램상에 문제가 있다면 소스코드없이" +
+    " 절대 해결할 수 없습니다. 메일 보내세요.";
+            this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
+            // metroLabel14
+            // 
+            this.metroLabel14.AutoSize = true;
+            this.metroLabel14.Location = new System.Drawing.Point(50, 184);
+            this.metroLabel14.Name = "metroLabel14";
+            this.metroLabel14.Size = new System.Drawing.Size(693, 38);
+            this.metroLabel14.TabIndex = 8;
+            this.metroLabel14.Text = "이 메뉴얼은 Hitomi Copy에 포함된 모든 기능을 알려주진 않습니다. 너무 많아요 ㅠㅠ\r\n새로운 기능을 알아내는 가장좋은 방법은 오른쪽 클릭" +
+    "입니다. 오른쪽 클릭이 가장 중요합니다. 제발 클릭하세요";
+            this.metroLabel14.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // metroLabel4
             // 
@@ -251,16 +293,16 @@
     " 작가추천 기능을 사용할 수 있습니다.";
             this.metroLabel5.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
-            // tabPage3
+            // pictureBox1
             // 
-            this.tabPage3.Controls.Add(this.textBox1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 24);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(948, 406);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "로그";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(34, 31);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(245, 140);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // tabPage6
             // 
@@ -276,26 +318,15 @@
             this.tabPage6.Text = "Finder";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // metroLabel12
+            // metroLabel13
             // 
-            this.metroLabel12.AutoSize = true;
-            this.metroLabel12.Location = new System.Drawing.Point(384, 29);
-            this.metroLabel12.Name = "metroLabel12";
-            this.metroLabel12.Size = new System.Drawing.Size(381, 38);
-            this.metroLabel12.TabIndex = 9;
-            this.metroLabel12.Text = "Finder는 Hitomi Copy에 포함된 가장 강력한 검색도구입니다.\r\n검색방법은 메인창의 검색방법과 같습니다.";
-            this.metroLabel12.Theme = MetroFramework.MetroThemeStyle.Light;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(34, 31);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(245, 140);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.metroLabel13.AutoSize = true;
+            this.metroLabel13.Location = new System.Drawing.Point(28, 137);
+            this.metroLabel13.Name = "metroLabel13";
+            this.metroLabel13.Size = new System.Drawing.Size(326, 38);
+            this.metroLabel13.TabIndex = 11;
+            this.metroLabel13.Text = "Finder는 기본적으로 제외 태그를 무시합니다.\r\n다른 언어로 검색하려면 설정에서 언어를 바꾸세요.";
+            this.metroLabel13.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // pictureBox3
             // 
@@ -308,6 +339,16 @@
             this.pictureBox3.TabIndex = 10;
             this.pictureBox3.TabStop = false;
             // 
+            // metroLabel12
+            // 
+            this.metroLabel12.AutoSize = true;
+            this.metroLabel12.Location = new System.Drawing.Point(384, 29);
+            this.metroLabel12.Name = "metroLabel12";
+            this.metroLabel12.Size = new System.Drawing.Size(381, 38);
+            this.metroLabel12.TabIndex = 9;
+            this.metroLabel12.Text = "Finder는 Hitomi Copy에 포함된 가장 강력한 검색도구입니다.\r\n검색방법은 메인창의 검색방법과 같습니다.";
+            this.metroLabel12.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
             // pictureBox2
             // 
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -318,68 +359,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
-            // 
-            // metroLabel13
-            // 
-            this.metroLabel13.AutoSize = true;
-            this.metroLabel13.Location = new System.Drawing.Point(28, 137);
-            this.metroLabel13.Name = "metroLabel13";
-            this.metroLabel13.Size = new System.Drawing.Size(326, 38);
-            this.metroLabel13.TabIndex = 11;
-            this.metroLabel13.Text = "Finder는 기본적으로 제외 태그를 무시합니다.\r\n다른 언어로 검색하려면 설정에서 언어를 바꾸세요.";
-            this.metroLabel13.Theme = MetroFramework.MetroThemeStyle.Light;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(32, 30);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(889, 342);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = resources.GetString("textBox1.Text");
-            // 
-            // metroLabel14
-            // 
-            this.metroLabel14.AutoSize = true;
-            this.metroLabel14.Location = new System.Drawing.Point(50, 184);
-            this.metroLabel14.Name = "metroLabel14";
-            this.metroLabel14.Size = new System.Drawing.Size(693, 38);
-            this.metroLabel14.TabIndex = 8;
-            this.metroLabel14.Text = "이 메뉴얼은 Hitomi Copy에 포함된 모든 기능을 알려주진 않습니다. 너무 많아요 ㅠㅠ\r\n새로운 기능을 알아내는 가장좋은 방법은 오른쪽 클릭" +
-    "입니다. 오른쪽 클릭이 가장 중요합니다. 제발 클릭하세요";
-            this.metroLabel14.Theme = MetroFramework.MetroThemeStyle.Light;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.네잘하셨어요ToolStripMenuItem,
-            this.이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(458, 48);
-            // 
-            // 네잘하셨어요ToolStripMenuItem
-            // 
-            this.네잘하셨어요ToolStripMenuItem.Name = "네잘하셨어요ToolStripMenuItem";
-            this.네잘하셨어요ToolStripMenuItem.Size = new System.Drawing.Size(457, 22);
-            this.네잘하셨어요ToolStripMenuItem.Text = "네 잘하셨어요";
-            // 
-            // 이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem
-            // 
-            this.이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem.Name = "이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem";
-            this.이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem.Size = new System.Drawing.Size(457, 22);
-            this.이제검색창연관태그등여러도구창에서오른쪽클릭을활용해보세요ToolStripMenuItem.Text = "이제 검색창, 연관태그 등 여러 도구창에서 오른쪽 클릭을 활용해보세요";
-            // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(50, 246);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(554, 38);
-            this.metroLabel3.TabIndex = 9;
-            this.metroLabel3.Text = "문제를 해결하는 가장 좋은 방법은 koromo.software@gmail.com로 메일을 보내는 겁니다.\r\n프로그램상에 문제가 있다면 소스코드없이" +
-    " 절대 해결할 수 없습니다. 메일 보내세요.";
-            this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // tabPage4
             // 
@@ -402,6 +381,27 @@
             this.metroLabel15.Text = resources.GetString("metroLabel15.Text");
             this.metroLabel15.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.textBox1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(948, 406);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "로그";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(32, 30);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox1.Size = new System.Drawing.Size(889, 342);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.Text = resources.GetString("textBox1.Text");
+            // 
             // Manual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -419,20 +419,20 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
