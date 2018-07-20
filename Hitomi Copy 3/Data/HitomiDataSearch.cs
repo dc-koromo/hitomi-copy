@@ -23,9 +23,12 @@ namespace Hitomi_Copy.Data
         {
             if (target != null)
             {
-                for (int i = 0; i < source.Count; i++)
+                for (int i = 0; i < source.Count; i++) {
                     if (target.Any(e => e.ToLower().Split(' ').Any(x => x.Contains(source[i].ToLower()))))
                         check[i] = true;
+                    else if (target.Any(e => e.ToLower().Replace(' ', '_') == source[i]))
+                        check[i] = true;
+                }
             }
         }
 
