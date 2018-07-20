@@ -187,6 +187,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "CARTag";
             this.Text = "태그 추가";
+            this.Load += new System.EventHandler(this.CARTag_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

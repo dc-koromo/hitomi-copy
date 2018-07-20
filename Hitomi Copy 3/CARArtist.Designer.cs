@@ -187,6 +187,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "CARArtist";
             this.Text = "작가 추가";
+            this.Load += new System.EventHandler(this.CARArtist_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

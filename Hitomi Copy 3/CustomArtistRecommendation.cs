@@ -106,12 +106,16 @@ namespace Hitomi_Copy_3
 
         private void bAddTag_Click(object sender, EventArgs e)
         {
-            (new CARTag(this)).ShowDialog();
+            CARTag frm = new CARTag(this);
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog();
         }
 
         private void bAddArtistTag_Click(object sender, EventArgs e)
         {
-            (new CARArtist(this)).ShowDialog();
+            CARArtist frm = new CARArtist(this);
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog();
         }
 
         public void RequestAddTags(string tags, string score)

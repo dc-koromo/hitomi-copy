@@ -189,5 +189,10 @@ namespace Hitomi_Copy_3
             }
         }
         #endregion
+
+        private void CARTag_Load(object sender, EventArgs e)
+        {
+            tbSearch.Focus();
+        }
     }
 }

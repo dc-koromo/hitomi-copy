@@ -163,6 +163,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1245, 522);
             this.Name = "CustomArtistRecommendation";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Custom Artist Recommendation";
             this.Load += new System.EventHandler(this.CustomArtistRecommendation_Load);
             this.ResumeLayout(false);
