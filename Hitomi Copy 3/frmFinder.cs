@@ -172,7 +172,7 @@ namespace Hitomi_Copy_3
             {
                 listBox1.Visible = true;
                 listBox1.Items.Clear();
-                for (int i = 0; i < 30 && i < match.Count; i++)
+                for (int i = 0; i < HitomiSetting.Instance.GetModel().AutoCompleteShowCount && i < match.Count; i++)
                 {
                     if (match[i].Count > 0)
                         listBox1.Items.Add(match[i].Tag + $" ({match[i].Count})");

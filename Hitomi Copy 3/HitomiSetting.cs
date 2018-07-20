@@ -69,6 +69,8 @@ namespace Hitomi_Copy_2
         public int LoadPreviewMaximum;
         [JsonProperty]
         public bool ShowPageCount;
+        [JsonProperty]
+        public int AutoCompleteShowCount;
     }
 
     public class HitomiSetting
@@ -114,6 +116,7 @@ namespace Hitomi_Copy_2
                 model.OpenWithFinder = true;
                 model.LoadPreviewMaximum = 500;
                 model.ShowPageCount = false;
+                model.AutoCompleteShowCount = 30;
                 Save();
             }
             else
@@ -135,6 +138,8 @@ namespace Hitomi_Copy_2
                     model.CustomAutoComplete = new string[] { "recent:0-25" };
                 if (model.LoadPreviewMaximum <= 0)
                     model.LoadPreviewMaximum = 500;
+                if (model.AutoCompleteShowCount < 30)
+                    model.AutoCompleteShowCount = 30;
                 Save();
             }
         }
