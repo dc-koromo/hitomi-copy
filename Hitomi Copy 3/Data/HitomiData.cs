@@ -355,7 +355,6 @@ namespace Hitomi_Copy.Data
             List<HitomiTagdata> target = new List<HitomiTagdata>();
             target.AddRange(tagdata_collection.female);
             target.AddRange(tagdata_collection.male);
-            //target.AddRange(tagdata_collection.tag);
             contains = contains.ToLower();
             foreach (var tagdata in tagdata_collection.artist)
                 if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(contains))
