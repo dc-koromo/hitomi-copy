@@ -48,7 +48,7 @@ namespace Hitomi_Copy_3
 
         private int GetCaretWidthFromTextBox(int pos)
         {
-            return TextRenderer.MeasureText(tbSearch.Text.Substring(0, pos), tbSearch.Font).Width;
+            return TextRenderer.MeasureText(tbSearch.Text.Substring(0, pos), tbSearch.WaterMarkFont).Width;
         }
         private void tbSearch_KeyDown(object sender, KeyEventArgs e)
         {
@@ -103,7 +103,7 @@ namespace Hitomi_Copy_3
 
             if (word == "") { listBox1.Visible = false; return; }
 
-            List<HitomiTagdata> match = null;
+            List<HitomiTagdata> match = new List<HitomiTagdata>();
             if (word.Contains(":"))
             {
                 if (word.StartsWith("artist:"))
@@ -149,24 +149,24 @@ namespace Hitomi_Copy_3
                     match = HitomiData.Instance.GetTypeList(word);
                 }
             }
-            else
-            {
-                string[] match_target = {
-                    "artist:",
-                    "character:",
-                    "group:",
-                    "recent:",
-                    "series:",
-                    "tag:",
-                    "tagx:",
-                    "type:"
-                };
-                List<HitomiTagdata> data_col = (from ix in match_target where ix.StartsWith(word) select new HitomiTagdata { Tag = ix }).ToList();
-                if (HitomiSetting.Instance.GetModel().CustomAutoComplete != null)
-                    data_col.AddRange(from ix in HitomiSetting.Instance.GetModel().CustomAutoComplete where ix.StartsWith(word) select new HitomiTagdata { Tag = ix });
-                if (data_col.Count > 0)
-                    match = data_col;
-            }
+
+            string[] match_target = {
+                "artist:",
+                "character:",
+                "group:",
+                "recent:",
+                "series:",
+                "tag:",
+                "tagx:",
+                "type:"
+            };
+
+            List<HitomiTagdata> data_col = (from ix in match_target where ix.StartsWith(word) select new HitomiTagdata { Tag = ix }).ToList();
+            if (HitomiSetting.Instance.GetModel().CustomAutoComplete != null)
+                data_col.AddRange(from ix in HitomiSetting.Instance.GetModel().CustomAutoComplete where ix.StartsWith(word) select new HitomiTagdata { Tag = ix });
+            if (data_col.Count > 0)
+                match.AddRange(data_col);
+            match.AddRange(HitomiData.Instance.GetTotalList(word));
 
             if (match != null && match.Count > 0)
             {
@@ -286,6 +286,16 @@ namespace Hitomi_Copy_3
                         query.TagInclude = new List<string>() { elem.Substring("tag:".Length) };
                     else
                         query.TagInclude.Add(elem.Substring("tag:".Length));
+                else if (elem.StartsWith("female:"))
+                    if (query.TagInclude == null)
+                        query.TagInclude = new List<string>() { elem };
+                    else
+                        query.TagInclude.Add(elem);
+                else if (elem.StartsWith("male:"))
+                    if (query.TagInclude == null)
+                        query.TagInclude = new List<string>() { elem };
+                    else
+                        query.TagInclude.Add(elem);
                 else if (elem.StartsWith("artist:"))
                     if (query.Artists == null)
                         query.Artists = new List<string>() { elem.Substring("artist:".Length) };

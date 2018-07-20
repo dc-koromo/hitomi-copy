@@ -693,8 +693,7 @@ namespace Hitomi_Copy_3
             if (data_col.Count > 0)
                 match.AddRange(data_col);
             match.AddRange(HitomiData.Instance.GetTotalList(word));
-
-
+            
             if (match.Count > 0)
             {
                 listBox1.Visible = true;
