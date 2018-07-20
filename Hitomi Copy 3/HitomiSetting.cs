@@ -71,6 +71,8 @@ namespace Hitomi_Copy_2
         public bool ShowPageCount;
         [JsonProperty]
         public int AutoCompleteShowCount;
+        [JsonProperty]
+        public int NotifySyncDelay;
     }
 
     public class HitomiSetting
@@ -117,6 +119,7 @@ namespace Hitomi_Copy_2
                 model.LoadPreviewMaximum = 500;
                 model.ShowPageCount = false;
                 model.AutoCompleteShowCount = 30;
+                model.NotifySyncDelay = 24 * 3;
                 Save();
             }
             else
@@ -140,6 +143,8 @@ namespace Hitomi_Copy_2
                     model.LoadPreviewMaximum = 500;
                 if (model.AutoCompleteShowCount < 30)
                     model.AutoCompleteShowCount = 30;
+                if (model.NotifySyncDelay < 24)
+                    model.NotifySyncDelay = 24 * 3;
                 Save();
             }
         }
