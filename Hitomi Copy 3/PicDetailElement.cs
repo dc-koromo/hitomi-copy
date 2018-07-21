@@ -355,8 +355,13 @@ namespace Hitomi_Copy_3
 
         private void PicDetailElement_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            (new frmGalleryInfo(parent, this)).Show(); selected = false; BackColor = Color.GhostWhite;
-        }
+            (new frmGalleryInfo(parent, this)).Show();
 
+            if (!Downloading && !Downloaded)
+            {
+                selected = false;
+                BackColor = Color.GhostWhite;
+            }
+        }
     }
 }
