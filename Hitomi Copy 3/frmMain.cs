@@ -1299,7 +1299,7 @@ namespace Hitomi_Copy_3
             {
                 List<IPicElement> pes = ImagePanel
                     .Controls.OfType<IPicElement>()
-                    .Where(x => x.Selected).ToList();
+                    .Where(x => x.Selected && !x.Downloading && !x.Downloaded).ToList();
                 foreach (IPicElement pe in pes)
                 {
                     if ((pe as Control)?.IsDisposed != false) continue;
