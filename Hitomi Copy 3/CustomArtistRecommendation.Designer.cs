@@ -40,6 +40,10 @@
             this.bUpdate = new System.Windows.Forms.Button();
             this.bAddTag = new System.Windows.Forms.Button();
             this.bAddArtistTag = new System.Windows.Forms.Button();
+            this.opMul = new System.Windows.Forms.RadioButton();
+            this.opAdd = new System.Windows.Forms.RadioButton();
+            this.opSet = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lvCustomTag
@@ -144,12 +148,57 @@
             this.bAddArtistTag.UseVisualStyleBackColor = true;
             this.bAddArtistTag.Click += new System.EventHandler(this.bAddArtistTag_Click);
             // 
+            // opMul
+            // 
+            this.opMul.AutoSize = true;
+            this.opMul.Location = new System.Drawing.Point(409, 452);
+            this.opMul.Name = "opMul";
+            this.opMul.Size = new System.Drawing.Size(49, 19);
+            this.opMul.TabIndex = 6;
+            this.opMul.Text = "곱셈";
+            this.opMul.UseVisualStyleBackColor = true;
+            // 
+            // opAdd
+            // 
+            this.opAdd.AutoSize = true;
+            this.opAdd.Location = new System.Drawing.Point(464, 452);
+            this.opAdd.Name = "opAdd";
+            this.opAdd.Size = new System.Drawing.Size(49, 19);
+            this.opAdd.TabIndex = 7;
+            this.opAdd.Text = "덧셈";
+            this.opAdd.UseVisualStyleBackColor = true;
+            // 
+            // opSet
+            // 
+            this.opSet.AutoSize = true;
+            this.opSet.Checked = true;
+            this.opSet.Location = new System.Drawing.Point(519, 452);
+            this.opSet.Name = "opSet";
+            this.opSet.Size = new System.Drawing.Size(61, 19);
+            this.opSet.TabIndex = 8;
+            this.opSet.TabStop = true;
+            this.opSet.Text = "초기화";
+            this.opSet.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(349, 454);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 15);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "연산법 : ";
+            // 
             // CustomArtistRecommendation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1229, 483);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.opSet);
+            this.Controls.Add(this.opAdd);
+            this.Controls.Add(this.opMul);
             this.Controls.Add(this.bAddArtistTag);
             this.Controls.Add(this.bAddTag);
             this.Controls.Add(this.bUpdate);
@@ -167,6 +216,7 @@
             this.Text = "Custom Artist Recommendation";
             this.Load += new System.EventHandler(this.CustomArtistRecommendation_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -183,5 +233,9 @@
         private System.Windows.Forms.Button bUpdate;
         private System.Windows.Forms.Button bAddTag;
         private System.Windows.Forms.Button bAddArtistTag;
+        private System.Windows.Forms.RadioButton opMul;
+        private System.Windows.Forms.RadioButton opAdd;
+        private System.Windows.Forms.RadioButton opSet;
+        private System.Windows.Forms.Label label1;
     }
 }

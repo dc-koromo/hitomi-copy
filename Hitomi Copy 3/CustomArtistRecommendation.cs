@@ -118,6 +118,13 @@ namespace Hitomi_Copy_3
             frm.ShowDialog();
         }
 
+        private int GetTagScoreBasedOnOption(int old, int _new)
+        {
+            if (opAdd.Checked == true) return old + _new;
+            if (opMul.Checked == true && old != 0) return old * _new;
+            return _new;
+        }
+        
         public void RequestAddTags(string tags, string score)
         {
             foreach (var ttag in tags.Trim().Split(' '))
@@ -125,7 +132,7 @@ namespace Hitomi_Copy_3
                 string tag = ttag.Replace('_', ' ');
                 if (!lvCustomTag.Items.OfType<ListViewItem>().ToList().Any(x => {
                     if (x.SubItems[0].Text == tag)
-                        x.SubItems[1].Text = score;
+                        x.SubItems[1].Text = GetTagScoreBasedOnOption(Convert.ToInt32(x.SubItems[1].Text), Convert.ToInt32(score)).ToString();
                     return x.SubItems[0].Text == tag; }))
                 {
                     lvCustomTag.Items.Add(new ListViewItem(new string[] { tag, score }));
@@ -168,7 +175,7 @@ namespace Hitomi_Copy_3
             {
                 if (!lvCustomTag.Items.OfType<ListViewItem>().ToList().Any(x => {
                     if (x.SubItems[0].Text == tag.Key)
-                        x.SubItems[1].Text = (tag.Value * Convert.ToInt32(score)).ToString();
+                        x.SubItems[1].Text = GetTagScoreBasedOnOption(Convert.ToInt32(x.SubItems[1].Text), tag.Value * Convert.ToInt32(score)).ToString();
                     return x.SubItems[0].Text == tag.Key;
                 }))
                 {
