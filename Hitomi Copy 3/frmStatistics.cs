@@ -1043,6 +1043,7 @@ namespace Hitomi_Copy_3
             string most_artist = "";
             int most_artistc = 0;
             string most_title = "";
+            int count_korean = 0;
             foreach (var data in HitomiData.Instance.metadata_collection)
             {
                 if (data.Name != null && most_title.Length < data.Name.Length)
@@ -1063,6 +1064,8 @@ namespace Hitomi_Copy_3
                         most_artistc = data.Artists.Length;
                     }
                 }
+                if (data.Language == "korean")
+                    count_korean++;
             }
             metroLabel15.Text = most_tag;
             metroLabel17.Text = most_artist;
@@ -1076,6 +1079,23 @@ namespace Hitomi_Copy_3
                 metroLabel27.Text = HitomiAnalysisArtistCount.Instance.artist_count[0].Key + $" ({HitomiAnalysisArtistCount.Instance.artist_count[0].Value.ToString("#,#")} 개)";
                 metroLabel26.Text = HitomiAnalysisTagCount.Instance.tag_count[0].Key + $" ({HitomiAnalysisTagCount.Instance.tag_count[0].Value.ToString("#,#")} 개)";
             }
+
+            ////////////////////////////////////////////////////////
+
+            HashSet<string> id = new HashSet<string>();
+            foreach (var hlm in HitomiLog.Instance.GetList())
+            {
+                id.Add(hlm.Id);
+            }
+
+            int count_korean_downloaded = 0;
+
+            foreach (var data in HitomiData.Instance.metadata_collection)
+                if (data.Language == "korean" && id.Contains(data.ID.ToString()))
+                    count_korean_downloaded++;
+            metroLabel28.Text = $"{(double)count_korean_downloaded / count_korean * 100} % ({count_korean_downloaded}/{count_korean})";
+            metroLabel23.Text = $"{(double)id.Count / HitomiData.Instance.metadata_collection.Count * 100} % ({id.Count}/{HitomiData.Instance.metadata_collection.Count})";
+
         }
 
         #endregion

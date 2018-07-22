@@ -86,6 +86,10 @@
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel20 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel21 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel23 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel28 = new MetroFramework.Controls.MetroLabel();
             this.StatsTab.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
@@ -130,7 +134,7 @@
             this.metroTabPage3.Controls.Add(this.comboBox1);
             this.metroTabPage3.HorizontalScrollbarBarColor = true;
             this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage3.HorizontalScrollbarSize = 5;
+            this.metroTabPage3.HorizontalScrollbarSize = 4;
             this.metroTabPage3.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage3.Name = "metroTabPage3";
             this.metroTabPage3.Size = new System.Drawing.Size(1128, 509);
@@ -216,7 +220,7 @@
             this.metroTabPage1.Controls.Add(this.metroLabel1);
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage1.HorizontalScrollbarSize = 5;
+            this.metroTabPage1.HorizontalScrollbarSize = 4;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.metroTabPage1.Name = "metroTabPage1";
@@ -321,7 +325,7 @@
             this.metroTabPage2.Controls.Add(this.chart3);
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.HorizontalScrollbarSize = 5;
+            this.metroTabPage2.HorizontalScrollbarSize = 4;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage2.Name = "metroTabPage2";
             this.metroTabPage2.Size = new System.Drawing.Size(1128, 509);
@@ -356,7 +360,7 @@
             this.metroTabPage4.Controls.Add(this.chart5);
             this.metroTabPage4.HorizontalScrollbarBarColor = true;
             this.metroTabPage4.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage4.HorizontalScrollbarSize = 5;
+            this.metroTabPage4.HorizontalScrollbarSize = 4;
             this.metroTabPage4.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage4.Name = "metroTabPage4";
             this.metroTabPage4.Size = new System.Drawing.Size(1128, 509);
@@ -394,7 +398,7 @@
             this.metroTabPage5.Controls.Add(this.groupBox3);
             this.metroTabPage5.HorizontalScrollbarBarColor = true;
             this.metroTabPage5.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage5.HorizontalScrollbarSize = 5;
+            this.metroTabPage5.HorizontalScrollbarSize = 4;
             this.metroTabPage5.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage5.Name = "metroTabPage5";
             this.metroTabPage5.Size = new System.Drawing.Size(1128, 509);
@@ -418,6 +422,10 @@
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.BackColor = System.Drawing.Color.White;
+            this.groupBox4.Controls.Add(this.metroLabel28);
+            this.groupBox4.Controls.Add(this.metroLabel23);
+            this.groupBox4.Controls.Add(this.metroLabel21);
+            this.groupBox4.Controls.Add(this.metroLabel20);
             this.groupBox4.Controls.Add(this.metroLabel29);
             this.groupBox4.Controls.Add(this.metroLabel26);
             this.groupBox4.Controls.Add(this.metroLabel27);
@@ -442,7 +450,7 @@
             // metroLabel26
             // 
             this.metroLabel26.AutoSize = true;
-            this.metroLabel26.Location = new System.Drawing.Point(237, 145);
+            this.metroLabel26.Location = new System.Drawing.Point(237, 159);
             this.metroLabel26.Name = "metroLabel26";
             this.metroLabel26.Size = new System.Drawing.Size(16, 19);
             this.metroLabel26.TabIndex = 22;
@@ -451,7 +459,7 @@
             // metroLabel27
             // 
             this.metroLabel27.AutoSize = true;
-            this.metroLabel27.Location = new System.Drawing.Point(237, 126);
+            this.metroLabel27.Location = new System.Drawing.Point(237, 140);
             this.metroLabel27.Name = "metroLabel27";
             this.metroLabel27.Size = new System.Drawing.Size(16, 19);
             this.metroLabel27.TabIndex = 21;
@@ -460,7 +468,7 @@
             // metroLabel25
             // 
             this.metroLabel25.AutoSize = true;
-            this.metroLabel25.Location = new System.Drawing.Point(17, 145);
+            this.metroLabel25.Location = new System.Drawing.Point(17, 159);
             this.metroLabel25.Name = "metroLabel25";
             this.metroLabel25.Size = new System.Drawing.Size(214, 19);
             this.metroLabel25.TabIndex = 10;
@@ -469,7 +477,7 @@
             // metroLabel24
             // 
             this.metroLabel24.AutoSize = true;
-            this.metroLabel24.Location = new System.Drawing.Point(49, 126);
+            this.metroLabel24.Location = new System.Drawing.Point(49, 140);
             this.metroLabel24.Name = "metroLabel24";
             this.metroLabel24.Size = new System.Drawing.Size(182, 19);
             this.metroLabel24.TabIndex = 9;
@@ -655,6 +663,42 @@
             this.metroLabel3.Text = "Copyright (C) 2018. DCInside Programming Gallery Union. All Rights Reserved.";
             this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
+            // metroLabel20
+            // 
+            this.metroLabel20.AutoSize = true;
+            this.metroLabel20.Location = new System.Drawing.Point(49, 106);
+            this.metroLabel20.Name = "metroLabel20";
+            this.metroLabel20.Size = new System.Drawing.Size(182, 19);
+            this.metroLabel20.TabIndex = 24;
+            this.metroLabel20.Text = "한국어 작품 다운로드 비율 :";
+            // 
+            // metroLabel21
+            // 
+            this.metroLabel21.AutoSize = true;
+            this.metroLabel21.Location = new System.Drawing.Point(95, 87);
+            this.metroLabel21.Name = "metroLabel21";
+            this.metroLabel21.Size = new System.Drawing.Size(136, 19);
+            this.metroLabel21.TabIndex = 25;
+            this.metroLabel21.Text = "작품 다운로드 비율 :";
+            // 
+            // metroLabel23
+            // 
+            this.metroLabel23.AutoSize = true;
+            this.metroLabel23.Location = new System.Drawing.Point(237, 87);
+            this.metroLabel23.Name = "metroLabel23";
+            this.metroLabel23.Size = new System.Drawing.Size(16, 19);
+            this.metroLabel23.TabIndex = 26;
+            this.metroLabel23.Text = "0";
+            // 
+            // metroLabel28
+            // 
+            this.metroLabel28.AutoSize = true;
+            this.metroLabel28.Location = new System.Drawing.Point(237, 106);
+            this.metroLabel28.Name = "metroLabel28";
+            this.metroLabel28.Size = new System.Drawing.Size(16, 19);
+            this.metroLabel28.TabIndex = 27;
+            this.metroLabel28.Text = "0";
+            // 
             // frmStatistics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -741,5 +785,9 @@
         private MetroFramework.Controls.MetroLabel metroLabel14;
         private MetroFramework.Controls.MetroLabel metroLabel13;
         private MetroFramework.Controls.MetroLabel metroLabel12;
+        private MetroFramework.Controls.MetroLabel metroLabel28;
+        private MetroFramework.Controls.MetroLabel metroLabel23;
+        private MetroFramework.Controls.MetroLabel metroLabel21;
+        private MetroFramework.Controls.MetroLabel metroLabel20;
     }
 }
