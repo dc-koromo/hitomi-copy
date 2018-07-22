@@ -83,6 +83,14 @@ namespace Hitomi_Copy
 
                 Task.Run(() => download_image());
             }
+
+            if (HitomiSetting.Instance.GetModel().ShowPageCount)
+                Task.Run(() => {
+                    string ppp = HitomiCore.GetPageCount(id).ToString() + "p";
+                    this.Send(() => lPage.Text = ppp);
+                });
+            else
+                lPage.Dispose();
         }
         
         private void AddTagToPanel(string tag_data, int image)

@@ -54,6 +54,7 @@
             this.bPreview = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.lPage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -336,12 +337,23 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
+            // lPage
+            // 
+            this.lPage.AutoSize = true;
+            this.lPage.Font = new System.Drawing.Font("맑은 고딕", 13F);
+            this.lPage.Location = new System.Drawing.Point(416, 294);
+            this.lPage.Name = "lPage";
+            this.lPage.Size = new System.Drawing.Size(33, 25);
+            this.lPage.TabIndex = 46;
+            this.lPage.Text = "0p";
+            // 
             // frmGalleryInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1286, 470);
+            this.Controls.Add(this.lPage);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.bPreview);
@@ -412,5 +424,6 @@
         private System.Windows.Forms.Button bPreview;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label lPage;
     }
 }
