@@ -188,7 +188,7 @@ namespace Hitomi_Copy_3
         {
             if (lvArtists.SelectedItems.Count > 0)
             {
-                (new frmArtistInfo(lvArtists.SelectedItems[0].SubItems[1].Text)).Show();
+                (new frmArtistInfo(this, lvArtists.SelectedItems[0].SubItems[1].Text)).Show();
             }
         }
 
