@@ -62,7 +62,7 @@ namespace Hitomi_Copy_3
             bDetailSetting.Enabled = true;
             bStat.Enabled = true;
             bRTidy.Enabled = true;
-            bRelatedTags.Enabled = true;
+            bRecord.Enabled = true;
 
             tbDownloadPath.Text = HitomiSetting.Instance.GetModel().Path;
             tbExcludeTag.Text = string.Join(", ", HitomiSetting.Instance.GetModel().ExclusiveTag ?? Enumerable.Empty<string>());
