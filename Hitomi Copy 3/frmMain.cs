@@ -1466,17 +1466,17 @@ namespace Hitomi_Copy_3
             catch { }
             Process.GetCurrentProcess().Kill();
         }
-
-        private void bRelatedTags_Click(object sender, EventArgs e)
-        {
-            (new RelatedTagsTest()).Show();
-        }
-
+        
         private void finder열기FToolStripMenuItem_Click(object sender, EventArgs e)
         {
             (new frmFinder()).Show();
         }
-        
+
+        private void bRecord_Click(object sender, EventArgs e)
+        {
+            (new Record()).Show();
+        }
+
         protected override bool ProcessDialogKey(Keys keyData)
         {
             if (Form.ModifierKeys == Keys.None && keyData == Keys.F1)
@@ -1485,12 +1485,11 @@ namespace Hitomi_Copy_3
             }
             return base.ProcessDialogKey(keyData);
         }
-
+        
         private void bCustomRecommend_Click(object sender, EventArgs e)
         {
             (new CustomArtistRecommendation()).Show();
         }
         #endregion
-
     }
 }
