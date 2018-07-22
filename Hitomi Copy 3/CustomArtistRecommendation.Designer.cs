@@ -151,10 +151,12 @@
             // opMul
             // 
             this.opMul.AutoSize = true;
+            this.opMul.Checked = true;
             this.opMul.Location = new System.Drawing.Point(409, 452);
             this.opMul.Name = "opMul";
             this.opMul.Size = new System.Drawing.Size(49, 19);
             this.opMul.TabIndex = 6;
+            this.opMul.TabStop = true;
             this.opMul.Text = "곱셈";
             this.opMul.UseVisualStyleBackColor = true;
             // 
@@ -171,12 +173,10 @@
             // opSet
             // 
             this.opSet.AutoSize = true;
-            this.opSet.Checked = true;
             this.opSet.Location = new System.Drawing.Point(519, 452);
             this.opSet.Name = "opSet";
             this.opSet.Size = new System.Drawing.Size(61, 19);
             this.opSet.TabIndex = 8;
-            this.opSet.TabStop = true;
             this.opSet.Text = "초기화";
             this.opSet.UseVisualStyleBackColor = true;
             // 
