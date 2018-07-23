@@ -328,6 +328,7 @@ namespace Hitomi_Copy
         {
             HitomiBookmark.Instance.GetModel().Artists.Add(new Tuple<string, DateTime>(artist, DateTime.Now));
             HitomiBookmark.Instance.Save();
+            MessageBox.Show("북마크에 추가되었습니다!", "Hitomi Copy", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

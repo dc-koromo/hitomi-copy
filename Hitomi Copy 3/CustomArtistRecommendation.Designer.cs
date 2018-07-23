@@ -44,6 +44,10 @@
             this.opAdd = new System.Windows.Forms.RadioButton();
             this.opSet = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.bBookmark = new System.Windows.Forms.Button();
+            this.tbName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.bOpen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvCustomTag
@@ -189,12 +193,54 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "연산법 : ";
             // 
+            // bBookmark
+            // 
+            this.bBookmark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bBookmark.Location = new System.Drawing.Point(840, 449);
+            this.bBookmark.Name = "bBookmark";
+            this.bBookmark.Size = new System.Drawing.Size(141, 25);
+            this.bBookmark.TabIndex = 10;
+            this.bBookmark.Text = "북마크에 추가";
+            this.bBookmark.UseVisualStyleBackColor = true;
+            this.bBookmark.Click += new System.EventHandler(this.bBookmark_Click);
+            // 
+            // tbName
+            // 
+            this.tbName.Location = new System.Drawing.Point(695, 450);
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(139, 23);
+            this.tbName.TabIndex = 11;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(607, 454);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(82, 15);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "북마크 이름 : ";
+            // 
+            // bOpen
+            // 
+            this.bOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bOpen.Location = new System.Drawing.Point(987, 449);
+            this.bOpen.Name = "bOpen";
+            this.bOpen.Size = new System.Drawing.Size(78, 25);
+            this.bOpen.TabIndex = 13;
+            this.bOpen.Text = "불러오기";
+            this.bOpen.UseVisualStyleBackColor = true;
+            this.bOpen.Click += new System.EventHandler(this.bOpen_Click);
+            // 
             // CustomArtistRecommendation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1229, 483);
+            this.Controls.Add(this.bOpen);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.tbName);
+            this.Controls.Add(this.bBookmark);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.opSet);
             this.Controls.Add(this.opAdd);
@@ -237,5 +283,9 @@
         private System.Windows.Forms.RadioButton opAdd;
         private System.Windows.Forms.RadioButton opSet;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button bBookmark;
+        private System.Windows.Forms.TextBox tbName;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button bOpen;
     }
 }

@@ -314,6 +314,7 @@ namespace Hitomi_Copy
         {
             HitomiBookmark.Instance.GetModel().Groups.Add(new Tuple<string, DateTime>(group, DateTime.Now));
             HitomiBookmark.Instance.Save();
+            MessageBox.Show("북마크에 추가되었습니다!", "Hitomi Copy", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Hitomi_Copy_3
         [JsonProperty]
         public List<Tuple<string, DateTime>> Series;
         [JsonProperty]
-        public List<Tuple<string, List<Tuple<string, double, string>>, DateTime>> CustomTags;
+        public List<Tuple<string, List<Tuple<string, int>>, DateTime>> CustomTags;
     }
     
     public class HitomiBookmark
@@ -48,7 +48,7 @@ namespace Hitomi_Copy_3
             if (model.Tags == null) model.Tags = new List<Tuple<string, DateTime>>();
             if (model.Characters == null) model.Characters = new List<Tuple<string, DateTime>>();
             if (model.Series == null) model.Series = new List<Tuple<string, DateTime>>();
-            if (model.CustomTags == null) model.CustomTags = new List<Tuple<string, List<Tuple<string, double, string>>, DateTime>>();
+            if (model.CustomTags == null) model.CustomTags = new List<Tuple<string, List<Tuple<string, int>>, DateTime>>();
             Save();
         }
 

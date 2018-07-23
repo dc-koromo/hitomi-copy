@@ -129,6 +129,12 @@
     <Compile Include="CARArtist.Designer.cs">
       <DependentUpon>CARArtist.cs</DependentUpon>
     </Compile>
+    <Compile Include="CARBookmark.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CARBookmark.Designer.cs">
+      <DependentUpon>CARBookmark.cs</DependentUpon>
+    </Compile>
     <Compile Include="CARTag.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,7 @@
     <Compile Include="Graph\GraphNode.cs" />
     <Compile Include="Graph\GraphNodeManager.cs" />
     <Compile Include="Graph\ViewManager.cs" />
+    <Compile Include="HitomiBookmark.cs" />
     <Compile Include="ISemaphore.cs" />
     <Compile Include="DriverManager.cs" />
     <Compile Include="EH\ExHentaiArticle.cs" />
@@ -370,6 +377,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CARArtist.resx">
       <DependentUpon>CARArtist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CARBookmark.resx">
+      <DependentUpon>CARBookmark.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CARTag.resx">
       <DependentUpon>CARTag.cs</DependentUpon>

@@ -184,6 +184,18 @@ namespace Hitomi_Copy_3
             }
         }
 
+        public void RequestLoadCustomTags(string index)
+        {
+            int ix = HitomiBookmark.Instance.GetModel().CustomTags.Count - Convert.ToInt32(index);
+
+            List<ListViewItem> lvil = new List<ListViewItem>();
+            foreach (var item in HitomiBookmark.Instance.GetModel().CustomTags[ix].Item2)
+                lvil.Add(new ListViewItem(new string[] { item.Item1, item.Item2.ToString() }));
+            lvCustomTag.Items.Clear();
+            lvCustomTag.Items.AddRange(lvil.ToArray());
+
+        }
+
         private void lvArtists_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (lvArtists.SelectedItems.Count > 0)
@@ -200,6 +212,29 @@ namespace Hitomi_Copy_3
                 return true;
             }
             return base.ProcessDialogKey(keyData);
+        }
+
+        private void bBookmark_Click(object sender, EventArgs e)
+        {
+            HitomiAnalysis.Instance.CustomAnalysis.Clear();
+
+            foreach (var lvi in lvCustomTag.Items.OfType<ListViewItem>())
+                HitomiAnalysis.Instance.CustomAnalysis.Add(new Tuple<string, int>(lvi.SubItems[0].Text, Convert.ToInt32(lvi.SubItems[1].Text)));
+
+            if (tbName.Text.Trim() != "")
+            {
+                HitomiBookmark.Instance.GetModel().CustomTags.Add(new Tuple<string, List<Tuple<string, int>>, DateTime>(tbName.Text.Trim(), HitomiAnalysis.Instance.CustomAnalysis, DateTime.Now));
+                HitomiBookmark.Instance.Save();
+                tbName.Text = "";
+                MessageBox.Show("북마크에 추가되었습니다!", "Hitomi Copy", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show("북마크 이름이 비어있습니다.", "Hitomi Copy", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void bOpen_Click(object sender, EventArgs e)
+        {
+            (new CARBookmark(this)).Show();
         }
     }
 }
