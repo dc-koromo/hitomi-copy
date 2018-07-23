@@ -340,7 +340,6 @@ namespace Hitomi_Copy_3
                             foreach (var bk in HitomiBookmark.Instance.GetModel().Artists)
                             {
                                 string artist = bk.Item1.Replace('_', ' ');
-                                PushString($"Add artist '{artist}'");
                                 (Application.OpenForms[0] as frmMain).AddRecommendArtist(artist);
                             }
                         }
