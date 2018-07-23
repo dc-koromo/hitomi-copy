@@ -340,6 +340,7 @@ namespace Hitomi_Copy_3
                             foreach (var bk in HitomiBookmark.Instance.GetModel().Artists)
                             {
                                 string artist = bk.Item1.Replace('_', ' ');
+                                PushString($"Add artist '{artist}'");
                                 (Application.OpenForms[0] as frmMain).AddRecommendArtist(artist);
                             }
                         }
@@ -457,6 +458,38 @@ namespace Hitomi_Copy_3
                                 PushString("'+a' command need 1 more parameters.");
                             }
                         }
+                        else if (split[1] == "+abk")
+                        {
+                            foreach (var bk in HitomiBookmark.Instance.GetModel().Artists)
+                            {
+                                string artist = bk.Item1.Replace('_', ' ');
+                                PushString($"Add artist '{artist}'");
+                                foreach (var data in HitomiData.Instance.metadata_collection)
+                                {
+                                    if (!HitomiSetting.Instance.GetModel().RecommendLanguageALL)
+                                    {
+                                        string lang = data.Language;
+                                        if (data.Language == null) lang = "N/A";
+                                        if (HitomiSetting.Instance.GetModel().Language != "ALL" &&
+                                            HitomiSetting.Instance.GetModel().Language != lang) continue;
+                                    }
+                                    if (data.Artists != null && data.Tags != null && data.Artists.Contains(artist))
+                                    {
+                                        foreach (var tag in data.Tags)
+                                        {
+                                            if (HitomiAnalysis.Instance.CustomAnalysis.Any(x => x.Item1 == tag))
+                                            {
+                                                for (int i = 0; i < HitomiAnalysis.Instance.CustomAnalysis.Count; i++)
+                                                    if (HitomiAnalysis.Instance.CustomAnalysis[i].Item1 == tag)
+                                                        HitomiAnalysis.Instance.CustomAnalysis[i] = new Tuple<string, int>(tag, HitomiAnalysis.Instance.CustomAnalysis[i].Item2 + 1);
+                                            }
+                                            else
+                                                HitomiAnalysis.Instance.CustomAnalysis.Add(new Tuple<string, int>(tag, 1));
+                                        }
+                                    }
+                                }
+                            }
+                        }
                         else if (split[1] == "-")
                         {
                             if (split.Length >= 3)
@@ -475,7 +508,7 @@ namespace Hitomi_Copy_3
                     else
                     {
                         PushString("using 'ra (option) [tag] [count] ...'");
-                        PushString("  (option): ulist, list, clear, update, on, off, mion, mioff, rank, add, addbk, +, +a, -");
+                        PushString("  (option): ulist, list, clear, update, on, off, mion, mioff, rank, add, addbk, +, +a, +abk, -");
                     }
                 }
                 else if (cmd == "install")
