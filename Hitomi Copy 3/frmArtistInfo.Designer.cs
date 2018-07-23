@@ -45,6 +45,8 @@ namespace Hitomi_Copy
             this.bDownloadAll = new System.Windows.Forms.Button();
             this.pbLoad = new System.Windows.Forms.ProgressBar();
             this.bTidy = new System.Windows.Forms.Button();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.작가북마크에추가BToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,9 +71,11 @@ namespace Hitomi_Copy
             this.모두선택취소CToolStripMenuItem,
             this.toolStripMenuItem1,
             this.제목비슷한작품선택취소SToolStripMenuItem,
-            this.이미다운로드된작품선택취소GToolStripMenuItem});
+            this.이미다운로드된작품선택취소GToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.작가북마크에추가BToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(263, 98);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(263, 148);
             // 
             // 모두선택AToolStripMenuItem
             // 
@@ -177,6 +181,18 @@ namespace Hitomi_Copy
             this.bTidy.UseVisualStyleBackColor = true;
             this.bTidy.Click += new System.EventHandler(this.bTidy_Click);
             // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(259, 6);
+            // 
+            // 작가북마크에추가BToolStripMenuItem
+            // 
+            this.작가북마크에추가BToolStripMenuItem.Name = "이작가북마크에추가BToolStripMenuItem";
+            this.작가북마크에추가BToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.작가북마크에추가BToolStripMenuItem.Text = "작가 북마크에 추가(&B)";
+            this.작가북마크에추가BToolStripMenuItem.Click += new System.EventHandler(this.작가북마크에추가BToolStripMenuItem_Click);
+            // 
             // frmArtistInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -218,5 +234,7 @@ namespace Hitomi_Copy
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 제목비슷한작품선택취소SToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 이미다운로드된작품선택취소GToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem 작가북마크에추가BToolStripMenuItem;
     }
 }

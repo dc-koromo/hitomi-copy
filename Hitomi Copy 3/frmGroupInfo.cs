@@ -309,5 +309,11 @@ namespace Hitomi_Copy
                 }
             }
         }
+
+        private void 그룹북마크에추가ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HitomiBookmark.Instance.GetModel().Groups.Add(new Tuple<string, DateTime>(group, DateTime.Now));
+            HitomiBookmark.Instance.Save();
+        }
     }
 }

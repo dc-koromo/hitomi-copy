@@ -45,6 +45,8 @@ namespace Hitomi_Copy
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.제목비슷한작품선택취소SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.이미다운로드된작품선택취소GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.그룹북마크에추가ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -139,9 +141,11 @@ namespace Hitomi_Copy
             this.모두선택취소CToolStripMenuItem,
             this.toolStripMenuItem1,
             this.제목비슷한작품선택취소SToolStripMenuItem,
-            this.이미다운로드된작품선택취소GToolStripMenuItem});
+            this.이미다운로드된작품선택취소GToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.그룹북마크에추가ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(263, 98);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(263, 148);
             // 
             // 모두선택AToolStripMenuItem
             // 
@@ -175,6 +179,18 @@ namespace Hitomi_Copy
             this.이미다운로드된작품선택취소GToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
             this.이미다운로드된작품선택취소GToolStripMenuItem.Text = "이미 다운로드된 작품 선택 취소(&G)";
             this.이미다운로드된작품선택취소GToolStripMenuItem.Click += new System.EventHandler(this.이미다운로드된작품선택취소GToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(259, 6);
+            // 
+            // 그룹북마크에추가ToolStripMenuItem
+            // 
+            this.그룹북마크에추가ToolStripMenuItem.Name = "그룹북마크에추가ToolStripMenuItem";
+            this.그룹북마크에추가ToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.그룹북마크에추가ToolStripMenuItem.Text = "그룹 북마크에 추가(&B)";
+            this.그룹북마크에추가ToolStripMenuItem.Click += new System.EventHandler(this.그룹북마크에추가ToolStripMenuItem_Click);
             // 
             // frmGroupInfo
             // 
@@ -217,5 +233,7 @@ namespace Hitomi_Copy
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 제목비슷한작품선택취소SToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 이미다운로드된작품선택취소GToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem 그룹북마크에추가ToolStripMenuItem;
     }
 }
