@@ -66,8 +66,6 @@ namespace Hitomi_Copy_3
             }
             lvArtists.Items.Clear();
             lvArtists.Items.AddRange(lvil.ToArray());
-
-            HitomiAnalysis.Instance.UserDefined = true;
         }
 
         private void lvCustomTag_KeyDown(object sender, KeyEventArgs e)
@@ -86,6 +84,7 @@ namespace Hitomi_Copy_3
 
         private async void bUpdate_ClickAsync(object sender, EventArgs e)
         {
+            HitomiAnalysis.Instance.UserDefined = true;
             HitomiAnalysis.Instance.CustomAnalysis.Clear();
             
             foreach (var lvi in lvCustomTag.Items.OfType<ListViewItem>())
