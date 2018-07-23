@@ -86,6 +86,7 @@
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(6, 6);
+            this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(418, 299);
             this.listView1.TabIndex = 7;
@@ -181,6 +182,7 @@
             this.listView2.FullRowSelect = true;
             this.listView2.GridLines = true;
             this.listView2.Location = new System.Drawing.Point(6, 6);
+            this.listView2.MultiSelect = false;
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(418, 299);
             this.listView2.TabIndex = 8;
@@ -226,6 +228,7 @@
             this.listView6.FullRowSelect = true;
             this.listView6.GridLines = true;
             this.listView6.Location = new System.Drawing.Point(6, 6);
+            this.listView6.MultiSelect = false;
             this.listView6.Name = "listView6";
             this.listView6.Size = new System.Drawing.Size(418, 328);
             this.listView6.TabIndex = 9;
@@ -281,6 +284,7 @@
             this.listView3.FullRowSelect = true;
             this.listView3.GridLines = true;
             this.listView3.Location = new System.Drawing.Point(6, 6);
+            this.listView3.MultiSelect = false;
             this.listView3.Name = "listView3";
             this.listView3.Size = new System.Drawing.Size(418, 299);
             this.listView3.TabIndex = 8;
@@ -336,6 +340,7 @@
             this.listView4.FullRowSelect = true;
             this.listView4.GridLines = true;
             this.listView4.Location = new System.Drawing.Point(6, 6);
+            this.listView4.MultiSelect = false;
             this.listView4.Name = "listView4";
             this.listView4.Size = new System.Drawing.Size(418, 299);
             this.listView4.TabIndex = 8;
@@ -391,6 +396,7 @@
             this.listView5.FullRowSelect = true;
             this.listView5.GridLines = true;
             this.listView5.Location = new System.Drawing.Point(6, 6);
+            this.listView5.MultiSelect = false;
             this.listView5.Name = "listView5";
             this.listView5.Size = new System.Drawing.Size(418, 299);
             this.listView5.TabIndex = 8;
