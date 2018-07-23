@@ -108,6 +108,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "CARBookmark";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Custom Artists Recommendation Bookmark";
             this.Load += new System.EventHandler(this.CARBookmark_Load);
             this.contextMenuStrip1.ResumeLayout(false);
