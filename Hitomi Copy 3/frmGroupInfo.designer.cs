@@ -57,6 +57,7 @@ namespace Hitomi_Copy
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ImagePanel.AutoScroll = true;
             this.ImagePanel.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ImagePanel.ContextMenuStrip = this.contextMenuStrip1;
             this.ImagePanel.Location = new System.Drawing.Point(254, 15);
             this.ImagePanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ImagePanel.Name = "ImagePanel";
