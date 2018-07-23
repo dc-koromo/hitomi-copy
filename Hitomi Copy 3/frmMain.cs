@@ -692,7 +692,7 @@ namespace Hitomi_Copy_3
                 data_col.AddRange(from ix in HitomiSetting.Instance.GetModel().CustomAutoComplete where ix.StartsWith(word) select new HitomiTagdata { Tag = ix });
             if (data_col.Count > 0)
                 match.AddRange(data_col);
-            match.AddRange(HitomiData.Instance.GetTotalList(word));
+            match.AddRange(HitomiData.Instance.GetTotalListFuzzy(word));
             
             if (match.Count > 0)
             {

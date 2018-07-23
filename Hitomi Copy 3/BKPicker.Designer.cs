@@ -119,7 +119,7 @@
             this.listBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listBox1_KeyUp);
             this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
             // 
-            // BKArtist
+            // BKPicker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -134,9 +134,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "BKArtist";
+            this.Name = "BKPicker";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "작가 추가";
+            this.Text = "추가";
             this.Load += new System.EventHandler(this.CARArtist_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

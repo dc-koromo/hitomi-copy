@@ -73,6 +73,8 @@ namespace Hitomi_Copy_2
         public int AutoCompleteShowCount;
         [JsonProperty]
         public int NotifySyncDelay;
+        [JsonProperty]
+        public bool UsingFuzzy;
     }
 
     public class HitomiSetting
