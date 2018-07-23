@@ -335,6 +335,14 @@ namespace Hitomi_Copy_3
                                 PushString("using 'ra add (artist)'");
                             }
                         }
+                        else if (split[1] == "addbk")
+                        {
+                            foreach (var bk in HitomiBookmark.Instance.GetModel().Artists)
+                            {
+                                string artist = bk.Item1.Replace('_', ' ');
+                                (Application.OpenForms[0] as frmMain).AddRecommendArtist(artist);
+                            }
+                        }
                         else if (split[1] == "+")
                         {
                             if (split.Length >= 4)
@@ -467,7 +475,7 @@ namespace Hitomi_Copy_3
                     else
                     {
                         PushString("using 'ra (option) [tag] [count] ...'");
-                        PushString("  (option): ulist, list, clear, update, on, off, mion, mioff, rank, add, +, +a, -");
+                        PushString("  (option): ulist, list, clear, update, on, off, mion, mioff, rank, add, addbk, +, +a, -");
                     }
                 }
                 else if (cmd == "install")
