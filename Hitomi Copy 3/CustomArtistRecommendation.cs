@@ -26,20 +26,25 @@ namespace Hitomi_Copy_3
             
             Dictionary<string, int> tags_map = new Dictionary<string, int>();
 
-            foreach (var log in HitomiLog.Instance.GetEnumerator().Where(log => log.Tags != null))
+            if (!HitomiAnalysis.Instance.UserDefined)
             {
-                foreach (var tag in log.Tags)
+                foreach (var log in HitomiLog.Instance.GetEnumerator().Where(log => log.Tags != null))
                 {
-                    if (HitomiSetting.Instance.GetModel().UsingOnlyFMTagsOnAnalysis &&
-                        !tag.StartsWith("female:") && !tag.StartsWith("male:")) continue;
-                    if (tags_map.ContainsKey(HitomiCommon.LegalizeTag(tag)))
-                        tags_map[HitomiCommon.LegalizeTag(tag)] += 1;
-                    else
-                        tags_map.Add(HitomiCommon.LegalizeTag(tag), 1);
+                    foreach (var tag in log.Tags)
+                    {
+                        if (HitomiSetting.Instance.GetModel().UsingOnlyFMTagsOnAnalysis &&
+                            !tag.StartsWith("female:") && !tag.StartsWith("male:")) continue;
+                        if (tags_map.ContainsKey(HitomiCommon.LegalizeTag(tag)))
+                            tags_map[HitomiCommon.LegalizeTag(tag)] += 1;
+                        else
+                            tags_map.Add(HitomiCommon.LegalizeTag(tag), 1);
+                    }
                 }
             }
 
             var list = tags_map.ToList();
+            if (HitomiAnalysis.Instance.UserDefined)
+                list = HitomiAnalysis.Instance.CustomAnalysis.Select(x => new KeyValuePair<string, int>(x.Item1, x.Item2)).ToList();
             list.Sort((a, b) => b.Value.CompareTo(a.Value));
 
             List<ListViewItem> lvil = new List<ListViewItem>();
