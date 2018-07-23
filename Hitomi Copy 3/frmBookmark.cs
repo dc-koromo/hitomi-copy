@@ -49,7 +49,7 @@ namespace Hitomi_Copy_3
         {
             if (listView1.SelectedItems.Count == 1)
             {
-                (new frmArtistInfo(this, listView1.SelectedItems[0].SubItems[1].Text)).Show();
+                (new frmArtistInfo(this, listView1.SelectedItems[0].SubItems[1].Text.Replace('_', ' '))).Show();
             }
         }
 
@@ -57,7 +57,7 @@ namespace Hitomi_Copy_3
         {
             if (listView2.SelectedItems.Count == 1)
             {
-                (new frmGroupInfo(this, listView2.SelectedItems[0].SubItems[1].Text)).Show();
+                (new frmGroupInfo(this, listView2.SelectedItems[0].SubItems[1].Text.Replace('_', ' '))).Show();
             }
         }
 
@@ -78,7 +78,7 @@ namespace Hitomi_Copy_3
         {
             if (listView2.SelectedItems.Count == 1)
             {
-                (new frmFinder("tag:" + listView4.SelectedItems[0].SubItems[1].Text)).Show();
+                (new frmFinder("tag:" + listView4.SelectedItems[0].SubItems[1].Text.Replace(' ', '_'))).Show();
             }
         }
 
@@ -86,7 +86,7 @@ namespace Hitomi_Copy_3
         {
             if (listView4.SelectedItems.Count == 1)
             {
-                (new frmFinder("series:" + listView3.SelectedItems[0].SubItems[1].Text)).Show();
+                (new frmFinder("series:" + listView3.SelectedItems[0].SubItems[1].Text.Replace(' ', '_'))).Show();
             }
         }
 
@@ -94,8 +94,22 @@ namespace Hitomi_Copy_3
         {
             if (listView5.SelectedItems.Count == 1)
             {
-                (new frmFinder("character:" + listView5.SelectedItems[0].SubItems[1].Text)).Show();
+                (new frmFinder("character:" + listView5.SelectedItems[0].SubItems[1].Text.Replace(' ', '_'))).Show();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            BKArtist frm = new BKArtist(this);
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog();
+        }
+
+        public void RequestAddArtist(string artist)
+        {
+            HitomiBookmark.Instance.GetModel().Artists.Add(new Tuple<string, DateTime>(artist, DateTime.Now));
+            listView1.Items.Clear();
+            AddToList(listView1, HitomiBookmark.Instance.GetModel().Artists);
         }
     }
 }
