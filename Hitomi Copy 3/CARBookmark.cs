@@ -41,5 +41,19 @@ namespace Hitomi_Copy_3
                 Close();
             }
         }
+
+        private void 북마크삭제DToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 1)
+            {
+                if (MessageBox.Show($"'{listView1.SelectedItems[0].SubItems[1].Text}' 북마크를 삭제할까요?", "Hitomi Copy", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    int index = HitomiBookmark.Instance.GetModel().CustomTags.Count - Convert.ToInt32(listView1.SelectedItems[0].SubItems[0].Text);
+                    HitomiBookmark.Instance.GetModel().CustomTags.RemoveAt(index);
+                    HitomiBookmark.Instance.Save();
+                    listView1.SelectedItems[0].Remove();
+                }
+            }
+        }
     }
 }
