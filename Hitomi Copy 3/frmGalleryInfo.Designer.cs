@@ -55,6 +55,7 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.lPage = new System.Windows.Forms.Label();
+            this.button9 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -347,12 +348,25 @@
             this.lPage.TabIndex = 46;
             this.lPage.Text = "0p";
             // 
+            // button9
+            // 
+            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button9.Font = new System.Drawing.Font("맑은 고딕", 13F);
+            this.button9.Location = new System.Drawing.Point(861, 345);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(137, 41);
+            this.button9.TabIndex = 47;
+            this.button9.Text = "북마크에 추가";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
             // frmGalleryInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1286, 470);
+            this.Controls.Add(this.button9);
             this.Controls.Add(this.lPage);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
@@ -425,5 +439,6 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Label lPage;
+        private System.Windows.Forms.Button button9;
     }
 }

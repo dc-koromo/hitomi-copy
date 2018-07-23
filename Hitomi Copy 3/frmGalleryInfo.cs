@@ -314,5 +314,12 @@ namespace Hitomi_Copy
             else
                 MessageBox.Show("익헨 주소를 찾지 못했습니다.", "Hitomi Copy", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            HitomiBookmark.Instance.GetModel().Articles.Add(new Tuple<string, DateTime>(id, DateTime.Now));
+            HitomiBookmark.Instance.Save();
+            MessageBox.Show("북마크에 추가되었습니다!", "Hitomi Copy", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
