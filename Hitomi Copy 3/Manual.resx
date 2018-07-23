@@ -235,6 +235,8 @@ ra list ; 모든 커스텀 태그 열거
 ra rank ; 점수 내림차순으로 작가 추천 목록 열거 (ra update가 먼저 수행되어야 합니다.)
 get hitomi_analysis ; 점수 오름차순으로 작가 추천 목록 열거 (ra update가 먼저 수행되어야 합니다.)=
 ra clear ; 커스텀 태그 모두 삭제
+ra addbk ; 북마크에 있는 모든 작가 추가
+ra +abk ; 북마크에 있는 모든 작가의 태그 추가
 
 4. install
 Hitomi Copy의 실험용 도구를 다운로드하기 위한 명령입니다. 현재는 "install driver" 명령만 지원합니다.
