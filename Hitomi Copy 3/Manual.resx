@@ -127,6 +127,56 @@ E-Mail: koromo.software@gmail.com
 Source-code : https://github.com/dc-koromo/hitomi-downloader-2
 PatchNote : https://github.com/dc-koromo/hitomi-downloader-2/blob/master/PatchNote.md</value>
   </data>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>Hitomi Copy의 Log 기능은 각종 실험적인 기능들을 제공하는 도구입니다.
+메인창 -&gt; 설정 -&gt; 고급설정 -&gt; UsingLog를 켜고 -&gt; 설정 저장 후 프로그램을 재시작하면 Log가 활성화됩니다.
+Log창의 왼쪽 하단 Disable Logging 버튼을 통해 Log를 끌 수 있습니다.
+
+명령어
+
+1. enum, enumi, enumx, ei
+프로그램 개체의 변수 목록을 나열합니다. 이 명령을 이해하기 위해선 Hitomi Copy의 소스코드를 이해할 필요가 있습니다.
+먼저 "enum"만 입력하면 세 가지 목록이 나올 겁니다. frmMain, MetroFlatDropShadow, Log 이는 프로그램의 주 핸들을 나타냅니다.
+frmMain은 메인창, MetroFlatDropShadow는 메인창 뒷부분의 그림자, Log는 Log창입니다.
+"enum frmMain"을 입력하면 frmMain에 포함된 변수목록이 보입니다. 이 변수 목록은 public 변수만 나타납니다.
+여기서 하위 클래스를 보려면 "enum frmMain download_queue"와 같이 연속으로 입력하면 됩니다.
+enum 명령은 public 메서드만, enumi는 private메서드도 같이, enumx는 모든 부모클래스 인터페이스의 변수를 전부다 보여줍니다.
+ei는 Instance를 위한 명령어입니다. 주 핸들에는 Instance가 포함되지 않기 때문에 Instance를 접근하려면 ei 명령이 필요합니다.
+사용가능한 Instance 목록은 "ei"를 입력하고 확인하세요
+
+2. get, set
+특정 변수의 상태를 가져오거나 설정하는 명령입니다. get은 enum이랑 사용방법이 같으나 set은 변수에 값을 설정하기 위한 설정값이 필요합니다.
+가령, "get frmMain latest_load_count" 명령은 frmMain의 latest_load_count 변수의 값을 가져오고, 
+"set frmMain latest_load_count 100"로 latest_load_count 변수에 값을 쓸 수 있습니다.
+
+3. ra
+먼저 다음 명령을 순서대로 입력합니다.
+ra on ; 커스텀 분석 시작 (ra off 도 구현됨)
+ra mion ; 커스텀 태그에 추가된 것들이 모두 작품에 있을 때만 작가 추천항목에 넣음 (ra mioff 도 구현됨)
+ra update ; 작가 추천 목록 업데이트
+
+이제 원하는 태그나 작가를 추가합니다.
+ra + female:big_breasts 1 ; 태그 추가 (마지막 숫자는 점수)
+ra +a hisasi ; 작가 추가 (작가가 가진 모든 태그를 추가함)
+
+다음은 목록을 생성하는데 유용한 명령어 입니다.
+ra add sekiya_asami ; 수동으로 작가 추가
+ra list ; 모든 커스텀 태그 열거
+ra rank ; 점수 내림차순으로 작가 추천 목록 열거 (ra update가 먼저 수행되어야 합니다.)
+get hitomi_analysis ; 점수 오름차순으로 작가 추천 목록 열거 (ra update가 먼저 수행되어야 합니다.)=
+ra clear ; 커스텀 태그 모두 삭제
+ra addbk ; 북마크에 있는 모든 작가 추가
+ra +abk ; 북마크에 있는 모든 작가의 태그 추가
+
+ * 구현도 : https://github.com/dc-koromo/hitomi-downloader-2/blob/master/Docs/ra%20system.md
+ * 참고 : 커스텀 작가 추천을 실행하면 자동으로 ra가 활성화됩니다.
+
+4. install
+Hitomi Copy의 실험용 도구를 다운로드하기 위한 명령입니다. 현재는 "install driver" 명령만 지원합니다.
+driver는 Hitomi Copy의 다운로드 확장으로, 멀티쓰레딩 방식이아닌 멀티프로세스로 이미지를 다운받기 위해 사용합니다.
+
+다른 명령어는 "help"명령을 통해 그 기능을 알 수 있으므로 생략합니다.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -196,55 +246,6 @@ PatchNote : https://github.com/dc-koromo/hitomi-downloader-2/blob/master/PatchNo
 단순회귀분석은 태그 비율의 일치여부만을 가지고 비교합니다. 기본적으로 작가의 작품수에 영향을 받지않습니다.
 
 무분별한 다운로드로 Log가 더럽혀졌다면, log.json을 지우고 새로 시작해보세요!</value>
-  </data>
-  <data name="textBox1.Text" xml:space="preserve">
-    <value>Hitomi Copy의 Log 기능은 각종 실험적인 기능들을 제공하는 도구입니다.
-메인창 -&gt; 설정 -&gt; 고급설정 -&gt; UsingLog를 켜고 -&gt; 설정 저장 후 프로그램을 재시작하면 Log가 활성화됩니다.
-Log창의 왼쪽 하단 Disable Logging 버튼을 통해 Log를 끌 수 있습니다.
-
-명령어
-
-1. enum, enumi, enumx, ei
-프로그램 개체의 변수 목록을 나열합니다. 이 명령을 이해하기 위해선 Hitomi Copy의 소스코드를 이해할 필요가 있습니다.
-먼저 "enum"만 입력하면 세 가지 목록이 나올 겁니다. frmMain, MetroFlatDropShadow, Log 이는 프로그램의 주 핸들을 나타냅니다.
-frmMain은 메인창, MetroFlatDropShadow는 메인창 뒷부분의 그림자, Log는 Log창입니다.
-"enum frmMain"을 입력하면 frmMain에 포함된 변수목록이 보입니다. 이 변수 목록은 public 변수만 나타납니다.
-여기서 하위 클래스를 보려면 "enum frmMain download_queue"와 같이 연속으로 입력하면 됩니다.
-enum 명령은 public 메서드만, enumi는 private메서드도 같이, enumx는 모든 부모클래스 인터페이스의 변수를 전부다 보여줍니다.
-ei는 Instance를 위한 명령어입니다. 주 핸들에는 Instance가 포함되지 않기 때문에 Instance를 접근하려면 ei 명령이 필요합니다.
-사용가능한 Instance 목록은 "ei"를 입력하고 확인하세요
-
-2. get, set
-특정 변수의 상태를 가져오거나 설정하는 명령입니다. get은 enum이랑 사용방법이 같으나 set은 변수에 값을 설정하기 위한 설정값이 필요합니다.
-가령, "get frmMain latest_load_count" 명령은 frmMain의 latest_load_count 변수의 값을 가져오고, 
-"set frmMain latest_load_count 100"로 latest_load_count 변수에 값을 쓸 수 있습니다.
-
-3. ra
-먼저 다음 명령을 순서대로 입력합니다.
-ra on ; 커스텀 분석 시작 (ra off 도 구현됨)
-ra mion ; 커스텀 태그에 추가된 것들이 모두 작품에 있을 때만 작가 추천항목에 넣음 (ra mioff 도 구현됨)
-ra update ; 작가 추천 목록 업데이트
-
-이제 원하는 태그나 작가를 추가합니다.
-ra + female:big_breasts 1 ; 태그 추가 (마지막 숫자는 점수)
-ra +a hisasi ; 작가 추가 (작가가 가진 모든 태그를 추가함)
-
-다음은 목록을 생성하는데 유용한 명령어 입니다.
-ra add sekiya_asami ; 수동으로 작가 추가
-ra list ; 모든 커스텀 태그 열거
-ra rank ; 점수 내림차순으로 작가 추천 목록 열거 (ra update가 먼저 수행되어야 합니다.)
-get hitomi_analysis ; 점수 오름차순으로 작가 추천 목록 열거 (ra update가 먼저 수행되어야 합니다.)=
-ra clear ; 커스텀 태그 모두 삭제
-ra addbk ; 북마크에 있는 모든 작가 추가
-ra +abk ; 북마크에 있는 모든 작가의 태그 추가
-
- * 참고 : 커스텀 작가 추천을 실행하면 자동으로 ra가 활성화됩니다.
-
-4. install
-Hitomi Copy의 실험용 도구를 다운로드하기 위한 명령입니다. 현재는 "install driver" 명령만 지원합니다.
-driver는 Hitomi Copy의 다운로드 확장으로, 멀티쓰레딩 방식이아닌 멀티프로세스로 이미지를 다운받기 위해 사용합니다.
-
-다른 명령어는 "help"명령을 통해 그 기능을 알 수 있으므로 생략합니다.</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
