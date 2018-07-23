@@ -108,8 +108,25 @@ namespace Hitomi_Copy_3
         public void RequestAddArtist(string artist)
         {
             HitomiBookmark.Instance.GetModel().Artists.Add(new Tuple<string, DateTime>(artist, DateTime.Now));
+            HitomiBookmark.Instance.Save();
             listView1.Items.Clear();
             AddToList(listView1, HitomiBookmark.Instance.GetModel().Artists);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            BKGroup frm = new BKGroup(this);
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog();
+        }
+
+        public void RequestAddGroup(string group)
+        {
+            HitomiBookmark.Instance.GetModel().Groups.Add(new Tuple<string, DateTime>(group, DateTime.Now));
+            HitomiBookmark.Instance.Save();
+            listView2.Items.Clear();
+            AddToList(listView2, HitomiBookmark.Instance.GetModel().Groups);
+        }
+
     }
 }

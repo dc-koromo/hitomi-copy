@@ -305,30 +305,57 @@ namespace Hitomi_Copy.Data
             return result;
         }
 
-        public List<HitomiTagdata> GetGroupList(string startswith)
+        public List<HitomiTagdata> GetGroupList(string startswith, bool constains = false)
         {
             List<HitomiTagdata> result = new List<HitomiTagdata>();
-            foreach (var tagdata in tagdata_collection.group)
-                if (tagdata.Tag.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
-                { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            if (!constains)
+            {
+                foreach (var tagdata in tagdata_collection.group)
+                    if (tagdata.Tag.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
+                    { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            }
+            else
+            {
+                foreach (var tagdata in tagdata_collection.group)
+                    if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(startswith.ToLower()))
+                    { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            }
             return result;
         }
 
-        public List<HitomiTagdata> GetSeriesList(string startswith)
+        public List<HitomiTagdata> GetSeriesList(string startswith, bool constains = false)
         {
             List<HitomiTagdata> result = new List<HitomiTagdata>();
-            foreach (var tagdata in tagdata_collection.series)
-                if (tagdata.Tag.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
-                { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            if (!constains)
+            {
+                foreach (var tagdata in tagdata_collection.series)
+                    if (tagdata.Tag.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
+                    { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            }
+            else
+            {
+                foreach (var tagdata in tagdata_collection.series)
+                    if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(startswith.ToLower()))
+                    { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            }
             return result;
         }
 
-        public List<HitomiTagdata> GetCharacterList(string startswith)
+        public List<HitomiTagdata> GetCharacterList(string startswith, bool constains = false)
         {
             List<HitomiTagdata> result = new List<HitomiTagdata>();
-            foreach (var tagdata in tagdata_collection.character)
-                if (tagdata.Tag.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
-                { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            if (!constains)
+            {
+                foreach (var tagdata in tagdata_collection.character)
+                    if (tagdata.Tag.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
+                    { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            }
+            else
+            {
+                foreach (var tagdata in tagdata_collection.character)
+                    if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(startswith.ToLower()))
+                    { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            }
             return result;
         }
 
