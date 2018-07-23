@@ -9,16 +9,22 @@ using System.Windows.Forms;
 
 namespace Hitomi_Copy_3
 {
-    public partial class BKGroup : Form
+    public partial class BKPicker : Form
     {
         frmBookmark parent;
+        public delegate void CallBack(string contents);
+        CallBack callback;
+        string type;
 
-        public BKGroup(frmBookmark parent, string artist = "", string score = "1")
+        public BKPicker(frmBookmark parent, string type = "작가", CallBack cb = null)
         {
             InitializeComponent();
 
             this.parent = parent;
-            tbSearch.Text = artist;
+            this.type = type;
+            metroLabel2.Text = type + " :";
+            Text = type + " " + Text;
+            callback = cb;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -31,11 +37,11 @@ namespace Hitomi_Copy_3
         {
             if (tbSearch.Text == "")
             {
-                MessageBox.Show("그룹를 입력해주세요.", "Custom Recommendation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(type + "를 입력해주세요.", "Custom Recommendation", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            parent.Post(() => parent.RequestAddGroup(tbSearch.Text));
+            parent.Post(() => callback(tbSearch.Text));
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -101,7 +107,14 @@ namespace Hitomi_Copy_3
 
             if (word == "") { listBox1.Visible = false; return; }
 
-            List<HitomiTagdata> match = HitomiData.Instance.GetGroupList(word, true);
+            List<HitomiTagdata> match = null;
+            if (type == "작가") match = HitomiData.Instance.GetArtistList(word, true);
+            if (type == "그룹") match = HitomiData.Instance.GetGroupList(word, true);
+            if (type == "시리즈") match = HitomiData.Instance.GetSeriesList(word, true);
+            if (type == "태그") match = HitomiData.Instance.GetTagList(word, true);
+            if (type == "캐릭터") match = HitomiData.Instance.GetCharacterList(word, true);
+
+            //= HitomiData.Instance.GetArtistList(word, true);
             if (match != null && match.Count > 0)
             {
                 listBox1.Visible = true;

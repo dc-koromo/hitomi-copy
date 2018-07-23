@@ -76,9 +76,9 @@ namespace Hitomi_Copy_3
 
         private void listView3_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (listView2.SelectedItems.Count == 1)
+            if (listView3.SelectedItems.Count == 1)
             {
-                (new frmFinder("tag:" + listView4.SelectedItems[0].SubItems[1].Text.Replace(' ', '_'))).Show();
+                (new frmFinder("tag:" + listView3.SelectedItems[0].SubItems[1].Text.Replace(' ', '_'))).Show();
             }
         }
 
@@ -86,7 +86,7 @@ namespace Hitomi_Copy_3
         {
             if (listView4.SelectedItems.Count == 1)
             {
-                (new frmFinder("series:" + listView3.SelectedItems[0].SubItems[1].Text.Replace(' ', '_'))).Show();
+                (new frmFinder("series:" + listView4.SelectedItems[0].SubItems[1].Text.Replace(' ', '_'))).Show();
             }
         }
 
@@ -100,7 +100,7 @@ namespace Hitomi_Copy_3
 
         private void button1_Click(object sender, EventArgs e)
         {
-            BKArtist frm = new BKArtist(this);
+            BKPicker frm = new BKPicker(this,"작가", RequestAddArtist);
             frm.StartPosition = FormStartPosition.CenterScreen;
             frm.ShowDialog();
         }
@@ -115,7 +115,7 @@ namespace Hitomi_Copy_3
 
         private void button2_Click(object sender, EventArgs e)
         {
-            BKGroup frm = new BKGroup(this);
+            BKPicker frm = new BKPicker(this, "그룹", RequestAddGroup);
             frm.StartPosition = FormStartPosition.CenterScreen;
             frm.ShowDialog();
         }
@@ -128,6 +128,51 @@ namespace Hitomi_Copy_3
             AddToList(listView2, HitomiBookmark.Instance.GetModel().Groups);
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            BKPicker frm = new BKPicker(this, "태그", RequestAddTag);
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog();
+        }
+
+        public void RequestAddTag(string tag)
+        {
+            HitomiBookmark.Instance.GetModel().Tags.Add(new Tuple<string, DateTime>(tag, DateTime.Now));
+            HitomiBookmark.Instance.Save();
+            listView3.Items.Clear();
+            AddToList(listView3, HitomiBookmark.Instance.GetModel().Tags);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            BKPicker frm = new BKPicker(this, "시리즈", RequestAddSeries);
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog();
+        }
+
+        public void RequestAddSeries(string series)
+        {
+            HitomiBookmark.Instance.GetModel().Series.Add(new Tuple<string, DateTime>(series, DateTime.Now));
+            HitomiBookmark.Instance.Save();
+            listView4.Items.Clear();
+            AddToList(listView4, HitomiBookmark.Instance.GetModel().Series);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            BKPicker frm = new BKPicker(this, "캐릭터", RequestAddCharacter);
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog();
+        }
+
+        public void RequestAddCharacter(string character)
+        {
+            HitomiBookmark.Instance.GetModel().Characters.Add(new Tuple<string, DateTime>(character, DateTime.Now));
+            HitomiBookmark.Instance.Save();
+            listView5.Items.Clear();
+            AddToList(listView5, HitomiBookmark.Instance.GetModel().Characters);
+        }
+
         protected override bool ProcessDialogKey(Keys keyData)
         {
             if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
@@ -136,6 +181,50 @@ namespace Hitomi_Copy_3
                 return true;
             }
             return base.ProcessDialogKey(keyData);
+        }
+
+        private void listView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Delete) return;
+            ListView lv = sender as ListView;
+            if (lv.SelectedItems.Count == 1)
+            {
+                if (MessageBox.Show($"'{lv.SelectedItems[0].SubItems[1].Text}'를 삭제할까요?", "Hitomi Copy", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (lv == listView1)
+                    {
+                        int index = HitomiBookmark.Instance.GetModel().Artists.Count - Convert.ToInt32(lv.SelectedItems[0].SubItems[0].Text);
+                        HitomiBookmark.Instance.GetModel().Artists.RemoveAt(index);
+                    }
+                    else if (lv == listView2)
+                    {
+                        int index = HitomiBookmark.Instance.GetModel().Groups.Count - Convert.ToInt32(lv.SelectedItems[0].SubItems[0].Text);
+                        HitomiBookmark.Instance.GetModel().Groups.RemoveAt(index);
+                    }
+                    else if (lv == listView6)
+                    {
+                        int index = HitomiBookmark.Instance.GetModel().Articles.Count - Convert.ToInt32(lv.SelectedItems[0].SubItems[0].Text);
+                        HitomiBookmark.Instance.GetModel().Articles.RemoveAt(index);
+                    }
+                    else if (lv == listView3)
+                    {
+                        int index = HitomiBookmark.Instance.GetModel().Tags.Count - Convert.ToInt32(lv.SelectedItems[0].SubItems[0].Text);
+                        HitomiBookmark.Instance.GetModel().Tags.RemoveAt(index);
+                    }
+                    else if (lv == listView4)
+                    {
+                        int index = HitomiBookmark.Instance.GetModel().Series.Count - Convert.ToInt32(lv.SelectedItems[0].SubItems[0].Text);
+                        HitomiBookmark.Instance.GetModel().Series.RemoveAt(index);
+                    }
+                    else if (lv == listView5)
+                    {
+                        int index = HitomiBookmark.Instance.GetModel().Characters.Count - Convert.ToInt32(lv.SelectedItems[0].SubItems[0].Text);
+                        HitomiBookmark.Instance.GetModel().Characters.RemoveAt(index);
+                    }
+                    HitomiBookmark.Instance.Save();
+                    lv.SelectedItems[0].Remove();
+                }
+            }
         }
     }
 }

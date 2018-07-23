@@ -123,17 +123,11 @@
     <Compile Include="AutoCompleteListBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BKGroup.cs">
+    <Compile Include="BKPicker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BKGroup.Designer.cs">
-      <DependentUpon>BKGroup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BKArtist.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BKArtist.Designer.cs">
-      <DependentUpon>BKArtist.cs</DependentUpon>
+    <Compile Include="BKPicker.Designer.cs">
+      <DependentUpon>BKPicker.cs</DependentUpon>
     </Compile>
     <Compile Include="CARArtist.cs">
       <SubType>Form</SubType>
@@ -393,11 +387,8 @@
     <EmbeddedResource Include="403\GalleryBlockTester.resx">
       <DependentUpon>GalleryBlockTester.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BKGroup.resx">
-      <DependentUpon>BKGroup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BKArtist.resx">
-      <DependentUpon>BKArtist.cs</DependentUpon>
+    <EmbeddedResource Include="BKPicker.resx">
+      <DependentUpon>BKPicker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CARArtist.resx">
       <DependentUpon>CARArtist.cs</DependentUpon>
