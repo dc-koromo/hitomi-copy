@@ -156,6 +156,12 @@
     <Compile Include="Data\HitomiDataModel.cs" />
     <Compile Include="Data\HitomiDataQuery.cs" />
     <Compile Include="Data\HitomiDataSearch.cs" />
+    <Compile Include="frmBookmark.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBookmark.Designer.cs">
+      <DependentUpon>frmBookmark.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmComment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -389,6 +395,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmArtistInfo.resx">
       <DependentUpon>frmArtistInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBookmark.resx">
+      <DependentUpon>frmBookmark.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCharacterInfo.resx">
       <DependentUpon>frmCharacterInfo.cs</DependentUpon>
