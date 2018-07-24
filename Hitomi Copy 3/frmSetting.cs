@@ -32,6 +32,7 @@ namespace Hitomi_Copy_3
             tbLPM.Text = HitomiSetting.Instance.GetModel().LoadPreviewMaximum.ToString();
             tgSPC.Checked = HitomiSetting.Instance.GetModel().ShowPageCount;
             tbACSC.Text = HitomiSetting.Instance.GetModel().AutoCompleteShowCount.ToString();
+            tgFZ.Checked = HitomiSetting.Instance.GetModel().UsingFuzzy;
         }
 
         private void bSave_Click(object sender, EventArgs e)
@@ -80,6 +81,7 @@ namespace Hitomi_Copy_3
             HitomiSetting.Instance.GetModel().LoadPreviewMaximum = Convert.ToInt32(tbLPM.Text);
             HitomiSetting.Instance.GetModel().ShowPageCount = tgSPC.Checked;
             HitomiSetting.Instance.GetModel().AutoCompleteShowCount = Convert.ToInt32(tbACSC.Text);
+            HitomiSetting.Instance.GetModel().UsingFuzzy = tgFZ.Checked;
             HitomiSetting.Instance.Save();
             Close();
         }
@@ -169,9 +171,15 @@ namespace Hitomi_Copy_3
             tbInfo.Text = "검색시 표시되는 자동완성 검색어의 최대 개수를 설정합니다.";
         }
 
+        private void tgFZ_MouseEnter(object sender, EventArgs e)
+        {
+            tbInfo.Text = "퍼지 문자열 검색 알고리즘을 통해 검색합니다.";
+        }
+
         private void MouseLeave_Event(object sender, EventArgs e)
         {
             tbInfo.Text = "";
         }
+
     }
 }
