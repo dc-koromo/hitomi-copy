@@ -60,10 +60,21 @@ namespace Hitomi_Copy_2
                 }
                 else
                 {
+                    string prefix = "";
+                    if (text.Contains(":") && !ColoredTargetText.Contains(":") && text.Split(':')[1] != "")
+                    {
+                        prefix = text.Split(':')[0] + ":";
+                        text = text.Split(':')[1];
+                    }
                     string postfix = text.Split(' ').Length > 1 ? text.Split(' ')[1] : "";
                     text = text.Split(' ')[0];
                     
                     int measure = 0;
+                    if (prefix != "")
+                    {
+                        e.Graphics.DrawString(prefix, Font, Brushes.White, new PointF(e.Bounds.X, e.Bounds.Y));
+                        measure = MeasureText(prefix, Font).Width;
+                    }
                     int[] diff = StringAlgorithms.get_diff_array(text, ColoredTargetText);
                     for (int i = 0; i < text.Length; i++)
                     {
