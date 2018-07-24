@@ -1,5 +1,6 @@
 ﻿/* Copyright (C) 2018. Hitomi Parser Developers */
 
+using Hitomi_Copy_3;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -59,8 +60,23 @@ namespace Hitomi_Copy_2
                 }
                 else
                 {
-                    e.Graphics.DrawString(text, Font, Brushes.White, new PointF(e.Bounds.X, e.Bounds.Y));
+                    string postfix = text.Split(' ').Length > 1 ? text.Split(' ')[1] : "";
+                    text = text.Split(' ')[0];
+                    
+                    int measure = 0;
+                    int[] diff = StringAlgorithms.get_diff_array(text, ColoredTargetText);
+                    for (int i = 0; i < text.Length; i++)
+                    {
+                        if (diff[i+1] == 1)
+                            e.Graphics.DrawString(text[i].ToString(), Font, Brushes.Orange, new PointF(e.Bounds.X + measure, e.Bounds.Y));
+                        else
+                            e.Graphics.DrawString(text[i].ToString(), Font, Brushes.White, new PointF(e.Bounds.X + measure, e.Bounds.Y));
+                        measure += MeasureText(text[i].ToString(), Font).Width;
+                    }
                     e.DrawFocusRectangle();
+
+                    e.Graphics.DrawString(" " + postfix, Font, Brushes.White, new PointF(e.Bounds.X + measure, e.Bounds.Y));
+
                 }
             }
             catch { }

@@ -701,7 +701,7 @@ namespace Hitomi_Copy_3
                 List<string> listing = new List<string>();
                 for (int i = 0; i < HitomiSetting.Instance.GetModel().AutoCompleteShowCount && i < match.Count; i++)
                 {
-                    if (match[i].Count > 0)
+                    if (match[i].Count != 0)
                         listing.Add(match[i].Tag + $" ({match[i].Count})");
                     else
                         listing.Add(match[i].Tag);
