@@ -42,19 +42,26 @@ namespace Hitomi_Copy_2
             try
             {
                 string text = Items[e.Index].ToString();
-                int StartColoredTextPosition = text.IndexOf(ColoredTargetText);
-                
-                string firstdraw = Items[e.Index].ToString().Substring(0, StartColoredTextPosition);
-                e.Graphics.DrawString(firstdraw, Font, Brushes.White, new PointF(e.Bounds.X, e.Bounds.Y));
-                
-                int mesaure1 = MeasureText(firstdraw, Font).Width;
-                string seconddraw = Items[e.Index].ToString().Substring(StartColoredTextPosition, MaxColoredTextLength);
-                e.Graphics.DrawString(seconddraw, Font, Brushes.Orange, new PointF(e.Bounds.X + mesaure1, e.Bounds.Y));
-                
-                int mesaure2 = MeasureText(seconddraw, Font).Width;
-                e.Graphics.DrawString(Items[e.Index].ToString().Substring(StartColoredTextPosition + MaxColoredTextLength), this.Font, Brushes.White, new PointF(e.Bounds.X + mesaure1 + mesaure2, e.Bounds.Y));
-                //e.Graphics.DrawString(text, Font, Brushes.White, new PointF(e.Bounds.X, e.Bounds.Y));
-                e.DrawFocusRectangle();
+                if (!HitomiSetting.Instance.GetModel().UsingFuzzy)
+                {
+                    int StartColoredTextPosition = text.IndexOf(ColoredTargetText);
+
+                    string firstdraw = Items[e.Index].ToString().Substring(0, StartColoredTextPosition);
+                    e.Graphics.DrawString(firstdraw, Font, Brushes.White, new PointF(e.Bounds.X, e.Bounds.Y));
+
+                    int mesaure1 = MeasureText(firstdraw, Font).Width;
+                    string seconddraw = Items[e.Index].ToString().Substring(StartColoredTextPosition, MaxColoredTextLength);
+                    e.Graphics.DrawString(seconddraw, Font, Brushes.Orange, new PointF(e.Bounds.X + mesaure1, e.Bounds.Y));
+
+                    int mesaure2 = MeasureText(seconddraw, Font).Width;
+                    e.Graphics.DrawString(Items[e.Index].ToString().Substring(StartColoredTextPosition + MaxColoredTextLength), this.Font, Brushes.White, new PointF(e.Bounds.X + mesaure1 + mesaure2, e.Bounds.Y));
+                    e.DrawFocusRectangle();
+                }
+                else
+                {
+                    e.Graphics.DrawString(text, Font, Brushes.White, new PointF(e.Bounds.X, e.Bounds.Y));
+                    e.DrawFocusRectangle();
+                }
             }
             catch { }
         }

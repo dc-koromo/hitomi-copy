@@ -378,6 +378,7 @@ namespace Hitomi_Copy.Data
 
         public List<HitomiTagdata> GetTotalList(string contains)
         {
+            if (HitomiSetting.Instance.GetModel().UsingFuzzy) return GetTotalListFuzzy(contains);
             List<HitomiTagdata> result = new List<HitomiTagdata>();
             List<HitomiTagdata> target = new List<HitomiTagdata>();
             target.AddRange(tagdata_collection.female);
