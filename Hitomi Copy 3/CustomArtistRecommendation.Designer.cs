@@ -154,6 +154,7 @@
             // 
             // opMul
             // 
+            this.opMul.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.opMul.AutoSize = true;
             this.opMul.Checked = true;
             this.opMul.Location = new System.Drawing.Point(409, 452);
@@ -166,6 +167,7 @@
             // 
             // opAdd
             // 
+            this.opAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.opAdd.AutoSize = true;
             this.opAdd.Location = new System.Drawing.Point(464, 452);
             this.opAdd.Name = "opAdd";
@@ -176,6 +178,7 @@
             // 
             // opSet
             // 
+            this.opSet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.opSet.AutoSize = true;
             this.opSet.Location = new System.Drawing.Point(519, 452);
             this.opSet.Name = "opSet";
@@ -186,6 +189,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(349, 454);
             this.label1.Name = "label1";
@@ -195,7 +199,7 @@
             // 
             // bBookmark
             // 
-            this.bBookmark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bBookmark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bBookmark.Location = new System.Drawing.Point(840, 449);
             this.bBookmark.Name = "bBookmark";
             this.bBookmark.Size = new System.Drawing.Size(141, 25);
@@ -206,6 +210,8 @@
             // 
             // tbName
             // 
+            this.tbName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbName.Location = new System.Drawing.Point(695, 450);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(139, 23);
@@ -213,6 +219,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(607, 454);
             this.label2.Name = "label2";
@@ -222,7 +229,7 @@
             // 
             // bOpen
             // 
-            this.bOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bOpen.Location = new System.Drawing.Point(987, 449);
             this.bOpen.Name = "bOpen";
             this.bOpen.Size = new System.Drawing.Size(78, 25);
