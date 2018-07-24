@@ -94,6 +94,7 @@ namespace Hitomi_Copy_3
 
         private void tbSearch_KeyUp(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Enter) return;
             int position = tbSearch.SelectionStart;
             while (position > 0 && tbSearch.Text[position - 1] != ' ')
                 position -= 1;
