@@ -1,22 +1,22 @@
-# ÀÛ°¡ÃßÃµ ½Ã½ºÅÛ
+# ìž‘ê°€ì¶”ì²œ ì‹œìŠ¤í…œ
 
 ![Image](hhh.png)
 
 ```
-ÆÄ¶õ»ö : µ¥ÀÌÅÍ º£ÀÌ½º
-³ë¶õ»ö : »ç¿ëÀÚ ÀÎÅÍÆäÀÌ½º (»ç¿ëÀÚ°¡ »ç¿ë°¡´ÉÇÑ ÀÎÅÍÆäÀÌ½º)
-ÁÖÈ²»ö : »óÀ§ Ãß»ó Å¬·¡½º
-È¸»ö : ºÐ·ù ¾Ë°í¸®Áò
+íŒŒëž€ìƒ‰ : ë°ì´í„° ë² ì´ìŠ¤
+ë…¸ëž€ìƒ‰ : ì‚¬ìš©ìž ì¸í„°íŽ˜ì´ìŠ¤ (ì‚¬ìš©ìžê°€ ì‚¬ìš©ê°€ëŠ¥í•œ ì¸í„°íŽ˜ì´ìŠ¤)
+ì£¼í™©ìƒ‰ : ìƒìœ„ ì¶”ìƒ í´ëž˜ìŠ¤
+íšŒìƒ‰ : ë¶„ë¥˜ ì•Œê³ ë¦¬ì¦˜
 
-bk : Bookmark, »ç¿ëÀÚ°¡ ºÏ¸¶Å©ÇÑ ÅÂ±× ¸ñ·Ï, ÀÛ°¡ ¸ñ·Ï, ½Ã¸®Áî, ±×·ì, Ä³¸¯ÅÍ ¸ñ·ÏÀÌ Æ÷ÇÔµÈ µ¥ÀÌÅÍ
-log : »ç¿ëÀÚ ´Ù¿î·Îµå ±â·Ï
-car : Custom Artist Recommendation, ÀÏ¹Ý »ç¿ëÀÚ¿ë Ä¿½ºÅÒ ÀÛ°¡ ÃßÃµ ½Ã½ºÅÛ
-ra : Recommend Artist, ¸¶ÀÌ³Ê »ç¿ëÀÚ¿ë ÀÛ°¡ ÃßÃµ ½Ã½ºÅÛ. car¿¡ Ãß°¡ÇÏ±â °ï¶õÇÑ ½ÇÇèÀûÀÎ ±â´ÉµéÀÌ ¸¹ÀÌ Æ÷ÇÔµÇ¾îÀÖÀ½
-UserDefined : log->Algorithm ¿¬°á°ú ra, car¸¦ ±¸ºÐÁþ±âÀ§ÇÑ Ãß»ó Å¬·¡½º. È°¼ºÈ­µÇ¸é ct¸¦ ÃÊ±âÈ­ÇÑ´Ù.
-Algorithm : ºÐ¼®Àü Custom Tags(ct) ¸ñ·ÏÀ» ¸¸µé°í, ÀÌ¸¦ ¼³Á¤µÈ ¾Ë°í¸®ÁòÀ» »ç¿ëÇØ ºÐ¼®ÇÑ´Ù
+bk : Bookmark, ì‚¬ìš©ìžê°€ ë¶ë§ˆí¬í•œ íƒœê·¸ ëª©ë¡, ìž‘ê°€ ëª©ë¡, ì‹œë¦¬ì¦ˆ, ê·¸ë£¹, ìºë¦­í„° ëª©ë¡ì´ í¬í•¨ëœ ë°ì´í„°
+log : ì‚¬ìš©ìž ë‹¤ìš´ë¡œë“œ ê¸°ë¡
+car : Custom Artist Recommendation, ì¼ë°˜ ì‚¬ìš©ìžìš© ì»¤ìŠ¤í…€ ìž‘ê°€ ì¶”ì²œ ì‹œìŠ¤í…œ
+ra : Recommend Artist, ë§ˆì´ë„ˆ ì‚¬ìš©ìžìš© ìž‘ê°€ ì¶”ì²œ ì‹œìŠ¤í…œ. carì— ì¶”ê°€í•˜ê¸° ê³¤ëž€í•œ ì‹¤í—˜ì ì¸ ê¸°ëŠ¥ë“¤ì´ ë§Žì´ í¬í•¨ë˜ì–´ìžˆìŒ
+UserDefined : log->Algorithm ì—°ê²°ê³¼ ra, carë¥¼ êµ¬ë¶„ì§“ê¸°ìœ„í•œ ì¶”ìƒ í´ëž˜ìŠ¤. í™œì„±í™”ë˜ë©´ ctë¥¼ ì´ˆê¸°í™”í•œë‹¤.
+Algorithm : ë¶„ì„ì „ Custom Tags(ct) ëª©ë¡ì„ ë§Œë“¤ê³ , ì´ë¥¼ ì„¤ì •ëœ ì•Œê³ ë¦¬ì¦˜ì„ ì‚¬ìš©í•´ ë¶„ì„í•œë‹¤
 
-log->Algorithm¿¬°á : ÇÁ·Î±×·¥ ½ÃÀÛ½Ã log¸¦ ºÒ·¯¿Í ÀÛ°¡ ÃßÃµ ¸ñ·ÏÀ» ³ª¿­ÇÑ´Ù
-log->car ¿¬°á : car´Â ÀÏ¹Ý »ç¿ëÀÚ¿ëÀÌ¸ç, ±âº»ÀûÀ¸·Î log¸¦ ºÒ·¯¿Í ³ª¿­½ÃÅ²´Ù. carÀÌ ¼º°øÀûÀ¸·Î log¸¦ ºÒ·¯¿À¸é ra¸¦ ÄÒ´Ù. ¸¸¾à carÀÌ ÄÑÁö±âÀü ra°¡ ÄÑÁ®ÀÖ´Ù¸é, ra¿¡¼­ ¸¸µé¾îÁø ¸ñ·ÏÀ» °¡Á®¿Â´Ù. »ç¿ëÀÚ°¡ °»½ÅÇÏ¸é ct¸¦ Ä¿¹ÔÇÑ´Ù.
-bk->ra ¿¬°á : ºÏ¸¶Å© ±â·ÏÀ» ct¿¡ Ãß°¡ÇÑ´Ù. ÀÛ°¡¸¸ Áö¿øÇÔ
-log->ra ¿¬°á : log ±â·ÏÀ» ct¿¡ Ãß°¡ÇÑ´Ù.
+log->Algorithmì—°ê²° : í”„ë¡œê·¸ëž¨ ì‹œìž‘ì‹œ logë¥¼ ë¶ˆëŸ¬ì™€ ìž‘ê°€ ì¶”ì²œ ëª©ë¡ì„ ë‚˜ì—´í•œë‹¤
+log->car ì—°ê²° : carëŠ” ì¼ë°˜ ì‚¬ìš©ìžìš©ì´ë©°, ê¸°ë³¸ì ìœ¼ë¡œ logë¥¼ ë¶ˆëŸ¬ì™€ ë‚˜ì—´ì‹œí‚¨ë‹¤. carì´ ì„±ê³µì ìœ¼ë¡œ logë¥¼ ë¶ˆëŸ¬ì˜¤ë©´ raë¥¼ ì¼ ë‹¤. ë§Œì•½ carì´ ì¼œì§€ê¸°ì „ raê°€ ì¼œì ¸ìžˆë‹¤ë©´, raì—ì„œ ë§Œë“¤ì–´ì§„ ëª©ë¡ì„ ê°€ì ¸ì˜¨ë‹¤. ì‚¬ìš©ìžê°€ ê°±ì‹ í•˜ë©´ ctë¥¼ ì»¤ë°‹í•œë‹¤.
+bk->ra ì—°ê²° : ë¶ë§ˆí¬ ê¸°ë¡ì„ ctì— ì¶”ê°€í•œë‹¤. ìž‘ê°€ë§Œ ì§€ì›í•¨
+log->ra ì—°ê²° : log ê¸°ë¡ì„ ctì— ì¶”ê°€í•œë‹¤.
 ```
