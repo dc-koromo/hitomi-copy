@@ -42,7 +42,7 @@ namespace Hitomi_Copy_3
             List<ListViewItem> lvi = new List<ListViewItem>();
             for (int i = 0; i < tag_e2k.Count; i++)
             {
-                lvi.Add(new ListViewItem(new string[] { (i + 1).ToString(), tag_e2k[i].Item1, tag_e2k[i].Item2, tag_e2k[i].Item3.ToString("#,#") }));
+                lvi.Add(new ListViewItem(new string[] { (i + 1).ToString(), tag_e2k[i].Item1, tag_e2k[i].Item2, tag_e2k[i].Item3.ToString() }));
             }
             listView1.Items.AddRange(lvi.ToArray());
 
@@ -60,7 +60,7 @@ namespace Hitomi_Copy_3
             List<ListViewItem> lvi2 = new List<ListViewItem>();
             for (int i = 0; i < series_e2k.Count; i++)
             {
-                lvi2.Add(new ListViewItem(new string[] { (i + 1).ToString(), series_e2k[i].Item1, series_e2k[i].Item2, series_e2k[i].Item3.ToString("#,#") }));
+                lvi2.Add(new ListViewItem(new string[] { (i + 1).ToString(), series_e2k[i].Item1, series_e2k[i].Item2, series_e2k[i].Item3.ToString() }));
             }
             listView2.Items.AddRange(lvi2.ToArray());
         }
