@@ -1488,6 +1488,10 @@ namespace Hitomi_Copy_3
             {
                 (new frmBookmark()).Show();
             }
+            else if (Form.ModifierKeys == Keys.None && keyData == Keys.F4)
+            {
+                (new Index()).Show();
+            }
             return base.ProcessDialogKey(keyData);
         }
         

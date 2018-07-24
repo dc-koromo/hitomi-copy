@@ -197,6 +197,12 @@
     <Compile Include="Graph\GraphNodeManager.cs" />
     <Compile Include="Graph\ViewManager.cs" />
     <Compile Include="HitomiBookmark.cs" />
+    <Compile Include="Index.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Index.Designer.cs">
+      <DependentUpon>Index.cs</DependentUpon>
+    </Compile>
     <Compile Include="ISemaphore.cs" />
     <Compile Include="DriverManager.cs" />
     <Compile Include="EH\ExHentaiArticle.cs" />
@@ -452,6 +458,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GraphViewer.resx">
       <DependentUpon>GraphViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Index.resx">
+      <DependentUpon>Index.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InfoForm.resx">
       <DependentUpon>InfoForm.cs</DependentUpon>
