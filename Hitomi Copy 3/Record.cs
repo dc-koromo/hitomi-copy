@@ -95,7 +95,8 @@ namespace Hitomi_Copy_3
             if (artist != "" || id != "")
             {
                 tvDate.ExpandAll();
-                tvDate.Nodes[0].EnsureVisible();
+                if (tvDate.Nodes.Count > 0)
+                    tvDate.Nodes[0].EnsureVisible();
             }
         }
 
