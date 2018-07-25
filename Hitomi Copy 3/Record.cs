@@ -12,9 +12,15 @@ namespace Hitomi_Copy_3
 {
     public partial class Record : Form
     {
-        public Record()
+        string artist = "";
+        string id = "";
+
+        public Record(string artist = "", string id = "")
         {
             InitializeComponent();
+
+            this.artist = artist;
+            this.id = id;
         }
         
         private void Record_Load(object sender, EventArgs e)
@@ -25,6 +31,8 @@ namespace Hitomi_Copy_3
             for (int i = HitomiLog.Instance.GetList().Count()-1; i >= 0; i--)
             {
                 var list = HitomiLog.Instance.GetList()[i];
+                if (artist != "") if (list.Artists == null || !list.Artists.Contains(artist)) continue;
+                if (id != "") if (list.Id != id) continue;
                 lvil.Add(new ListViewItem(new string[]
                 {
                     list.Id,
@@ -83,6 +91,12 @@ namespace Hitomi_Copy_3
                 }
             }
             tvDate.ResumeLayout();
+
+            if (artist != "" || id != "")
+            {
+                tvDate.ExpandAll();
+                tvDate.Nodes[0].EnsureVisible();
+            }
         }
 
         private TreeNode make_node(TreeNodeCollection tnc, string value, HitomiLogModel dt)

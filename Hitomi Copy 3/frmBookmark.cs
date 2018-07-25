@@ -185,8 +185,17 @@ namespace Hitomi_Copy_3
 
         private void listView_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode != Keys.Delete) return;
             ListView lv = sender as ListView;
+            if (e.KeyCode == Keys.F2)
+            {
+                if (lv.SelectedItems.Count == 1)
+                {
+                    (new Record(lv.SelectedItems[0].SubItems[1].Text.Replace('_', ' '))).Show();
+                }
+
+                return;
+            }
+            if (e.KeyCode != Keys.Delete) return;
             if (lv.SelectedItems.Count == 1)
             {
                 if (MessageBox.Show($"'{lv.SelectedItems[0].SubItems[1].Text}'를 삭제할까요?", "Hitomi Copy", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)

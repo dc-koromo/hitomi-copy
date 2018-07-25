@@ -230,6 +230,10 @@ namespace Hitomi_Copy
                 this.Close();
                 return true;
             }
+            else if (Form.ModifierKeys == Keys.None && keyData == Keys.F2)
+            {
+                (new Record(artist)).Show();
+            }
             return base.ProcessDialogKey(keyData);
         }
 
