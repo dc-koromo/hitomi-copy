@@ -294,7 +294,7 @@ namespace Hitomi_Copy
                 for (int i = 0; i < ImagePanel.Controls.Count; i++)
                 {
                     PicElement pe = ImagePanel.Controls[i] as PicElement;
-                    if (tags.All(x => pe.Article.Tags.Contains(x)))
+                    if (tags.All(x => pe.Article.Tags != null && pe.Article.Tags.Contains(x)))
                         pe.Selected = true;
                     else
                         pe.Selected = false;
