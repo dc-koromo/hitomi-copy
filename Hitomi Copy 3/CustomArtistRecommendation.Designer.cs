@@ -48,6 +48,7 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.bOpen = new System.Windows.Forms.Button();
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // lvCustomTag
@@ -86,6 +87,7 @@
             this.lvArtists.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader3,
             this.columnHeader4,
+            this.columnHeader7,
             this.columnHeader5,
             this.columnHeader6});
             this.lvArtists.FullRowSelect = true;
@@ -112,12 +114,12 @@
             // 
             this.columnHeader5.Text = "점수";
             this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader5.Width = 104;
+            this.columnHeader5.Width = 107;
             // 
             // columnHeader6
             // 
             this.columnHeader6.Text = "태그";
-            this.columnHeader6.Width = 599;
+            this.columnHeader6.Width = 515;
             // 
             // bUpdate
             // 
@@ -238,6 +240,12 @@
             this.bOpen.UseVisualStyleBackColor = true;
             this.bOpen.Click += new System.EventHandler(this.bOpen_Click);
             // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "작품 수";
+            this.columnHeader7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader7.Width = 76;
+            // 
             // CustomArtistRecommendation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -294,5 +302,6 @@
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button bOpen;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
     }
 }

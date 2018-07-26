@@ -15,6 +15,7 @@ namespace Hitomi_Copy_2.Analysis
         List<HitomiAnalysisArtist> datas = new List<HitomiAnalysisArtist>();
 
         public List<Tuple<string, double, string>> Rank;
+        public Dictionary<string, int> ArtistCount = new Dictionary<string, int>();
 
         public bool FilterArtists = false;
         public bool UserDefined = false;
@@ -34,6 +35,8 @@ namespace Hitomi_Copy_2.Analysis
 
             foreach (var pair in artists)
                 datas.Add(new HitomiAnalysisArtist(pair.Key, pair.Value));
+            foreach (var haa in datas)
+                ArtistCount.Add(haa.Aritst, haa.MetadataCount);
         }
 
         public void Update()

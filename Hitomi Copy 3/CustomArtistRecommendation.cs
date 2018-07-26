@@ -60,6 +60,7 @@ namespace Hitomi_Copy_3
                 lvil.Add(new ListViewItem(new string[] {
                     (i + 1).ToString(),
                     list2[i].Item1,
+                    HitomiAnalysis.Instance.ArtistCount[list2[i].Item1].ToString(),
                     list2[i].Item2.ToString(),
                     list2[i].Item3
                 }));
@@ -100,6 +101,7 @@ namespace Hitomi_Copy_3
                 lvil.Add(new ListViewItem(new string[] {
                     (i + 1).ToString(),
                     list2[i].Item1,
+                    HitomiAnalysis.Instance.ArtistCount[list2[i].Item1].ToString(),
                     list2[i].Item2.ToString(),
                     list2[i].Item3
                 }));
