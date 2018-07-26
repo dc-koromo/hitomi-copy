@@ -52,15 +52,16 @@ namespace Hitomi_Copy_2.Analysis
             Dictionary<string, Tuple<double, HitomiAnalysisArtist>> score = new Dictionary<string, Tuple<double, HitomiAnalysisArtist>>();
             bool xi = HitomiSetting.Instance.GetModel().UsingXiAanlysis;
             bool rms = HitomiSetting.Instance.GetModel().UsingRMSAanlysis;
-            if (xi == true && rms == true)
+            bool cos = HitomiSetting.Instance.GetModel().UsingCosineAnalysis;
+            if ((!(xi ^ rms ^ cos) && (xi | rms | cos)) || (xi & rms & cos))
             {
-                System.Windows.Forms.MessageBox.Show("[작가 추천 설정 오류] xi와 rms설정을 동시에 사용할 수 없습니다.", "Hitomi Copy", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                System.Windows.Forms.MessageBox.Show("[작가 추천 설정 오류] xi, rms, cos는 동시에 사용할 수 없습니다.", "Hitomi Copy", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return;
             }
 
             ///////////////////////////////
 
-            if (!rms)
+            if (!rms && !cos)
             {
                 foreach (var pair in user.GetDictionary())
                 {
@@ -87,7 +88,7 @@ namespace Hitomi_Copy_2.Analysis
                     }
                 }
             }
-            else if (user.GetDictionary().Count != 0)
+            else if (rms == true && user.GetDictionary().Count != 0)
             {
                 double x_mean = user.GetDictionary().Sum(x => x.Value) / user.GetDictionary().Count;
 
@@ -131,6 +132,26 @@ namespace Hitomi_Copy_2.Analysis
                         else
                             score.Add(data.Aritst, new Tuple<double, HitomiAnalysisArtist>(a / va * 100, data));
                     }
+                }
+            }
+            else if (cos == true && user.GetDictionary().Count != 0)
+            {
+                double s_user = Math.Sqrt(user.GetDictionary().Sum(x => x.Value * x.Value));
+
+                foreach (var data in datas)
+                {
+                    double s_data = Math.Sqrt(data.GetDictionary().Sum(x => x.Value * x.Value));
+                    double dist = 0.0;
+
+                    if (s_user * s_data == 0.0) continue;
+                    
+                    foreach (var pair in user.GetDictionary())
+                    {
+                        if (data.IsExsit(pair.Key))
+                            dist += data.GetRate(pair.Key) * pair.Value;
+                    }
+
+                    score.Add(data.Aritst, new Tuple<double, HitomiAnalysisArtist>(dist / (s_user * s_data) * 100, data));
                 }
             }
 

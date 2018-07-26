@@ -77,6 +77,8 @@ namespace Hitomi_Copy_2
         public bool UsingFuzzy;
         [JsonProperty]
         public bool UsingRMSAanlysis;
+        [JsonProperty]
+        public bool UsingCosineAnalysis;
     }
 
     public class HitomiSetting
