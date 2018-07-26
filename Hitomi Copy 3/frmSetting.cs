@@ -33,6 +33,7 @@ namespace Hitomi_Copy_3
             tgSPC.Checked = HitomiSetting.Instance.GetModel().ShowPageCount;
             tbACSC.Text = HitomiSetting.Instance.GetModel().AutoCompleteShowCount.ToString();
             tgFZ.Checked = HitomiSetting.Instance.GetModel().UsingFuzzy;
+            tgRMS.Checked = HitomiSetting.Instance.GetModel().UsingRMSAanlysis;
         }
 
         private void bSave_Click(object sender, EventArgs e)
@@ -63,6 +64,16 @@ namespace Hitomi_Copy_3
                 MessageBox.Show("AutoComplete Show Count는 숫자여야 합니다.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (tgXA.Checked == true && tgRMS.Checked == true)
+            {
+                MessageBox.Show("Xi Analysis와 RMS Analysis는 같이 사용할 수 없습니다.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if ((tgXA.Checked == true || tgRMS.Checked) == true && tgRNM.Checked == false)
+            {
+                MessageBox.Show("Xi Analysis 또는 RMS Analysis를 사용하는 경우 Recommend NMultiple With Length를 활성화해야 합니다. 강제로 변경하려면 setting.json에서 수정하세요.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             HitomiSetting.Instance.GetModel().WaitInfinite = tgWI.Checked;
             HitomiSetting.Instance.GetModel().WaitTimeout = Convert.ToInt32(tbWT.Text);
@@ -82,6 +93,7 @@ namespace Hitomi_Copy_3
             HitomiSetting.Instance.GetModel().ShowPageCount = tgSPC.Checked;
             HitomiSetting.Instance.GetModel().AutoCompleteShowCount = Convert.ToInt32(tbACSC.Text);
             HitomiSetting.Instance.GetModel().UsingFuzzy = tgFZ.Checked;
+            HitomiSetting.Instance.GetModel().UsingRMSAanlysis = tgRMS.Checked;
             HitomiSetting.Instance.Save();
             Close();
         }
@@ -176,10 +188,14 @@ namespace Hitomi_Copy_3
             tbInfo.Text = "퍼지 문자열 검색 알고리즘을 통해 검색합니다.";
         }
 
+        private void tgRMS_MouseEnter(object sender, EventArgs e)
+        {
+            tbInfo.Text = "최소 제곱법을 유사도 측정방법에 맞게 변형한 알고리즘을 사용하여 작가 추천 목록을 작성합니다. 이 기능을 사용하려면 Recommend NMultiple With Length 옵션을 켜세요.";
+        }
+
         private void MouseLeave_Event(object sender, EventArgs e)
         {
             tbInfo.Text = "";
         }
-
     }
 }

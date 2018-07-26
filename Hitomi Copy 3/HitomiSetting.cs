@@ -75,6 +75,8 @@ namespace Hitomi_Copy_2
         public int NotifySyncDelay;
         [JsonProperty]
         public bool UsingFuzzy;
+        [JsonProperty]
+        public bool UsingRMSAanlysis;
     }
 
     public class HitomiSetting

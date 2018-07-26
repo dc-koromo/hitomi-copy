@@ -48,31 +48,92 @@ namespace Hitomi_Copy_2.Analysis
 
             Dictionary<string, Tuple<double, HitomiAnalysisArtist>> score = new Dictionary<string, Tuple<double, HitomiAnalysisArtist>>();
             bool xi = HitomiSetting.Instance.GetModel().UsingXiAanlysis;
-            foreach (var pair in user.GetDictionary())
+            bool rms = HitomiSetting.Instance.GetModel().UsingRMSAanlysis;
+            if (xi == true && rms == true)
             {
-                foreach (var data in datas)
+                System.Windows.Forms.MessageBox.Show("[작가 추천 설정 오류] xi와 rms설정을 동시에 사용할 수 없습니다.", "Hitomi Copy", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return;
+            }
+
+            ///////////////////////////////
+
+            if (!rms)
+            {
+                foreach (var pair in user.GetDictionary())
                 {
-                    if (!xi)
+                    foreach (var data in datas)
                     {
-                        if (data.IsExsit(pair.Key))
-                            if (score.ContainsKey(data.Aritst))
-                                score[data.Aritst] = new Tuple<double, HitomiAnalysisArtist>(score[data.Aritst].Item1 + pair.Value * data.GetRate(pair.Key), score[data.Aritst].Item2);
-                            else
-                                score.Add(data.Aritst, new Tuple<double, HitomiAnalysisArtist>(pair.Value * data.GetRate(pair.Key), data));
-                    }
-                    else
-                    {
-                        if (data.IsExsit(pair.Key))
+                        if (!xi)
                         {
-                            if (score.ContainsKey(data.Aritst))
-                                score[data.Aritst] = new Tuple<double, HitomiAnalysisArtist>(score[data.Aritst].Item1 + -Math.Pow(Math.Abs(pair.Value - data.GetRate(pair.Key)), 2) * pair.Value, score[data.Aritst].Item2);
-                            else
-                                score.Add(data.Aritst, new Tuple<double, HitomiAnalysisArtist>(-Math.Pow(Math.Abs(pair.Value - data.GetRate(pair.Key)), 2) * pair.Value, data));
+                            if (data.IsExsit(pair.Key))
+                                if (score.ContainsKey(data.Aritst))
+                                    score[data.Aritst] = new Tuple<double, HitomiAnalysisArtist>(score[data.Aritst].Item1 + pair.Value * data.GetRate(pair.Key), score[data.Aritst].Item2);
+                                else
+                                    score.Add(data.Aritst, new Tuple<double, HitomiAnalysisArtist>(pair.Value * data.GetRate(pair.Key), data));
+                        }
+                        else
+                        {
+                            if (data.IsExsit(pair.Key))
+                            {
+                                if (score.ContainsKey(data.Aritst))
+                                    score[data.Aritst] = new Tuple<double, HitomiAnalysisArtist>(score[data.Aritst].Item1 + -Math.Pow(Math.Abs(pair.Value - data.GetRate(pair.Key)), 2) * pair.Value, score[data.Aritst].Item2);
+                                else
+                                    score.Add(data.Aritst, new Tuple<double, HitomiAnalysisArtist>(-Math.Pow(Math.Abs(pair.Value - data.GetRate(pair.Key)), 2) * pair.Value, data));
+                            }
                         }
                     }
                 }
             }
+            else if (user.GetDictionary().Count != 0)
+            {
+                double x_mean = user.GetDictionary().Sum(x => x.Value) / user.GetDictionary().Count;
 
+                double va = user.GetDictionary().Sum(x => (x.Value - x_mean) * (x.Value - x_mean));
+
+                foreach (var data in datas)
+                {
+                    if (data.GetDictionary().Count == 0) continue;
+                    double y_mean = data.GetDictionary().Sum(x => x.Value) / data.GetDictionary().Count;
+
+                    double a = 0.0;
+                    HashSet<string> map = new HashSet<string>();
+
+                    // 기본 형태는 rms 기반이나, rms는 예측을 하는 방법이지, 유사도 측정 방법이 아님
+                    // 따라서 계산에 사용되지 않는 태그들은 비율에 따라 반전시켜 계산하면
+                    // tangent가 요동치므로 신뢰성있는 결과를 얻을 수 있을 것 같음 ㅇㅅㅇ
+                    foreach (var pair in user.GetDictionary())
+                    {
+                        if (data.IsExsit(pair.Key))
+                            a += (data.GetRate(pair.Key) - y_mean) * (pair.Value - x_mean);
+                        else
+                            a += -y_mean * (pair.Value - x_mean) * (pair.Value - x_mean);
+                        map.Add(pair.Key);
+                    }
+
+                    foreach (var pair in data.GetDictionary())
+                    {
+                        if (!map.Contains(pair.Key))
+                            a += -x_mean * x_mean * Math.Abs(data.GetRate(pair.Key) - y_mean);
+                    }
+
+                    if (a / va >= 1.0)
+                        score.Add(data.Aritst, new Tuple<double, HitomiAnalysisArtist>(va / a * 100, data));
+                    else if (a / va > 0.0)
+                        score.Add(data.Aritst, new Tuple<double, HitomiAnalysisArtist>(a / va * 100, data));
+                    else
+                    {
+                        double v = -a / va;
+                        if (v >= 1.0)
+                            score.Add(data.Aritst, new Tuple<double, HitomiAnalysisArtist>(va / a * 100, data));
+                        else
+                            score.Add(data.Aritst, new Tuple<double, HitomiAnalysisArtist>(a / va * 100, data));
+                    }
+                }
+            }
+
+            ///////////////////////////////
+
+            // 태그 차집합 감소 연산
             if (xi)
             {
                 foreach (var pair in user.GetDictionary())
@@ -89,6 +150,7 @@ namespace Hitomi_Copy_2.Analysis
 
             var list = score.ToList();
 
+            // 하한값을 0으로 설정
             if (xi)
             {
                 double min_score = 0.0;
