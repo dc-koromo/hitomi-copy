@@ -123,6 +123,12 @@
     <Compile Include="AutoCompleteListBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Mover.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mover.Designer.cs">
+      <DependentUpon>Mover.cs</DependentUpon>
+    </Compile>
     <Compile Include="BKPicker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -392,6 +398,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="403\GalleryBlockTester.resx">
       <DependentUpon>GalleryBlockTester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mover.resx">
+      <DependentUpon>Mover.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BKPicker.resx">
       <DependentUpon>BKPicker.cs</DependentUpon>
