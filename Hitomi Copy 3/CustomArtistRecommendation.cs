@@ -7,7 +7,6 @@ using Hitomi_Copy_2.Analysis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Hitomi_Copy_3
@@ -83,7 +82,7 @@ namespace Hitomi_Copy_3
             }
         }
 
-        private async void bUpdate_ClickAsync(object sender, EventArgs e)
+        private void bUpdate_ClickAsync(object sender, EventArgs e)
         {
             HitomiAnalysis.Instance.UserDefined = true;
             HitomiAnalysis.Instance.CustomAnalysis.Clear();

@@ -29,6 +29,10 @@ namespace Hitomi_Copy_3
 
         private async void InfoDetail_LoadAsync(object sender, EventArgs e)
         {
+            ColumnSorter.InitListView(lvArtists);
+            ColumnSorter.InitListView(lvCharacters);
+            ColumnSorter.InitListView(lvSeries);
+
             Text += $"{type} : {contents}";
 
             Dictionary<string, int> series = new Dictionary<string, int>();
@@ -135,7 +139,7 @@ namespace Hitomi_Copy_3
             }
         }
 
-        private async void button1_ClickAsync(object sender, EventArgs e)
+        private void button1_ClickAsync(object sender, EventArgs e)
         {
             HitomiAnalysis.Instance.UserDefined = true;
             HitomiAnalysis.Instance.CustomAnalysis = hpa.CustomAnalysis;
