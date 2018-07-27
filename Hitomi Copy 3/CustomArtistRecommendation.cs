@@ -91,7 +91,6 @@ namespace Hitomi_Copy_3
             foreach (var lvi in lvCustomTag.Items.OfType<ListViewItem>())
                 HitomiAnalysis.Instance.CustomAnalysis.Add(new Tuple<string, int>(lvi.SubItems[0].Text, Convert.ToInt32(lvi.SubItems[1].Text)));
             
-            await Task.Run(() => HitomiAnalysis.Instance.Update());
             (Application.OpenForms[0] as frmMain).UpdateNewStatistics();
 
             List<ListViewItem> lvil = new List<ListViewItem>();
