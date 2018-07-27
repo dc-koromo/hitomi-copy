@@ -120,8 +120,15 @@
     <Compile Include="Analysis\HitomiAnalysisRelatedTags.cs" />
     <Compile Include="Analysis\HitomiAnalysisTagCount.cs" />
     <Compile Include="Analysis\HitomiAnalysisTrend.cs" />
+    <Compile Include="Analysis\HitomiPortableAnalysis.cs" />
     <Compile Include="AutoCompleteListBox.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InfoDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InfoDetail.Designer.cs">
+      <DependentUpon>InfoDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Mover.cs">
       <SubType>Form</SubType>
@@ -398,6 +405,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="403\GalleryBlockTester.resx">
       <DependentUpon>GalleryBlockTester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoDetail.resx">
+      <DependentUpon>InfoDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mover.resx">
       <DependentUpon>Mover.cs</DependentUpon>
