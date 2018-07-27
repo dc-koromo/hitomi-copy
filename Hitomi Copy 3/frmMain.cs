@@ -90,7 +90,7 @@ namespace Hitomi_Copy_3
 
             GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
 
-            //CheckLatestMetadataUpdateTime();
+            CheckLatestMetadataUpdateTime();
         }
 
         public void EmitTip()
