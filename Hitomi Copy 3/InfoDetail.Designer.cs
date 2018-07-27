@@ -46,6 +46,7 @@
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -156,7 +157,7 @@
             this.lvArtists.GridLines = true;
             this.lvArtists.Location = new System.Drawing.Point(12, 203);
             this.lvArtists.Name = "lvArtists";
-            this.lvArtists.Size = new System.Drawing.Size(820, 227);
+            this.lvArtists.Size = new System.Drawing.Size(820, 219);
             this.lvArtists.TabIndex = 12;
             this.lvArtists.UseCompatibleStateImageBehavior = false;
             this.lvArtists.View = System.Windows.Forms.View.Details;
@@ -189,12 +190,23 @@
             this.columnHeader11.Text = "태그";
             this.columnHeader11.Width = 422;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(658, 428);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(174, 26);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "작가 추천으로 업데이트";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_ClickAsync);
+            // 
             // InfoDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(847, 442);
+            this.ClientSize = new System.Drawing.Size(847, 466);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lvArtists);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lvCharacters);
@@ -233,5 +245,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.Button button1;
     }
 }

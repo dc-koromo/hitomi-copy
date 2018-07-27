@@ -134,5 +134,12 @@ namespace Hitomi_Copy_3
                 (new frmArtistInfo(this, lvArtists.SelectedItems[0].SubItems[1].Text)).Show();
             }
         }
+
+        private async void button1_ClickAsync(object sender, EventArgs e)
+        {
+            HitomiAnalysis.Instance.UserDefined = true;
+            HitomiAnalysis.Instance.CustomAnalysis = hpa.CustomAnalysis;
+            (Application.OpenForms[0] as frmMain).UpdateNewStatistics();
+        }
     }
 }
