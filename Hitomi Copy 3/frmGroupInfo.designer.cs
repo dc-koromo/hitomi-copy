@@ -32,13 +32,6 @@ namespace Hitomi_Copy
         {
             this.components = new System.ComponentModel.Container();
             this.ImagePanel = new Hitomi_Copy_2.ScrollFixLayoutPanel();
-            this.lvMyTagRank = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.bDownload = new System.Windows.Forms.Button();
-            this.bDownloadAll = new System.Windows.Forms.Button();
-            this.pbLoad = new System.Windows.Forms.ProgressBar();
-            this.bTidy = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.모두선택AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.모두선택취소CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,6 +40,15 @@ namespace Hitomi_Copy
             this.이미다운로드된작품선택취소GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.그룹북마크에추가ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lvMyTagRank = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.bDownload = new System.Windows.Forms.Button();
+            this.bDownloadAll = new System.Windows.Forms.Button();
+            this.pbLoad = new System.Windows.Forms.ProgressBar();
+            this.bTidy = new System.Windows.Forms.Button();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.자세한정보보기DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +65,66 @@ namespace Hitomi_Copy
             this.ImagePanel.Name = "ImagePanel";
             this.ImagePanel.Size = new System.Drawing.Size(1427, 642);
             this.ImagePanel.TabIndex = 5;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.모두선택AToolStripMenuItem,
+            this.모두선택취소CToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.제목비슷한작품선택취소SToolStripMenuItem,
+            this.이미다운로드된작품선택취소GToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.그룹북마크에추가ToolStripMenuItem,
+            this.toolStripMenuItem3,
+            this.자세한정보보기DToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(263, 176);
+            // 
+            // 모두선택AToolStripMenuItem
+            // 
+            this.모두선택AToolStripMenuItem.Name = "모두선택AToolStripMenuItem";
+            this.모두선택AToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.모두선택AToolStripMenuItem.Text = "모두 선택(&A)";
+            this.모두선택AToolStripMenuItem.Click += new System.EventHandler(this.모두선택AToolStripMenuItem_Click);
+            // 
+            // 모두선택취소CToolStripMenuItem
+            // 
+            this.모두선택취소CToolStripMenuItem.Name = "모두선택취소CToolStripMenuItem";
+            this.모두선택취소CToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.모두선택취소CToolStripMenuItem.Text = "모두 선택 취소(&C)";
+            this.모두선택취소CToolStripMenuItem.Click += new System.EventHandler(this.모두선택취소CToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(259, 6);
+            // 
+            // 제목비슷한작품선택취소SToolStripMenuItem
+            // 
+            this.제목비슷한작품선택취소SToolStripMenuItem.Name = "제목비슷한작품선택취소SToolStripMenuItem";
+            this.제목비슷한작품선택취소SToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.제목비슷한작품선택취소SToolStripMenuItem.Text = "제목 비슷한 작품 선택 취소(&S)";
+            this.제목비슷한작품선택취소SToolStripMenuItem.Click += new System.EventHandler(this.제목비슷한작품선택취소SToolStripMenuItem_Click);
+            // 
+            // 이미다운로드된작품선택취소GToolStripMenuItem
+            // 
+            this.이미다운로드된작품선택취소GToolStripMenuItem.Name = "이미다운로드된작품선택취소GToolStripMenuItem";
+            this.이미다운로드된작품선택취소GToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.이미다운로드된작품선택취소GToolStripMenuItem.Text = "이미 다운로드된 작품 선택 취소(&G)";
+            this.이미다운로드된작품선택취소GToolStripMenuItem.Click += new System.EventHandler(this.이미다운로드된작품선택취소GToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(259, 6);
+            // 
+            // 그룹북마크에추가ToolStripMenuItem
+            // 
+            this.그룹북마크에추가ToolStripMenuItem.Name = "그룹북마크에추가ToolStripMenuItem";
+            this.그룹북마크에추가ToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.그룹북마크에추가ToolStripMenuItem.Text = "그룹 북마크에 추가(&B)";
+            this.그룹북마크에추가ToolStripMenuItem.Click += new System.EventHandler(this.그룹북마크에추가ToolStripMenuItem_Click);
             // 
             // lvMyTagRank
             // 
@@ -135,63 +197,17 @@ namespace Hitomi_Copy
             this.bTidy.UseVisualStyleBackColor = true;
             this.bTidy.Click += new System.EventHandler(this.bTidy_Click);
             // 
-            // contextMenuStrip1
+            // toolStripMenuItem3
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.모두선택AToolStripMenuItem,
-            this.모두선택취소CToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.제목비슷한작품선택취소SToolStripMenuItem,
-            this.이미다운로드된작품선택취소GToolStripMenuItem,
-            this.toolStripMenuItem2,
-            this.그룹북마크에추가ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(263, 148);
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(259, 6);
             // 
-            // 모두선택AToolStripMenuItem
+            // 자세한정보보기DToolStripMenuItem
             // 
-            this.모두선택AToolStripMenuItem.Name = "모두선택AToolStripMenuItem";
-            this.모두선택AToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
-            this.모두선택AToolStripMenuItem.Text = "모두 선택(&A)";
-            this.모두선택AToolStripMenuItem.Click += new System.EventHandler(this.모두선택AToolStripMenuItem_Click);
-            // 
-            // 모두선택취소CToolStripMenuItem
-            // 
-            this.모두선택취소CToolStripMenuItem.Name = "모두선택취소CToolStripMenuItem";
-            this.모두선택취소CToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
-            this.모두선택취소CToolStripMenuItem.Text = "모두 선택 취소(&C)";
-            this.모두선택취소CToolStripMenuItem.Click += new System.EventHandler(this.모두선택취소CToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(259, 6);
-            // 
-            // 제목비슷한작품선택취소SToolStripMenuItem
-            // 
-            this.제목비슷한작품선택취소SToolStripMenuItem.Name = "제목비슷한작품선택취소SToolStripMenuItem";
-            this.제목비슷한작품선택취소SToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
-            this.제목비슷한작품선택취소SToolStripMenuItem.Text = "제목 비슷한 작품 선택 취소(&S)";
-            this.제목비슷한작품선택취소SToolStripMenuItem.Click += new System.EventHandler(this.제목비슷한작품선택취소SToolStripMenuItem_Click);
-            // 
-            // 이미다운로드된작품선택취소GToolStripMenuItem
-            // 
-            this.이미다운로드된작품선택취소GToolStripMenuItem.Name = "이미다운로드된작품선택취소GToolStripMenuItem";
-            this.이미다운로드된작품선택취소GToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
-            this.이미다운로드된작품선택취소GToolStripMenuItem.Text = "이미 다운로드된 작품 선택 취소(&G)";
-            this.이미다운로드된작품선택취소GToolStripMenuItem.Click += new System.EventHandler(this.이미다운로드된작품선택취소GToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(259, 6);
-            // 
-            // 그룹북마크에추가ToolStripMenuItem
-            // 
-            this.그룹북마크에추가ToolStripMenuItem.Name = "그룹북마크에추가ToolStripMenuItem";
-            this.그룹북마크에추가ToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
-            this.그룹북마크에추가ToolStripMenuItem.Text = "그룹 북마크에 추가(&B)";
-            this.그룹북마크에추가ToolStripMenuItem.Click += new System.EventHandler(this.그룹북마크에추가ToolStripMenuItem_Click);
+            this.자세한정보보기DToolStripMenuItem.Name = "자세한정보보기DToolStripMenuItem";
+            this.자세한정보보기DToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.자세한정보보기DToolStripMenuItem.Text = "자세한 정보 보기(&D)";
+            this.자세한정보보기DToolStripMenuItem.Click += new System.EventHandler(this.자세한정보보기DToolStripMenuItem_Click);
             // 
             // frmGroupInfo
             // 
@@ -236,5 +252,7 @@ namespace Hitomi_Copy
         private System.Windows.Forms.ToolStripMenuItem 이미다운로드된작품선택취소GToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem 그룹북마크에추가ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem 자세한정보보기DToolStripMenuItem;
     }
 }

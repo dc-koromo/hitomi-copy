@@ -334,5 +334,10 @@ namespace Hitomi_Copy
             HitomiBookmark.Instance.Save();
             MessageBox.Show("북마크에 추가되었습니다!", "Hitomi Copy", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void 자세한정보보기DToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            (new InfoDetail("작가", artist)).Show();
+        }
     }
 }

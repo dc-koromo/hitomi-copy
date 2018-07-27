@@ -12,7 +12,7 @@ namespace Hitomi_Copy_2.Analysis
         private static readonly Lazy<HitomiAnalysis> instance = new Lazy<HitomiAnalysis>(() => new HitomiAnalysis());
         public static HitomiAnalysis Instance => instance.Value;
 
-        List<HitomiAnalysisArtist> datas = new List<HitomiAnalysisArtist>();
+        public List<HitomiAnalysisArtist> datas = new List<HitomiAnalysisArtist>();
 
         public List<Tuple<string, double, string>> Rank;
         public Dictionary<string, int> ArtistCount = new Dictionary<string, int>();

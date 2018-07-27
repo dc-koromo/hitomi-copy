@@ -1,6 +1,5 @@
 ﻿/* Copyright (C) 2018. Hitomi Parser Developers */
 
-using Hitomi_Copy.Data;
 using Hitomi_Copy_2;
 using Hitomi_Copy_2.Analysis;
 using System;
@@ -11,33 +10,9 @@ namespace Hitomi_Copy_3.Analysis
 {
     public class HitomiPortableAnalysis
     {
-        List<HitomiAnalysisArtist> datas = new List<HitomiAnalysisArtist>();
-
         public List<Tuple<string, double, string>> Rank;
-        public Dictionary<string, int> ArtistCount = new Dictionary<string, int>();
-
-        public bool FilterArtists = false;
-        public bool UserDefined = false;
-        public bool MustInclude = false;
         public List<Tuple<string, int>> CustomAnalysis = new List<Tuple<string, int>>();
-
-        public HitomiPortableAnalysis()
-        {
-            Dictionary<string, List<HitomiMetadata>> artists = new Dictionary<string, List<HitomiMetadata>>();
-            foreach (var metadata in HitomiData.Instance.metadata_collection)
-                if (metadata.Artists != null)
-                    foreach (var artist in metadata.Artists)
-                        if (artists.ContainsKey(artist))
-                            artists[artist].Add(metadata);
-                        else
-                            artists.Add(artist, new List<HitomiMetadata>() { metadata });
-
-            foreach (var pair in artists)
-                datas.Add(new HitomiAnalysisArtist(pair.Key, pair.Value));
-            foreach (var haa in datas)
-                ArtistCount.Add(haa.Aritst, haa.MetadataCount);
-        }
-
+        
         public void Update()
         {
             HitomiAnalysisArtist user;
@@ -62,7 +37,7 @@ namespace Hitomi_Copy_3.Analysis
 
                 double va = user.GetDictionary().Sum(x => (x.Value - x_mean) * (x.Value - x_mean));
 
-                foreach (var data in datas)
+                foreach (var data in HitomiAnalysis.Instance.datas)
                 {
                     if (data.GetDictionary().Count == 0) continue;
                     double y_mean = data.GetDictionary().Sum(x => x.Value) / data.GetDictionary().Count;
@@ -106,7 +81,7 @@ namespace Hitomi_Copy_3.Analysis
             {
                 double s_user = Math.Sqrt(user.GetDictionary().Sum(x => x.Value * x.Value));
 
-                foreach (var data in datas)
+                foreach (var data in HitomiAnalysis.Instance.datas)
                 {
                     double s_data = Math.Sqrt(data.GetDictionary().Sum(x => x.Value * x.Value));
                     double dist = 0.0;

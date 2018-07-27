@@ -38,9 +38,9 @@ namespace Hitomi_Copy_3
             }
 
             if (type == "작가")
-                (new frmArtistInfo(Application.OpenForms[0], tbSearch.Text.Replace('_', ' '))).Show();
+                (new frmArtistInfo(Application.OpenForms[0], tbSearch.Text.Trim().Replace('_', ' '))).Show();
             else if (type == "그룹")
-                (new frmGroupInfo(Application.OpenForms[0], tbSearch.Text.Replace('_', ' '))).Show();
+                (new frmGroupInfo(Application.OpenForms[0], tbSearch.Text.Trim().Replace('_', ' '))).Show();
             
             DialogResult = DialogResult.OK;
             Close();
