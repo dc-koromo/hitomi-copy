@@ -22,6 +22,11 @@ namespace hitomi.Parser
             return result;
         }
 
+        /// <summary>
+        /// 히토미 갤러리로 썸네일 파싱
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
         static public HitomiArticle ParseGallery(string source)
         {
             HitomiArticle article = new HitomiArticle();
@@ -31,6 +36,24 @@ namespace hitomi.Parser
             HtmlNode nodes = document.DocumentNode.SelectNodes("//div[@class='cover-column']")[0];
 
             article.Thumbnail = nodes.SelectSingleNode(".//div//img").GetAttributeValue("src", "").Substring("//tn.hitomi.la/".Length);
+
+            return article;
+        }
+
+        /// <summary>
+        /// 갤러리 블록으로 썸네일 파싱
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        static public HitomiArticle ParseGallery2(string source)
+        {
+            HitomiArticle article = new HitomiArticle();
+
+            HtmlDocument document = new HtmlDocument();
+            document.LoadHtml(source);
+            HtmlNode nodes = document.DocumentNode.SelectNodes("//div")[0];
+
+            article.Thumbnail = nodes.SelectSingleNode(".//a//div//img").GetAttributeValue("src", "").Substring("//tn.hitomi.la/".Length);
 
             return article;
         }

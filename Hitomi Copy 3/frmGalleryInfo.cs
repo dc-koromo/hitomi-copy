@@ -148,7 +148,7 @@ namespace Hitomi_Copy
                 if (HitomiData.Instance.thumbnail_collection.ContainsKey(id))
                     url = HitomiDef.HitomiThumbnail + HitomiData.Instance.thumbnail_collection[id];
                 else
-                    url = HitomiDef.HitomiThumbnail + HitomiParser.ParseGallery(client.DownloadString(new Uri(HitomiDef.HitomiAddress + "galleries/" + metadata.ID + ".html"))).Thumbnail;
+                    url = HitomiDef.HitomiThumbnail + HitomiParser.ParseGallery2(client.DownloadString(new Uri("https://ltn.hitomi.la/galleryblock/" + metadata.ID + ".html"))).Thumbnail;
                 client.DownloadFile(url, localFilename);
                 load_image(localFilename);
                 LogEssential.Instance.PushLog(() => $"Download image successful! {url} {localFilename}");

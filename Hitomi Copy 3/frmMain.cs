@@ -801,8 +801,8 @@ namespace Hitomi_Copy_3
                 {
                     Encoding = Encoding.UTF8
                 };
-                return HitomiParser.ParseGallery(wc.DownloadString(
-                    new Uri($"https://hitomi.la/galleries/{id}.html"))).Thumbnail;
+                return HitomiParser.ParseGallery2(wc.DownloadString(
+                    new Uri($"https://ltn.hitomi.la/galleryblock/{id}.html"))).Thumbnail;
             }
             catch { }
             return "";
