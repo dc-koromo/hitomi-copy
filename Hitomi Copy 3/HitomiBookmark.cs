@@ -10,7 +10,7 @@ namespace Hitomi_Copy_3
     public class HitomiBookmarkModel
     {
         [JsonProperty]
-        public List<Tuple<string, DateTime>> Artists;
+        public List<Tuple<string, DateTime, string>> Artists;
         [JsonProperty]
         public List<Tuple<string, DateTime>> Groups;
         [JsonProperty]
@@ -42,7 +42,7 @@ namespace Hitomi_Copy_3
                 model = JsonConvert.DeserializeObject<HitomiBookmarkModel>(File.ReadAllText(bk_path));
             }
             if (model == null) model = new HitomiBookmarkModel();
-            if (model.Artists == null) model.Artists = new List<Tuple<string, DateTime>>();
+            if (model.Artists == null) model.Artists = new List<Tuple<string, DateTime, string>>();
             if (model.Groups == null) model.Groups = new List<Tuple<string, DateTime>>();
             if (model.Articles == null) model.Articles = new List<Tuple<string, DateTime>>();
             if (model.Tags == null) model.Tags = new List<Tuple<string, DateTime>>();

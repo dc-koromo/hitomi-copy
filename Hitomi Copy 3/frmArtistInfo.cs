@@ -313,7 +313,7 @@ namespace Hitomi_Copy
 
         private void 작가북마크에추가BToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            HitomiBookmark.Instance.GetModel().Artists.Add(new Tuple<string, DateTime>(artist, DateTime.Now));
+            HitomiBookmark.Instance.GetModel().Artists.Add(new Tuple<string, DateTime, string>(artist, DateTime.Now, ""));
             HitomiBookmark.Instance.Save();
             MessageBox.Show("북마크에 추가되었습니다!", "Hitomi Copy", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

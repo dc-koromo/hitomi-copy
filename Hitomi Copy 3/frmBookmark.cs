@@ -4,12 +4,16 @@ using Hitomi_Copy;
 using Hitomi_Copy.Data;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Hitomi_Copy_3
 {
     public partial class frmBookmark : Form
     {
+        Dictionary<string, ListViewGroup> groups = new Dictionary<string, ListViewGroup>();
+
         public frmBookmark()
         {
             InitializeComponent();
@@ -17,19 +21,42 @@ namespace Hitomi_Copy_3
 
         private void frmBookmark_Load(object sender, EventArgs e)
         {
-            ColumnSorter.InitListView(listView1);
+            //ColumnSorter.InitListView(listView1);
             ColumnSorter.InitListView(listView2);
             ColumnSorter.InitListView(listView6);
             ColumnSorter.InitListView(listView3);
             ColumnSorter.InitListView(listView4);
             ColumnSorter.InitListView(listView5);
-            
-            AddToList(listView1, HitomiBookmark.Instance.GetModel().Artists);
+
+            AddToListGroups(listView1, HitomiBookmark.Instance.GetModel().Artists);
             AddToList(listView2, HitomiBookmark.Instance.GetModel().Groups);
             AddToList(listView6, HitomiBookmark.Instance.GetModel().Articles);
             AddToList(listView3, HitomiBookmark.Instance.GetModel().Tags);
             AddToList(listView4, HitomiBookmark.Instance.GetModel().Series);
             AddToList(listView5, HitomiBookmark.Instance.GetModel().Characters);
+        }
+
+        private void AddToListGroups(ListView lv, List<Tuple<string, DateTime, string>> contents)
+        {
+            ListViewGroup lvg = new ListViewGroup("미분류");
+            groups.Add("미분류", lvg);
+            foreach (var content in contents)
+                if (!groups.ContainsKey(content.Item3 ?? "미분류"))
+                {
+                    ListViewGroup lvgt = new ListViewGroup(content.Item3 ?? "미분류");
+                    groups.Add(content.Item3, lvgt);
+                    lv.Groups.Add(lvgt);
+                }
+            lv.Groups.Add(lvg);
+            for (int i = 0; i < contents.Count; i++)
+            {
+                int index = contents.Count - i - 1;
+                lv.Items.Add(new ListViewItem(new string[] {
+                    (i+1).ToString(),
+                    contents[index].Item1,
+                    contents[index].Item2.ToString()
+                }, groups[contents[index].Item3 ?? "미분류"]));
+            }
         }
 
         private void AddToList(ListView lv, List<Tuple<string, DateTime>> contents)
@@ -107,10 +134,10 @@ namespace Hitomi_Copy_3
 
         public void RequestAddArtist(string artist)
         {
-            HitomiBookmark.Instance.GetModel().Artists.Add(new Tuple<string, DateTime>(artist, DateTime.Now));
+            HitomiBookmark.Instance.GetModel().Artists.Add(new Tuple<string, DateTime, string>(artist, DateTime.Now, ""));
             HitomiBookmark.Instance.Save();
             listView1.Items.Clear();
-            AddToList(listView1, HitomiBookmark.Instance.GetModel().Artists);
+            AddToListGroups(listView1, HitomiBookmark.Instance.GetModel().Artists);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -233,6 +260,65 @@ namespace Hitomi_Copy_3
                     HitomiBookmark.Instance.Save();
                     lv.SelectedItems[0].Remove();
                 }
+            }
+        }
+
+        ListViewItem selected = null;
+        private void GroupModify_Click(object sender, EventArgs e)
+        {
+            if (selected != null)
+            {
+                int index = HitomiBookmark.Instance.GetModel().Artists.Count - Convert.ToInt32(selected.SubItems[0].Text);
+                if ((sender as ToolStripMenuItem).Text != "새로 만들기...")
+                {
+                    selected.Group = groups[(sender as ToolStripMenuItem).Text];
+                    HitomiBookmark.Instance.GetModel().Artists[index] = new Tuple<string, DateTime, string>(
+                        HitomiBookmark.Instance.GetModel().Artists[index].Item1,
+                        HitomiBookmark.Instance.GetModel().Artists[index].Item2,
+                        (sender as ToolStripMenuItem).Text);
+                    HitomiBookmark.Instance.Save();
+                }
+                else
+                {
+                    using (var cgd = new CreateGroup())
+                    {
+                        if (cgd.ShowDialog() == DialogResult.OK)
+                        {
+                            if (groups.ContainsKey(cgd.ReturnValue))
+                            {
+                                MessageBox.Show("이미 존재하는 그룹입니다.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            else
+                            {
+                                ListViewGroup lvgt = new ListViewGroup(cgd.ReturnValue);
+                                groups.Add(cgd.ReturnValue, lvgt);
+                                listView1.Groups.Add(lvgt);
+                                selected.Group = groups[cgd.ReturnValue];
+                                HitomiBookmark.Instance.GetModel().Artists[index] = new Tuple<string, DateTime, string>(
+                                    HitomiBookmark.Instance.GetModel().Artists[index].Item1,
+                                    HitomiBookmark.Instance.GetModel().Artists[index].Item2,
+                                    cgd.ReturnValue);
+                                HitomiBookmark.Instance.Save();
+                            }
+                        }
+                    }
+                }
+                HitomiBookmark.Instance.Save();
+            }
+            selected = null;
+        }
+
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            (contextMenuStrip1.Items[0] as ToolStripMenuItem).DropDownItems.Clear();
+
+            if (listView1.SelectedItems.Count > 0)
+            {
+                selected = listView1.SelectedItems[0];
+                (contextMenuStrip1.Items[0] as ToolStripMenuItem).DropDownItems.AddRange(groups.Select(x => new ToolStripMenuItem(x.Key, null, GroupModify_Click)).ToArray());
+                (contextMenuStrip1.Items[0] as ToolStripMenuItem).DropDownItems.Add(new ToolStripSeparator());
+                (contextMenuStrip1.Items[0] as ToolStripMenuItem).DropDownItems.Add(new ToolStripMenuItem("새로 만들기...", null, GroupModify_Click));
             }
         }
     }
