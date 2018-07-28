@@ -61,7 +61,7 @@
             this.MinimumSize = new System.Drawing.Size(459, 474);
             this.Name = "PatchNote";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Patch Note v3.40";
+            this.Text = "Patch Note v3.41";
             this.Load += new System.EventHandler(this.PatchNote_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

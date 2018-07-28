@@ -123,24 +123,24 @@
             this.toolStripMenuItem1,
             this.삭제DToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(146, 54);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // 그룹수정MToolStripMenuItem
             // 
             this.그룹수정MToolStripMenuItem.Name = "그룹수정MToolStripMenuItem";
-            this.그룹수정MToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.그룹수정MToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.그룹수정MToolStripMenuItem.Text = "그룹 수정(&M)";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(142, 6);
             // 
             // 삭제DToolStripMenuItem
             // 
             this.삭제DToolStripMenuItem.Name = "삭제DToolStripMenuItem";
-            this.삭제DToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.삭제DToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.삭제DToolStripMenuItem.Text = "삭제(&D)";
             this.삭제DToolStripMenuItem.Click += new System.EventHandler(this.삭제DToolStripMenuItem_Click);
             // 

@@ -4,7 +4,6 @@ using Hitomi_Copy;
 using Hitomi_Copy.Data;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -262,7 +261,9 @@ namespace Hitomi_Copy_3
                 }
             }
         }
-        
+
+        #region 작가 관련
+
         ListViewItem selected = null;
         private void GroupModify_Click(object sender, EventArgs e)
         {
@@ -333,5 +334,8 @@ namespace Hitomi_Copy_3
                 }
             }
         }
+        
+        #endregion
+
     }
 }
