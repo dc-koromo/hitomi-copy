@@ -83,7 +83,7 @@ namespace Hitomi_Copy
 
         private void ProcessLoading(HitomiArticle article)
         {
-            article.Thumbnail = GetThumbnailAddress(article.Magic);
+            article.Thumbnail = HitomiCore.GetThumbnailAddress(article.Magic);
 
             string temp = Path.GetTempFileName();
             WebClient wc = new WebClient();
@@ -92,23 +92,6 @@ namespace Hitomi_Copy
             wc.DownloadFileCompleted += CallbackThumbnail;
             wc.DownloadFileAsync(new Uri(HitomiDef.HitomiThumbnail + article.Thumbnail), temp,
                 new Tuple<string, HitomiArticle>(temp, article));
-        }
-
-        private string GetThumbnailAddress(string id)
-        {
-            try
-            {
-                if (HitomiData.Instance.thumbnail_collection.ContainsKey(id))
-                    return HitomiData.Instance.thumbnail_collection[id];
-                WebClient wc = new WebClient
-                {
-                    Encoding = Encoding.UTF8
-                };
-                return HitomiParser.ParseGallery2(wc.DownloadString(
-                    new Uri($"{HitomiDef.HitomiGalleryBlock}{id}.html"))).Thumbnail;
-            }
-            catch { }
-            return "";
         }
         
         List<PicElement> stayed = new List<PicElement>();
