@@ -8,6 +8,7 @@ using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Hitomi_Copy
@@ -40,6 +41,7 @@ namespace Hitomi_Copy
         bool overlap = false;
         bool downloaded_overlapping = false;
         bool hidden_data = false;
+        bool bookmark = false;
         HitomiArticle ha;
         PictureBox pb = new PictureBox();
         Lazy<InfoForm> info;
@@ -152,17 +154,23 @@ namespace Hitomi_Copy
             g.SmoothingMode = SmoothingMode.HighQuality;
             g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
 
+            float star_position = 2;
+
             if (downloaded_overlapping)
             {
-                g.DrawString("★", new Font(font.FontFamily, 12), Brushes.Orange, new PointF(2, 2));
+                g.DrawString("★", new Font(font.FontFamily, 12), Brushes.Orange, new PointF(star_position, 2));
+                star_position += 6;
             }
 
             if (hidden_data)
             {
-                if (downloaded_overlapping)
-                    g.DrawString("★", new Font(font.FontFamily, 12), Brushes.SkyBlue, new PointF(8, 2));
-                else
-                    g.DrawString("★", new Font(font.FontFamily, 12), Brushes.SkyBlue, new PointF(2, 2));
+                g.DrawString("★", new Font(font.FontFamily, 12), Brushes.SkyBlue, new PointF(star_position, 2));
+                star_position += 6;
+            }
+
+            if (bookmark)
+            {
+                g.DrawString("★", new Font(font.FontFamily, 12), Brushes.OrangeRed, new PointF(star_position, 2));
             }
 
             if (callfrom_panel == false)
@@ -266,6 +274,7 @@ namespace Hitomi_Copy
                 {
                     if (HitomiLog.Instance.Contains(ha.Magic)) downloaded_overlapping = true;
                     if (HitomiData.Instance.thumbnail_collection.ContainsKey(ha.Magic)) hidden_data = true;
+                    if (ha.Artists != null && HitomiBookmark.Instance.GetModel().Artists.Any(x => ha.Artists.Contains(x.Item1))) bookmark = true;
                 }
             } }
         public override Font Font

@@ -28,6 +28,7 @@ namespace Hitomi_Copy_3
         bool overlap = false;
         bool downloaded_overlapping = false;
         bool hidden_data = false;
+        bool bookmark = false;
         HitomiArticle ha;
         Lazy<InfoForm> info;
         Form parent;
@@ -128,20 +129,26 @@ namespace Hitomi_Copy_3
 
             g.SmoothingMode = SmoothingMode.HighQuality;
             g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            
+            float star_position = vuiPB.Location.X + 4;
 
             if (downloaded_overlapping)
             {
-                g.DrawString("★", new Font(font.FontFamily, 12), Brushes.Orange, new PointF(vuiPB.Location.X + 4, vuiPB.Location.Y));
+                g.DrawString("★", new Font(font.FontFamily, 12), Brushes.Orange, new PointF(star_position, vuiPB.Location.Y));
+                star_position += 6;
             }
 
             if (hidden_data)
             {
-                if (downloaded_overlapping)
-                    g.DrawString("★", new Font(font.FontFamily, 12), Brushes.SkyBlue, new PointF(vuiPB.Location.X + 10, vuiPB.Location.Y));
-                else
-                    g.DrawString("★", new Font(font.FontFamily, 12), Brushes.SkyBlue, new PointF(vuiPB.Location.X + 4, vuiPB.Location.Y));
+                g.DrawString("★", new Font(font.FontFamily, 12), Brushes.SkyBlue, new PointF(star_position, vuiPB.Location.Y));
+                star_position += 6;
             }
 
+            if (bookmark)
+            {
+                g.DrawString("★", new Font(font.FontFamily, 12), Brushes.OrangeRed, new PointF(star_position, vuiPB.Location.Y));
+            }
+            
             vuiLabels.ForEach(x => x.Paint(g));
             vuiButtons.ForEach(x => x.Paint(g));
 
@@ -201,6 +208,7 @@ namespace Hitomi_Copy_3
         { get { return ha; } set { ha = value;
                 if (HitomiLog.Instance.Contains(ha.Magic)) downloaded_overlapping = true;
                 if (HitomiData.Instance.thumbnail_collection.ContainsKey(ha.Magic)) hidden_data = true;
+                if (ha.Artists != null && HitomiBookmark.Instance.GetModel().Artists.Any(x => ha.Artists.Contains(x.Item1))) bookmark = true;
             } }
         public override Font Font
         { set { font = value; } }

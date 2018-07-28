@@ -65,6 +65,5 @@ namespace Hitomi_Copy_3
         {
             return ref model;
         }
-
     }
 }
