@@ -262,7 +262,7 @@ namespace Hitomi_Copy_3
                 }
             }
         }
-
+        
         ListViewItem selected = null;
         private void GroupModify_Click(object sender, EventArgs e)
         {
@@ -319,6 +319,18 @@ namespace Hitomi_Copy_3
                 (contextMenuStrip1.Items[0] as ToolStripMenuItem).DropDownItems.AddRange(groups.Select(x => new ToolStripMenuItem(x.Key, null, GroupModify_Click)).ToArray());
                 (contextMenuStrip1.Items[0] as ToolStripMenuItem).DropDownItems.Add(new ToolStripSeparator());
                 (contextMenuStrip1.Items[0] as ToolStripMenuItem).DropDownItems.Add(new ToolStripMenuItem("새로 만들기...", null, GroupModify_Click));
+            }
+        }
+
+        private void 삭제DToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                if (MessageBox.Show($"'{listView1.SelectedItems[0].SubItems[1].Text}'를 삭제할까요?", "Hitomi Copy", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    int index = HitomiBookmark.Instance.GetModel().Artists.Count - Convert.ToInt32(listView1.SelectedItems[0].SubItems[0].Text);
+                    HitomiBookmark.Instance.GetModel().Artists.RemoveAt(index);
+                }
             }
         }
     }
