@@ -101,7 +101,7 @@ namespace Hitomi_Copy_3
 
         private void AddMetadataToPanel(int i, string id)
         {
-            string thumbnail = GetThumbnailAddress(id);
+            string thumbnail = HitomiCore.GetThumbnailAddress(id);
 
             string temp = Path.GetTempFileName();
             WebClient wc = new WebClient();
@@ -135,22 +135,6 @@ namespace Hitomi_Copy_3
             LogEssential.Instance.PushLog(() => $"Load successful! {HitomiDef.HitomiThumbnail + thumbnail} {temp} {i} {id}");
         }
         
-        private string GetThumbnailAddress(string id)
-        {
-            try
-            {
-                if (HitomiData.Instance.thumbnail_collection.ContainsKey(id))
-                    return HitomiData.Instance.thumbnail_collection[id];
-                WebClient wc = new WebClient
-                {
-                    Encoding = Encoding.UTF8
-                };
-                return HitomiParser.ParseGallery2(wc.DownloadString(
-                    new Uri($"https://ltn.hitomi.la/galleryblock/{id}.html"))).Thumbnail;
-            }
-            catch { }
-            return "";
-        }
         
         private void bDelete_Click(object sender, System.EventArgs e)
         {

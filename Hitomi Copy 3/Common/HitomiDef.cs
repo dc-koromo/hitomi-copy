@@ -12,6 +12,7 @@ namespace hitomi.Parser
          */
         public const string HitomiAddress = @"https://hitomi.la/";
         public const string HitomiGalleryAddress = @"https://ltn.hitomi.la/galleries/";
+        public const string HitomiGalleryBlock = @"https://ltn.hitomi.la/galleryblock/";
         public const string HitomiReaderAddress = @"https://hitomi.la/reader/";
         public const string HitomiThumbnail = @"https://tn.hitomi.la/";
         

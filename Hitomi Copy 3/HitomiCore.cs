@@ -2,6 +2,7 @@
 
 using hitomi.Parser;
 using Hitomi_Copy;
+using Hitomi_Copy.Data;
 using Hitomi_Copy_2.GalleryInfo;
 using System;
 using System.Net;
@@ -39,6 +40,23 @@ namespace Hitomi_Copy_2
                 Thread.Sleep(1000);
                 DownloadAndSetImageLink(tuple.Item1, tuple.Item2);
             }
+        }
+
+        static public string GetThumbnailAddress(string id)
+        {
+            try
+            {
+                if (HitomiData.Instance.thumbnail_collection.ContainsKey(id))
+                    return HitomiData.Instance.thumbnail_collection[id];
+                WebClient wc = new WebClient
+                {
+                    Encoding = Encoding.UTF8
+                };
+                return HitomiParser.ParseGallery2(wc.DownloadString(
+                    new Uri($"{HitomiDef.HitomiGalleryBlock}{id}.html"))).Thumbnail;
+            }
+            catch { }
+            return "";
         }
 
         static public int GetPageCount(IPicElement pe)

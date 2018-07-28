@@ -105,7 +105,7 @@ namespace Hitomi_Copy
                     Encoding = Encoding.UTF8
                 };
                 return HitomiParser.ParseGallery2(wc.DownloadString(
-                    new Uri($"https://ltn.hitomi.la/galleryblock/{id}.html"))).Thumbnail;
+                    new Uri($"{HitomiDef.HitomiGalleryBlock}{id}.html"))).Thumbnail;
             }
             catch { }
             return "";

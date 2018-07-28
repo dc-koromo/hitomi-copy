@@ -787,27 +787,10 @@ namespace Hitomi_Copy_3
         private async void AddMetadataToPanel(HitomiMetadata metadata)
         {
             HitomiArticle article = HitomiCommon.MetadataToArticle(metadata);
-            await Task.Run(() => article.Thumbnail = GetThumbnailAddress(article.Magic));
+            await Task.Run(() => article.Thumbnail = HitomiCore.GetThumbnailAddress(article.Magic));
             AddArticleToPanel(article);
         }
-
-        private string GetThumbnailAddress(string id)
-        {
-            try
-            {
-                if (HitomiData.Instance.thumbnail_collection.ContainsKey(id))
-                    return HitomiData.Instance.thumbnail_collection[id];
-                WebClient wc = new WebClient
-                {
-                    Encoding = Encoding.UTF8
-                };
-                return HitomiParser.ParseGallery2(wc.DownloadString(
-                    new Uri($"https://ltn.hitomi.la/galleryblock/{id}.html"))).Thumbnail;
-            }
-            catch { }
-            return "";
-        }
-
+        
         private void AddArticleToPanel(HitomiArticle article)
         {
             string temp = Path.GetTempFileName();
