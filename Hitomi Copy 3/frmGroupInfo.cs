@@ -295,6 +295,11 @@ namespace Hitomi_Copy
 
         private void 그룹북마크에추가ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (HitomiBookmark.Instance.GetModel().Groups.Any(x => x.Item1 == group))
+            {
+                MessageBox.Show($"이미 추가된 그룹입니다!", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             HitomiBookmark.Instance.GetModel().Groups.Add(new Tuple<string, DateTime>(group, DateTime.Now));
             HitomiBookmark.Instance.Save();
             MessageBox.Show("북마크에 추가되었습니다!", "Hitomi Copy", MessageBoxButtons.OK, MessageBoxIcon.Information);

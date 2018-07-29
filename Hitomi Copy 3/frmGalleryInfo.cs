@@ -322,6 +322,11 @@ namespace Hitomi_Copy
 
         private void button9_Click(object sender, EventArgs e)
         {
+            if (HitomiBookmark.Instance.GetModel().Articles.Any(x => x.Item1 == id))
+            {
+                MessageBox.Show($"이미 추가된 작품입니다!", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             HitomiBookmark.Instance.GetModel().Articles.Add(new Tuple<string, DateTime>(id, DateTime.Now));
             HitomiBookmark.Instance.Save();
             MessageBox.Show("북마크에 추가되었습니다!", "Hitomi Copy", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -133,6 +133,11 @@ namespace Hitomi_Copy_3
 
         public void RequestAddArtist(string artist)
         {
+            if (HitomiBookmark.Instance.GetModel().Artists.Any(x => x.Item1 == artist))
+            {
+                MessageBox.Show($"이미 추가된 작가입니다!", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             HitomiBookmark.Instance.GetModel().Artists.Add(new Tuple<string, DateTime, string>(artist, DateTime.Now, ""));
             HitomiBookmark.Instance.Save();
             listView1.Items.Clear();
@@ -148,6 +153,11 @@ namespace Hitomi_Copy_3
 
         public void RequestAddGroup(string group)
         {
+            if (HitomiBookmark.Instance.GetModel().Groups.Any(x => x.Item1 == group))
+            {
+                MessageBox.Show($"이미 추가된 그룹입니다!", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             HitomiBookmark.Instance.GetModel().Groups.Add(new Tuple<string, DateTime>(group, DateTime.Now));
             HitomiBookmark.Instance.Save();
             listView2.Items.Clear();
@@ -163,6 +173,11 @@ namespace Hitomi_Copy_3
 
         public void RequestAddTag(string tag)
         {
+            if (HitomiBookmark.Instance.GetModel().Tags.Any(x => x.Item1 == tag))
+            {
+                MessageBox.Show($"이미 추가된 태그입니다!", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             HitomiBookmark.Instance.GetModel().Tags.Add(new Tuple<string, DateTime>(tag, DateTime.Now));
             HitomiBookmark.Instance.Save();
             listView3.Items.Clear();
@@ -178,6 +193,11 @@ namespace Hitomi_Copy_3
 
         public void RequestAddSeries(string series)
         {
+            if (HitomiBookmark.Instance.GetModel().Series.Any(x => x.Item1 == series))
+            {
+                MessageBox.Show($"이미 추가된 시리즈입니다!", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             HitomiBookmark.Instance.GetModel().Series.Add(new Tuple<string, DateTime>(series, DateTime.Now));
             HitomiBookmark.Instance.Save();
             listView4.Items.Clear();
@@ -193,6 +213,11 @@ namespace Hitomi_Copy_3
 
         public void RequestAddCharacter(string character)
         {
+            if (HitomiBookmark.Instance.GetModel().Characters.Any(x => x.Item1 == character))
+            {
+                MessageBox.Show($"이미 추가된 캐릭터입니다!", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             HitomiBookmark.Instance.GetModel().Characters.Add(new Tuple<string, DateTime>(character, DateTime.Now));
             HitomiBookmark.Instance.Save();
             listView5.Items.Clear();
