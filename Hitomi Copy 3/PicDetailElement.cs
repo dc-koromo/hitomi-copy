@@ -89,6 +89,11 @@ namespace Hitomi_Copy_3
             //        }
             //    }
             //}
+
+            //https://stackoverflow.com/questions/5489273/how-do-i-disable-the-horizontal-scrollbar-in-a-panel=
+            flowLayoutPanel1.AutoScroll = true;
+            flowLayoutPanel1.HorizontalScroll.Enabled = false;
+            flowLayoutPanel1.HorizontalScroll.Visible = false;
         }
 
         public void ConvertToVUILabel(Label label)
