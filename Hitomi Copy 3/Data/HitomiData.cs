@@ -155,6 +155,23 @@ namespace Hitomi_Copy.Data
         }
         #endregion
 
+        public void OptimizeMetadata()
+        {
+            List<HitomiMetadata> tmeta = new List<HitomiMetadata>();
+            int m = metadata_collection.Count;
+            for (int i = 0; i < m; i++)
+            {
+                string lang = metadata_collection[i].Language;
+                if (metadata_collection[i].Language == null) lang = "N/A";
+                if (HitomiSetting.Instance.GetModel().Language != "ALL" &&
+                    HitomiSetting.Instance.GetModel().Language != lang)
+                    continue;
+                tmeta.Add(metadata_collection[i]);
+            }
+            metadata_collection.Clear();
+            metadata_collection = tmeta;
+        }
+
         #region TagData
         public void SortTagdata()
         {
@@ -170,7 +187,7 @@ namespace Hitomi_Copy.Data
         #endregion
 
         #region TagData Rebuilding
-        
+
         private void Add(Dictionary<string, int> dic, string key)
         {
             if (dic.ContainsKey(key))

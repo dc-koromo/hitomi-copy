@@ -40,6 +40,12 @@ namespace Hitomi_Copy_2
                     await Task.Run(() => HitomiData.Instance.DownloadHiddendata());
                 }
 
+                if (HitomiSetting.Instance.GetModel().UsingOptimization)
+                {
+                    lStatus.Text = "데이터 최적화 중입니다...";
+                    await Task.Run(() => HitomiData.Instance.OptimizeMetadata());
+                }
+
                 lStatus.Text = "태그 데이터를 작성하는 중입니다...";
                 await Task.Run(() => HitomiData.Instance.RebuildTagData());
 

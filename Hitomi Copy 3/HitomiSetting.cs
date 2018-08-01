@@ -79,6 +79,8 @@ namespace Hitomi_Copy_2
         public bool UsingRMSAanlysis;
         [JsonProperty]
         public bool UsingCosineAnalysis;
+        [JsonProperty]
+        public bool UsingOptimization;
     }
 
     public class HitomiSetting
@@ -126,6 +128,7 @@ namespace Hitomi_Copy_2
                 model.ShowPageCount = false;
                 model.AutoCompleteShowCount = 30;
                 model.NotifySyncDelay = 24 * 3;
+                model.UsingOptimization = false;
                 Save();
             }
             else
