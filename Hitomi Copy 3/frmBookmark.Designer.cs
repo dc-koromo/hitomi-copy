@@ -40,6 +40,7 @@
             this.삭제DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
@@ -82,6 +83,7 @@
             // 
             // listView1
             // 
+            this.listView1.AllowDrop = true;
             this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -163,6 +165,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button6);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.listView1);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
@@ -172,6 +175,17 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "작가";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button6.Location = new System.Drawing.Point(6, 311);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(139, 23);
+            this.button6.TabIndex = 9;
+            this.button6.Text = "텍스트 목록 만들기";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button1
             // 
@@ -528,5 +542,6 @@
         private System.Windows.Forms.ToolStripMenuItem 그룹수정MToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 삭제DToolStripMenuItem;
+        private System.Windows.Forms.Button button6;
     }
 }

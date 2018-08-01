@@ -5,6 +5,7 @@ using Hitomi_Copy.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Hitomi_Copy_3
@@ -12,6 +13,7 @@ namespace Hitomi_Copy_3
     public partial class frmBookmark : Form
     {
         Dictionary<string, ListViewGroup> groups = new Dictionary<string, ListViewGroup>();
+        Dictionary<string, List<string>> artists = new Dictionary<string, List<string>>();
 
         public frmBookmark()
         {
@@ -39,11 +41,13 @@ namespace Hitomi_Copy_3
         {
             ListViewGroup lvg = new ListViewGroup("미분류");
             groups.Add("미분류", lvg);
+            artists.Add("미분류", new List<string>());
             foreach (var content in contents)
                 if (!groups.ContainsKey(content.Item3 ?? "미분류"))
                 {
                     ListViewGroup lvgt = new ListViewGroup(content.Item3 ?? "미분류");
                     groups.Add(content.Item3, lvgt);
+                    artists.Add(content.Item3, new List<string>());
                     lv.Groups.Add(lvgt);
                 }
             lv.Groups.Add(lvg);
@@ -55,6 +59,7 @@ namespace Hitomi_Copy_3
                     contents[index].Item1,
                     contents[index].Item2.ToString()
                 }, groups[contents[index].Item3 ?? "미분류"]));
+                artists[contents[index].Item3 ?? "미분류"].Add(contents[index].Item1);
             }
         }
 
@@ -287,6 +292,18 @@ namespace Hitomi_Copy_3
             }
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            StringBuilder builder = new StringBuilder();
+            foreach (var group in artists)
+            {
+                builder.Append($"------- {group.Key} -------\n");
+                foreach (var artist in group.Value)
+                    builder.Append($"{artist}\n");
+            }
+            MessageBox.Show(builder.ToString());
+        }
+
         #region 작가 관련
 
         ListViewItem selected = null;
@@ -359,8 +376,8 @@ namespace Hitomi_Copy_3
                 }
             }
         }
-        
-        #endregion
 
+        #endregion
+        
     }
 }
