@@ -276,6 +276,8 @@ namespace Hitomi_Copy.Data
             await Task.Run(() => DownloadMetadata());
             await Task.Run(() => DownloadHiddendata());
             await Task.Run(() => SortTagdata());
+            if (HitomiSetting.Instance.GetModel().UsingOptimization)
+                await Task.Run(() => OptimizeMetadata());
             LogEssential.Instance.PushLog(() => "End Synchronization");
             LogEssential.Instance.PushLog(() => $"Sync Report : {metadata_collection.Count} {tagdata_collection.female.Count}");
         }
