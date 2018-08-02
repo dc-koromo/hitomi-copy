@@ -1092,6 +1092,7 @@ namespace Hitomi_Copy_3
             string artists = "";
             string type = article.Types ?? "";
             string series = "";
+            string search = tbSearch.Text;
             if (article.Artists != null)
             {
                 if (HitomiSetting.Instance.GetModel().ReplaceArtistsWithTitle == false)
@@ -1109,6 +1110,8 @@ namespace Hitomi_Copy_3
                 foreach (char c in invalid) artists = artists.Replace(c.ToString(), "");
             if (series != null)
                 foreach (char c in invalid) series = series.Replace(c.ToString(), "");
+            if (search != null)
+                foreach (char c in invalid) search = search.Replace(c.ToString(), "");
 
             string path = tbDownloadPath.Text;
             if (article.ManualPathOrdering)
@@ -1119,6 +1122,7 @@ namespace Hitomi_Copy_3
             path = Regex.Replace(path, "{Type}", type, RegexOptions.IgnoreCase);
             path = Regex.Replace(path, "{Date}", DateTime.Now.ToString(), RegexOptions.IgnoreCase);
             path = Regex.Replace(path, "{Series}", series, RegexOptions.IgnoreCase);
+            path = Regex.Replace(path, "{Search}", search, RegexOptions.IgnoreCase);
             return path;
         }
 
