@@ -69,13 +69,15 @@
             this.tbLPM = new MetroFramework.Controls.MetroTextBox();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel20 = new MetroFramework.Controls.MetroLabel();
+            this.tgCA = new MetroFramework.Controls.MetroToggle();
             this.metroLabel19 = new MetroFramework.Controls.MetroLabel();
             this.tgRMS = new MetroFramework.Controls.MetroToggle();
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
             this.metroLabel18 = new MetroFramework.Controls.MetroLabel();
             this.tgFZ = new MetroFramework.Controls.MetroToggle();
-            this.metroLabel20 = new MetroFramework.Controls.MetroLabel();
-            this.tgCA = new MetroFramework.Controls.MetroToggle();
+            this.metroLabel21 = new MetroFramework.Controls.MetroLabel();
+            this.tgOPT = new MetroFramework.Controls.MetroToggle();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
@@ -434,7 +436,7 @@
             // metroLabel10
             // 
             this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(104, 90);
+            this.metroLabel10.Location = new System.Drawing.Point(104, 69);
             this.metroLabel10.Name = "metroLabel10";
             this.metroLabel10.Size = new System.Drawing.Size(78, 19);
             this.metroLabel10.Style = MetroFramework.MetroColorStyle.Pink;
@@ -444,7 +446,7 @@
             // tgUL
             // 
             this.tgUL.AutoSize = true;
-            this.tgUL.Location = new System.Drawing.Point(158, 91);
+            this.tgUL.Location = new System.Drawing.Point(158, 69);
             this.tgUL.Name = "tgUL";
             this.tgUL.Size = new System.Drawing.Size(80, 19);
             this.tgUL.Style = MetroFramework.MetroColorStyle.Pink;
@@ -522,7 +524,7 @@
             // metroLabel14
             // 
             this.metroLabel14.AutoSize = true;
-            this.metroLabel14.Location = new System.Drawing.Point(104, 115);
+            this.metroLabel14.Location = new System.Drawing.Point(104, 94);
             this.metroLabel14.Name = "metroLabel14";
             this.metroLabel14.Size = new System.Drawing.Size(78, 19);
             this.metroLabel14.Style = MetroFramework.MetroColorStyle.Pink;
@@ -532,7 +534,7 @@
             // tgAS
             // 
             this.tgAS.AutoSize = true;
-            this.tgAS.Location = new System.Drawing.Point(158, 116);
+            this.tgAS.Location = new System.Drawing.Point(158, 94);
             this.tgAS.Name = "tgAS";
             this.tgAS.Size = new System.Drawing.Size(80, 19);
             this.tgAS.Style = MetroFramework.MetroColorStyle.Pink;
@@ -578,7 +580,7 @@
             this.metroTabPage1.Controls.Add(this.tbMTS);
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage1.HorizontalScrollbarSize = 3;
+            this.metroTabPage1.HorizontalScrollbarSize = 2;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage1.Name = "metroTabPage1";
             this.metroTabPage1.Size = new System.Drawing.Size(422, 240);
@@ -715,7 +717,7 @@
             this.metroTabPage2.Controls.Add(this.tgRA);
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.HorizontalScrollbarSize = 3;
+            this.metroTabPage2.HorizontalScrollbarSize = 2;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage2.Name = "metroTabPage2";
             this.metroTabPage2.Size = new System.Drawing.Size(422, 240);
@@ -739,7 +741,7 @@
             this.metroTabPage3.Controls.Add(this.tgRL);
             this.metroTabPage3.HorizontalScrollbarBarColor = true;
             this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage3.HorizontalScrollbarSize = 3;
+            this.metroTabPage3.HorizontalScrollbarSize = 2;
             this.metroTabPage3.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage3.Name = "metroTabPage3";
             this.metroTabPage3.Size = new System.Drawing.Size(422, 240);
@@ -748,6 +750,28 @@
             this.metroTabPage3.VerticalScrollbarBarColor = true;
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel20
+            // 
+            this.metroLabel20.AutoSize = true;
+            this.metroLabel20.Location = new System.Drawing.Point(92, 162);
+            this.metroLabel20.Name = "metroLabel20";
+            this.metroLabel20.Size = new System.Drawing.Size(144, 19);
+            this.metroLabel20.Style = MetroFramework.MetroColorStyle.Pink;
+            this.metroLabel20.TabIndex = 50;
+            this.metroLabel20.Text = "Using Cosine Analysis : ";
+            // 
+            // tgCA
+            // 
+            this.tgCA.AutoSize = true;
+            this.tgCA.Location = new System.Drawing.Point(212, 163);
+            this.tgCA.Name = "tgCA";
+            this.tgCA.Size = new System.Drawing.Size(80, 19);
+            this.tgCA.Style = MetroFramework.MetroColorStyle.Pink;
+            this.tgCA.TabIndex = 49;
+            this.tgCA.Text = "Off";
+            this.tgCA.UseSelectable = true;
+            this.tgCA.MouseEnter += new System.EventHandler(this.tgCA_MouseEnter);
             // 
             // metroLabel19
             // 
@@ -773,6 +797,8 @@
             // 
             // metroTabPage4
             // 
+            this.metroTabPage4.Controls.Add(this.metroLabel21);
+            this.metroTabPage4.Controls.Add(this.tgOPT);
             this.metroTabPage4.Controls.Add(this.metroLabel18);
             this.metroTabPage4.Controls.Add(this.tgFZ);
             this.metroTabPage4.Controls.Add(this.metroLabel14);
@@ -781,7 +807,7 @@
             this.metroTabPage4.Controls.Add(this.tgUL);
             this.metroTabPage4.HorizontalScrollbarBarColor = true;
             this.metroTabPage4.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage4.HorizontalScrollbarSize = 3;
+            this.metroTabPage4.HorizontalScrollbarSize = 2;
             this.metroTabPage4.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage4.Name = "metroTabPage4";
             this.metroTabPage4.Size = new System.Drawing.Size(422, 240);
@@ -794,7 +820,7 @@
             // metroLabel18
             // 
             this.metroLabel18.AutoSize = true;
-            this.metroLabel18.Location = new System.Drawing.Point(95, 140);
+            this.metroLabel18.Location = new System.Drawing.Point(95, 119);
             this.metroLabel18.Name = "metroLabel18";
             this.metroLabel18.Size = new System.Drawing.Size(88, 19);
             this.metroLabel18.Style = MetroFramework.MetroColorStyle.Pink;
@@ -804,7 +830,7 @@
             // tgFZ
             // 
             this.tgFZ.AutoSize = true;
-            this.tgFZ.Location = new System.Drawing.Point(158, 141);
+            this.tgFZ.Location = new System.Drawing.Point(158, 119);
             this.tgFZ.Name = "tgFZ";
             this.tgFZ.Size = new System.Drawing.Size(80, 19);
             this.tgFZ.Style = MetroFramework.MetroColorStyle.Pink;
@@ -813,27 +839,27 @@
             this.tgFZ.UseSelectable = true;
             this.tgFZ.MouseEnter += new System.EventHandler(this.tgFZ_MouseEnter);
             // 
-            // metroLabel20
+            // metroLabel21
             // 
-            this.metroLabel20.AutoSize = true;
-            this.metroLabel20.Location = new System.Drawing.Point(92, 162);
-            this.metroLabel20.Name = "metroLabel20";
-            this.metroLabel20.Size = new System.Drawing.Size(144, 19);
-            this.metroLabel20.Style = MetroFramework.MetroColorStyle.Pink;
-            this.metroLabel20.TabIndex = 50;
-            this.metroLabel20.Text = "Using Cosine Analysis : ";
+            this.metroLabel21.AutoSize = true;
+            this.metroLabel21.Location = new System.Drawing.Point(51, 144);
+            this.metroLabel21.Name = "metroLabel21";
+            this.metroLabel21.Size = new System.Drawing.Size(132, 19);
+            this.metroLabel21.Style = MetroFramework.MetroColorStyle.Pink;
+            this.metroLabel21.TabIndex = 52;
+            this.metroLabel21.Text = "Using Optimization : ";
             // 
-            // tgCA
+            // tgOPT
             // 
-            this.tgCA.AutoSize = true;
-            this.tgCA.Location = new System.Drawing.Point(212, 163);
-            this.tgCA.Name = "tgCA";
-            this.tgCA.Size = new System.Drawing.Size(80, 19);
-            this.tgCA.Style = MetroFramework.MetroColorStyle.Pink;
-            this.tgCA.TabIndex = 49;
-            this.tgCA.Text = "Off";
-            this.tgCA.UseSelectable = true;
-            this.tgCA.MouseEnter += new System.EventHandler(this.tgCA_MouseEnter);
+            this.tgOPT.AutoSize = true;
+            this.tgOPT.Location = new System.Drawing.Point(158, 144);
+            this.tgOPT.Name = "tgOPT";
+            this.tgOPT.Size = new System.Drawing.Size(80, 19);
+            this.tgOPT.Style = MetroFramework.MetroColorStyle.Pink;
+            this.tgOPT.TabIndex = 51;
+            this.tgOPT.Text = "Off";
+            this.tgOPT.UseSelectable = true;
+            this.tgOPT.MouseEnter += new System.EventHandler(this.tgOPT_MouseEnter);
             // 
             // frmSetting
             // 
@@ -916,5 +942,7 @@
         private MetroFramework.Controls.MetroToggle tgRMS;
         private MetroFramework.Controls.MetroLabel metroLabel20;
         private MetroFramework.Controls.MetroToggle tgCA;
+        private MetroFramework.Controls.MetroLabel metroLabel21;
+        private MetroFramework.Controls.MetroToggle tgOPT;
     }
 }
