@@ -391,6 +391,7 @@
     <Compile Include="RelatedTagsTest.Designer.cs">
       <DependentUpon>RelatedTagsTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Script\ImageScript.cs" />
     <Compile Include="ScrollFixLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
