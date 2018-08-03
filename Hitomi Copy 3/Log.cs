@@ -327,7 +327,7 @@ namespace Hitomi_Copy_3
                                     PushString($"Are you looking for '{similar}'?");
                                     return;
                                 }
-                            
+
                                 (Application.OpenForms[0] as frmMain).AddRecommendArtist(artist);
                             }
                             else
@@ -377,7 +377,7 @@ namespace Hitomi_Copy_3
                                     }
                                     else
                                         HitomiAnalysis.Instance.CustomAnalysis.Add(new Tuple<string, int>(tag, val));
-                                    
+
                                 }
                                 catch (Exception ex)
                                 {
@@ -489,6 +489,48 @@ namespace Hitomi_Copy_3
                                 }
                             }
                         }
+                        else if (split[1] == "+t")
+                        {
+                            Dictionary<string, int> tag_dic = new Dictionary<string, int>();
+                            foreach (var data in HitomiData.Instance.metadata_collection)
+                            {
+                                if (data.Tags != null)
+                                {
+                                    foreach (var tag in data.Tags)
+                                    {
+                                        if (tag_dic.ContainsKey(tag))
+                                            tag_dic[tag] += 1;
+                                        else
+                                            tag_dic.Add(tag, 1);
+                                    }
+                                }
+                            }
+                            HitomiAnalysis.Instance.CustomAnalysis.Clear();
+                            HitomiAnalysis.Instance.CustomAnalysis = tag_dic.Select(x => new Tuple<string, int>(x.Key, x.Value)).ToList();
+                        }
+                        else if (split[1] == "+tl")
+                        {
+                            Dictionary<string, int> tag_dic = new Dictionary<string, int>();
+                            foreach (var data in HitomiData.Instance.metadata_collection)
+                            {
+                                string lang = data.Language;
+                                if (data.Language == null) lang = "N/A";
+                                if (HitomiSetting.Instance.GetModel().Language != "ALL" &&
+                                    HitomiSetting.Instance.GetModel().Language != lang) continue;
+                                if (data.Tags != null)
+                                {
+                                    foreach (var tag in data.Tags)
+                                    {
+                                        if (tag_dic.ContainsKey(tag))
+                                            tag_dic[tag] += 1;
+                                        else
+                                            tag_dic.Add(tag, 1);
+                                    }
+                                }
+                            }
+                            HitomiAnalysis.Instance.CustomAnalysis.Clear();
+                            HitomiAnalysis.Instance.CustomAnalysis = tag_dic.Select(x => new Tuple<string, int>(x.Key, x.Value)).ToList();
+                        }
                         else if (split[1] == "-")
                         {
                             if (split.Length >= 3)
@@ -507,7 +549,7 @@ namespace Hitomi_Copy_3
                     else
                     {
                         PushString("using 'ra (option) [tag] [count] ...'");
-                        PushString("  (option): ulist, list, clear, update, on, off, mion, mioff, rank, add, addbk, +, +a, +abk, -");
+                        PushString("  (option): ulist, list, clear, update, on, off, mion, mioff, rank, add, addbk, +, +a, +abk, +t, +tl, -");
                     }
                 }
                 else if (cmd == "install")
