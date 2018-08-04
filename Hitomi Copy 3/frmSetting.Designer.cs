@@ -74,10 +74,12 @@
             this.metroLabel19 = new MetroFramework.Controls.MetroLabel();
             this.tgRMS = new MetroFramework.Controls.MetroToggle();
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
-            this.metroLabel18 = new MetroFramework.Controls.MetroLabel();
-            this.tgFZ = new MetroFramework.Controls.MetroToggle();
             this.metroLabel21 = new MetroFramework.Controls.MetroLabel();
             this.tgOPT = new MetroFramework.Controls.MetroToggle();
+            this.metroLabel18 = new MetroFramework.Controls.MetroLabel();
+            this.tgFZ = new MetroFramework.Controls.MetroToggle();
+            this.metroLabel22 = new MetroFramework.Controls.MetroLabel();
+            this.tgOPV = new MetroFramework.Controls.MetroToggle();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
@@ -554,7 +556,7 @@
             this.metroTabControl1.Controls.Add(this.metroTabPage4);
             this.metroTabControl1.Location = new System.Drawing.Point(12, 12);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 3;
             this.metroTabControl1.Size = new System.Drawing.Size(430, 282);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Pink;
             this.metroTabControl1.TabIndex = 49;
@@ -797,6 +799,8 @@
             // 
             // metroTabPage4
             // 
+            this.metroTabPage4.Controls.Add(this.metroLabel22);
+            this.metroTabPage4.Controls.Add(this.tgOPV);
             this.metroTabPage4.Controls.Add(this.metroLabel21);
             this.metroTabPage4.Controls.Add(this.tgOPT);
             this.metroTabPage4.Controls.Add(this.metroLabel18);
@@ -816,6 +820,28 @@
             this.metroTabPage4.VerticalScrollbarBarColor = true;
             this.metroTabPage4.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage4.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel21
+            // 
+            this.metroLabel21.AutoSize = true;
+            this.metroLabel21.Location = new System.Drawing.Point(51, 144);
+            this.metroLabel21.Name = "metroLabel21";
+            this.metroLabel21.Size = new System.Drawing.Size(132, 19);
+            this.metroLabel21.Style = MetroFramework.MetroColorStyle.Pink;
+            this.metroLabel21.TabIndex = 52;
+            this.metroLabel21.Text = "Using Optimization : ";
+            // 
+            // tgOPT
+            // 
+            this.tgOPT.AutoSize = true;
+            this.tgOPT.Location = new System.Drawing.Point(158, 144);
+            this.tgOPT.Name = "tgOPT";
+            this.tgOPT.Size = new System.Drawing.Size(80, 19);
+            this.tgOPT.Style = MetroFramework.MetroColorStyle.Pink;
+            this.tgOPT.TabIndex = 51;
+            this.tgOPT.Text = "Off";
+            this.tgOPT.UseSelectable = true;
+            this.tgOPT.MouseEnter += new System.EventHandler(this.tgOPT_MouseEnter);
             // 
             // metroLabel18
             // 
@@ -839,27 +865,27 @@
             this.tgFZ.UseSelectable = true;
             this.tgFZ.MouseEnter += new System.EventHandler(this.tgFZ_MouseEnter);
             // 
-            // metroLabel21
+            // metroLabel22
             // 
-            this.metroLabel21.AutoSize = true;
-            this.metroLabel21.Location = new System.Drawing.Point(51, 144);
-            this.metroLabel21.Name = "metroLabel21";
-            this.metroLabel21.Size = new System.Drawing.Size(132, 19);
-            this.metroLabel21.Style = MetroFramework.MetroColorStyle.Pink;
-            this.metroLabel21.TabIndex = 52;
-            this.metroLabel21.Text = "Using Optimization : ";
+            this.metroLabel22.AutoSize = true;
+            this.metroLabel22.Location = new System.Drawing.Point(53, 169);
+            this.metroLabel22.Name = "metroLabel22";
+            this.metroLabel22.Size = new System.Drawing.Size(130, 19);
+            this.metroLabel22.Style = MetroFramework.MetroColorStyle.Pink;
+            this.metroLabel22.TabIndex = 54;
+            this.metroLabel22.Text = "Off PackageViewer : ";
             // 
-            // tgOPT
+            // tgOPV
             // 
-            this.tgOPT.AutoSize = true;
-            this.tgOPT.Location = new System.Drawing.Point(158, 144);
-            this.tgOPT.Name = "tgOPT";
-            this.tgOPT.Size = new System.Drawing.Size(80, 19);
-            this.tgOPT.Style = MetroFramework.MetroColorStyle.Pink;
-            this.tgOPT.TabIndex = 51;
-            this.tgOPT.Text = "Off";
-            this.tgOPT.UseSelectable = true;
-            this.tgOPT.MouseEnter += new System.EventHandler(this.tgOPT_MouseEnter);
+            this.tgOPV.AutoSize = true;
+            this.tgOPV.Location = new System.Drawing.Point(158, 169);
+            this.tgOPV.Name = "tgOPV";
+            this.tgOPV.Size = new System.Drawing.Size(80, 19);
+            this.tgOPV.Style = MetroFramework.MetroColorStyle.Pink;
+            this.tgOPV.TabIndex = 53;
+            this.tgOPV.Text = "Off";
+            this.tgOPV.UseSelectable = true;
+            this.tgOPV.MouseEnter += new System.EventHandler(this.tgOPV_MouseEnter);
             // 
             // frmSetting
             // 
@@ -944,5 +970,7 @@
         private MetroFramework.Controls.MetroToggle tgCA;
         private MetroFramework.Controls.MetroLabel metroLabel21;
         private MetroFramework.Controls.MetroToggle tgOPT;
+        private MetroFramework.Controls.MetroLabel metroLabel22;
+        private MetroFramework.Controls.MetroToggle tgOPV;
     }
 }

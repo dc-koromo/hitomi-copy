@@ -36,6 +36,7 @@ namespace Hitomi_Copy_3
             tgRMS.Checked = HitomiSetting.Instance.GetModel().UsingRMSAanlysis;
             tgCA.Checked = HitomiSetting.Instance.GetModel().UsingCosineAnalysis;
             tgOPT.Checked = HitomiSetting.Instance.GetModel().UsingOptimization;
+            tgOPV.Checked = HitomiSetting.Instance.GetModel().OffPackageViewer;
         }
 
         private void bSave_Click(object sender, EventArgs e)
@@ -108,6 +109,7 @@ namespace Hitomi_Copy_3
             HitomiSetting.Instance.GetModel().UsingRMSAanlysis = tgRMS.Checked;
             HitomiSetting.Instance.GetModel().UsingCosineAnalysis = tgCA.Checked;
             HitomiSetting.Instance.GetModel().UsingOptimization = tgOPT.Checked;
+            HitomiSetting.Instance.GetModel().OffPackageViewer = tgOPV.Checked;
             HitomiSetting.Instance.Save();
             Close();
         }
@@ -215,6 +217,11 @@ namespace Hitomi_Copy_3
         private void tgOPT_MouseEnter(object sender, EventArgs e)
         {
             tbInfo.Text = "선택된 언어이외의 자료를 메모리에서 자동 해제합니다. 이 설정을 사용하면 최대 90%의 메모리 공간을 절약할 수 있습니다.";
+        }
+
+        private void tgOPV_MouseEnter(object sender, EventArgs e)
+        {
+            tbInfo.Text = "패키지 뷰어를 사용하지 않습니다.";
         }
 
         private void MouseLeave_Event(object sender, EventArgs e)

@@ -7,6 +7,7 @@ using Hitomi_Copy_2;
 using Hitomi_Copy_2.Analysis;
 using Hitomi_Copy_2.EH;
 using Hitomi_Copy_3.MM;
+using Hitomi_Copy_3.Package;
 using MetroFramework;
 using MM_Downloader.MM;
 using System;
@@ -85,6 +86,7 @@ namespace Hitomi_Copy_3
             Task.Run(() => CheckDriver());
             Task.Run(() => UpdateStatistics());
             Task.Run(() => MMUpdate.Instance.UpdateCheck());
+            if (!HitomiSetting.Instance.GetModel().OffPackageViewer) (new PackageViewer()).Show();
 
             EmitTip();
 
@@ -1212,6 +1214,12 @@ namespace Hitomi_Copy_3
         public void AddRecommendArtist(string artist)
         {
             AddToPannel(new RecommendControl(artist));
+        }
+        public void RecommendFocus()
+        {
+            Focus();
+            MainTab.SelectedTab = metroTabPage4;
+            RecommendPannel.Focus();
         }
         private void MoreLoadRecommend()
         {

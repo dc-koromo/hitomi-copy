@@ -14,9 +14,24 @@ namespace Hitomi_Copy_3.Package
 
         private void PackageViewer_Load(object sender, EventArgs e)
         {
-            PackagePannel.Controls.Add(new PackageElement());
-            PackagePannel.Controls.Add(new PackageElement());
-            PackagePannel.Controls.Add(new PackageElement());
+            var list = Package.Instance.GetModel().Elements;
+            list.Sort((a, b) => b.LatestUpdate.CompareTo(a.LatestUpdate));
+            foreach (var pem in list)
+            {
+                PackagePannel.Controls.Add(new PackageElement(pem));
+            }
+        }
+
+        private void PackageViewer_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            for (int i = PackagePannel.Controls.Count - 1; i >= 0; i--)
+                if (PackagePannel.Controls[i] != null)
+                    PackagePannel.Controls[i].Dispose();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            (new PackageMaker()).Show();
         }
     }
 }

@@ -42,13 +42,13 @@ namespace Hitomi_Copy_3.Package
     {
         private static readonly Lazy<Package> instance = new Lazy<Package>(() => new Package());
         public static Package Instance => instance.Value;
-        public const string package_link = "";
+        public const string package_link = "https://raw.githubusercontent.com/dc-koromo/hitomi-downloader-2/master/Package/packages.json";
 
         PackageModel model;
 
         public Package()
         {
-            model = new PackageModel();
+            UpdatePackage();
         }
         
         public void UpdatePackage()
