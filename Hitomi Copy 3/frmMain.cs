@@ -333,7 +333,7 @@ namespace Hitomi_Copy_3
         {
             WebClient wc = new WebClient();
             wc.Encoding = Encoding.UTF8;
-            wc.Headers.Add(HttpRequestHeader.Cookie, "igneous=fc251d23e;ipb_member_id=1904662;ipb_pass_hash=ff8940e2cc632d601091b8836fca66f5;");
+            wc.Headers.Add(HttpRequestHeader.Cookie, "igneous=30e0c0a66;ipb_member_id=2742770;ipb_pass_hash=6042be35e994fed920ee7dd11180b65f;");
             return wc;
         }
 
