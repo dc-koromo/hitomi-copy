@@ -39,7 +39,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("맑은 고딕", 13F);
-            this.label1.Location = new System.Drawing.Point(110, 8);
+            this.label1.Location = new System.Drawing.Point(127, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 25);
             this.label1.TabIndex = 1;
@@ -47,19 +47,19 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(115, 36);
+            this.textBox1.Location = new System.Drawing.Point(132, 45);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(862, 53);
+            this.textBox1.Size = new System.Drawing.Size(821, 63);
             this.textBox1.TabIndex = 2;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F);
-            this.button1.Location = new System.Drawing.Point(1000, 19);
+            this.button1.Location = new System.Drawing.Point(992, 27);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(69, 55);
+            this.button1.Size = new System.Drawing.Size(67, 56);
             this.button1.TabIndex = 3;
             this.button1.Text = "+";
             this.button1.UseVisualStyleBackColor = true;
@@ -71,8 +71,8 @@
             this.pictureBox1.Location = new System.Drawing.Point(9, 8);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(81, 81);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -88,7 +88,8 @@
             this.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "PackageElement";
-            this.Size = new System.Drawing.Size(1096, 374);
+            this.Size = new System.Drawing.Size(1096, 234);
+            this.Load += new System.EventHandler(this.PackageElement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

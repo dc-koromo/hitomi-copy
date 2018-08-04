@@ -57,7 +57,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MinimumSize = new System.Drawing.Size(1163, 536);
             this.Name = "PackageViewer";
-            this.Text = "PackageViewer";
+            this.Text = "패키지 뷰어";
             this.Load += new System.EventHandler(this.PackageViewer_Load);
             this.ResumeLayout(false);
 

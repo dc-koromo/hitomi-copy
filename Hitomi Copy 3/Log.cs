@@ -834,6 +834,10 @@ namespace Hitomi_Copy_3
                 {
                     (new PackageViewer()).Show();
                 }
+                else if (cmd == "pm")
+                {
+                    (new PackageMaker()).Show();
+                }
                 else if (cmd == "help")
                 {
                     PushString("Realtime Variable Update System");

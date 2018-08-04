@@ -22,8 +22,6 @@ namespace Hitomi_Copy_3.Package
                 Region = new Region(gp);
             }
             e.Graphics.InterpolationMode = InterpolationMode.HighQualityBilinear;
-            //e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
-            //e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             e.Graphics.DrawEllipse(new Pen(new SolidBrush(Color.Pink), 5), 0, 0, this.Width - 1, this.Height - 1);
         }
