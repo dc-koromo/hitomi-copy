@@ -81,6 +81,8 @@ namespace Hitomi_Copy_2
         public bool UsingCosineAnalysis;
         [JsonProperty]
         public bool UsingOptimization;
+        [JsonProperty]
+        public bool OffPackageViewer;
     }
 
     public class HitomiSetting
@@ -129,6 +131,7 @@ namespace Hitomi_Copy_2
                 model.AutoCompleteShowCount = 30;
                 model.NotifySyncDelay = 24 * 3;
                 model.UsingOptimization = false;
+                model.OffPackageViewer = false;
                 Save();
             }
             else

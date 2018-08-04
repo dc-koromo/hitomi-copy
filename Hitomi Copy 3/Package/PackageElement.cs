@@ -8,7 +8,7 @@ namespace Hitomi_Copy_3.Package
 {
     public partial class PackageElement : UserControl
     {
-        PackageElementModel pem;
+        //PackageElementModel pem;
 
         public PackageElement()
         {

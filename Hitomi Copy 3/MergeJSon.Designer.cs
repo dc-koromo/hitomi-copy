@@ -30,6 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MergeJSon));
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,17 +51,18 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -62,11 +70,82 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(707, 362);
             this.tabControl1.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.textBox5);
+            this.tabPage3.Controls.Add(this.label5);
+            this.tabPage3.Controls.Add(this.button5);
+            this.tabPage3.Controls.Add(this.textBox6);
+            this.tabPage3.Controls.Add(this.label6);
+            this.tabPage3.Controls.Add(this.button6);
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(699, 334);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Hiddendata Merge";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(70, 247);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(591, 23);
+            this.textBox5.TabIndex = 11;
+            this.textBox5.Text = "hiddendata_tmp.json";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(22, 250);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 15);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "저장 : ";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(343, 276);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(156, 33);
+            this.button5.TabIndex = 9;
+            this.button5.Text = "불러오기";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(70, 26);
+            this.textBox6.Multiline = true;
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(591, 215);
+            this.textBox6.TabIndex = 8;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(22, 26);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(42, 15);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "대상 : ";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(505, 276);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(156, 33);
+            this.button6.TabIndex = 6;
+            this.button6.Text = "저장";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // tabPage1
             // 
@@ -208,75 +287,75 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // tabPage3
+            // tabPage4
             // 
-            this.tabPage3.Controls.Add(this.textBox5);
-            this.tabPage3.Controls.Add(this.label5);
-            this.tabPage3.Controls.Add(this.button5);
-            this.tabPage3.Controls.Add(this.textBox6);
-            this.tabPage3.Controls.Add(this.label6);
-            this.tabPage3.Controls.Add(this.button6);
-            this.tabPage3.Location = new System.Drawing.Point(4, 24);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(699, 334);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Hiddendata Merge";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage4.Controls.Add(this.textBox7);
+            this.tabPage4.Controls.Add(this.label7);
+            this.tabPage4.Controls.Add(this.button7);
+            this.tabPage4.Controls.Add(this.textBox8);
+            this.tabPage4.Controls.Add(this.label8);
+            this.tabPage4.Controls.Add(this.button8);
+            this.tabPage4.Location = new System.Drawing.Point(4, 24);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(699, 334);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Package";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // textBox7
             // 
-            this.textBox5.Location = new System.Drawing.Point(70, 247);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(591, 23);
-            this.textBox5.TabIndex = 11;
-            this.textBox5.Text = "hiddendata_tmp.json";
+            this.textBox7.Location = new System.Drawing.Point(70, 247);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(591, 23);
+            this.textBox7.TabIndex = 17;
+            this.textBox7.Text = "packages.json";
             // 
-            // label5
+            // label7
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 250);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 15);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "저장 : ";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(22, 250);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 15);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "저장 : ";
             // 
-            // button5
+            // button7
             // 
-            this.button5.Location = new System.Drawing.Point(343, 276);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(156, 33);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "불러오기";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button7.Location = new System.Drawing.Point(343, 276);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(156, 33);
+            this.button7.TabIndex = 15;
+            this.button7.Text = "불러오기";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // textBox6
+            // textBox8
             // 
-            this.textBox6.Location = new System.Drawing.Point(70, 26);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(591, 215);
-            this.textBox6.TabIndex = 8;
+            this.textBox8.Location = new System.Drawing.Point(70, 26);
+            this.textBox8.Multiline = true;
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(591, 215);
+            this.textBox8.TabIndex = 14;
             // 
-            // label6
+            // label8
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(22, 26);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 15);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "대상 : ";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(22, 26);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(42, 15);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "대상 : ";
             // 
-            // button6
+            // button8
             // 
-            this.button6.Location = new System.Drawing.Point(505, 276);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(156, 33);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "저장";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button8.Location = new System.Drawing.Point(505, 276);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(156, 33);
+            this.button8.TabIndex = 12;
+            this.button8.Text = "저장";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // MergeJSon
             // 
@@ -294,12 +373,14 @@
             this.Name = "MergeJSon";
             this.Text = "JSon Merger";
             this.tabControl1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -328,5 +409,12 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button8;
     }
 }

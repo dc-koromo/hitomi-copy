@@ -3,6 +3,7 @@
 using hitomi.Parser;
 using Hitomi_Copy.Data;
 using Hitomi_Copy_2;
+using Hitomi_Copy_3.Package;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
@@ -207,5 +208,68 @@ namespace Hitomi_Copy_3
         }
 
         #endregion
+
+        #region 패키지
+
+        private void TransactionPackage(string path)
+        {
+            try
+            {
+                PackageElementModel pem = JsonConvert.DeserializeObject<PackageElementModel>(File.ReadAllText(path));
+                Package.Package.Instance.GetModel().Elements.Add(pem);
+                LogEssential.Instance.PushLog(() => $"'{path}'로 부터 1개가 트랜잭션됨");
+            }
+            catch (Exception ex)
+            {
+                LogEssential.Instance.PushLog(() => $"'{path}'는 옳바른 PackageElementModel가 아닌 것 같습니다. {ex.Message}");
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (Package.Package.Instance.GetModel().Elements == null)
+                Package.Package.Instance.GetModel().Elements = new List<PackageElementModel>();
+            foreach (var path in textBox8.Lines)
+            {
+                if (File.Exists(path))
+                {
+                    TransactionPackage(path);
+                }
+                else if (Directory.Exists(path))
+                {
+                    foreach (var file in from x in Directory.GetFiles(path) where x.EndsWith(".json") select x)
+                    {
+                        TransactionPackage(file);
+                    }
+                }
+                else
+                {
+                    LogEssential.Instance.PushLog(() => $"'{path}'은 옳바른 파일또는 경로가 아닙니다.");
+                }
+            }
+            LogEssential.Instance.PushLog(() => $"{Package.Package.Instance.GetModel().Elements.Count}개의 데이터가 트랜잭션됨");
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Package.Package.Instance.GetModel().LatestUpdate = DateTime.Now;
+                Package.Package.Instance.GetModel().PackageCount = Package.Package.Instance.GetModel().Elements.Count;
+                string json = JsonConvert.SerializeObject(Package.Package.Instance.GetModel(), Formatting.Indented);
+                using (var fs = new StreamWriter(new FileStream(textBox7.Text, FileMode.Create, FileAccess.Write)))
+                {
+                    fs.Write(json);
+                }
+                LogEssential.Instance.PushLog(() => $"{Package.Package.Instance.GetModel().PackageCount}개의 데이터가 성공적으로 '{textBox7.Text}'로 커밋되었습니다.");
+            }
+            catch (Exception ex)
+            {
+                LogEssential.Instance.PushLog(() => $"커밋 중 오류가 발생했습니다. {ex.Message}");
+            }
+        }
+
+        #endregion
+
     }
 }

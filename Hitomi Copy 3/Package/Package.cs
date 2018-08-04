@@ -45,6 +45,11 @@ namespace Hitomi_Copy_3.Package
         public const string package_link = "";
 
         PackageModel model;
+
+        public Package()
+        {
+            model = new PackageModel();
+        }
         
         public void UpdatePackage()
         {
