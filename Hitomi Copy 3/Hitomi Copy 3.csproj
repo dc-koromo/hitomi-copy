@@ -353,6 +353,22 @@
     <Compile Include="MM\MMSetting.cs" />
     <Compile Include="MM\MMUpdate.cs" />
     <Compile Include="NoticeReceiver.cs" />
+    <Compile Include="Package\OvalPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Package\Package.cs" />
+    <Compile Include="Package\PackageElement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Package\PackageElement.Designer.cs">
+      <DependentUpon>PackageElement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Package\PackageViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Package\PackageViewer.Designer.cs">
+      <DependentUpon>PackageViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="PatchNote.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -372,6 +388,11 @@
     </Compile>
     <Compile Include="PicDetailElement.Designer.cs">
       <DependentUpon>PicDetailElement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RecommendControl.cs">
       <SubType>UserControl</SubType>
@@ -503,19 +524,20 @@
     <EmbeddedResource Include="MergeJSon.resx">
       <DependentUpon>MergeJSon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Package\PackageElement.resx">
+      <DependentUpon>PackageElement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Package\PackageViewer.resx">
+      <DependentUpon>PackageViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PatchNote.resx">
       <DependentUpon>PatchNote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="PicDetailElement.resx">
       <DependentUpon>PicDetailElement.cs</DependentUpon>
     </EmbeddedResource>

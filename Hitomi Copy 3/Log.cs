@@ -6,6 +6,7 @@ using Hitomi_Copy_2.Analysis;
 using Hitomi_Copy_2.EH;
 using Hitomi_Copy_3._403;
 using Hitomi_Copy_3.Analysis;
+using Hitomi_Copy_3.Package;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -828,6 +829,10 @@ namespace Hitomi_Copy_3
                 else if (cmd == "car")
                 {
                     (new CustomArtistRecommendation()).Show();
+                }
+                else if (cmd == "pv")
+                {
+                    (new PackageViewer()).Show();
                 }
                 else if (cmd == "help")
                 {
