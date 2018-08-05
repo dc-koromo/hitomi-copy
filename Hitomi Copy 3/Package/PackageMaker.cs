@@ -102,6 +102,7 @@ namespace Hitomi_Copy_3.Package
             }
 
             MessageBox.Show("패키지 내보내기 완료됨!", "패키지 메이커", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Package.Instance.GetModel().Elements.Add(pem);
         }
     }
 }
