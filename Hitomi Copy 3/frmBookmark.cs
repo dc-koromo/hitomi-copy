@@ -138,6 +138,7 @@ namespace Hitomi_Copy_3
 
         public void RequestAddArtist(string artist)
         {
+            artist = artist.Replace('_', ' ');
             if (HitomiBookmark.Instance.GetModel().Artists.Any(x => x.Item1 == artist))
             {
                 MessageBox.Show($"이미 추가된 작가입니다!", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -158,6 +159,7 @@ namespace Hitomi_Copy_3
 
         public void RequestAddGroup(string group)
         {
+            group = group.Replace('_', ' ');
             if (HitomiBookmark.Instance.GetModel().Groups.Any(x => x.Item1 == group))
             {
                 MessageBox.Show($"이미 추가된 그룹입니다!", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -178,6 +180,7 @@ namespace Hitomi_Copy_3
 
         public void RequestAddTag(string tag)
         {
+            tag = tag.Replace('_', ' ');
             if (HitomiBookmark.Instance.GetModel().Tags.Any(x => x.Item1 == tag))
             {
                 MessageBox.Show($"이미 추가된 태그입니다!", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -198,6 +201,7 @@ namespace Hitomi_Copy_3
 
         public void RequestAddSeries(string series)
         {
+            series = series.Replace('_', ' ');
             if (HitomiBookmark.Instance.GetModel().Series.Any(x => x.Item1 == series))
             {
                 MessageBox.Show($"이미 추가된 시리즈입니다!", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -218,6 +222,7 @@ namespace Hitomi_Copy_3
 
         public void RequestAddCharacter(string character)
         {
+            character = character.Replace('_', ' ');
             if (HitomiBookmark.Instance.GetModel().Characters.Any(x => x.Item1 == character))
             {
                 MessageBox.Show($"이미 추가된 캐릭터입니다!", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
