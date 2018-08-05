@@ -1,6 +1,6 @@
 {
-  "PackageCount": 1,
-  "LatestUpdate": "2018-08-04T20:18:11.19098+09:00",
+  "PackageCount": 2,
+  "LatestUpdate": "2018-08-05T11:58:58.5568245+09:00",
   "Elements": [
     {
       "Name": "히토미 카피 개발자 추천 작가 패키지",
@@ -268,6 +268,157 @@
         {
           "Item1": "펨돔",
           "Item2": "hanabi"
+        }
+      ],
+      "Articles": [],
+      "Etc": []
+    },
+    {
+      "Name": "히토미 카피 개발자 추천 작가 패키지 (로리)",
+      "Nickname": "Hitomi Copy Developer",
+      "Description": "로리 관련 작가를 선별해봤습니다 ㅇㅅㅇ\r\n\r\n2분류 << 1분류 << 3분류",
+      "ImageLink": "https://raw.githubusercontent.com/dc-koromo/hitomi-downloader-2/master/Package/Image/koromo2.jpg",
+      "LatestUpdate": "2018-08-05T11:58:52.8613783+09:00",
+      "Artists": [
+        {
+          "Item1": "1분류",
+          "Item2": "quzilax"
+        },
+        {
+          "Item1": "1분류",
+          "Item2": "mochi"
+        },
+        {
+          "Item1": "1분류",
+          "Item2": "asanagi"
+        },
+        {
+          "Item1": "1분류",
+          "Item2": "dancyo"
+        },
+        {
+          "Item1": "2분류",
+          "Item2": "kiya shii"
+        },
+        {
+          "Item1": "2분류",
+          "Item2": "kanyapyi"
+        },
+        {
+          "Item1": "2분류",
+          "Item2": "yukiu con"
+        },
+        {
+          "Item1": "2분류",
+          "Item2": "haguhagu"
+        },
+        {
+          "Item1": "2분류",
+          "Item2": "henreader"
+        },
+        {
+          "Item1": "2분류",
+          "Item2": "maki"
+        },
+        {
+          "Item1": "2분류",
+          "Item2": "hisasi"
+        },
+        {
+          "Item1": "2분류",
+          "Item2": "noise"
+        },
+        {
+          "Item1": "2분류",
+          "Item2": "kinku"
+        },
+        {
+          "Item1": "2분류",
+          "Item2": "okada kou"
+        },
+        {
+          "Item1": "2분류",
+          "Item2": "atage"
+        },
+        {
+          "Item1": "3분류",
+          "Item2": "miwa futaba"
+        },
+        {
+          "Item1": "3분류",
+          "Item2": "mamezou"
+        },
+        {
+          "Item1": "3분류",
+          "Item2": "ichihaya"
+        },
+        {
+          "Item1": "3분류",
+          "Item2": "tanaka decilitre"
+        },
+        {
+          "Item1": "3분류",
+          "Item2": "kannazuki motofumi"
+        },
+        {
+          "Item1": "3분류",
+          "Item2": "panbai"
+        },
+        {
+          "Item1": "3분류",
+          "Item2": "fuyuno mikan"
+        },
+        {
+          "Item1": "미분류",
+          "Item2": "gengorou"
+        },
+        {
+          "Item1": "미분류",
+          "Item2": "shouji ayumu"
+        },
+        {
+          "Item1": "미분류",
+          "Item2": "rico"
+        },
+        {
+          "Item1": "미분류",
+          "Item2": "shimanto shisakugata"
+        },
+        {
+          "Item1": "미분류",
+          "Item2": "yuizaki kazuya"
+        },
+        {
+          "Item1": "미분류",
+          "Item2": "tamano kedama"
+        },
+        {
+          "Item1": "미분류",
+          "Item2": "urajirou"
+        },
+        {
+          "Item1": "미분류",
+          "Item2": "shirane taito"
+        },
+        {
+          "Item1": "미분류",
+          "Item2": "usashiro mani"
+        },
+        {
+          "Item1": "미분류",
+          "Item2": "gomennasai"
+        },
+        {
+          "Item1": "미분류",
+          "Item2": "sekiya asami"
+        },
+        {
+          "Item1": "미분류",
+          "Item2": "inuboshi"
+        },
+        {
+          "Item1": "미분류",
+          "Item2": "higashiyama show"
         }
       ],
       "Articles": [],
