@@ -866,6 +866,8 @@ namespace Hitomi_Copy_3
                     PushString("record : Open record window.");
                     PushString("finder : Open finder window.");
                     PushString("manual : Open manual window.");
+                    PushString("pv : Load new package viewer.");
+                    PushString("pm : Load new package maker.");
                 }
                 else if (cmd == "fucs")
                 {
