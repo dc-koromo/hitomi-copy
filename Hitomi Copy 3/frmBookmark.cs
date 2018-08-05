@@ -40,6 +40,8 @@ namespace Hitomi_Copy_3
         private void AddToListGroups(ListView lv, List<Tuple<string, DateTime, string>> contents)
         {
             ListViewGroup lvg = new ListViewGroup("미분류");
+            groups.Clear();
+            artists.Clear();
             groups.Add("미분류", lvg);
             artists.Add("미분류", new List<string>());
             foreach (var content in contents)
