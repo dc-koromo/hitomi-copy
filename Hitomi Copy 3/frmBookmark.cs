@@ -14,6 +14,7 @@ namespace Hitomi_Copy_3
     {
         Dictionary<string, ListViewGroup> groups = new Dictionary<string, ListViewGroup>();
         Dictionary<string, List<string>> artists = new Dictionary<string, List<string>>();
+        int delete_ic = 0;
 
         public frmBookmark()
         {
@@ -246,6 +247,26 @@ namespace Hitomi_Copy_3
             return base.ProcessDialogKey(keyData);
         }
 
+        private void DeleteSpecifyElement(List<Tuple<string, DateTime, string>> list, string item_text)
+        {
+            for (int i = 0; i < list.Count; i++)
+                if (list[i].Item1.ToLower().Replace(' ', '_') == item_text.ToLower().Replace(' ', '_'))
+                {
+                    list.RemoveAt(i);
+                    return;
+                }
+        }
+        
+        private void DeleteSpecifyElement(List<Tuple<string, DateTime>> list, string item_text)
+        {
+            for (int i = 0; i < list.Count; i++)
+                if (list[i].Item1.ToLower().Replace(' ', '_') == item_text.ToLower().Replace(' ', '_'))
+                {
+                    list.RemoveAt(i);
+                    return;
+                }
+        }
+
         private void listView_KeyDown(object sender, KeyEventArgs e)
         {
             ListView lv = sender as ListView;
@@ -265,33 +286,27 @@ namespace Hitomi_Copy_3
                 {
                     if (lv == listView1)
                     {
-                        int index = HitomiBookmark.Instance.GetModel().Artists.Count - Convert.ToInt32(lv.SelectedItems[0].SubItems[0].Text);
-                        HitomiBookmark.Instance.GetModel().Artists.RemoveAt(index);
+                        DeleteSpecifyElement(HitomiBookmark.Instance.GetModel().Artists, lv.SelectedItems[0].SubItems[1].Text);
                     }
                     else if (lv == listView2)
                     {
-                        int index = HitomiBookmark.Instance.GetModel().Groups.Count - Convert.ToInt32(lv.SelectedItems[0].SubItems[0].Text);
-                        HitomiBookmark.Instance.GetModel().Groups.RemoveAt(index);
+                        DeleteSpecifyElement(HitomiBookmark.Instance.GetModel().Groups, lv.SelectedItems[0].SubItems[1].Text);
                     }
                     else if (lv == listView6)
                     {
-                        int index = HitomiBookmark.Instance.GetModel().Articles.Count - Convert.ToInt32(lv.SelectedItems[0].SubItems[0].Text);
-                        HitomiBookmark.Instance.GetModel().Articles.RemoveAt(index);
+                        DeleteSpecifyElement(HitomiBookmark.Instance.GetModel().Articles, lv.SelectedItems[0].SubItems[1].Text);
                     }
                     else if (lv == listView3)
                     {
-                        int index = HitomiBookmark.Instance.GetModel().Tags.Count - Convert.ToInt32(lv.SelectedItems[0].SubItems[0].Text);
-                        HitomiBookmark.Instance.GetModel().Tags.RemoveAt(index);
+                        DeleteSpecifyElement(HitomiBookmark.Instance.GetModel().Tags, lv.SelectedItems[0].SubItems[1].Text);
                     }
                     else if (lv == listView4)
                     {
-                        int index = HitomiBookmark.Instance.GetModel().Series.Count - Convert.ToInt32(lv.SelectedItems[0].SubItems[0].Text);
-                        HitomiBookmark.Instance.GetModel().Series.RemoveAt(index);
+                        DeleteSpecifyElement(HitomiBookmark.Instance.GetModel().Series, lv.SelectedItems[0].SubItems[1].Text);
                     }
                     else if (lv == listView5)
                     {
-                        int index = HitomiBookmark.Instance.GetModel().Characters.Count - Convert.ToInt32(lv.SelectedItems[0].SubItems[0].Text);
-                        HitomiBookmark.Instance.GetModel().Characters.RemoveAt(index);
+                        DeleteSpecifyElement(HitomiBookmark.Instance.GetModel().Characters, lv.SelectedItems[0].SubItems[1].Text);
                     }
                     HitomiBookmark.Instance.Save();
                     lv.SelectedItems[0].Remove();
