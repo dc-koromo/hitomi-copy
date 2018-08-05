@@ -49,7 +49,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -238,22 +237,12 @@
             this.label11.TabIndex = 19;
             this.label11.Text = "* CheckInvalidPathChars관련 오류 발생시, 패키지 이름 \r\n  수정 후, json파일에서 패키지 이름을 수정하세요.";
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(541, 593);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(174, 46);
-            this.button3.TabIndex = 20;
-            this.button3.Text = "Package Viewer에 추가";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // PackageMaker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(727, 708);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -307,6 +296,5 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button3;
     }
 }

@@ -45,6 +45,7 @@
             this.pb2 = new System.Windows.Forms.PictureBox();
             this.pb4 = new System.Windows.Forms.PictureBox();
             this.pb3 = new System.Windows.Forms.PictureBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new Hitomi_Copy_3.Package.OvalPictureBox();
             this.contextMenuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -143,6 +144,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(9, 131);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -220,6 +222,16 @@
             this.pb3.TabIndex = 14;
             this.pb3.TabStop = false;
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1064, 264);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "작품 리스트";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.DarkGray;
@@ -280,5 +292,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 작가추천목록에서보기VToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }

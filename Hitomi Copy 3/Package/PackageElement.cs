@@ -52,6 +52,9 @@ namespace Hitomi_Copy_3.Package
             textBox1.Text = pem.Description;
             label2.Text = $"작성자 : {pem.Nickname} ({pem.LatestUpdate.ToShortDateString()})";
 
+            if (pem.Artists == null || pem.Artists.Count == 0) tabControl1.TabPages.RemoveByKey("tabPage1");
+            if (pem.Articles == null || pem.Articles.Count == 0) tabControl1.TabPages.RemoveByKey("tabPage2");
+
             AddToListGroups(listView1, pem.Artists);
         }
         
