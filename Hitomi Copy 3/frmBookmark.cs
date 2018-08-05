@@ -14,7 +14,6 @@ namespace Hitomi_Copy_3
     {
         Dictionary<string, ListViewGroup> groups = new Dictionary<string, ListViewGroup>();
         Dictionary<string, List<string>> artists = new Dictionary<string, List<string>>();
-        int delete_ic = 0;
 
         public frmBookmark()
         {
