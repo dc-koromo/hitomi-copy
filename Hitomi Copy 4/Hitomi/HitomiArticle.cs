@@ -1,4 +1,10 @@
-﻿/* Copyright (C) 2018. Hitomi Parser Developers */
+﻿/*************************************************************************
+
+   Copyright (C) 2018. dc-koromo. All Rights Reserved.
+
+   Author: Koromo Hitomi Copy Developer
+
+***************************************************************************/
 
 using System.Collections.Generic;
 

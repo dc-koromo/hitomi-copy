@@ -22,7 +22,11 @@ namespace Hitomi_Copy_4.Interface
         public string UserAgent = null;
         public string Referer = null;
 
-        public void RunPass(ref HttpWebRequest request)
+        /// <summary>
+        /// 리퀘스트 헤더 정보를 사용자 설정에 맞게 재설정합니다.
+        /// </summary>
+        /// <param name="request"></param>
+        public virtual void RunPass(ref HttpWebRequest request)
         {
             if (Accept != null) request.Accept = Accept;
             if (UserAgent != null) request.UserAgent = UserAgent;
@@ -32,6 +36,9 @@ namespace Hitomi_Copy_4.Interface
 
     public delegate void SemaphoreCallBack(string url, string filename, object obj);
 
+    /// <summary>
+    /// 다운로드 큐를 구현하기 위한 세마포어 인터페이스입니다.
+    /// </summary>
     public interface ISemaphore
     {
         /// <summary>

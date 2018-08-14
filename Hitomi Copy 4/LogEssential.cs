@@ -1,8 +1,14 @@
-﻿/* Copyright (C) 2018. Hitomi Parser Developers */
+﻿/*************************************************************************
+
+   Copyright (C) 2018. dc-koromo. All Rights Reserved.
+
+   Author: Koromo Hitomi Copy Developer
+
+***************************************************************************/
 
 using System;
 
-namespace Hitomi_Copy_4
+namespace Hitomi_Copy_4.Log
 {
     public class LogEssential
     {

@@ -8,7 +8,7 @@
 
 namespace Hitomi_Copy_4.Net
 {
-    class DownloadQueue
+    public class DriverQueue
     {
     }
 }
