@@ -6,6 +6,8 @@
 
 ***************************************************************************/
 
+using Hitomi_Copy_4.Log;
+using Hitomi_Copy_4.Utils;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
@@ -32,26 +34,17 @@ namespace Hitomi_Copy_4.Hitomi
 
         public static string hidden_data_url = @"https://github.com/dc-koromo/hitomi-downloader-2/releases/download/hiddendata/hiddendata.json";
 
-        public HitomiTagdata tagdata = new HitomiTagdata();
+        public HitomiTagdataCollection tagdata_collection = new HitomiTagdataCollection();
         public List<HitomiMetadata> metadata_collection;
         public Dictionary<string, string> thumbnail_collection;
 
         #region Metadata
-        private async Task downloadMetadata(int no)
-        {
-            HttpClient client = new HttpClient();
-            client.Timeout = new TimeSpan(0, 0, 0, 0, Timeout.Infinite);
-            var data = await client.GetStringAsync(gallerie_json_uri(no));
-            if (data.Trim() == "") return;
-            lock (metadata_collection)
-                metadata_collection.AddRange(JsonConvert.DeserializeObject<IEnumerable<HitomiMetadata>>(data));
-        }
-
         public async Task DownloadMetadata()
         {
             ServicePointManager.DefaultConnectionLimit = 1048576;
             metadata_collection = new List<HitomiMetadata>();
             await Task.WhenAll(Enumerable.Range(0, number_of_gallery_jsons).Select(no => downloadMetadata(no)));
+            SortMetadata();
 
             if (!Settings.Instance.GetModel().AutoSync)
             {
@@ -97,11 +90,53 @@ namespace Hitomi_Copy_4.Hitomi
                 if (!thumbnail_collection.ContainsKey(article.Magic))
                     thumbnail_collection.Add(article.Magic, article.Thumbnail);
             }
+            SortMetadata();
         }
 
-        #endregion
+        public void SortMetadata()
+        {
+            metadata_collection.Sort((a, b) => b.ID.CompareTo(a.ID));
+        }
 
-        #region Exist Check
+        private async Task downloadMetadata(int no)
+        {
+            HttpClient client = new HttpClient();
+            client.Timeout = new TimeSpan(0, 0, 0, 0, Timeout.Infinite);
+            var data = await client.GetStringAsync(gallerie_json_uri(no));
+            if (data.Trim() == "")
+            {
+                LogEssential.Instance.PushLog(() => $"[Download Metadata] Error : '{gallerie_json_uri(no)}' is empty database!");
+                return;
+            }
+            lock (metadata_collection)
+                metadata_collection.AddRange(JsonConvert.DeserializeObject<IEnumerable<HitomiMetadata>>(data));
+        }
+
+        public void LoadMetadataJson()
+        {
+            if (CheckMetadataExist())
+                metadata_collection = JsonConvert.DeserializeObject<List<HitomiMetadata>>(File.ReadAllText(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "metadata.json")));
+        }
+
+        public void LoadHiddendataJson()
+        {
+            thumbnail_collection = new Dictionary<string, string>();
+            if (CheckHiddendataExist())
+            {
+                List<HitomiArticle> articles = JsonConvert.DeserializeObject<List<HitomiArticle>>(File.ReadAllText(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "hiddendata.json")));
+                HashSet<string> overlap = new HashSet<string>();
+                metadata_collection.ForEach(x => overlap.Add(x.ID.ToString()));
+                foreach (var article in articles)
+                {
+                    if (overlap.Contains(article.Magic)) continue;
+                    metadata_collection.Add(HitomiLegalize.ArticleToMetadata(article));
+                    if (!thumbnail_collection.ContainsKey(article.Magic))
+                        thumbnail_collection.Add(article.Magic, article.Thumbnail);
+                }
+                SortMetadata();
+            }
+        }
+
         public bool CheckMetadataExist()
         {
             return File.Exists(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "metadata.json"));
@@ -113,37 +148,51 @@ namespace Hitomi_Copy_4.Hitomi
         }
         #endregion
 
-        #region Data Etc
-        public void SortMetadata()
+        #region Metadata Testing
+        public void LoadMetadataJson(string path)
         {
-            metadata_collection.Sort((a, b) => b.ID.CompareTo(a.ID));
+            metadata_collection.AddRange(JsonConvert.DeserializeObject<List<HitomiMetadata>>(File.ReadAllText(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), path))));
         }
 
-        public void SortTagdata()
+        public DateTime GetLatestMetadataUpdateTime()
         {
-            tagdata.artist.Sort((a, b) => b.Item2.CompareTo(a.Item2));
-            tagdata.tag.Sort((a, b) => b.Item2.CompareTo(a.Item2));
-            tagdata.female.Sort((a, b) => b.Item2.CompareTo(a.Item2));
-            tagdata.male.Sort((a, b) => b.Item2.CompareTo(a.Item2));
-            tagdata.group.Sort((a, b) => b.Item2.CompareTo(a.Item2));
-            tagdata.character.Sort((a, b) => b.Item2.CompareTo(a.Item2));
-            tagdata.series.Sort((a, b) => b.Item2.CompareTo(a.Item2));
-            tagdata.type.Sort((a, b) => b.Item2.CompareTo(a.Item2));
-        }
-
-        public async Task Synchronization()
-        {
-            metadata_collection.Clear();
-            thumbnail_collection.Clear();
-            await Task.Run(() => DownloadMetadata());
-            await Task.Run(() => DownloadHiddendata());
-            await Task.Run(() => RebuildTagData());
-            await Task.Run(() => SortMetadata());
-            await Task.Run(() => SortTagdata());
+            return File.GetLastWriteTime("metadata.json");
         }
         #endregion
 
+        public void OptimizeMetadata()
+        {
+            List<HitomiMetadata> tmeta = new List<HitomiMetadata>();
+            int m = metadata_collection.Count;
+            for (int i = 0; i < m; i++)
+            {
+                string lang = metadata_collection[i].Language;
+                if (metadata_collection[i].Language == null) lang = "N/A";
+                if (Settings.Instance.GetModel().Language != "ALL" &&
+                    Settings.Instance.GetModel().Language != lang)
+                    continue;
+                tmeta.Add(metadata_collection[i]);
+            }
+            metadata_collection.Clear();
+            metadata_collection = tmeta;
+        }
+
         #region TagData
+        public void SortTagdata()
+        {
+            tagdata_collection.artist.Sort((a, b) => b.Count.CompareTo(a.Count));
+            tagdata_collection.tag.Sort((a, b) => b.Count.CompareTo(a.Count));
+            tagdata_collection.female.Sort((a, b) => b.Count.CompareTo(a.Count));
+            tagdata_collection.male.Sort((a, b) => b.Count.CompareTo(a.Count));
+            tagdata_collection.group.Sort((a, b) => b.Count.CompareTo(a.Count));
+            tagdata_collection.character.Sort((a, b) => b.Count.CompareTo(a.Count));
+            tagdata_collection.series.Sort((a, b) => b.Count.CompareTo(a.Count));
+            tagdata_collection.type.Sort((a, b) => b.Count.CompareTo(a.Count));
+        }
+        #endregion
+
+        #region TagData Rebuilding
+
         private void Add(Dictionary<string, int> dic, string key)
         {
             if (dic.ContainsKey(key))
@@ -154,14 +203,14 @@ namespace Hitomi_Copy_4.Hitomi
 
         public void RebuildTagData()
         {
-            tagdata.artist?.Clear();
-            tagdata.tag?.Clear();
-            tagdata.female?.Clear();
-            tagdata.male?.Clear();
-            tagdata.group?.Clear();
-            tagdata.character?.Clear();
-            tagdata.series?.Clear();
-            tagdata.type?.Clear();
+            tagdata_collection.artist?.Clear();
+            tagdata_collection.tag?.Clear();
+            tagdata_collection.female?.Clear();
+            tagdata_collection.male?.Clear();
+            tagdata_collection.group?.Clear();
+            tagdata_collection.character?.Clear();
+            tagdata_collection.series?.Clear();
+            tagdata_collection.type?.Clear();
 
             HashSet<string> language = new HashSet<string>();
 
@@ -175,8 +224,8 @@ namespace Hitomi_Copy_4.Hitomi
                 }
             }
 
-            tagdata.language = language.Select(x => new Tuple<string, int>(x, 0)).ToList();
-            tagdata.language.Sort((a, b) => a.Item1.CompareTo(b.Item1));
+            tagdata_collection.language = language.Select(x => new HitomiTagdata() { Tag = x }).ToList();
+            tagdata_collection.language.Sort((a, b) => a.Tag.CompareTo(b.Tag));
 
             Dictionary<string, int> artist = new Dictionary<string, int>();
             Dictionary<string, int> tag = new Dictionary<string, int>();
@@ -201,82 +250,232 @@ namespace Hitomi_Copy_4.Hitomi
                 if (metadata.Type != null) Add(type, metadata.Type);
             }
 
-            tagdata.artist = artist.Select(x => new Tuple<string, int> (x.Key, x.Value)).ToList();
-            tagdata.tag = tag.Select(x => new Tuple<string, int>(x.Key, x.Value)).ToList();
-            tagdata.female = female.Select(x => new Tuple<string, int>(x.Key, x.Value)).ToList();
-            tagdata.male = male.Select(x => new Tuple<string, int>(x.Key, x.Value)).ToList();
-            tagdata.group = group.Select(x => new Tuple<string, int>(x.Key, x.Value)).ToList();
-            tagdata.character = character.Select(x => new Tuple<string, int>(x.Key, x.Value)).ToList();
-            tagdata.series = series.Select(x => new Tuple<string, int>(x.Key, x.Value)).ToList();
-            tagdata.type = type.Select(x => new Tuple<string, int>(x.Key, x.Value)).ToList();
+            tagdata_collection.artist = artist.Select(x => new HitomiTagdata() { Tag = x.Key, Count = x.Value }).ToList();
+            tagdata_collection.tag = tag.Select(x => new HitomiTagdata() { Tag = x.Key, Count = x.Value }).ToList();
+            tagdata_collection.female = female.Select(x => new HitomiTagdata() { Tag = x.Key, Count = x.Value }).ToList();
+            tagdata_collection.male = male.Select(x => new HitomiTagdata() { Tag = x.Key, Count = x.Value }).ToList();
+            tagdata_collection.group = group.Select(x => new HitomiTagdata() { Tag = x.Key, Count = x.Value }).ToList();
+            tagdata_collection.character = character.Select(x => new HitomiTagdata() { Tag = x.Key, Count = x.Value }).ToList();
+            tagdata_collection.series = series.Select(x => new HitomiTagdata() { Tag = x.Key, Count = x.Value }).ToList();
+            tagdata_collection.type = type.Select(x => new HitomiTagdata() { Tag = x.Key, Count = x.Value }).ToList();
+
+            SortTagdata();
+
+            JsonSerializer serializer = new JsonSerializer();
+            serializer.Converters.Add(new JavaScriptDateTimeConverter());
+            serializer.NullValueHandling = NullValueHandling.Ignore;
+
+            using (StreamWriter sw = new StreamWriter(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "tagdata.json")))
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                serializer.Serialize(writer, tagdata_collection);
+            }
         }
         #endregion
 
+        public async Task Synchronization()
+        {
+            LogEssential.Instance.PushLog(() => "Start Synchronization...");
+            metadata_collection.Clear();
+            thumbnail_collection.Clear();
+            await Task.Run(() => DownloadMetadata());
+            await Task.Run(() => DownloadHiddendata());
+            await Task.Run(() => SortTagdata());
+            if (Settings.Instance.GetModel().UsingOptimization)
+                await Task.Run(() => OptimizeMetadata());
+            LogEssential.Instance.PushLog(() => "End Synchronization");
+            LogEssential.Instance.PushLog(() => $"Sync Report : {metadata_collection.Count} {tagdata_collection.female.Count}");
+        }
+
         #region Autocomplete Helper
-        public List<Tuple<string, int>> GetArtistList(string startswith)
+        public List<HitomiTagdata> GetArtistList(string startswith, bool constains = false)
         {
-            List<Tuple<string, int>> result = new List<Tuple<string, int>>();
-            foreach (var tagdata in tagdata.artist)
-                if (tagdata.Item1.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
-                { Tuple<string, int> data = new Tuple<string, int>(tagdata.Item1.ToLower().Replace(' ', '_'), tagdata.Item2); result.Add(data); }
+            List<HitomiTagdata> result = new List<HitomiTagdata>();
+            if (!constains)
+            {
+                foreach (var tagdata in tagdata_collection.artist)
+                    if (tagdata.Tag.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
+                    { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            }
+            else
+            {
+                foreach (var tagdata in tagdata_collection.artist)
+                    if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(startswith))
+                    { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            }
             return result;
         }
 
-        public List<Tuple<string, int>> GetTagList(string startswith)
+        public List<HitomiTagdata> GetTagList(string startswith, bool constains = false)
         {
-            List<Tuple<string, int>> target = new List<Tuple<string, int>>();
-            target.AddRange(tagdata.female);
-            target.AddRange(tagdata.male);
-            target.AddRange(tagdata.tag);
-            target.Sort((a, b) => b.Item2.CompareTo(a.Item2));
-            List<Tuple<string, int>> result = new List<Tuple<string, int>>();
-            foreach (var tagdata in target)
-                if (tagdata.Item1.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
-                { Tuple<string, int> data = new Tuple<string, int>(tagdata.Item1.ToLower().Replace(' ', '_'), tagdata.Item2); result.Add(data); }
+            List<HitomiTagdata> target = new List<HitomiTagdata>();
+            target.AddRange(tagdata_collection.female);
+            target.AddRange(tagdata_collection.male);
+            target.AddRange(tagdata_collection.tag);
+            target.Sort((a, b) => b.Count.CompareTo(a.Count));
+            List<HitomiTagdata> result = new List<HitomiTagdata>();
+            if (!constains)
+            {
+                foreach (var tagdata in target)
+                    if (tagdata.Tag.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
+                    { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            }
+            else
+            {
+                foreach (var tagdata in target)
+                    if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(startswith))
+                    { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            }
             return result;
         }
 
-        public List<Tuple<string, int>> GetGroupList(string startswith)
+        public List<HitomiTagdata> GetGroupList(string startswith, bool constains = false)
         {
-            List<Tuple<string, int>> result = new List<Tuple<string, int>>();
-            foreach (var tagdata in tagdata.group)
-                if (tagdata.Item1.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
-                { Tuple<string, int> data = new Tuple<string, int>(tagdata.Item1.ToLower().Replace(' ', '_'), tagdata.Item2); result.Add(data); }
+            List<HitomiTagdata> result = new List<HitomiTagdata>();
+            if (!constains)
+            {
+                foreach (var tagdata in tagdata_collection.group)
+                    if (tagdata.Tag.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
+                    { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            }
+            else
+            {
+                foreach (var tagdata in tagdata_collection.group)
+                    if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(startswith.ToLower()))
+                    { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            }
             return result;
         }
 
-        public List<Tuple<string, int>> GetSeriesList(string startswith)
+        public List<HitomiTagdata> GetSeriesList(string startswith, bool constains = false)
         {
-            List<Tuple<string, int>> result = new List<Tuple<string, int>>();
-            foreach (var tagdata in tagdata.series)
-                if (tagdata.Item1.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
-                { Tuple<string, int> data = new Tuple<string, int>(tagdata.Item1.ToLower().Replace(' ', '_'), tagdata.Item2); result.Add(data); }
+            List<HitomiTagdata> result = new List<HitomiTagdata>();
+            if (!constains)
+            {
+                foreach (var tagdata in tagdata_collection.series)
+                    if (tagdata.Tag.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
+                    { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            }
+            else
+            {
+                foreach (var tagdata in tagdata_collection.series)
+                    if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(startswith.ToLower()))
+                    { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            }
             return result;
         }
 
-        public List<Tuple<string, int>> GetCharacterList(string startswith)
+        public List<HitomiTagdata> GetCharacterList(string startswith, bool constains = false)
         {
-            List<Tuple<string, int>> result = new List<Tuple<string, int>>();
-            foreach (var tagdata in tagdata.character)
-                if (tagdata.Item1.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
-                { Tuple<string, int> data = new Tuple<string, int>(tagdata.Item1.ToLower().Replace(' ', '_'), tagdata.Item2); result.Add(data); }
+            List<HitomiTagdata> result = new List<HitomiTagdata>();
+            if (!constains)
+            {
+                foreach (var tagdata in tagdata_collection.character)
+                    if (tagdata.Tag.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
+                    { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            }
+            else
+            {
+                foreach (var tagdata in tagdata_collection.character)
+                    if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(startswith.ToLower()))
+                    { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            }
             return result;
         }
 
-        public List<Tuple<string, int>> GetTypeList(string startswith)
+        public List<HitomiTagdata> GetTypeList(string startswith)
         {
-            List<Tuple<string, int>> result = new List<Tuple<string, int>>();
-            foreach (var tagdata in tagdata.type)
-                if (tagdata.Item1.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
-                { Tuple<string, int> data = new Tuple<string, int>(tagdata.Item1.ToLower().Replace(' ', '_'), tagdata.Item2); result.Add(data); }
+            List<HitomiTagdata> result = new List<HitomiTagdata>();
+            foreach (var tagdata in tagdata_collection.type)
+                if (tagdata.Tag.ToLower().Replace(' ', '_').StartsWith(startswith.ToLower()))
+                { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
             return result;
         }
 
         public List<string> GetLanguageList()
         {
             List<string> result = new List<string>();
-            foreach (var lang in tagdata.language)
-                result.Add(lang.Item1);
+            foreach (var lang in tagdata_collection.language)
+                result.Add(lang.Tag);
+            return result;
+        }
+
+        public List<HitomiTagdata> GetTotalList(string contains)
+        {
+            if (Settings.Instance.GetModel().UsingFuzzy) return GetTotalListFuzzy(contains);
+            List<HitomiTagdata> result = new List<HitomiTagdata>();
+            List<HitomiTagdata> target = new List<HitomiTagdata>();
+            target.AddRange(tagdata_collection.female);
+            target.AddRange(tagdata_collection.male);
+            contains = contains.ToLower();
+            foreach (var tagdata in tagdata_collection.artist)
+                if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(contains))
+                { HitomiTagdata data = new HitomiTagdata(); data.Tag = "artist:" + tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            foreach (var tagdata in tagdata_collection.group)
+                if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(contains))
+                { HitomiTagdata data = new HitomiTagdata(); data.Tag = "group:" + tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            foreach (var tagdata in tagdata_collection.series)
+                if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(contains))
+                { HitomiTagdata data = new HitomiTagdata(); data.Tag = "series:" + tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            foreach (var tagdata in tagdata_collection.character)
+                if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(contains))
+                { HitomiTagdata data = new HitomiTagdata(); data.Tag = "character:" + tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            foreach (var tagdata in tagdata_collection.type)
+                if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(contains))
+                { HitomiTagdata data = new HitomiTagdata(); data.Tag = "type:" + tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            foreach (var tagdata in target)
+                if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(contains))
+                { HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            foreach (var tagdata in tagdata_collection.tag)
+                if (tagdata.Tag.ToLower().Replace(' ', '_').Contains(contains))
+                { HitomiTagdata data = new HitomiTagdata(); data.Tag = "tag:" + tagdata.Tag.ToLower().Replace(' ', '_'); data.Count = tagdata.Count; result.Add(data); }
+            result.Sort((a, b) => b.Count.CompareTo(a.Count));
+            return result;
+        }
+
+        public List<HitomiTagdata> GetTotalListFuzzy(string search)
+        {
+            List<HitomiTagdata> result = new List<HitomiTagdata>();
+            List<HitomiTagdata> target = new List<HitomiTagdata>();
+            target.AddRange(tagdata_collection.female);
+            target.AddRange(tagdata_collection.male);
+            search = search.ToLower();
+            foreach (var tagdata in tagdata_collection.artist)
+            {
+                HitomiTagdata data = new HitomiTagdata(); data.Tag = "artist:" + tagdata.Tag.ToLower().Replace(' ', '_');
+                data.Count = -StringAlgorithms.get_diff(search, tagdata.Tag.ToLower().Replace(' ', '_')); result.Add(data);
+            }
+            foreach (var tagdata in tagdata_collection.group)
+            {
+                HitomiTagdata data = new HitomiTagdata(); data.Tag = "group:" + tagdata.Tag.ToLower().Replace(' ', '_');
+                data.Count = -StringAlgorithms.get_diff(search, tagdata.Tag.ToLower().Replace(' ', '_')); result.Add(data);
+            }
+            foreach (var tagdata in tagdata_collection.series)
+            {
+                HitomiTagdata data = new HitomiTagdata(); data.Tag = "series:" + tagdata.Tag.ToLower().Replace(' ', '_');
+                data.Count = -StringAlgorithms.get_diff(search, tagdata.Tag.ToLower().Replace(' ', '_')); result.Add(data);
+            }
+            foreach (var tagdata in tagdata_collection.character)
+            {
+                HitomiTagdata data = new HitomiTagdata(); data.Tag = "character:" + tagdata.Tag.ToLower().Replace(' ', '_');
+                data.Count = -StringAlgorithms.get_diff(search, tagdata.Tag.ToLower().Replace(' ', '_')); result.Add(data);
+            }
+            foreach (var tagdata in tagdata_collection.type)
+            {
+                HitomiTagdata data = new HitomiTagdata(); data.Tag = "type:" + tagdata.Tag.ToLower().Replace(' ', '_');
+                data.Count = -StringAlgorithms.get_diff(search, tagdata.Tag.ToLower().Replace(' ', '_')); result.Add(data);
+            }
+            foreach (var tagdata in target)
+            {
+                HitomiTagdata data = new HitomiTagdata(); data.Tag = tagdata.Tag.ToLower().Replace(' ', '_');
+                data.Count = -StringAlgorithms.get_diff(search, tagdata.Tag.ToLower().Replace(' ', '_')); result.Add(data);
+            }
+            foreach (var tagdata in tagdata_collection.tag)
+            {
+                HitomiTagdata data = new HitomiTagdata(); data.Tag = "tag:" + tagdata.Tag.ToLower().Replace(' ', '_');
+                data.Count = -StringAlgorithms.get_diff(search, tagdata.Tag.ToLower().Replace(' ', '_')); result.Add(data);
+            }
+            result.Sort((a, b) => b.Count.CompareTo(a.Count));
             return result;
         }
         #endregion

@@ -6,11 +6,12 @@
 
 ***************************************************************************/
 
+using Hitomi_Copy_4.Interface;
 using System.Collections.Generic;
 
 namespace Hitomi_Copy_4.Hitomi
 {
-    public class HitomiArticle
+    public class HitomiArticle : IArticle
     {
         string[] artists;
         string[] characters;

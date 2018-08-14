@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*************************************************************************
+
+   Copyright (C) 2018. dc-koromo. All Rights Reserved.
+
+   Author: Koromo Hitomi Copy Developer
+
+***************************************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +24,7 @@ namespace Hitomi_Copy_4
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainForm());
         }
     }
 }

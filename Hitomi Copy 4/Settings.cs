@@ -1,4 +1,10 @@
-﻿/* Copyright (C) 2018. Hitomi Parser Developers */
+﻿/*************************************************************************
+
+   Copyright (C) 2018. dc-koromo. All Rights Reserved.
+
+   Author: Koromo Hitomi Copy Developer
+
+***************************************************************************/
 
 using Newtonsoft.Json;
 using System;
@@ -18,13 +24,19 @@ namespace Hitomi_Copy_4
         [JsonProperty]
         public bool SaveJson;
         [JsonProperty]
-        public bool AutoSync;
+        public bool UsingLog;
 
         // 히토미 세팅
         [JsonProperty]
         public string HitomiPath;
         [JsonProperty]
         public string Language;
+        [JsonProperty]
+        public bool AutoSync;
+        [JsonProperty]
+        public bool UsingFuzzy;
+        [JsonProperty]
+        public bool UsingOptimization;
 
         // 마루마루 세팅
         [JsonProperty]
