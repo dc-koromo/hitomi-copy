@@ -160,6 +160,9 @@ namespace Hitomi_Copy_4.Hitomi
         }
         #endregion
 
+        /// <summary>
+        /// 언어에 따라 메타데이터를 식별합니다.
+        /// </summary>
         public void OptimizeMetadata()
         {
             List<HitomiMetadata> tmeta = new List<HitomiMetadata>();
@@ -201,6 +204,9 @@ namespace Hitomi_Copy_4.Hitomi
                 dic.Add(key, 1);
         }
 
+        /// <summary>
+        /// 메타데이터를 기반으로 태그데이터를 작성합니다.
+        /// </summary>
         public void RebuildTagData()
         {
             tagdata_collection.artist?.Clear();
@@ -400,6 +406,11 @@ namespace Hitomi_Copy_4.Hitomi
             return result;
         }
 
+        /// <summary>
+        /// AutoComplete에 보여줄 모든 관련 검색어를 가져옵니다. 단, 제목은 포함되지 않습니다.
+        /// </summary>
+        /// <param name="contains"></param>
+        /// <returns></returns>
         public List<HitomiTagdata> GetTotalList(string contains)
         {
             if (Settings.Instance.GetModel().UsingFuzzy) return GetTotalListFuzzy(contains);

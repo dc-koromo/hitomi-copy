@@ -6,11 +6,9 @@
 
 ***************************************************************************/
 
-using Hitomi_Copy_4.Interface;
-
 namespace Hitomi_Copy_4.Net
 {
-    public class DownloadQueue : ISemaphore
+    class UpdateManager
     {
     }
 }
