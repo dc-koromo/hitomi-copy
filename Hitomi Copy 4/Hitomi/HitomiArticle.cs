@@ -7,6 +7,7 @@
 ***************************************************************************/
 
 using Hitomi_Copy_4.Interface;
+using System;
 using System.Collections.Generic;
 
 namespace Hitomi_Copy_4.Hitomi
@@ -39,6 +40,7 @@ namespace Hitomi_Copy_4.Hitomi
         public string Types { get { return types; } set { types = value; } }
         public bool ManualPathOrdering { get; set; }
         public string ManualAdditionalPath { get; set; }
+        public DateTime DateTime { get; set; }
 
         public string Thumbnail { get { return thumbnail; } set { thumbnail = value; } }
         public string Magic { get { return magic_number; } set { magic_number = value; } }
