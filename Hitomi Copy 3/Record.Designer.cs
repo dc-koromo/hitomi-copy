@@ -35,7 +35,7 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tvDate = new System.Windows.Forms.TreeView();
+            this.tvDate = new Hitomi_Copy_3.NativeTreeView();
             this.SuspendLayout();
             // 
             // listView1
@@ -90,6 +90,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tvDate.Location = new System.Drawing.Point(937, 12);
             this.tvDate.Name = "tvDate";
+            this.tvDate.ShowLines = false;
             this.tvDate.Size = new System.Drawing.Size(485, 570);
             this.tvDate.TabIndex = 1;
             this.tvDate.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tvDate_MouseDoubleClick);
@@ -124,6 +125,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.TreeView tvDate;
+        private NativeTreeView tvDate;
     }
 }

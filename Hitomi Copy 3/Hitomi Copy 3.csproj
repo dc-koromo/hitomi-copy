@@ -352,6 +352,9 @@
     <Compile Include="MM\MMParser.cs" />
     <Compile Include="MM\MMSetting.cs" />
     <Compile Include="MM\MMUpdate.cs" />
+    <Compile Include="NativeTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="NoticeReceiver.cs" />
     <Compile Include="Package\OvalPictureBox.cs">
       <SubType>Component</SubType>
