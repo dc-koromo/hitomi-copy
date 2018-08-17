@@ -6,20 +6,13 @@
 
 ***************************************************************************/
 
-using System;
-
 namespace Hitomi_Copy_4
 {
-    public partial class MainForm : MetroFramework.Forms.MetroForm
+    public class Version
     {
-        public MainForm()
-        {
-            InitializeComponent();
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            Text += Version.Text;
-        }
+        public const string Text = "4.0";
+        public const int MajorVersion = 4;
+        public const int MinorVersion = 0;
+        public const int PatchVersion = 0;
     }
 }
