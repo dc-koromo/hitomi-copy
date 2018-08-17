@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pb = new System.Windows.Forms.PictureBox();
             this.lCharacter = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,7 +52,15 @@
             this.lLang = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.lPage = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.제목으로검색TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.작가로검색AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.그룹으로검색GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.시리즈로검색SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.캐릭터로검색CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.태그로검색GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pb
@@ -286,11 +295,62 @@
             this.lPage.TabIndex = 45;
             this.lPage.Text = "0p";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.제목으로검색TToolStripMenuItem,
+            this.작가로검색AToolStripMenuItem,
+            this.그룹으로검색GToolStripMenuItem,
+            this.시리즈로검색SToolStripMenuItem,
+            this.캐릭터로검색CToolStripMenuItem,
+            this.태그로검색GToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(167, 158);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // 제목으로검색TToolStripMenuItem
+            // 
+            this.제목으로검색TToolStripMenuItem.Name = "제목으로검색TToolStripMenuItem";
+            this.제목으로검색TToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.제목으로검색TToolStripMenuItem.Text = "제목으로 검색(&T)";
+            this.제목으로검색TToolStripMenuItem.Click += new System.EventHandler(this.제목으로검색TToolStripMenuItem_Click);
+            // 
+            // 작가로검색AToolStripMenuItem
+            // 
+            this.작가로검색AToolStripMenuItem.Name = "작가로검색AToolStripMenuItem";
+            this.작가로검색AToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.작가로검색AToolStripMenuItem.Text = "작가로 검색(&A)";
+            // 
+            // 그룹으로검색GToolStripMenuItem
+            // 
+            this.그룹으로검색GToolStripMenuItem.Name = "그룹으로검색GToolStripMenuItem";
+            this.그룹으로검색GToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.그룹으로검색GToolStripMenuItem.Text = "그룹으로 검색(&G)";
+            // 
+            // 시리즈로검색SToolStripMenuItem
+            // 
+            this.시리즈로검색SToolStripMenuItem.Name = "시리즈로검색SToolStripMenuItem";
+            this.시리즈로검색SToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.시리즈로검색SToolStripMenuItem.Text = "시리즈로 검색(&S)";
+            // 
+            // 캐릭터로검색CToolStripMenuItem
+            // 
+            this.캐릭터로검색CToolStripMenuItem.Name = "캐릭터로검색CToolStripMenuItem";
+            this.캐릭터로검색CToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.캐릭터로검색CToolStripMenuItem.Text = "캐릭터로 검색(&C)";
+            // 
+            // 태그로검색GToolStripMenuItem
+            // 
+            this.태그로검색GToolStripMenuItem.Name = "태그로검색GToolStripMenuItem";
+            this.태그로검색GToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.태그로검색GToolStripMenuItem.Text = "태그로 검색(&G)";
+            // 
             // PicDetailElement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.lPage);
             this.Controls.Add(this.lLang);
             this.Controls.Add(this.label9);
@@ -325,6 +385,7 @@
             this.MouseLeave += new System.EventHandler(this.PicDetailElement_MouseLeave);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PicDetailElement_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,5 +415,12 @@
         private System.Windows.Forms.Label lLang;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lPage;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 제목으로검색TToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 작가로검색AToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 그룹으로검색GToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 시리즈로검색SToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 캐릭터로검색CToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 태그로검색GToolStripMenuItem;
     }
 }

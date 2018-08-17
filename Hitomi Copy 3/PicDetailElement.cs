@@ -376,5 +376,80 @@ namespace Hitomi_Copy_3
                 BackColor = Color.GhostWhite;
             }
         }
+
+        #region 메뉴
+
+        private void 제목으로검색TToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            (new frmFinder(Article.OriginalTitle)).Show();
+        }
+
+        private void Artist_Click(object sender, EventArgs e)
+        {
+            (new frmFinder("artist:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_'))).Show();
+        }
+
+        private void Group_Click(object sender, EventArgs e)
+        {
+            (new frmFinder("group:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_'))).Show();
+        }
+
+        private void Series_Click(object sender, EventArgs e)
+        {
+            (new frmFinder("series:" + (sender as ToolStripMenuItem).Text.Split('(')[0].Trim().Replace(' ', '_'))).Show();
+        }
+
+        private void Character_Click(object sender, EventArgs e)
+        {
+            (new frmFinder("character:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_'))).Show();
+        }
+
+        private void Tag_Click(object sender, EventArgs e)
+        {
+            (new frmFinder("tag:" + (sender as ToolStripMenuItem).Text.Split('(')[0].Trim().Replace(' ', '_'))).Show();
+        }
+
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string[] artist = Article.Artists?.Select(x => x.Trim()).ToArray();
+            string[] group = Article.Groups?.Select(x => x.Trim()).ToArray();
+            string[] series = Article.Series?.Select(x => x.Trim()).ToArray();
+            string[] character = Article.Characters?.Select(x => x.Trim()).ToArray();
+            string[] tag = Article.Tags?.Select(x => x.Trim()).ToArray();
+
+            (contextMenuStrip1.Items[1] as ToolStripMenuItem).DropDownItems.Clear();
+            if (artist != null) (contextMenuStrip1.Items[1] as ToolStripMenuItem).DropDownItems.AddRange(artist.Select(x => new ToolStripMenuItem(x, null, Artist_Click)).ToArray());
+
+            (contextMenuStrip1.Items[2] as ToolStripMenuItem).DropDownItems.Clear();
+            if (group != null) (contextMenuStrip1.Items[2] as ToolStripMenuItem).DropDownItems.AddRange(group.Select(x => new ToolStripMenuItem(x, null, Group_Click)).ToArray());
+
+            (contextMenuStrip1.Items[3] as ToolStripMenuItem).DropDownItems.Clear();
+            if (series != null) (contextMenuStrip1.Items[3] as ToolStripMenuItem).DropDownItems.AddRange(series.Select(x => {
+                string ko = KoreanSeries.SeriesMap(x);
+                if (ko != x)
+                    return new ToolStripMenuItem($"{x} ({ko})", null, Series_Click);
+                else
+                    return new ToolStripMenuItem($"{x}", null, Series_Click);
+            }).ToArray());
+
+            (contextMenuStrip1.Items[4] as ToolStripMenuItem).DropDownItems.Clear();
+            if (character != null) (contextMenuStrip1.Items[4] as ToolStripMenuItem).DropDownItems.AddRange(character.Select(x => new ToolStripMenuItem(x, null, Character_Click)).ToArray());
+
+            (contextMenuStrip1.Items[5] as ToolStripMenuItem).DropDownItems.Clear();
+            if (tag != null) (contextMenuStrip1.Items[5] as ToolStripMenuItem).DropDownItems.AddRange(tag.Select(x => {
+                string ko = KoreanTag.TagMap(x);
+                if (ko != x)
+                {
+                    if (ko.Contains(':'))
+                        return new ToolStripMenuItem($"{x} ({ko.Split(':')[1]})", null, Tag_Click);
+                    else
+                        return new ToolStripMenuItem($"{x} ({ko})", null, Tag_Click);
+                }
+                else
+                    return new ToolStripMenuItem($"{x}", null, Tag_Click);
+            }).ToArray());
+        }
+
+        #endregion
     }
 }
