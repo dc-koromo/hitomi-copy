@@ -130,6 +130,17 @@
     <Compile Include="CreateGroup.Designer.cs">
       <DependentUpon>CreateGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Etc\Pixiv.cs" />
+    <Compile Include="Etc\Pixiv\Objects\Authorize.cs" />
+    <Compile Include="Etc\Pixiv\Objects\MyFeed.cs" />
+    <Compile Include="Etc\Pixiv\Objects\Paginated.cs" />
+    <Compile Include="Etc\Pixiv\Objects\ProfileImageUrls.cs" />
+    <Compile Include="Etc\Pixiv\Objects\Rank.cs" />
+    <Compile Include="Etc\Pixiv\Objects\User.cs" />
+    <Compile Include="Etc\Pixiv\Objects\UsersFavoriteWork.cs" />
+    <Compile Include="Etc\Pixiv\Objects\UsersWork.cs" />
+    <Compile Include="Etc\Pixiv\Objects\Work.cs" />
+    <Compile Include="Etc\Pixiv\Pixeez.cs" />
     <Compile Include="InfoDetail.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -15,6 +15,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml.Serialization;
@@ -837,6 +838,20 @@ namespace Hitomi_Copy_3
                 else if (cmd == "pm")
                 {
                     (new PackageMaker()).Show();
+                }
+                else if (cmd == "export")
+                {
+                    HashSet<int> magics = new HashSet<int>();
+                    foreach (var log in HitomiLog.Instance.GetList())
+                    {
+                        magics.Add(Convert.ToInt32(log.Id));
+                    }
+                    StringBuilder builder = new StringBuilder();
+                    foreach (var magic in magics)
+                    {
+                        builder.Append($"{magic}\r\n");
+                    }
+                    File.WriteAllText("export.txt", builder.ToString());
                 }
                 else if (cmd == "help")
                 {
