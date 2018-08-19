@@ -2,6 +2,9 @@
 
 using Pixeez;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Hitomi_Copy_3.Etc
 {
@@ -17,5 +20,17 @@ namespace Hitomi_Copy_3.Etc
         public string DefaultPassword = "kawaikoromo";
 
         Tokens token => Auth.AuthorizeAsync(DefaultUserId, DefaultPassword).Result;
+        
+        public async Task<string> GetUserAsync(string id)
+        {
+            var user = await token.GetUsersAsync(Convert.ToInt32(id));
+            return $"{user[0].Name} ({user[0].Account})";
+        }
+
+        public async Task<List<string>> GetDownloadUrlsAsync(string id)
+        {
+            var works = await token.GetUsersWorksAsync(Convert.ToInt32(id), 1, 10000000);
+            return works.Select(x => x.ImageUrls.Large).ToList();
+        }
     }
 }

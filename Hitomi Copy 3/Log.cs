@@ -6,6 +6,7 @@ using Hitomi_Copy_2.Analysis;
 using Hitomi_Copy_2.EH;
 using Hitomi_Copy_3._403;
 using Hitomi_Copy_3.Analysis;
+using Hitomi_Copy_3.Etc;
 using Hitomi_Copy_3.Package;
 using Newtonsoft.Json;
 using System;

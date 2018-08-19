@@ -6,6 +6,7 @@ using Hitomi_Copy.Data;
 using Hitomi_Copy_2;
 using Hitomi_Copy_2.Analysis;
 using Hitomi_Copy_2.EH;
+using Hitomi_Copy_3.Etc;
 using Hitomi_Copy_3.MM;
 using Hitomi_Copy_3.Package;
 using MetroFramework;
@@ -323,6 +324,10 @@ namespace Hitomi_Copy_3
             {
                 RemoteDownloadArticleFromId(Regex.Match(url, "\\d+").Value);
             }
+            else if (url.Contains("pixiv.net"))
+            {
+                DownloadPixivAsync(url);
+            }
         }
         #endregion
 
@@ -568,6 +573,41 @@ namespace Hitomi_Copy_3
             lock (download_queue)
                 download_queue.Add(@"http://wasabisyrup.com" + uri, MakeDownloadDirectory(article) + uri.Split('/').Last(), count);
         }
+        #endregion
+
+        #region 다운로드 - 픽시브
+
+        private string MakeDownloadPixivDirectory(string name)
+        {
+            string invalid = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
+            return $"{AppDomain.CurrentDomain.BaseDirectory}{name}\\";
+        }
+
+        private async void DownloadPixivAsync(string url)
+        {
+            string id = Regex.Split(Regex.Split(url, @"\?id\=")[1], @"\&")[0];
+            string name = await Pixiv.Instance.GetUserAsync(id);
+            var list = await Pixiv.Instance.GetDownloadUrlsAsync(id);
+            Directory.CreateDirectory(MakeDownloadPixivDirectory(name));
+            IncrementProgressBarMax(list.Count);
+            this.Post(() =>
+            {
+                foreach (var ur in list)
+                {
+                    ++count;
+                    lvStandBy.Items.Add(new ListViewItem(new string[]
+                    {
+                        count.ToString(),
+                        id,
+                        ur
+                    }));
+                    download_check.Add(id);
+                    lock (download_queue)
+                        download_queue.Add(ur, MakeDownloadPixivDirectory(name) + ur.Split('/').Last(), count);
+                }
+            });
+        }
+
         #endregion
 
         #region 검색창

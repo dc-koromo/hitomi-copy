@@ -70,22 +70,15 @@ namespace Pixeez
                 { "client_secret", "HP3RmkgAmEGro0gn1x9ioawQE8WMfvLXDz3ZqxpK" },
             });
 
-            try
-            {
-                var response = httpClient.PostAsync("https://oauth.secure.pixiv.net/auth/token", param).Result;
-                //var response = await httpClient.PostAsync("https://oauth.secure.pixiv.net/auth/token", param);
-                //if (!response.IsSuccessStatusCode)
-                //    throw new InvalidOperationException();
+            var response = httpClient.PostAsync("https://oauth.secure.pixiv.net/auth/token", param).Result;
+            //var response = await httpClient.PostAsync("https://oauth.secure.pixiv.net/auth/token", param);
+            //if (!response.IsSuccessStatusCode)
+            //    throw new InvalidOperationException();
 
-                var json = await response.Content.ReadAsStringAsync();
-                var authorize = JToken.Parse(json).SelectToken("response").ToObject<Authorize>();
+            var json = await response.Content.ReadAsStringAsync();
+            var authorize = JToken.Parse(json).SelectToken("response").ToObject<Authorize>();
 
-                return new Tokens(authorize.AccessToken);
-            }
-            catch (Exception e)
-            {
-                return new Tokens("asd");
-            }
+            return new Tokens(authorize.AccessToken);
         }
 
         public static Tokens AuthorizeWithAccessToken(string accessToken)
