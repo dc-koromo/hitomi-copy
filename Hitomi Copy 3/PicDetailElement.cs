@@ -386,12 +386,12 @@ namespace Hitomi_Copy_3
 
         private void Artist_Click(object sender, EventArgs e)
         {
-            (new frmFinder("artist:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_'))).Show();
+            (new frmArtistInfo(parent,(sender as ToolStripMenuItem).Text)).Show();
         }
 
         private void Group_Click(object sender, EventArgs e)
         {
-            (new frmFinder("group:" + (sender as ToolStripMenuItem).Text.Replace(' ', '_'))).Show();
+            (new frmGroupInfo(parent,(sender as ToolStripMenuItem).Text)).Show();
         }
 
         private void Series_Click(object sender, EventArgs e)
