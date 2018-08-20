@@ -392,7 +392,7 @@ latest명령을 이용해 최신 갤러리 번호를 복사하고 gbt를 사용�
 
 `Threshold`는 결과에 영향을 주지 않습니다. 단지 연관도의 표시 하한값을 설정합니다. 상단의 `Start`버튼을 누르면 연관 태그 분석이 시작됩니다. CPU 자원을 모두 동원해 분석하기 때문에 다른 프로그램에 영향을 줄 수 있습니다. `FemaleMale Tags Only`를 체크하면 `female:`, `male:`이 들어간 태그만 분석됩니다.
 
-<span style="display:block;text-align:center">![hitomi main](Docs/Images/22.png)</span>
+<span style="display:block;text-align:center">![hitomi main](Docs/Images/22.PNG)</span>
 
 오른쪽 클릭을 하면 여러 기능을 사용할 수 있습니다. `연관성 없음 검사(I)`는 어떤 태그와 연관성이 없는 순서대로 나열한 태그를 보여줍니다. `그래프 보기(G)`를 클릭하면 다음과 같은 연관성 그래프를 보여줍니다.
 
