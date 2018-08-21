@@ -3,6 +3,7 @@
 using hitomi.Parser;
 using Hitomi_Copy.Data;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Hitomi_Copy_2
@@ -72,6 +73,21 @@ namespace Hitomi_Copy_2
             }
 
             return lang;
+        }
+
+        public class CompareMetadata : IComparer<HitomiMetadata>
+        {
+            public int Compare(HitomiMetadata x, HitomiMetadata y)
+            {
+                return y.ID.CompareTo(x.ID);
+            }
+        }
+
+        public static HitomiMetadata GetMetadataFromMagic(string magic)
+        {
+            HitomiMetadata tmp = new HitomiMetadata() { ID = Convert.ToInt32(magic) };
+            var pos = HitomiData.Instance.metadata_collection.BinarySearch(tmp, new CompareMetadata());
+            return HitomiData.Instance.metadata_collection[pos];
         }
     }
 }

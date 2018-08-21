@@ -301,7 +301,7 @@ namespace Hitomi_Copy_3
             }
         }
 
-        private void LazyAdd(List<HitomiMetadata> metadata_result)
+        public void LazyAdd(List<HitomiMetadata> metadata_result)
         {
             foreach (var v in metadata_result)
             {
