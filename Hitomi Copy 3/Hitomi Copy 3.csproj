@@ -131,6 +131,7 @@
       <DependentUpon>CreateGroup.cs</DependentUpon>
     </Compile>
     <Compile Include="Etc\Login\Login.cs" />
+    <Compile Include="Etc\Login\StringChiper.cs" />
     <Compile Include="Etc\Pixiv.cs" />
     <Compile Include="Etc\Pixiv\Objects\Authorize.cs" />
     <Compile Include="Etc\Pixiv\Objects\MyFeed.cs" />
