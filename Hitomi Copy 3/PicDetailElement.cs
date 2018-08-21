@@ -213,6 +213,7 @@ namespace Hitomi_Copy_3
         { get { return ha; } set { ha = value;
                 if (HitomiLog.Instance.Contains(ha.Magic)) downloaded_overlapping = true;
                 if (HitomiData.Instance.thumbnail_collection.ContainsKey(ha.Magic)) hidden_data = true;
+                if (HitomiBookmark.Instance.GetModel().Articles.Any(x => ha.Magic == x.Item1)) bookmark = true;
                 if (ha.Artists != null && HitomiBookmark.Instance.GetModel().Artists.Any(x => ha.Artists.Contains(x.Item1))) bookmark = true;
             } }
         public override Font Font
