@@ -6,7 +6,6 @@ using Hitomi_Copy_2.Analysis;
 using Hitomi_Copy_2.EH;
 using Hitomi_Copy_3._403;
 using Hitomi_Copy_3.Analysis;
-using Hitomi_Copy_3.Etc;
 using Hitomi_Copy_3.Package;
 using Newtonsoft.Json;
 using System;
@@ -853,6 +852,36 @@ namespace Hitomi_Copy_3
                         builder.Append($"{magic}\r\n");
                     }
                     File.WriteAllText("export.txt", builder.ToString());
+                }
+                else if (cmd == "bk")
+                {
+                    if (split.Length > 1)
+                    {
+                        if (split[1] == "addarticle")
+                        {
+                            int start_position = 0;
+                            int count = int.MaxValue;
+                            if (split.Length >= 3) start_position = Convert.ToInt32(split[2]);
+                            if (split.Length >= 4) count = Convert.ToInt32(split[3]);
+                            List<string> articles = new List<string>();
+                            count += start_position;
+                            for (int i = start_position; i < count && i < HitomiBookmark.Instance.GetModel().Articles.Count; i++)
+                                articles.Add(HitomiBookmark.Instance.GetModel().Articles[i].Item1);
+                            List<HitomiMetadata> result = new List<HitomiMetadata>();
+                            foreach (var id in articles)
+                                result.Add(HitomiCommon.GetMetadataFromMagic(id));
+                            (Application.OpenForms[0] as frmMain).LazyAdd(result);
+                        }
+                        else
+                        {
+                            PushString($"'{split[1]}' is not found.");
+                        }
+                    }
+                    else
+                    {
+                        PushString("using 'bk (option) [start position] [count]'");
+                        PushString("  (option): addarticle");
+                    }
                 }
                 else if (cmd == "help")
                 {
