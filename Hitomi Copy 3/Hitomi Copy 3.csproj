@@ -61,6 +61,13 @@
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="HtmlAgilityPack, Version=1.8.4.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>packages\HtmlAgilityPack.1.8.4\lib\Net45\HtmlAgilityPack.dll</HintPath>
@@ -80,6 +87,10 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RemoteLogin">
+      <HintPath>..\..\..\Visual Studio 2017\Projects\RemoteLogin\bin\Release\RemoteLogin.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -130,8 +141,6 @@
     <Compile Include="CreateGroup.Designer.cs">
       <DependentUpon>CreateGroup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Etc\Login\Login.cs" />
-    <Compile Include="Etc\Login\StringChiper.cs" />
     <Compile Include="Etc\Pixiv.cs" />
     <Compile Include="Etc\Pixiv\Objects\Authorize.cs" />
     <Compile Include="Etc\Pixiv\Objects\MyFeed.cs" />
@@ -604,6 +613,7 @@
     <None Include="Resources\1.PNG" />
     <None Include="Resources\2.PNG" />
     <None Include="Resources\3.PNG" />
+    <EmbeddedResource Include="Resources\RemoteLogin.dll" />
     <Content Include="TETO.ico" />
   </ItemGroup>
   <ItemGroup>

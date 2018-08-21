@@ -149,5 +149,15 @@ namespace Hitomi_Copy_3.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   System.Byte[] 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static byte[] RemoteLogin {
+            get {
+                object obj = ResourceManager.GetObject("RemoteLogin", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
