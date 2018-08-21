@@ -18,9 +18,10 @@ namespace Hitomi_Copy_3.Etc
 
         /// <summary>
         /// 히토미 카피는 외부 개발자에 의해 픽시브 아이디가 탈퇴되는 것을 방지하기 아이디/비밀번호를 노출하지 않습니다.
+        /// 
         /// </summary>
         public string DefaultUserId => Login.Login.Instance.GetPixivID();
-        public string DefaultPassword = Login.Login.Instance.GetPixivPW();
+        public string DefaultPassword => Login.Login.Instance.GetPixivPW();
 
         Tokens token => Auth.AuthorizeAsync(DefaultUserId, DefaultPassword).Result;
         
