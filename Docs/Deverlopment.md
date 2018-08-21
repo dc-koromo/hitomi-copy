@@ -1,42 +1,42 @@
-# Hitomi Copy °³¹ß ¹®¼­
+# Hitomi Copy ê°œë°œ ë¬¸ì„œ
 
-ÀÌ ¹®¼­¿£ È÷Åä¹Ì Ä«ÇÇ¸¦ Á¦ÀÛÇÏ±â À§ÇØ »ç¿ëÇÑ ¸ðµç ¹æ¹ýÀ» Á¤¸®ÇÏ°í ÀÖ´Â ¹®¼­ÀÔ´Ï´Ù.
+ì´ ë¬¸ì„œì—” ížˆí† ë¯¸ ì¹´í”¼ë¥¼ ì œìž‘í•˜ê¸° ìœ„í•´ ì‚¬ìš©í•œ ëª¨ë“  ë°©ë²•ì„ ì •ë¦¬í•˜ê³  ìžˆëŠ” ë¬¸ì„œìž…ë‹ˆë‹¤.
 
-## ¾ÆÆ¼Å¬ °ü¸®
+## ì•„í‹°í´ ê´€ë¦¬
 
-¾ÆÆ¼Å¬Àº ÀÛÇ°À» ±¸¼ºÇÏ´Â ±âº»´ÜÀ§ÀÔ´Ï´Ù. ÀÎÅÍÆäÀÌ½º´Â `IArticle`ÀÌ¸ç, `HitomiArticle`, `MMArticle`Ã³·³ ¾²ÀÔ´Ï´Ù. ¾ÆÆ¼Å¬¿¡´Â Á¦¸ñ, ½Äº°¾ÆÀÌµð, ÀÌ¹ÌÁö ¸µÅ©°¡ ÇÊ¼ö·Î Æ÷ÇÔµÇ¾î¾ß ÇÕ´Ï´Ù. UI ¸é¿¡¼­ ¾ÆÆ¼Å¬ °ü¸®´Â º°µµÀÇ ±â´ÉÀ¸·Î ÀÌ·ç¾îÁú ¿¹Á¤ÀÔ´Ï´Ù.
+ì•„í‹°í´ì€ ìž‘í’ˆì„ êµ¬ì„±í•˜ëŠ” ê¸°ë³¸ë‹¨ìœ„ìž…ë‹ˆë‹¤. ì¸í„°íŽ˜ì´ìŠ¤ëŠ” `IArticle`ì´ë©°, `HitomiArticle`, `MMArticle`ì²˜ëŸ¼ ì“°ìž…ë‹ˆë‹¤. ì•„í‹°í´ì—ëŠ” ì œëª©, ì‹ë³„ì•„ì´ë””, ì´ë¯¸ì§€ ë§í¬ê°€ í•„ìˆ˜ë¡œ í¬í•¨ë˜ì–´ì•¼ í•©ë‹ˆë‹¤. UI ë©´ì—ì„œ ì•„í‹°í´ ê´€ë¦¬ëŠ” ë³„ë„ì˜ ê¸°ëŠ¥ìœ¼ë¡œ ì´ë£¨ì–´ì§ˆ ì˜ˆì •ìž…ë‹ˆë‹¤.
 
-## ¼¼¸¶Æ÷¾î °ü¸®
+## ì„¸ë§ˆí¬ì–´ ê´€ë¦¬
 
-ÀÌ¹ÌÁö ´Ù¿î·Îµå¸¦ À§ÇÑ ¼¼¸¶Æ÷¾î·Î `DriverQueue`¿Í `DownloadQueue` µÎ °³°¡ ÀÖ½À´Ï´Ù. `DriverQueue`´Â ´ÙÁß ÇÁ·Î¼¼½º·Î, `DownloadQueue`´Â ´ÙÁß ¾²·¹µå·Î ÀÛ¾÷ÇÕ´Ï´Ù. ÃßÈÄ µ¿¿µ»ó ¼¼¸¶Æ÷¾î¸¦ Ãß°¡ÇØ¾ßµÉ »óÈ²ÀÌ »ý±â¸é `MovieQueue`·Î ±¸ÇöÇÒ °ÍÀÔ´Ï´Ù.
+ì´ë¯¸ì§€ ë‹¤ìš´ë¡œë“œë¥¼ ìœ„í•œ ì„¸ë§ˆí¬ì–´ë¡œ `DriverQueue`ì™€ `DownloadQueue` ë‘ ê°œê°€ ìžˆìŠµë‹ˆë‹¤. `DriverQueue`ëŠ” ë‹¤ì¤‘ í”„ë¡œì„¸ìŠ¤ë¡œ, `DownloadQueue`ëŠ” ë‹¤ì¤‘ ì“°ë ˆë“œë¡œ ìž‘ì—…í•©ë‹ˆë‹¤. ì¶”í›„ ë™ì˜ìƒ ì„¸ë§ˆí¬ì–´ë¥¼ ì¶”ê°€í•´ì•¼ë  ìƒí™©ì´ ìƒê¸°ë©´ `MovieQueue`ë¡œ êµ¬í˜„í•  ê²ƒìž…ë‹ˆë‹¤.
 
-## ÀûÀýÇÑ ºñµ¿±â Ã³¸®°¡ ¾Æ´Ñµ¥µµ async Å°¿öµå°¡ Æ÷ÇÔµÈ °æ¿ì
+## ì ì ˆí•œ ë¹„ë™ê¸° ì²˜ë¦¬ê°€ ì•„ë‹Œë°ë„ async í‚¤ì›Œë“œê°€ í¬í•¨ëœ ê²½ìš°
 
-Á¤È®ÇÑ ÀÌÀ¯´Â ¾Ë ¼ö ¾øÁö¸¸, asyncÀÇ À¯¹«¿¡ µû¶ó ¼º´É¿¡ Â÷ÀÌ°¡ »ý±ä´Ù. µû¶ó¼­ async Å°¿öµå°¡ ÇÊ¿ä¾ø´Â »óÈ²ÀÓ¿¡µµ async Å°¿öµå¸¦ ³²°ÜµÐ °æ¿ì°¡ ÀÖ´Ù.
+ì •í™•í•œ ì´ìœ ëŠ” ì•Œ ìˆ˜ ì—†ì§€ë§Œ, asyncì˜ ìœ ë¬´ì— ë”°ë¼ ì„±ëŠ¥ì— ì°¨ì´ê°€ ìƒê¸´ë‹¤. ë”°ë¼ì„œ async í‚¤ì›Œë“œê°€ í•„ìš”ì—†ëŠ” ìƒí™©ìž„ì—ë„ async í‚¤ì›Œë“œë¥¼ ë‚¨ê²¨ë‘” ê²½ìš°ê°€ ìžˆë‹¤.
 
-## UI ¾÷µ¥ÀÌÆ®
+## UI ì—…ë°ì´íŠ¸
 
-¸ðµç UI ¾÷µ¥ÀÌÆ®´Â `Post` ÇÔ¼ö¸¦ »ç¿ëÇÑ´Ù. `Post` ÇÔ¼ö´Â `Foreign.cs`¿¡ Æ÷ÇÔµÇ¾î ÀÖ´Ù.
+ëª¨ë“  UI ì—…ë°ì´íŠ¸ëŠ” `Post` í•¨ìˆ˜ë¥¼ ì‚¬ìš©í•œë‹¤. `Post` í•¨ìˆ˜ëŠ” `Foreign.cs`ì— í¬í•¨ë˜ì–´ ìžˆë‹¤.
 
 ## Virtual UI
 
-UI VirtualizationÀÇ ±¸ÇöÀ¸·Î, ÇÚµéÀ» ÅëÇÕ °ü¸®ÇÑ´Ù. ¸¹Àº ÇÚµéÀÌ Á¸ÀçÇÒ °æ¿ì User Objects Á¦ÇÑÀ¸·Î ÇÁ·Î±×·¥ÀÌ °­Á¦Á¾·áµÉ ¼ö ÀÖÀ¸¹Ç·Î »óÀ§ ÇÚµé·Î ÅëÇÕÇØ ÇÏ³ªÀÇ ÇÚµé·Î º¸ÀÌ°Ô ²û ¸¸µç´Ù. ÄÁÆ®·Ñ ÀÌº¥Æ® Àü´Þ ¹æ½ÄÀº ÇöÀç ¿ÏÀüÅ½»öÀ¸·Î ±¸ÇöµÇ¾îÀÖ´Ù.
+UI Virtualizationì˜ êµ¬í˜„ìœ¼ë¡œ, í•¸ë“¤ì„ í†µí•© ê´€ë¦¬í•œë‹¤. ë§Žì€ í•¸ë“¤ì´ ì¡´ìž¬í•  ê²½ìš° User Objects ì œí•œìœ¼ë¡œ í”„ë¡œê·¸ëž¨ì´ ê°•ì œì¢…ë£Œë  ìˆ˜ ìžˆìœ¼ë¯€ë¡œ ìƒìœ„ í•¸ë“¤ë¡œ í†µí•©í•´ í•˜ë‚˜ì˜ í•¸ë“¤ë¡œ ë³´ì´ê²Œ ë” ë§Œë“ ë‹¤. ì»¨íŠ¸ë¡¤ ì´ë²¤íŠ¸ ì „ë‹¬ ë°©ì‹ì€ í˜„ìž¬ ì™„ì „íƒìƒ‰ìœ¼ë¡œ êµ¬í˜„ë˜ì–´ìžˆë‹¤.
 
-## ÇÃ·¯±×ÀÎ ¹æ½Ä
+## í”ŒëŸ¬ê·¸ì¸ ë°©ì‹
 
-»õ·Î¿î ´Ù¿î·Î´õ¸¦ Ãß°¡ÇÏ·Á¸é ¸¹Àº °ø°£ÀÌ ÇÊ¿äÇÑ °æ¿ì°¡ ÀÖ´Ù. ¶ÇÇÑ »ç¿ëÀÚ°¡ Æí¸®ÇÏ°Ô ´Ù¿î·Î´õ¸¦ Ãß°¡ÇÒ ¼ö ÀÖ°Ô²û ÇÃ·¯±×ÀÎ ±â´ÉÀ» °ËÅäÇÒ °èÈ¹ÀÌ´Ù. Àß ¸¸µé¾îÁø ÇÃ·¯±×ÀÎÀÇ °æ¿ì ¸ÞÀÎ ÇÁ·Î±×·¥¿¡ Æ÷ÇÔµÉ ¼ö ÀÖ´Ù.
+ìƒˆë¡œìš´ ë‹¤ìš´ë¡œë”ë¥¼ ì¶”ê°€í•˜ë ¤ë©´ ë§Žì€ ê³µê°„ì´ í•„ìš”í•œ ê²½ìš°ê°€ ìžˆë‹¤. ë˜í•œ ì‚¬ìš©ìžê°€ íŽ¸ë¦¬í•˜ê²Œ ë‹¤ìš´ë¡œë”ë¥¼ ì¶”ê°€í•  ìˆ˜ ìžˆê²Œë” í”ŒëŸ¬ê·¸ì¸ ê¸°ëŠ¥ì„ ê²€í† í•  ê³„íšì´ë‹¤. ìž˜ ë§Œë“¤ì–´ì§„ í”ŒëŸ¬ê·¸ì¸ì˜ ê²½ìš° ë©”ì¸ í”„ë¡œê·¸ëž¨ì— í¬í•¨ë  ìˆ˜ ìžˆë‹¤.
 
-## »ç¿ëÇÏ´Â ¿ÀÇÂ¼Ò½º ¶óÀÌºê·¯¸®
+## ì‚¬ìš©í•˜ëŠ” ì˜¤í”ˆì†ŒìŠ¤ ë¼ì´ë¸ŒëŸ¬ë¦¬
 
-|ÀÌ¸§|»ç¿ë|ÁÖ¼Ò|
+|ì´ë¦„|ì‚¬ìš©|ì£¼ì†Œ|
 |---|---|---|
-|Html Agility Pack|Html À¥ ºê¶ó¿ìÀú ¼Ò½º¸¦ ÆÄ½ÌÇÒ ¶§ »ç¿ëÇÔ|http://html-agility-pack.net/|
-|Metro Modern UI|È÷Åä¹Ì Ä«ÇÇ ±âº» UI|https://github.com/dennismagno/metroframework-modern-ui|
-|Newtonsoft.Json|json ÆÄÀÏ°ü¸®¸¦ À§ÇØ »ç¿ëÇÔ|https://www.newtonsoft.com/json|
-|Pixeez|ÇÈ½Ãºê ´Ù¿î·Î´õ ±¸Çö¿¡ »ç¿ëÇÔ|https://github.com/cucmberium/Pixeez|
+|Html Agility Pack|Html ì›¹ ë¸Œë¼ìš°ì € ì†ŒìŠ¤ë¥¼ íŒŒì‹±í•  ë•Œ ì‚¬ìš©í•¨|http://html-agility-pack.net/|
+|Metro Modern UI|ížˆí† ë¯¸ ì¹´í”¼ ê¸°ë³¸ UI|https://github.com/dennismagno/metroframework-modern-ui|
+|Newtonsoft.Json|json íŒŒì¼ê´€ë¦¬ë¥¼ ìœ„í•´ ì‚¬ìš©í•¨|https://www.newtonsoft.com/json|
+|Pixeez|í”½ì‹œë¸Œ ë‹¤ìš´ë¡œë” êµ¬í˜„ì— ì‚¬ìš©í•¨|https://github.com/cucmberium/Pixeez|
 
-## ¼Ò½ºÄÚµå ÂüÁ¶
+## ì†ŒìŠ¤ì½”ë“œ ì°¸ì¡°
 
-|ÀÌ¸§|»ç¿ë|ÁÖ¼Ò|
+|ì´ë¦„|ì‚¬ìš©|ì£¼ì†Œ|
 |---|---|---|
-|LibHitomi|Gallery Block ±¸Á¶ ÂüÁ¶|https://github.com/LiteHell/LibHitomi|
+|LibHitomi|Gallery Block êµ¬ì¡° ì°¸ì¡°|https://github.com/LiteHell/LibHitomi|
