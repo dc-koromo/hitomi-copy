@@ -328,9 +328,10 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder
 .mfractor/
 
-
 Hitomi Copy 2/*
 EXH Downloader/*
 MM Downloader/*
 Pixiv Downloader/*
 Twitter Downloader/*
+
+Hitomi Copy 3/Etc/Login

@@ -16,8 +16,8 @@ namespace Hitomi_Copy_3.Etc
         private static readonly Lazy<Pixiv> instance = new Lazy<Pixiv>(() => new Pixiv());
         public static Pixiv Instance => instance.Value;
 
-        public string DefaultUserId = "koromo.software@gmail.com";
-        public string DefaultPassword = "kawaikoromo";
+        public string DefaultUserId = Login.Login.PixivID;
+        public string DefaultPassword = Login.Login.PixivPW;
 
         Tokens token => Auth.AuthorizeAsync(DefaultUserId, DefaultPassword).Result;
         
