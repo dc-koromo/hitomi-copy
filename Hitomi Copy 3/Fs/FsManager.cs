@@ -1,15 +1,21 @@
 ﻿/* Copyright (C) 2018. Hitomi Parser Developers */
 
 using Etier.IconHelper;
+using hitomi.Parser;
 using Hitomi_Copy;
 using Hitomi_Copy.Data;
 using Hitomi_Copy_2;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Hitomi_Copy_3.Fs
@@ -130,6 +136,7 @@ namespace Hitomi_Copy_3.Fs
             List<ListViewItem> lvil = new List<ListViewItem>();
             for (int i = 0; i < metadatas.Count; i++)
             {
+                if (tgAVF.Checked == false && !metadatas[i].Item3.HasValue) continue;
                 lvil.Add(new ListViewItem(new string[]
                 {
                     (i+1).ToString(),
@@ -140,6 +147,41 @@ namespace Hitomi_Copy_3.Fs
             }
             AvailableList.Items.Clear();
             AvailableList.Items.AddRange(lvil.ToArray());
+
+            //////////////////////////////////////////////////
+
+            Dictionary<string, int> artist_count = new Dictionary<string, int>();
+            foreach (var md in metadatas)
+            {
+                if (md.Item3.HasValue && md.Item3.Value.Artists != null)
+                    foreach (var artist in md.Item3.Value.Artists)
+                        if (artist_count.ContainsKey(artist))
+                            artist_count[artist] += 1;
+                        else
+                            artist_count.Add(artist, 1);
+                if (tgAEG.Checked && md.Item3.HasValue && md.Item3.Value.Groups != null)
+                    foreach (var group in md.Item3.Value.Groups)
+                        if (artist_count.ContainsKey(group))
+                            artist_count[group] += 1;
+                        else
+                            artist_count.Add(group, 1);
+            }
+
+            var artist_rank = artist_count.ToList();
+            artist_rank.Sort((a, b) => b.Value.CompareTo(a.Value));
+
+            lvil.Clear();
+            for (int i = 0; i < artist_rank.Count; i++)
+            {
+                lvil.Add(new ListViewItem(new string[]
+                {
+                    (i+1).ToString(),
+                    artist_rank[i].Key,
+                    artist_rank[i].Value.ToString()
+                }));
+            }
+            lvArtistPriority.Items.Clear();
+            lvArtistPriority.Items.AddRange(lvil.ToArray());
         }
 
         private void RecursiveVisit(TreeNode node, List<Regex> regex)
@@ -169,6 +211,49 @@ namespace Hitomi_Copy_3.Fs
             {
                 string path = PathTree.SelectedNode.FullPath.Replace('\\', '/');
                 Process.Start(Path.Combine(tbPath.Text, PathTree.SelectedNode.FullPath));
+            }
+        }
+
+        private void AvailableList_DoubleClick(object sender, EventArgs e)
+        {
+            if (AvailableList.SelectedItems.Count > 0)
+            {
+                Process.Start(Path.Combine(tbPath.Text, AvailableList.SelectedItems[0].SubItems[1].Text));
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Task.Run(() => AddPanel());
+        }
+
+        private void AddPanel()
+        {
+            int count = 0;
+            foreach (var md in metadatas)
+            {
+                if (!md.Item3.HasValue) continue;
+                count++;
+                if (count == 100) return;
+                string path = Path.Combine(tbPath.Text, md.Item1);
+
+                IPicElement pe;
+                pe = new PicElement(this);
+                HitomiArticle article = HitomiCommon.MetadataToArticle(md.Item3.Value);
+
+                pe.Article = article;
+                pe.Label = article.Title;
+
+                using (var zip = ZipFile.Open(path, ZipArchiveMode.Read))
+                {
+                    string tmp = Path.GetTempFileName();
+                    zip.Entries[0].ExtractToFile(tmp, true);
+                    pe.SetImageFromAddress(tmp, 150, 200);
+                }
+
+                pe.Font = this.Font;
+
+                this.Post(() => ImagePanel.Controls.Add(pe as Control));
             }
         }
     }
