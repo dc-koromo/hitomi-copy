@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -121,6 +122,7 @@ namespace Hitomi_Copy_3.Fs
         #region 규칙 적용 및 추출
 
         List<Tuple<string, string, HitomiMetadata?>> metadatas = new List<Tuple<string, string, HitomiMetadata?>>();
+        Dictionary<string, int> artist_rank_dic;
         int visit_count = 0;
         int available_count = 0;
 
@@ -174,6 +176,8 @@ namespace Hitomi_Copy_3.Fs
             var artist_rank = artist_count.ToList();
             artist_rank.Sort((a, b) => b.Value.CompareTo(a.Value));
 
+            artist_rank_dic = new Dictionary<string, int>();
+
             lvil.Clear();
             for (int i = 0; i < artist_rank.Count; i++)
             {
@@ -183,6 +187,7 @@ namespace Hitomi_Copy_3.Fs
                     artist_rank[i].Key,
                     artist_rank[i].Value.ToString()
                 }));
+                artist_rank_dic.Add(artist_rank[i].Key, i);
             }
             lvArtistPriority.Items.Clear();
             lvArtistPriority.Items.AddRange(lvil.ToArray());
@@ -279,5 +284,96 @@ namespace Hitomi_Copy_3.Fs
                     (new frmGroupInfo(this, token)).Show();
             }
         }
+
+        #region 재배치 도구
+
+        private string MakeDownloadDirectory(string artists, HitomiMetadata metadata, string extension)
+        {
+            string invalid = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
+            string title = metadata.Name ?? "";
+            string type = metadata.Type ?? "";
+            string series = "";
+            if (HitomiSetting.Instance.GetModel().ReplaceArtistsWithTitle)
+            {
+                TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+                artists = textInfo.ToTitleCase(artists);
+            }
+            if (metadata.Parodies != null) series = metadata.Parodies[0];
+            if (title != null)
+                foreach (char c in invalid) title = title.Replace(c.ToString(), "");
+            if (artists != null)
+                foreach (char c in invalid) artists = artists.Replace(c.ToString(), "");
+            if (series != null)
+                foreach (char c in invalid) series = series.Replace(c.ToString(), "");
+            if (artists.StartsWith("group:"))
+                artists = artists.Substring("group:".Length);
+
+            string path = tbDownloadPath.Text;
+            path = Regex.Replace(path, "{Title}", title, RegexOptions.IgnoreCase);
+            path = Regex.Replace(path, "{Artists}", artists, RegexOptions.IgnoreCase);
+            path = Regex.Replace(path, "{Id}", metadata.ID.ToString(), RegexOptions.IgnoreCase);
+            path = Regex.Replace(path, "{Type}", type, RegexOptions.IgnoreCase);
+            path = Regex.Replace(path, "{Date}", DateTime.Now.ToString(), RegexOptions.IgnoreCase);
+            path = Regex.Replace(path, "{Series}", series, RegexOptions.IgnoreCase);
+            path += extension;
+            return path;
+        }
+
+        private void bReplaceTest_Click(object sender, EventArgs e)
+        {
+            List<Tuple<string, string>> result = new List<Tuple<string, string>>();
+            
+            foreach (var md in metadatas)
+            {
+                if (!md.Item3.HasValue) continue;
+                string extension = Path.GetExtension(md.Item1);
+                if (md.Item3.Value.Artists == null && md.Item3.Value.Groups == null)
+                {
+                    result.Add(new Tuple<string, string>(md.Item1, MakeDownloadDirectory("", md.Item3.Value, extension)));
+                    continue;
+                }
+
+                List<string> artist_group = new List<string>();
+                if (md.Item3.Value.Artists != null)
+                    foreach (var artist in md.Item3.Value.Artists)
+                        artist_group.Add(artist);
+                if (tgAEG.Checked == true && md.Item3.Value.Groups != null)
+                    foreach (var group in md.Item3.Value.Groups)
+                        artist_group.Add("group:" + group);
+
+                int top_rank = 0;
+                for (int i = 1; i < artist_group.Count; i++)
+                {
+                    if (artist_rank_dic[artist_group[top_rank]] > artist_rank_dic[artist_group[i]])
+                        top_rank = i;
+                }
+
+                result.Add(new Tuple<string, string>(md.Item1, MakeDownloadDirectory(artist_group[top_rank], md.Item3.Value, extension)));
+            }
+            
+            List<ListViewItem> lvil = new List<ListViewItem>();
+            for (int i = 0; i < result.Count; i++)
+            {
+                bool err = false;
+                if (File.Exists(result[i].Item2)) err = true;
+                else if (Directory.Exists(result[i].Item2)) err = true;
+                lvil.Add(new ListViewItem(new string[]
+                {
+                    (i+1).ToString(),
+                    result[i].Item1,
+                    result[i].Item2,
+                    (err ? "Already exists" : "")
+                }));
+                if (err)
+                {
+                    lvil[i].BackColor = Color.Orange;
+                    lvil[i].ForeColor = Color.White;
+                }
+            }
+            lvReplacerTestResult.Items.Clear();
+            lvReplacerTestResult.Items.AddRange(lvil.ToArray());
+        }
+
+        #endregion
     }
 }

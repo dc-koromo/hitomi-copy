@@ -33,6 +33,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.PathTree = new Hitomi_Copy_3.NativeTreeView();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.AvailableList = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -49,36 +50,40 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
-            this.tgAVF = new MetroFramework.Controls.MetroToggle();
+            this.lvReplacerTestResult = new System.Windows.Forms.ListView();
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvArtistPriority = new System.Windows.Forms.ListView();
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.PathTree = new Hitomi_Copy_3.NativeTreeView();
-            this.ImagePanel = new Hitomi_Copy_2.ScrollFixLayoutPanel();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.tgAEG = new MetroFramework.Controls.MetroToggle();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
+            this.bMove = new System.Windows.Forms.Button();
+            this.bReplaceTest = new System.Windows.Forms.Button();
+            this.tbDownloadPath = new System.Windows.Forms.TextBox();
+            this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.ImagePanel = new Hitomi_Copy_2.ScrollFixLayoutPanel();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.tgAEG = new MetroFramework.Controls.MetroToggle();
+            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.tgAVF = new MetroFramework.Controls.MetroToggle();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -88,12 +93,12 @@
             this.tabPage2.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -158,6 +163,18 @@
             this.splitContainer1.Size = new System.Drawing.Size(1094, 378);
             this.splitContainer1.SplitterDistance = 318;
             this.splitContainer1.TabIndex = 16;
+            // 
+            // PathTree
+            // 
+            this.PathTree.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PathTree.Location = new System.Drawing.Point(3, 22);
+            this.PathTree.Name = "PathTree";
+            this.PathTree.ShowLines = false;
+            this.PathTree.Size = new System.Drawing.Size(310, 353);
+            this.PathTree.TabIndex = 11;
+            this.PathTree.DoubleClick += new System.EventHandler(this.PathTree_DoubleClick);
             // 
             // metroLabel4
             // 
@@ -319,14 +336,108 @@
             this.tabPage5.Text = "재배치";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // metroLabel7
+            // 
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.Location = new System.Drawing.Point(34, 21);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(180, 19);
+            this.metroLabel7.TabIndex = 21;
+            this.metroLabel7.Text = "Hitomi Copy Article Replacer";
+            this.metroLabel7.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.lvReplacerTestResult);
+            this.groupBox1.Controls.Add(this.lvArtistPriority);
+            this.groupBox1.Location = new System.Drawing.Point(34, 181);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1064, 256);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "시험 결과";
+            // 
+            // lvReplacerTestResult
+            // 
+            this.lvReplacerTestResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvReplacerTestResult.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader11,
+            this.columnHeader12,
+            this.columnHeader13,
+            this.columnHeader14});
+            this.lvReplacerTestResult.FullRowSelect = true;
+            this.lvReplacerTestResult.GridLines = true;
+            this.lvReplacerTestResult.Location = new System.Drawing.Point(275, 22);
+            this.lvReplacerTestResult.Name = "lvReplacerTestResult";
+            this.lvReplacerTestResult.Size = new System.Drawing.Size(783, 228);
+            this.lvReplacerTestResult.TabIndex = 1;
+            this.lvReplacerTestResult.UseCompatibleStateImageBehavior = false;
+            this.lvReplacerTestResult.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "인덱스";
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "기존 경로";
+            this.columnHeader12.Width = 190;
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "이동 후 절대 경로";
+            this.columnHeader13.Width = 260;
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "오류 내용";
+            this.columnHeader14.Width = 232;
+            // 
+            // lvArtistPriority
+            // 
+            this.lvArtistPriority.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lvArtistPriority.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7});
+            this.lvArtistPriority.FullRowSelect = true;
+            this.lvArtistPriority.GridLines = true;
+            this.lvArtistPriority.Location = new System.Drawing.Point(6, 22);
+            this.lvArtistPriority.Name = "lvArtistPriority";
+            this.lvArtistPriority.Size = new System.Drawing.Size(263, 228);
+            this.lvArtistPriority.TabIndex = 0;
+            this.lvArtistPriority.UseCompatibleStateImageBehavior = false;
+            this.lvArtistPriority.View = System.Windows.Forms.View.Details;
+            this.lvArtistPriority.DoubleClick += new System.EventHandler(this.lvArtistPriority_DoubleClick);
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "우선순위";
+            this.columnHeader5.Width = 66;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "작가";
+            this.columnHeader6.Width = 105;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "작품수";
+            // 
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.metroLabel14);
-            this.groupBox3.Controls.Add(this.button4);
-            this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Controls.Add(this.textBox7);
+            this.groupBox3.Controls.Add(this.bMove);
+            this.groupBox3.Controls.Add(this.bReplaceTest);
+            this.groupBox3.Controls.Add(this.tbDownloadPath);
             this.groupBox3.Controls.Add(this.metroLabel13);
             this.groupBox3.Location = new System.Drawing.Point(34, 57);
             this.groupBox3.Name = "groupBox3";
@@ -342,39 +453,40 @@
             this.metroLabel14.Name = "metroLabel14";
             this.metroLabel14.Size = new System.Drawing.Size(348, 19);
             this.metroLabel14.TabIndex = 20;
-            this.metroLabel14.Text = "※ 절대로 기존 경로와 겹치지 않게 경로를 설정하세요.";
+            this.metroLabel14.Text = "※ 반드시 기존 경로와 겹치지 않게 경로를 설정하세요.";
             this.metroLabel14.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
-            // button4
+            // bMove
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(871, 68);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(170, 34);
-            this.button4.TabIndex = 19;
-            this.button4.Text = "이동";
-            this.button4.UseVisualStyleBackColor = true;
+            this.bMove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bMove.Location = new System.Drawing.Point(871, 68);
+            this.bMove.Name = "bMove";
+            this.bMove.Size = new System.Drawing.Size(170, 34);
+            this.bMove.TabIndex = 19;
+            this.bMove.Text = "이동";
+            this.bMove.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // bReplaceTest
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(695, 68);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(170, 34);
-            this.button3.TabIndex = 18;
-            this.button3.Text = "이동 시험";
-            this.button3.UseVisualStyleBackColor = true;
+            this.bReplaceTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bReplaceTest.Location = new System.Drawing.Point(695, 68);
+            this.bReplaceTest.Name = "bReplaceTest";
+            this.bReplaceTest.Size = new System.Drawing.Size(170, 34);
+            this.bReplaceTest.TabIndex = 18;
+            this.bReplaceTest.Text = "이동 시험";
+            this.bReplaceTest.UseVisualStyleBackColor = true;
+            this.bReplaceTest.Click += new System.EventHandler(this.bReplaceTest_Click);
             // 
-            // textBox7
+            // tbDownloadPath
             // 
-            this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbDownloadPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox7.Font = new System.Drawing.Font("Consolas", 9F);
-            this.textBox7.Location = new System.Drawing.Point(102, 31);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(939, 22);
-            this.textBox7.TabIndex = 9;
-            this.textBox7.Text = "C:\\Hitomi\\{Artists}\\[{Id}] {Title}";
+            this.tbDownloadPath.Font = new System.Drawing.Font("Consolas", 9F);
+            this.tbDownloadPath.Location = new System.Drawing.Point(102, 31);
+            this.tbDownloadPath.Name = "tbDownloadPath";
+            this.tbDownloadPath.Size = new System.Drawing.Size(939, 22);
+            this.tbDownloadPath.TabIndex = 9;
+            this.tbDownloadPath.Text = "C:\\Hitomi\\{Artists}\\[{Id}] {Title}";
             // 
             // metroLabel13
             // 
@@ -385,6 +497,98 @@
             this.metroLabel13.TabIndex = 8;
             this.metroLabel13.Text = "경로 규칙 : ";
             this.metroLabel13.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.groupBox2);
+            this.tabPage6.Controls.Add(this.metroLabel9);
+            this.tabPage6.Location = new System.Drawing.Point(4, 24);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(1130, 459);
+            this.tabPage6.TabIndex = 2;
+            this.tabPage6.Text = "이름 바꾸기";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.metroLabel10);
+            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.button5);
+            this.groupBox2.Location = new System.Drawing.Point(34, 57);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1064, 365);
+            this.groupBox2.TabIndex = 23;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "이름 바꾸기 규칙";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.Location = new System.Drawing.Point(16, 122);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(1025, 223);
+            this.textBox2.TabIndex = 24;
+            this.textBox2.Text = resources.GetString("textBox2.Text");
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Font = new System.Drawing.Font("Consolas", 9F);
+            this.textBox1.Location = new System.Drawing.Point(70, 33);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(971, 22);
+            this.textBox1.TabIndex = 21;
+            this.textBox1.Text = "[{Id}] {Title}";
+            // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.Location = new System.Drawing.Point(16, 35);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(48, 19);
+            this.metroLabel10.TabIndex = 20;
+            this.metroLabel10.Text = "규칙 : ";
+            this.metroLabel10.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(871, 68);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(170, 34);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "이름 바꾸기";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button5.Location = new System.Drawing.Point(695, 68);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(170, 34);
+            this.button5.TabIndex = 18;
+            this.button5.Text = "이름 바꾸기 시험";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // metroLabel9
+            // 
+            this.metroLabel9.AutoSize = true;
+            this.metroLabel9.Location = new System.Drawing.Point(34, 21);
+            this.metroLabel9.Name = "metroLabel9";
+            this.metroLabel9.Size = new System.Drawing.Size(140, 19);
+            this.metroLabel9.TabIndex = 22;
+            this.metroLabel9.Text = "Hitomi Copy Renamer";
+            this.metroLabel9.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // tabPage4
             // 
@@ -420,6 +624,18 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // ImagePanel
+            // 
+            this.ImagePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ImagePanel.AutoScroll = true;
+            this.ImagePanel.BackColor = System.Drawing.SystemColors.Control;
+            this.ImagePanel.Location = new System.Drawing.Point(6, 42);
+            this.ImagePanel.Name = "ImagePanel";
+            this.ImagePanel.Size = new System.Drawing.Size(1118, 417);
+            this.ImagePanel.TabIndex = 0;
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.metroLabel8);
@@ -433,106 +649,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "설정";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.lvArtistPriority);
-            this.groupBox1.Location = new System.Drawing.Point(34, 181);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1064, 254);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "시험 결과";
-            // 
-            // metroLabel11
-            // 
-            this.metroLabel11.AutoSize = true;
-            this.metroLabel11.Location = new System.Drawing.Point(124, 42);
-            this.metroLabel11.Name = "metroLabel11";
-            this.metroLabel11.Size = new System.Drawing.Size(186, 19);
-            this.metroLabel11.Style = MetroFramework.MetroColorStyle.Pink;
-            this.metroLabel11.TabIndex = 44;
-            this.metroLabel11.Text = "가용성이 없는 항목도 표시 : ";
-            // 
-            // tgAVF
-            // 
-            this.tgAVF.AutoSize = true;
-            this.tgAVF.Location = new System.Drawing.Point(281, 42);
-            this.tgAVF.Name = "tgAVF";
-            this.tgAVF.Size = new System.Drawing.Size(80, 19);
-            this.tgAVF.Style = MetroFramework.MetroColorStyle.Pink;
-            this.tgAVF.TabIndex = 43;
-            this.tgAVF.Text = "Off";
-            this.tgAVF.UseSelectable = true;
-            // 
-            // lvArtistPriority
-            // 
-            this.lvArtistPriority.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.lvArtistPriority.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader5,
-            this.columnHeader6,
-            this.columnHeader7});
-            this.lvArtistPriority.FullRowSelect = true;
-            this.lvArtistPriority.GridLines = true;
-            this.lvArtistPriority.Location = new System.Drawing.Point(6, 22);
-            this.lvArtistPriority.Name = "lvArtistPriority";
-            this.lvArtistPriority.Size = new System.Drawing.Size(263, 226);
-            this.lvArtistPriority.TabIndex = 0;
-            this.lvArtistPriority.UseCompatibleStateImageBehavior = false;
-            this.lvArtistPriority.View = System.Windows.Forms.View.Details;
-            this.lvArtistPriority.DoubleClick += new System.EventHandler(this.lvArtistPriority_DoubleClick);
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "우선순위";
-            this.columnHeader5.Width = 66;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "작가";
-            this.columnHeader6.Width = 105;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "작품수";
-            // 
-            // PathTree
-            // 
-            this.PathTree.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PathTree.Location = new System.Drawing.Point(3, 22);
-            this.PathTree.Name = "PathTree";
-            this.PathTree.ShowLines = false;
-            this.PathTree.Size = new System.Drawing.Size(310, 353);
-            this.PathTree.TabIndex = 11;
-            this.PathTree.DoubleClick += new System.EventHandler(this.PathTree_DoubleClick);
-            // 
-            // ImagePanel
-            // 
-            this.ImagePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ImagePanel.AutoScroll = true;
-            this.ImagePanel.BackColor = System.Drawing.SystemColors.Control;
-            this.ImagePanel.Location = new System.Drawing.Point(6, 42);
-            this.ImagePanel.Name = "ImagePanel";
-            this.ImagePanel.Size = new System.Drawing.Size(1118, 415);
-            this.ImagePanel.TabIndex = 0;
-            // 
-            // metroLabel7
-            // 
-            this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(34, 21);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(180, 19);
-            this.metroLabel7.TabIndex = 21;
-            this.metroLabel7.Text = "Hitomi Copy Article Replacer";
-            this.metroLabel7.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // metroLabel8
             // 
@@ -555,97 +671,26 @@
             this.tgAEG.Text = "Off";
             this.tgAEG.UseSelectable = true;
             // 
-            // tabPage6
+            // metroLabel11
             // 
-            this.tabPage6.Controls.Add(this.groupBox2);
-            this.tabPage6.Controls.Add(this.metroLabel9);
-            this.tabPage6.Location = new System.Drawing.Point(4, 24);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(1130, 459);
-            this.tabPage6.TabIndex = 2;
-            this.tabPage6.Text = "이름 바꾸기";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.metroLabel11.AutoSize = true;
+            this.metroLabel11.Location = new System.Drawing.Point(124, 42);
+            this.metroLabel11.Name = "metroLabel11";
+            this.metroLabel11.Size = new System.Drawing.Size(186, 19);
+            this.metroLabel11.Style = MetroFramework.MetroColorStyle.Pink;
+            this.metroLabel11.TabIndex = 44;
+            this.metroLabel11.Text = "가용성이 없는 항목도 표시 : ";
             // 
-            // metroLabel9
+            // tgAVF
             // 
-            this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(34, 21);
-            this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(140, 19);
-            this.metroLabel9.TabIndex = 22;
-            this.metroLabel9.Text = "Hitomi Copy Renamer";
-            this.metroLabel9.Theme = MetroFramework.MetroThemeStyle.Light;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.metroLabel10);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Location = new System.Drawing.Point(34, 57);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1064, 365);
-            this.groupBox2.TabIndex = 23;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "이름 바꾸기 규칙";
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(871, 68);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(170, 34);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "이름 바꾸기";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(695, 68);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(170, 34);
-            this.button5.TabIndex = 18;
-            this.button5.Text = "이름 바꾸기 시험";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Font = new System.Drawing.Font("Consolas", 9F);
-            this.textBox1.Location = new System.Drawing.Point(70, 33);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(971, 22);
-            this.textBox1.TabIndex = 21;
-            this.textBox1.Text = "[{Id}] {Title}";
-            // 
-            // metroLabel10
-            // 
-            this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(16, 35);
-            this.metroLabel10.Name = "metroLabel10";
-            this.metroLabel10.Size = new System.Drawing.Size(48, 19);
-            this.metroLabel10.TabIndex = 20;
-            this.metroLabel10.Text = "규칙 : ";
-            this.metroLabel10.Theme = MetroFramework.MetroThemeStyle.Light;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(16, 122);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(1025, 223);
-            this.textBox2.TabIndex = 24;
-            this.textBox2.Text = resources.GetString("textBox2.Text");
+            this.tgAVF.AutoSize = true;
+            this.tgAVF.Location = new System.Drawing.Point(281, 42);
+            this.tgAVF.Name = "tgAVF";
+            this.tgAVF.Size = new System.Drawing.Size(80, 19);
+            this.tgAVF.Style = MetroFramework.MetroColorStyle.Pink;
+            this.tgAVF.TabIndex = 43;
+            this.tgAVF.Text = "Off";
+            this.tgAVF.UseSelectable = true;
             // 
             // FsManager
             // 
@@ -676,17 +721,17 @@
             this.tabControl2.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -721,9 +766,9 @@
         private System.Windows.Forms.TabPage tabPage5;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Button bMove;
+        private System.Windows.Forms.Button bReplaceTest;
+        private System.Windows.Forms.TextBox tbDownloadPath;
         private MetroFramework.Controls.MetroLabel metroLabel13;
         private MetroFramework.Controls.MetroLabel metroLabel14;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -744,5 +789,10 @@
         private System.Windows.Forms.TextBox textBox1;
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ListView lvReplacerTestResult;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
     }
 }
