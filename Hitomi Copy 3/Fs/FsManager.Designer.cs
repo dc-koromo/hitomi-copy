@@ -133,7 +133,7 @@
             this.AvailableList.GridLines = true;
             this.AvailableList.Location = new System.Drawing.Point(3, 22);
             this.AvailableList.Name = "AvailableList";
-            this.AvailableList.Size = new System.Drawing.Size(768, 349);
+            this.AvailableList.Size = new System.Drawing.Size(768, 347);
             this.AvailableList.TabIndex = 13;
             this.AvailableList.UseCompatibleStateImageBehavior = false;
             this.AvailableList.View = System.Windows.Forms.View.Details;
@@ -158,7 +158,7 @@
             this.tbRule.Name = "tbRule";
             this.tbRule.Size = new System.Drawing.Size(960, 22);
             this.tbRule.TabIndex = 10;
-            this.tbRule.Text = "^\\[(\\d+)\\], ^\\[.*?\\((\\d+)\\).*?\\], \\((\\d+)\\)";
+            this.tbRule.Text = "^\\[(\\d+)\\], ^\\[.*?\\((\\d+)\\).*?\\], \\((\\d+)\\)$";
             // 
             // metroLabel3
             // 
@@ -228,7 +228,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.AvailableList);
             this.splitContainer1.Panel2.Controls.Add(this.metroLabel5);
-            this.splitContainer1.Size = new System.Drawing.Size(1094, 374);
+            this.splitContainer1.Size = new System.Drawing.Size(1094, 372);
             this.splitContainer1.SplitterDistance = 318;
             this.splitContainer1.TabIndex = 16;
             // 
@@ -269,7 +269,7 @@
             this.PathTree.Location = new System.Drawing.Point(3, 22);
             this.PathTree.Name = "PathTree";
             this.PathTree.ShowLines = false;
-            this.PathTree.Size = new System.Drawing.Size(310, 349);
+            this.PathTree.Size = new System.Drawing.Size(310, 347);
             this.PathTree.TabIndex = 11;
             this.PathTree.DoubleClick += new System.EventHandler(this.PathTree_DoubleClick);
             // 
