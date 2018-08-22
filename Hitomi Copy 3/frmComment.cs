@@ -2,6 +2,7 @@
 
 using Hitomi_Copy_2.EH;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net;
@@ -61,6 +62,11 @@ namespace Hitomi_Copy_3
                 return true;
             }
             return base.ProcessDialogKey(keyData);
+        }
+
+        private void richTextBox1_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            Process.Start(e.LinkText);
         }
     }
 }
