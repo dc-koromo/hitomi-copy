@@ -337,15 +337,21 @@ namespace Hitomi_Copy_3.Fs
                 if (md.Item3.Value.Artists != null)
                     foreach (var artist in md.Item3.Value.Artists)
                         artist_group.Add(artist);
+                else if (md.Item3.Value.Groups != null)
+                    foreach (var group in md.Item3.Value.Groups)
+                        artist_group.Add(group);
                 if (tgAEG.Checked == true && md.Item3.Value.Groups != null)
                     foreach (var group in md.Item3.Value.Groups)
                         artist_group.Add("group:" + group);
 
                 int top_rank = 0;
-                for (int i = 1; i < artist_group.Count; i++)
+                if (md.Item3.Value.Artists != null)
                 {
-                    if (artist_rank_dic[artist_group[top_rank]] > artist_rank_dic[artist_group[i]])
-                        top_rank = i;
+                    for (int i = 1; i < artist_group.Count; i++)
+                    {
+                        if (artist_rank_dic[artist_group[top_rank]] > artist_rank_dic[artist_group[i]])
+                            top_rank = i;
+                    }
                 }
 
                 result.Add(new Tuple<string, string>(md.Item1, MakeDownloadDirectory(artist_group[top_rank], md.Item3.Value, extension)));
