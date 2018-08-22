@@ -83,10 +83,11 @@ namespace Hitomi_Copy_2
             }
         }
 
-        public static HitomiMetadata GetMetadataFromMagic(string magic)
+        public static HitomiMetadata? GetMetadataFromMagic(string magic)
         {
             HitomiMetadata tmp = new HitomiMetadata() { ID = Convert.ToInt32(magic) };
             var pos = HitomiData.Instance.metadata_collection.BinarySearch(tmp, new CompareMetadata());
+            if (pos < 0) return null;
             return HitomiData.Instance.metadata_collection[pos];
         }
     }

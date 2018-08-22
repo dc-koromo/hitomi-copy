@@ -152,6 +152,17 @@
     <Compile Include="Etc\Pixiv\Objects\UsersWork.cs" />
     <Compile Include="Etc\Pixiv\Objects\Work.cs" />
     <Compile Include="Etc\Pixiv\Pixeez.cs" />
+    <Compile Include="Fs\FileIcon\FolderIcon.cs" />
+    <Compile Include="Fs\FileIcon\IconHelper.cs" />
+    <Compile Include="Fs\FileIcon\IconListManager.cs" />
+    <Compile Include="Fs\FileIndexor.cs" />
+    <Compile Include="Fs\FileIndexorNode.cs" />
+    <Compile Include="Fs\FsManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fs\FsManager.Designer.cs">
+      <DependentUpon>FsManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="InfoDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -467,6 +478,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateGroup.resx">
       <DependentUpon>CreateGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fs\FsManager.resx">
+      <DependentUpon>FsManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InfoDetail.resx">
       <DependentUpon>InfoDetail.cs</DependentUpon>

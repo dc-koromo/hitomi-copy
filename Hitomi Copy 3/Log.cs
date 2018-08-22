@@ -6,6 +6,7 @@ using Hitomi_Copy_2.Analysis;
 using Hitomi_Copy_2.EH;
 using Hitomi_Copy_3._403;
 using Hitomi_Copy_3.Analysis;
+using Hitomi_Copy_3.Fs;
 using Hitomi_Copy_3.Package;
 using Newtonsoft.Json;
 using System;
@@ -869,7 +870,7 @@ namespace Hitomi_Copy_3
                                 articles.Add(HitomiBookmark.Instance.GetModel().Articles[i].Item1);
                             List<HitomiMetadata> result = new List<HitomiMetadata>();
                             foreach (var id in articles)
-                                result.Add(HitomiCommon.GetMetadataFromMagic(id));
+                                result.Add(HitomiCommon.GetMetadataFromMagic(id).Value);
                             (Application.OpenForms[0] as frmMain).LazyAdd(result);
                         }
                         else
@@ -882,6 +883,10 @@ namespace Hitomi_Copy_3
                         PushString("using 'bk (option) [start position] [count]'");
                         PushString("  (option): addarticle");
                     }
+                }
+                else if (cmd == "fs")
+                {
+                    (new FsManager()).Show();
                 }
                 else if (cmd == "help")
                 {
