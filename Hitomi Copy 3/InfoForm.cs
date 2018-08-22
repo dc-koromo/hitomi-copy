@@ -45,6 +45,10 @@ namespace Hitomi_Copy
             base.OnPaintBackground(e);
             e.Graphics.DrawImage(image, 0, 0, Width, Height);
         }
-        
+
+        private void InfoForm_MouseEnter(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

@@ -46,6 +46,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "frmInfo";
+            this.MouseEnter += new System.EventHandler(this.InfoForm_MouseEnter);
             this.ResumeLayout(false);
 
         }
