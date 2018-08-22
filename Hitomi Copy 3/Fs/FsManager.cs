@@ -6,6 +6,7 @@ using Hitomi_Copy.Data;
 using Hitomi_Copy_2;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -110,6 +111,8 @@ namespace Hitomi_Copy_3.Fs
 
         #endregion
 
+        #region 규칙 적용 및 추출
+
         List<Tuple<string, string, HitomiMetadata?>> metadatas = new List<Tuple<string, string, HitomiMetadata?>>();
         int visit_count = 0;
         int available_count = 0;
@@ -156,6 +159,17 @@ namespace Hitomi_Copy_3.Fs
 
             foreach (var cnode in node.Nodes.OfType<TreeNode>())
                 RecursiveVisit(cnode, regex);
+        }
+
+        #endregion
+
+        private void PathTree_DoubleClick(object sender, EventArgs e)
+        {
+            if (PathTree.SelectedNode != null && PathTree.SelectedNode.Nodes.Count == 0)
+            {
+                string path = PathTree.SelectedNode.FullPath.Replace('\\', '/');
+                Process.Start(Path.Combine(tbPath.Text, PathTree.SelectedNode.FullPath));
+            }
         }
     }
 }
