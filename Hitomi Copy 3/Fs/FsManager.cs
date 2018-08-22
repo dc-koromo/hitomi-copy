@@ -60,6 +60,7 @@ namespace Hitomi_Copy_3.Fs
                     break;
             }
             tbPath.Text = path;
+            textBox2.BackColor = Color.White;
         }
 
         #region 파일 시스템 리스팅
@@ -161,10 +162,13 @@ namespace Hitomi_Copy_3.Fs
                             artist_count.Add(artist, 1);
                 if (tgAEG.Checked && md.Item3.HasValue && md.Item3.Value.Groups != null)
                     foreach (var group in md.Item3.Value.Groups)
-                        if (artist_count.ContainsKey(group))
-                            artist_count[group] += 1;
+                    {
+                        string tmp = "group:" + group;
+                        if (artist_count.ContainsKey(tmp))
+                            artist_count[tmp] += 1;
                         else
-                            artist_count.Add(group, 1);
+                            artist_count.Add(tmp, 1);
+                    }
             }
 
             var artist_rank = artist_count.ToList();
@@ -254,6 +258,25 @@ namespace Hitomi_Copy_3.Fs
                 pe.Font = this.Font;
 
                 this.Post(() => ImagePanel.Controls.Add(pe as Control));
+            }
+        }
+
+        private void lvArtistPriority_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvArtistPriority.SelectedItems.Count > 0)
+            {
+                string token = lvArtistPriority.SelectedItems[0].SubItems[1].Text;
+                bool group = false;
+                if (token.StartsWith("group:"))
+                {
+                    group = true;
+                    token = token.Substring("group:".Length);
+                }
+
+                if (group == false)
+                    (new frmArtistInfo(this, token)).Show();
+                else
+                    (new frmGroupInfo(this, token)).Show();
             }
         }
     }

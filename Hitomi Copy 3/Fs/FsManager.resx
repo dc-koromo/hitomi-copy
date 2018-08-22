@@ -117,6 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBox2.Text" xml:space="preserve">
+    <value>Hitomi Copy Renamer
+
+히토미 카피 경로와 동일한 규칙을 가집니다. 단, {Search} 키워드는 무시됩니다.
+다음 여섯개의 경로 토큰만 사용할 수 있습니다.
+{Id}, {Title}, {Artists}, {Type}, {Date}, {Series}
+
+규칙에는 {Id} 또는 {Title} 중 반드시 하나를 포함해야합니다.
+중복된 파일이름에 관한 처리는 {Title}이 동일한 경우에만 발생하니, 폴더의 범위를 줄이거나, 중복된 이름을 가진 파일을 삭제하십시오.
+
+기존 이름과 겹치는 경우에는 파일이름을 변경하지 않습니다.
+
+File System Manager는 {Title}만으로 작품을 식별할 수 없으니, 참고바랍니다.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -71,6 +71,14 @@
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.tgAEG = new MetroFramework.Controls.MetroToggle();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -84,6 +92,8 @@
             this.tabPage4.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -288,6 +298,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl2.Controls.Add(this.tabPage5);
+            this.tabControl2.Controls.Add(this.tabPage6);
             this.tabControl2.Controls.Add(this.tabPage4);
             this.tabControl2.Location = new System.Drawing.Point(6, 6);
             this.tabControl2.Name = "tabControl2";
@@ -363,6 +374,7 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(939, 22);
             this.textBox7.TabIndex = 9;
+            this.textBox7.Text = "C:\\Hitomi\\{Artists}\\[{Id}] {Title}";
             // 
             // metroLabel13
             // 
@@ -464,6 +476,7 @@
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader7});
+            this.lvArtistPriority.FullRowSelect = true;
             this.lvArtistPriority.GridLines = true;
             this.lvArtistPriority.Location = new System.Drawing.Point(6, 22);
             this.lvArtistPriority.Name = "lvArtistPriority";
@@ -471,6 +484,7 @@
             this.lvArtistPriority.TabIndex = 0;
             this.lvArtistPriority.UseCompatibleStateImageBehavior = false;
             this.lvArtistPriority.View = System.Windows.Forms.View.Details;
+            this.lvArtistPriority.DoubleClick += new System.EventHandler(this.lvArtistPriority_DoubleClick);
             // 
             // columnHeader5
             // 
@@ -541,6 +555,98 @@
             this.tgAEG.Text = "Off";
             this.tgAEG.UseSelectable = true;
             // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.groupBox2);
+            this.tabPage6.Controls.Add(this.metroLabel9);
+            this.tabPage6.Location = new System.Drawing.Point(4, 24);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(1130, 459);
+            this.tabPage6.TabIndex = 2;
+            this.tabPage6.Text = "이름 바꾸기";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // metroLabel9
+            // 
+            this.metroLabel9.AutoSize = true;
+            this.metroLabel9.Location = new System.Drawing.Point(34, 21);
+            this.metroLabel9.Name = "metroLabel9";
+            this.metroLabel9.Size = new System.Drawing.Size(140, 19);
+            this.metroLabel9.TabIndex = 22;
+            this.metroLabel9.Text = "Hitomi Copy Renamer";
+            this.metroLabel9.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.metroLabel10);
+            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.button5);
+            this.groupBox2.Location = new System.Drawing.Point(34, 57);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1064, 365);
+            this.groupBox2.TabIndex = 23;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "이름 바꾸기 규칙";
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(871, 68);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(170, 34);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "이름 바꾸기";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button5.Location = new System.Drawing.Point(695, 68);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(170, 34);
+            this.button5.TabIndex = 18;
+            this.button5.Text = "이름 바꾸기 시험";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Font = new System.Drawing.Font("Consolas", 9F);
+            this.textBox1.Location = new System.Drawing.Point(70, 33);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(971, 22);
+            this.textBox1.TabIndex = 21;
+            this.textBox1.Text = "[{Id}] {Title}";
+            // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.Location = new System.Drawing.Point(16, 35);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(48, 19);
+            this.metroLabel10.TabIndex = 20;
+            this.metroLabel10.Text = "규칙 : ";
+            this.metroLabel10.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.Location = new System.Drawing.Point(16, 122);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(1025, 223);
+            this.textBox2.TabIndex = 24;
+            this.textBox2.Text = resources.GetString("textBox2.Text");
+            // 
             // FsManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -577,6 +683,10 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -626,5 +736,13 @@
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroToggle tgAEG;
+        private System.Windows.Forms.TabPage tabPage6;
+        private MetroFramework.Controls.MetroLabel metroLabel9;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox textBox1;
+        private MetroFramework.Controls.MetroLabel metroLabel10;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
