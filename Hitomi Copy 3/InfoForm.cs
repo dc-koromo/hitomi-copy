@@ -48,7 +48,7 @@ namespace Hitomi_Copy
 
         private void InfoForm_MouseEnter(object sender, EventArgs e)
         {
-            Close();
+            Hide();
         }
     }
 }
