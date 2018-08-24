@@ -33,7 +33,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.PathTree = new Hitomi_Copy_3.NativeTreeView();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.AvailableList = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -83,13 +82,14 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.button1 = new System.Windows.Forms.Button();
-            this.ImagePanel = new Hitomi_Copy_2.ScrollFixLayoutPanel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.tgAEG = new MetroFramework.Controls.MetroToggle();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
             this.tgAVF = new MetroFramework.Controls.MetroToggle();
+            this.PathTree = new Hitomi_Copy_3.NativeTreeView();
+            this.ImagePanel = new Hitomi_Copy_2.ScrollFixLayoutPanel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -167,21 +167,9 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.AvailableList);
             this.splitContainer1.Panel2.Controls.Add(this.metroLabel5);
-            this.splitContainer1.Size = new System.Drawing.Size(1094, 374);
+            this.splitContainer1.Size = new System.Drawing.Size(1094, 366);
             this.splitContainer1.SplitterDistance = 318;
             this.splitContainer1.TabIndex = 16;
-            // 
-            // PathTree
-            // 
-            this.PathTree.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PathTree.Location = new System.Drawing.Point(3, 22);
-            this.PathTree.Name = "PathTree";
-            this.PathTree.ShowLines = false;
-            this.PathTree.Size = new System.Drawing.Size(310, 349);
-            this.PathTree.TabIndex = 11;
-            this.PathTree.DoubleClick += new System.EventHandler(this.PathTree_DoubleClick);
             // 
             // metroLabel4
             // 
@@ -207,7 +195,7 @@
             this.AvailableList.GridLines = true;
             this.AvailableList.Location = new System.Drawing.Point(3, 22);
             this.AvailableList.Name = "AvailableList";
-            this.AvailableList.Size = new System.Drawing.Size(768, 349);
+            this.AvailableList.Size = new System.Drawing.Size(768, 341);
             this.AvailableList.TabIndex = 13;
             this.AvailableList.UseCompatibleStateImageBehavior = false;
             this.AvailableList.View = System.Windows.Forms.View.Details;
@@ -362,7 +350,7 @@
             this.groupBox1.Controls.Add(this.lvArtistPriority);
             this.groupBox1.Location = new System.Drawing.Point(34, 181);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1064, 256);
+            this.groupBox1.Size = new System.Drawing.Size(1064, 248);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "시험 결과";
@@ -381,7 +369,7 @@
             this.lvReplacerTestResult.GridLines = true;
             this.lvReplacerTestResult.Location = new System.Drawing.Point(275, 22);
             this.lvReplacerTestResult.Name = "lvReplacerTestResult";
-            this.lvReplacerTestResult.Size = new System.Drawing.Size(783, 228);
+            this.lvReplacerTestResult.Size = new System.Drawing.Size(783, 220);
             this.lvReplacerTestResult.TabIndex = 1;
             this.lvReplacerTestResult.UseCompatibleStateImageBehavior = false;
             this.lvReplacerTestResult.View = System.Windows.Forms.View.Details;
@@ -417,7 +405,7 @@
             this.lvArtistPriority.GridLines = true;
             this.lvArtistPriority.Location = new System.Drawing.Point(6, 22);
             this.lvArtistPriority.Name = "lvArtistPriority";
-            this.lvArtistPriority.Size = new System.Drawing.Size(263, 228);
+            this.lvArtistPriority.Size = new System.Drawing.Size(263, 220);
             this.lvArtistPriority.TabIndex = 0;
             this.lvArtistPriority.UseCompatibleStateImageBehavior = false;
             this.lvArtistPriority.View = System.Windows.Forms.View.Details;
@@ -673,18 +661,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // ImagePanel
-            // 
-            this.ImagePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ImagePanel.AutoScroll = true;
-            this.ImagePanel.BackColor = System.Drawing.SystemColors.Control;
-            this.ImagePanel.Location = new System.Drawing.Point(6, 42);
-            this.ImagePanel.Name = "ImagePanel";
-            this.ImagePanel.Size = new System.Drawing.Size(1118, 421);
-            this.ImagePanel.TabIndex = 0;
-            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.textBox2);
@@ -754,6 +730,30 @@
             this.tgAVF.TabIndex = 43;
             this.tgAVF.Text = "Off";
             this.tgAVF.UseSelectable = true;
+            // 
+            // PathTree
+            // 
+            this.PathTree.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PathTree.Location = new System.Drawing.Point(3, 22);
+            this.PathTree.Name = "PathTree";
+            this.PathTree.ShowLines = false;
+            this.PathTree.Size = new System.Drawing.Size(310, 341);
+            this.PathTree.TabIndex = 11;
+            this.PathTree.DoubleClick += new System.EventHandler(this.PathTree_DoubleClick);
+            // 
+            // ImagePanel
+            // 
+            this.ImagePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ImagePanel.AutoScroll = true;
+            this.ImagePanel.BackColor = System.Drawing.SystemColors.Control;
+            this.ImagePanel.Location = new System.Drawing.Point(6, 42);
+            this.ImagePanel.Name = "ImagePanel";
+            this.ImagePanel.Size = new System.Drawing.Size(1118, 421);
+            this.ImagePanel.TabIndex = 0;
             // 
             // FsManager
             // 
