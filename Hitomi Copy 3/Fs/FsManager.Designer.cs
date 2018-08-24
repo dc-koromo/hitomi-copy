@@ -69,17 +69,23 @@
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lvRenamerTestResult = new System.Windows.Forms.ListView();
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tbRenameRule = new System.Windows.Forms.TextBox();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.bRename = new System.Windows.Forms.Button();
+            this.bRenameTest = new System.Windows.Forms.Button();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.button1 = new System.Windows.Forms.Button();
             this.ImagePanel = new Hitomi_Copy_2.ScrollFixLayoutPanel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.tgAEG = new MetroFramework.Controls.MetroToggle();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
@@ -97,6 +103,7 @@
             this.groupBox3.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
@@ -160,7 +167,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.AvailableList);
             this.splitContainer1.Panel2.Controls.Add(this.metroLabel5);
-            this.splitContainer1.Size = new System.Drawing.Size(1094, 378);
+            this.splitContainer1.Size = new System.Drawing.Size(1094, 374);
             this.splitContainer1.SplitterDistance = 318;
             this.splitContainer1.TabIndex = 16;
             // 
@@ -172,7 +179,7 @@
             this.PathTree.Location = new System.Drawing.Point(3, 22);
             this.PathTree.Name = "PathTree";
             this.PathTree.ShowLines = false;
-            this.PathTree.Size = new System.Drawing.Size(310, 353);
+            this.PathTree.Size = new System.Drawing.Size(310, 349);
             this.PathTree.TabIndex = 11;
             this.PathTree.DoubleClick += new System.EventHandler(this.PathTree_DoubleClick);
             // 
@@ -200,7 +207,7 @@
             this.AvailableList.GridLines = true;
             this.AvailableList.Location = new System.Drawing.Point(3, 22);
             this.AvailableList.Name = "AvailableList";
-            this.AvailableList.Size = new System.Drawing.Size(768, 353);
+            this.AvailableList.Size = new System.Drawing.Size(768, 349);
             this.AvailableList.TabIndex = 13;
             this.AvailableList.UseCompatibleStateImageBehavior = false;
             this.AvailableList.View = System.Windows.Forms.View.Details;
@@ -465,6 +472,7 @@
             this.bMove.TabIndex = 19;
             this.bMove.Text = "이동";
             this.bMove.UseVisualStyleBackColor = true;
+            this.bMove.Click += new System.EventHandler(this.bMove_Click);
             // 
             // bReplaceTest
             // 
@@ -512,43 +520,82 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.groupBox4);
+            this.groupBox2.Controls.Add(this.tbRenameRule);
             this.groupBox2.Controls.Add(this.metroLabel10);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.button5);
+            this.groupBox2.Controls.Add(this.bRename);
+            this.groupBox2.Controls.Add(this.bRenameTest);
             this.groupBox2.Location = new System.Drawing.Point(34, 57);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1064, 365);
+            this.groupBox2.Size = new System.Drawing.Size(1064, 367);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "이름 바꾸기 규칙";
             // 
-            // textBox2
+            // groupBox4
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(16, 122);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(1025, 223);
-            this.textBox2.TabIndex = 24;
-            this.textBox2.Text = resources.GetString("textBox2.Text");
+            this.groupBox4.Controls.Add(this.lvRenamerTestResult);
+            this.groupBox4.Location = new System.Drawing.Point(132, 108);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(802, 253);
+            this.groupBox4.TabIndex = 23;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "시험 결과";
             // 
-            // textBox1
+            // lvRenamerTestResult
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lvRenamerTestResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Font = new System.Drawing.Font("Consolas", 9F);
-            this.textBox1.Location = new System.Drawing.Point(70, 33);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(971, 22);
-            this.textBox1.TabIndex = 21;
-            this.textBox1.Text = "[{Id}] {Title}";
+            this.lvRenamerTestResult.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader8,
+            this.columnHeader9,
+            this.columnHeader10,
+            this.columnHeader15});
+            this.lvRenamerTestResult.FullRowSelect = true;
+            this.lvRenamerTestResult.GridLines = true;
+            this.lvRenamerTestResult.Location = new System.Drawing.Point(6, 22);
+            this.lvRenamerTestResult.Name = "lvRenamerTestResult";
+            this.lvRenamerTestResult.Size = new System.Drawing.Size(790, 225);
+            this.lvRenamerTestResult.TabIndex = 22;
+            this.lvRenamerTestResult.UseCompatibleStateImageBehavior = false;
+            this.lvRenamerTestResult.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "인덱스";
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "기존 이름";
+            this.columnHeader9.Width = 190;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "변경 후 이름";
+            this.columnHeader10.Width = 260;
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "오류 내용";
+            this.columnHeader15.Width = 232;
+            // 
+            // tbRenameRule
+            // 
+            this.tbRenameRule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbRenameRule.Font = new System.Drawing.Font("Consolas", 9F);
+            this.tbRenameRule.Location = new System.Drawing.Point(70, 33);
+            this.tbRenameRule.Name = "tbRenameRule";
+            this.tbRenameRule.Size = new System.Drawing.Size(971, 22);
+            this.tbRenameRule.TabIndex = 21;
+            this.tbRenameRule.Text = "[{Id}] {Title}";
             // 
             // metroLabel10
             // 
@@ -560,25 +607,27 @@
             this.metroLabel10.Text = "규칙 : ";
             this.metroLabel10.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
-            // button2
+            // bRename
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(871, 68);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(170, 34);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "이름 바꾸기";
-            this.button2.UseVisualStyleBackColor = true;
+            this.bRename.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bRename.Location = new System.Drawing.Point(871, 68);
+            this.bRename.Name = "bRename";
+            this.bRename.Size = new System.Drawing.Size(170, 34);
+            this.bRename.TabIndex = 19;
+            this.bRename.Text = "이름 바꾸기";
+            this.bRename.UseVisualStyleBackColor = true;
+            this.bRename.Click += new System.EventHandler(this.bRename_Click);
             // 
-            // button5
+            // bRenameTest
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(695, 68);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(170, 34);
-            this.button5.TabIndex = 18;
-            this.button5.Text = "이름 바꾸기 시험";
-            this.button5.UseVisualStyleBackColor = true;
+            this.bRenameTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bRenameTest.Location = new System.Drawing.Point(695, 68);
+            this.bRenameTest.Name = "bRenameTest";
+            this.bRenameTest.Size = new System.Drawing.Size(170, 34);
+            this.bRenameTest.TabIndex = 18;
+            this.bRenameTest.Text = "이름 바꾸기 시험";
+            this.bRenameTest.UseVisualStyleBackColor = true;
+            this.bRenameTest.Click += new System.EventHandler(this.bRenameTest_Click);
             // 
             // metroLabel9
             // 
@@ -633,11 +682,12 @@
             this.ImagePanel.BackColor = System.Drawing.SystemColors.Control;
             this.ImagePanel.Location = new System.Drawing.Point(6, 42);
             this.ImagePanel.Name = "ImagePanel";
-            this.ImagePanel.Size = new System.Drawing.Size(1118, 417);
+            this.ImagePanel.Size = new System.Drawing.Size(1118, 421);
             this.ImagePanel.TabIndex = 0;
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.textBox2);
             this.tabPage3.Controls.Add(this.metroLabel8);
             this.tabPage3.Controls.Add(this.tgAEG);
             this.tabPage3.Controls.Add(this.metroLabel11);
@@ -649,6 +699,19 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "설정";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.Location = new System.Drawing.Point(74, 221);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(1025, 223);
+            this.textBox2.TabIndex = 47;
+            this.textBox2.Text = resources.GetString("textBox2.Text");
             // 
             // metroLabel8
             // 
@@ -728,6 +791,7 @@
             this.tabPage6.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.tabPage3.ResumeLayout(false);
@@ -784,15 +848,21 @@
         private System.Windows.Forms.TabPage tabPage6;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button bRename;
+        private System.Windows.Forms.Button bRenameTest;
+        private System.Windows.Forms.TextBox tbRenameRule;
         private MetroFramework.Controls.MetroLabel metroLabel10;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ListView lvReplacerTestResult;
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.ColumnHeader columnHeader13;
         private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ListView lvRenamerTestResult;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader15;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }

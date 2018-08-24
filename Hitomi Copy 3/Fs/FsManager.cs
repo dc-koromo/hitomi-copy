@@ -287,7 +287,7 @@ namespace Hitomi_Copy_3.Fs
 
         #region 재배치 도구
 
-        private string MakeDownloadDirectory(string artists, HitomiMetadata metadata, string extension)
+        private string MakeDownloadDirectory(string source, string artists, HitomiMetadata metadata, string extension)
         {
             string invalid = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
             string title = metadata.Name ?? "";
@@ -308,7 +308,7 @@ namespace Hitomi_Copy_3.Fs
             if (artists.StartsWith("group:"))
                 artists = artists.Substring("group:".Length);
 
-            string path = tbDownloadPath.Text;
+            string path = source;
             path = Regex.Replace(path, "{Title}", title, RegexOptions.IgnoreCase);
             path = Regex.Replace(path, "{Artists}", artists, RegexOptions.IgnoreCase);
             path = Regex.Replace(path, "{Id}", metadata.ID.ToString(), RegexOptions.IgnoreCase);
@@ -319,17 +319,18 @@ namespace Hitomi_Copy_3.Fs
             return path;
         }
 
-        private void bReplaceTest_Click(object sender, EventArgs e)
+        private List<Tuple<string, string>> GetResult(string source, bool rename = false)
         {
             List<Tuple<string, string>> result = new List<Tuple<string, string>>();
-            
+
             foreach (var md in metadatas)
             {
                 if (!md.Item3.HasValue) continue;
                 string extension = Path.GetExtension(md.Item1);
+                string dir = rename ? Path.GetDirectoryName(md.Item1) + '\\' : "";
                 if (md.Item3.Value.Artists == null && md.Item3.Value.Groups == null)
                 {
-                    result.Add(new Tuple<string, string>(md.Item1, MakeDownloadDirectory("", md.Item3.Value, extension)));
+                    result.Add(new Tuple<string, string>(md.Item1, dir + MakeDownloadDirectory(source, "", md.Item3.Value, extension)));
                     continue;
                 }
 
@@ -354,21 +355,30 @@ namespace Hitomi_Copy_3.Fs
                     }
                 }
 
-                result.Add(new Tuple<string, string>(md.Item1, MakeDownloadDirectory(artist_group[top_rank], md.Item3.Value, extension)));
+                result.Add(new Tuple<string, string>(md.Item1, dir + MakeDownloadDirectory(source, artist_group[top_rank], md.Item3.Value, extension)));
             }
-            
+            return result;
+        }
+
+        private void bReplaceTest_Click(object sender, EventArgs e)
+        {
+            var result = GetResult(tbDownloadPath.Text);
             List<ListViewItem> lvil = new List<ListViewItem>();
+            HashSet<string> overlapping_check = new HashSet<string>();
             for (int i = 0; i < result.Count; i++)
             {
                 bool err = false;
+                string err_msg = "Alread exists";
                 if (File.Exists(result[i].Item2)) err = true;
                 else if (Directory.Exists(result[i].Item2)) err = true;
+                if (overlapping_check.Contains(result[i].Item2)) { err = true; err_msg = "Overlapping"; }
+                else overlapping_check.Add(result[i].Item2);
                 lvil.Add(new ListViewItem(new string[]
                 {
                     (i+1).ToString(),
                     result[i].Item1,
                     result[i].Item2,
-                    (err ? "Already exists" : "")
+                    (err ? err_msg : "")
                 }));
                 if (err)
                 {
@@ -380,6 +390,100 @@ namespace Hitomi_Copy_3.Fs
             lvReplacerTestResult.Items.AddRange(lvil.ToArray());
         }
 
+        private void bMove_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("이 과정은 되돌릴 수 없습니다. 계속하시겠습니까?", "Hitomi Copy Article Replacer", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                return;
+
+            var result = GetResult(tbDownloadPath.Text);
+
+            for (int i = 0; i < result.Count; i++)
+            {
+                try
+                {
+                    string src = Path.Combine(fi.RootDirectory, result[i].Item1);
+                    string dest = result[i].Item2;
+                    string dir = Path.GetDirectoryName(result[i].Item2);
+                    Directory.CreateDirectory(dir);
+                    if (File.Exists(src))
+                        File.Move(src, dest);
+                    else
+                        Directory.Move(src, dest);
+                    LogEssential.Instance.PushLog(() => $"[Replacer] Move '{src}' => '{dest}'");
+                }
+                catch (Exception ex)
+                {
+                    LogEssential.Instance.PushLog(() => $"[Replacer] Error occurred! {Path.Combine(fi.RootDirectory, result[i].Item1)} => {result[i].Item2}");
+                    LogEssential.Instance.PushLog(ex);
+                }
+            }
+        }
+
         #endregion
+
+        #region 이름 바꾸기 도구
+        
+        private void bRenameTest_Click(object sender, EventArgs e)
+        {
+            var result = GetResult(tbRenameRule.Text, true);
+            List<ListViewItem> lvil = new List<ListViewItem>();
+            HashSet<string> overlapping_check = new HashSet<string>();
+            for (int i = 0; i < result.Count; i++)
+            {
+                bool err = false;
+                string err_msg = "Alread exists";
+                string dest = Path.Combine(fi.RootDirectory, result[i].Item2);
+                if (File.Exists(dest)) err = true;
+                else if (Directory.Exists(dest)) err = true;
+                if (overlapping_check.Contains(dest)) { err = true; err_msg = "Overlapping"; }
+                else overlapping_check.Add(dest);
+                lvil.Add(new ListViewItem(new string[]
+                {
+                    (i+1).ToString(),
+                    result[i].Item1,
+                    result[i].Item2,
+                    (err ? err_msg : "")
+                }));
+                if (err)
+                {
+                    lvil[i].BackColor = Color.Orange;
+                    lvil[i].ForeColor = Color.White;
+                }
+            }
+            lvRenamerTestResult.Items.Clear();
+            lvRenamerTestResult.Items.AddRange(lvil.ToArray());
+        }
+
+        private void bRename_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("이 과정은 되돌릴 수 없습니다. 계속하시겠습니까?", "Hitomi Copy Article Renamer", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                return;
+
+            var result = GetResult(tbRenameRule.Text, true);
+
+            for (int i = 0; i < result.Count; i++)
+            {
+                try
+                {
+                    string src = Path.Combine(fi.RootDirectory, result[i].Item1);
+                    string dest = Path.Combine(fi.RootDirectory, result[i].Item2);
+                    string dir = Path.GetDirectoryName(result[i].Item2);
+                    Directory.CreateDirectory(dir);
+                    if (File.Exists(src))
+                        File.Move(src, dest);
+                    else
+                        Directory.Move(src, dest);
+                    LogEssential.Instance.PushLog(() => $"[Renamer] Move '{src}' => '{dest}'");
+                }
+                catch (Exception ex)
+                {
+                    LogEssential.Instance.PushLog(() => $"[Renamer] Error occurred! {Path.Combine(fi.RootDirectory, result[i].Item1)} => {result[i].Item2}");
+                    LogEssential.Instance.PushLog(ex);
+                }
+            }
+        }
+
+        #endregion
+
     }
 }

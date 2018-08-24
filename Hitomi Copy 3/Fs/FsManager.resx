@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textBox2.Text" xml:space="preserve">
-    <value>Hitomi Copy Renamer
+    <value>Hitomi Copy Replacer/Renamer
 
 히토미 카피 경로와 동일한 규칙을 가집니다. 단, {Search} 키워드는 무시됩니다.
 다음 여섯개의 경로 토큰만 사용할 수 있습니다.
