@@ -918,6 +918,7 @@ namespace Hitomi_Copy_3
                     PushString("manual : Open manual window.");
                     PushString("pv : Load new package viewer.");
                     PushString("pm : Load new package maker.");
+                    PushString("fs : Show file system manager.");
                 }
                 else if (cmd == "fucs")
                 {
