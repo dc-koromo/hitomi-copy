@@ -197,13 +197,15 @@ namespace Hitomi_Copy_3.Fs
         {
             string match = "";
             if (regex.Any(x => {
-                if (!x.Match(node.Text).Success) return false;
-                match = x.Match(node.Text).Groups[1].Value;
+                if (!x.Match(Path.GetFileNameWithoutExtension(node.Text)).Success) return false;
+                match = x.Match(Path.GetFileNameWithoutExtension(node.Text)).Groups[1].Value;
                 return true;
                 }))
             {
                 metadatas.Add(new Tuple<string, string, HitomiMetadata?>(node.FullPath, match, HitomiCommon.GetMetadataFromMagic(match)));
                 available_count += 1;
+                if (!tgPVS.Checked)
+                    return;
             }
 
             visit_count += 1;
@@ -368,7 +370,7 @@ namespace Hitomi_Copy_3.Fs
             for (int i = 0; i < result.Count; i++)
             {
                 bool err = false;
-                string err_msg = "Alread exists";
+                string err_msg = "Already exists";
                 if (File.Exists(result[i].Item2)) err = true;
                 else if (Directory.Exists(result[i].Item2)) err = true;
                 if (overlapping_check.Contains(result[i].Item2)) { err = true; err_msg = "Overlapping"; }
