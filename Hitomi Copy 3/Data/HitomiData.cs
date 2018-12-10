@@ -37,6 +37,7 @@ namespace Hitomi_Copy.Data
         #region Metadata
         public async Task DownloadMetadata()
         {
+            //LogEssential.Instance.PushLog(() => "Start download metadata...");
             ServicePointManager.DefaultConnectionLimit = 1048576;
             metadata_collection = new List<HitomiMetadata>();
             await Task.WhenAll(Enumerable.Range(0, number_of_gallery_jsons).Select(no => downloadMetadata(no)));
@@ -58,6 +59,7 @@ namespace Hitomi_Copy.Data
 
         public async Task DownloadHiddendata()
         {
+            LogEssential.Instance.PushLog(() => "Start download hiddendata...");
             thumbnail_collection = new Dictionary<string, string>();
             HttpClient client = new HttpClient();
             client.Timeout = new TimeSpan(0, 0, 0, 0, Timeout.Infinite);

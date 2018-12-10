@@ -118,16 +118,42 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>v3.44
- - 히토미 카피 도움말을 만들었습니다! 히토미 카피의 모든 기능과, 자주 발생하는 오류들에 대해 적어놓았으니 한 번쯤은 읽어주시길 바랄게요. 주소: https://github.com/dc-koromo/hitomi-downloader-2/blob/master/Help.md
+    <value>v3.48
+ - 히토미 카피의 후속작, 코로모 카피(Koromo Copy)의 첫 번째 베타 버전을 배포합니다!
+   https://github.com/dc-koromo/koromo-copy 여기서 다운로드해주세요!
 
- - 이제 Detailed Result View에서 마우스 우클릭으로 Finder와 같이 작가/태그 한글화/시리즈목록을 볼 수 있습니다!
+주의 사항
+ - 코로모 카피와 히토미 카피를 절대로 같은 폴더에 두지 마세요. 기존의 모든 정보가 삭제됩니다. (단, log.json은 복사해도 됩니다.)
 
- - 픽시브 다운로드 기능을 추가했습니다.
+ - 코로모 카피를 다운로드하기전 반드시 히토미 카피 데이터를 백업해두시길 바랍니다.
 
- - 히토미 카피 4.0 개발을 시작했습니다! 늦어도 올해 안에 정식버전을 출시할 예정입니다. 히토미 카피 4.0 버전에 관한 개발문서는 추후에 작성할 예정입니다.
+ - 코로모 카피의 베타 버전은 자동업데이트를 지원하지 않습니다. 새로운 버전은 직접 확인해야합니다.
 
- * 이전 패치노트는 https://github.com/dc-koromo/hitomi-downloader-2/blob/master/PatchNote.md 여기서 다시 볼 수 있습니다.</value>
+ - 히토미 카피는 Koromo Copy의 정식 버전이 릴리즈되면 마지막으로 업데이트됩니다.
+
+---------------------------------------------------------------------------------------------
+
+코로모 카피의 모든 기능을 자유롭게 사용하려면 권장 사양 이상의 컴퓨터에서 사용해주세요.
+
+최소 사양 (리그 오브 레전드가 무난하게 돌아가는 사양)
+ - CPU: i3 8100
+ - RAM: 4 GB
+ - SSD: 128 GB (HDD에서 사용하지 마세요)
+ - VGA: GTX 660
+
+개발자 권장 사양
+ - CPU: i5 8600
+ - RAM: 16 GB
+ - SSD: 128 GB
+ - VGA: GTX 1060 3GB
+
+개발 환경
+ - CPU: i7 8700K
+ - RAM: 32 GB
+ - SSD: 128 GB 이상
+ - VGA: GTX 1080 Ti 11GB
+
+히토미/코로모 카피와 관련된 문의/답변은 디시인사이드 프로그래밍 갤러리나, koromo.software@gmail.com을 통해 지원받으시기 바랍니다.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

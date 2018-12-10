@@ -83,6 +83,8 @@ namespace Hitomi_Copy_2
         public bool UsingOptimization;
         [JsonProperty]
         public bool OffPackageViewer;
+        [JsonProperty]
+        public bool UseDefaultSyncmanager;
     }
 
     public class HitomiSetting

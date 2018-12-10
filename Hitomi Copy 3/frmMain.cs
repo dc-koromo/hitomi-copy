@@ -9,6 +9,7 @@ using Hitomi_Copy_2.EH;
 using Hitomi_Copy_3.Etc;
 using Hitomi_Copy_3.MM;
 using Hitomi_Copy_3.Package;
+using Koromo_Copy.Utility;
 using MetroFramework;
 using MM_Downloader.MM;
 using System;
@@ -51,6 +52,8 @@ namespace Hitomi_Copy_3
             tbInfo.Text += "Source-code : https://github.com/dc-koromo/hitomi-downloader-2\r\n";
             tbInfo.Text += "PatchNote : https://github.com/dc-koromo/hitomi-downloader-2/blob/master/PatchNote.md\r\n";
             tbInfo.Text += "Help : https://github.com/dc-koromo/hitomi-downloader-2/blob/master/Help.md\r\n";
+            tbInfo.Text += "r\n";
+            tbInfo.Text += "Koromo Copy : https://github.com/dc-koromo/koromo-copyr\n";
             tbInfo.Text += "";
             tbInfo.Text += "\r\n";
         }
@@ -1388,7 +1391,10 @@ namespace Hitomi_Copy_3
         {
             pbSync.Visible = true;
             bSync.Enabled = false;
-            await HitomiData.Instance.Synchronization();
+            if (!HitomiSetting.Instance.GetModel().UseDefaultSyncmanager)
+                (new MetadataDownloader()).ShowDialog();
+            else
+                await HitomiData.Instance.Synchronization();
             pbSync.Visible = false;
             bSync.Enabled = true;
             MetroMessageBox.Show(this, "데이터가 동기화되었습니다!", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -170,6 +170,12 @@
     <Compile Include="InfoDetail.Designer.cs">
       <DependentUpon>InfoDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="MetadataDownloader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MetadataDownloader.Designer.cs">
+      <DependentUpon>MetadataDownloader.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mover.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -486,6 +492,9 @@
     <EmbeddedResource Include="InfoDetail.resx">
       <DependentUpon>InfoDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MetadataDownloader.resx">
+      <DependentUpon>MetadataDownloader.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mover.resx">
       <DependentUpon>Mover.cs</DependentUpon>
     </EmbeddedResource>
@@ -602,7 +611,9 @@
     <EmbeddedResource Include="SearchPanel.resx">
       <DependentUpon>SearchPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

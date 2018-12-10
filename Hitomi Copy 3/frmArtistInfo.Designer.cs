@@ -40,6 +40,8 @@ namespace Hitomi_Copy
             this.이미다운로드된작품선택취소GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.작가북마크에추가BToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.자세한정보보기DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lvMyTagRank = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -47,8 +49,6 @@ namespace Hitomi_Copy
             this.bDownloadAll = new System.Windows.Forms.Button();
             this.pbLoad = new System.Windows.Forms.ProgressBar();
             this.bTidy = new System.Windows.Forms.Button();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.자세한정보보기DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,7 +79,7 @@ namespace Hitomi_Copy
             this.toolStripMenuItem3,
             this.자세한정보보기DToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(263, 176);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(263, 154);
             // 
             // 모두선택AToolStripMenuItem
             // 
@@ -125,6 +125,18 @@ namespace Hitomi_Copy
             this.작가북마크에추가BToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
             this.작가북마크에추가BToolStripMenuItem.Text = "작가 북마크에 추가(&B)";
             this.작가북마크에추가BToolStripMenuItem.Click += new System.EventHandler(this.작가북마크에추가BToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(259, 6);
+            // 
+            // 자세한정보보기DToolStripMenuItem
+            // 
+            this.자세한정보보기DToolStripMenuItem.Name = "자세한정보보기DToolStripMenuItem";
+            this.자세한정보보기DToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.자세한정보보기DToolStripMenuItem.Text = "자세한 정보 보기(&D)";
+            this.자세한정보보기DToolStripMenuItem.Click += new System.EventHandler(this.자세한정보보기DToolStripMenuItem_Click);
             // 
             // lvMyTagRank
             // 
@@ -196,18 +208,6 @@ namespace Hitomi_Copy
             this.bTidy.Text = "이름 비슷한 작품 정리";
             this.bTidy.UseVisualStyleBackColor = true;
             this.bTidy.Click += new System.EventHandler(this.bTidy_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(259, 6);
-            // 
-            // 자세한정보보기DToolStripMenuItem
-            // 
-            this.자세한정보보기DToolStripMenuItem.Name = "자세한정보보기DToolStripMenuItem";
-            this.자세한정보보기DToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
-            this.자세한정보보기DToolStripMenuItem.Text = "자세한 정보 보기(&D)";
-            this.자세한정보보기DToolStripMenuItem.Click += new System.EventHandler(this.자세한정보보기DToolStripMenuItem_Click);
             // 
             // frmArtistInfo
             // 

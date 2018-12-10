@@ -16,6 +16,7 @@ namespace Hitomi_Copy_3
     {
         public static Tuple<string, DateTime>[] date_data =
         {
+            new Tuple<string, DateTime> ("1298676", new DateTime(636747116400000000)),
             new Tuple<string, DateTime> ("1272426", new DateTime(636701391000000000)),
             new Tuple<string, DateTime> ("1270463", new DateTime(636698295600000000)),
             new Tuple<string, DateTime> ("1262599", new DateTime(636684444600000000)),
